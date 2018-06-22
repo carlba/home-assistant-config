@@ -7,11 +7,40 @@ tracker_carl:
     - device_tracker.galaxys8
     - device_tracker.30074d28103f
     - device_tracker.camac
+    - device_tracker.gears39c4f
 
 tracker_johanna:
   name: Johanna
   entities:
     - device_tracker.josj_ip
-    - device_tracker.f437b73852db
+    - device_tracker.johanna_iphone
+    - device_tracker.johanna_ipad
+
+yr:
+  name: yr.no
+  entities:
+    - sensor.yr_symbol
+    - sensor.yr_precipitation
+    - sensor.yr_temperature
+
+transmission:
+  name: Transmission
+  entities:
+    - sensor.transmission_active_torrents
+    - sensor.transmission_down_speed
+    - sensor.transmission_status
+    - sensor.transmission_up_speed
+
+performance:
+  name: Performance
+  entities:
+    - sensor.load_1m
+    - sensor.memory_free
+    - sensor.memory_use
+    - sensor.disk_use_percent_
+    - sensor.disk_use_percent_home
+    - sensor.processor_use
+    - sensor.processor_use
+
 
 ...
