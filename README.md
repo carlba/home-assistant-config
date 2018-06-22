@@ -12,3 +12,7 @@
    ```
 6. You are logged in.
 
+## Access the Tellstick container when running hassio
+```bash
+docker exec -it addon_core_tellstick /bin/bash
+```
