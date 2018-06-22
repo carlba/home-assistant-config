@@ -16,3 +16,8 @@
 ```bash
 docker exec -it addon_core_tellstick /bin/bash
 ```
+
+## Observe tellcore events within the Tellstick container when running hassio
+```bash
+apk add py-pip && pip install tellcore-py && tellcore_events --raw
+```
