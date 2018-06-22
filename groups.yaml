@@ -1,3 +1,5 @@
+---
+
 tracker_carl:
   name: Carl
   entities:
@@ -11,3 +13,5 @@ tracker_johanna:
   entities:
     - device_tracker.josj_ip
     - device_tracker.f437b73852db
+
+...

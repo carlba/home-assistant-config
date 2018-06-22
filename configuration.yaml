@@ -14,6 +14,11 @@ homeassistant:
   time_zone: Europe/Stockholm
   # Customization file
   customize: !include customize.yaml
+  customize_domain:
+    light:
+      icon: mdi:home
+    automation:
+      hidden: true
 
 # Show links to resources in log and frontend
 introduction:
@@ -131,9 +136,9 @@ media_player:
     # https://github.com/home-assistant/home-assistant/issues/6546
     enable_websocket: false
     turn_off_action:
-    - service: media_player.media_stop
-      data:
-        entity_id: media_player.kodi
+      - service: media_player.media_stop
+        data:
+          entity_id: media_player.kodi
   # https://home-assistant.io/components/media_player.spotify/
   - platform: spotify
     client_id: ea8908607667466486a0f8c404e7d944
@@ -152,6 +157,16 @@ logger:
   default: info
   logs:
     homeassistant.components.media_player.spotify: info
+
+input_boolean:
+  toaster:
+    name: Toaster
+    initial: false
+
+timer:
+  toaster:
+    name: Toaster
+    duration: '00:00:10'
 
 group: !include groups.yaml
 automation: !include automations.yaml
