@@ -42,5 +42,18 @@ performance:
     - sensor.processor_use
     - sensor.processor_use
 
+lights:
+  name: Lights
+  entities:
+    - switch.desktop
+    - switch.bathroom
+    - light.hallway
+
+other:
+  name: Other
+  entities:
+    - input_boolean.toaster
+    - switch.toaster
+    - switch.motion_hallway
 
 ...

@@ -19,6 +19,21 @@ homeassistant:
       icon: mdi:home
     automation:
       hidden: true
+  customize_glob:
+    '*.*':
+      custom_ui_state_card: state-card-custom-ui
+    'light.*':
+      state_card_mode: single-line
+      slider_theme:
+        min: 0
+        max: 255
+        pin: true
+        off_when_min: false
+        report_when_not_changed: false
+    'sensor.*':
+      state_card_mode: badges
+    'device_tracker.*':
+      state_card_mode: badges
 
 # Show links to resources in log and frontend
 introduction:
@@ -167,6 +182,9 @@ timer:
   toaster:
     name: Toaster
     duration: '00:00:10'
+
+customizer:
+  custom_ui: local
 
 group: !include groups.yaml
 automation: !include automations.yaml
