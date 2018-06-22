@@ -1,0 +1,13 @@
+tracker_carl:
+  name: Carl
+  entities:
+    - device_tracker.cada_s8
+    - device_tracker.galaxys8
+    - device_tracker.30074d28103f
+    - device_tracker.camac
+
+tracker_johanna:
+  name: Johanna
+  entities:
+    - device_tracker.josj_ip
+    - device_tracker.f437b73852db

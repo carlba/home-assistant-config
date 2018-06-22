@@ -1,0 +1,157 @@
+---
+
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 59.3097048
+  longitude: 18.0752532
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Stockholm
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  api_password: !secret http_password
+  base_url: https://carlb-hassio.duckdns.org
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+  - platform: yr
+    monitored_conditions:
+      - temperature
+      - symbol
+      - precipitation
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use
+      - type: memory_free
+      - type: processor_use
+      - type: load_1m
+  - platform: transmission
+    host: 192.168.1.2
+    monitored_variables:
+      - 'current_status'
+      - 'download_speed'
+      - 'upload_speed'
+      - 'active_torrents'
+    username: cada
+    password: !secret transmission_password
+  - platform: tellstick
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+# Tellstick
+tellstick:
+  host: core-tellstick
+  port: [50800, 50801]
+
+switch:
+  - platform: tellstick
+
+zone:
+  - name: home
+    latitude: 59.3097048
+    longitude: 18.0752532
+    radius: 100
+    icon: mdi:account-multiple
+
+mqtt:
+  broker: core-mosquitto
+  username: hassio
+  password: !secret mosquitto_password
+
+device_tracker:
+  # https://www.home-assistant.io/components/device_tracker.asuswrt
+  - platform: asuswrt
+    host: 192.168.1.1
+    username: admin
+    password: !secret router_password
+  - platform: owntracks
+    max_gps_accuracy: 200
+    waypoints: true
+    mqtt_topic: "owntracks/#"
+    events_only: false
+    region_mapping:
+      carl: home
+
+media_player:
+  - platform: kodi
+    host: 192.168.1.7
+    # https://github.com/home-assistant/home-assistant/issues/6546
+    enable_websocket: false
+    turn_off_action:
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.kodi
+  # https://home-assistant.io/components/media_player.spotify/
+  - platform: spotify
+    client_id: ea8908607667466486a0f8c404e7d944
+    client_secret: !secret spotify_client_secret
+    # https://community.home-assistant.io/t/spotify-ignoring-source/18588/24
+    # Retrive the alias adding by setting loglevel to info and grepping for "New "
+    # tail -f /config/home-assistant.log | grep "New "
+    aliases:
+      41958a95210503efdf1a3271a6974e5083ed49d8: 'SRS-X77'
+      3aacd1018a63677eee17183ac10f4f7685c056ef: 'Galaxy S8+'
+
+influxdb:
+  host: 192.168.1.2
+
+logger:
+  default: info
+  logs:
+    homeassistant.components.media_player.spotify: info
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
