@@ -94,6 +94,7 @@ cloud:
 tellstick:
   host: core-tellstick
   port: [50800, 50801]
+  signal_repetitions: 4
 
 switch:
   - platform: tellstick
