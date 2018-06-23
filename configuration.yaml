@@ -180,8 +180,8 @@ input_boolean:
 
 timer:
   toaster:
-    name: Toaster
-    duration: '00:00:10'
+    name: Toaster Timer
+    duration: '00:02:00'
 
 customizer:
   custom_ui: local
