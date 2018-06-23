@@ -15,8 +15,6 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
   customize_domain:
-    light:
-      icon: mdi:home
     automation:
       hidden: true
   customize_glob:
