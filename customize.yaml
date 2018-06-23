@@ -1,3 +1,43 @@
 ---
+
+# https://www.home-assistant.io/docs/configuration/customizing-devices/
+
+group.tracker_home:
+  order: 1
+group.lights:
+  order: 2
+group.other:
+  order: 3
+group.yr:
+  order: 4
+group.performance:
+  order: 5
+group.transmission:
+  order: 6
+group.tracker_carl:
+  order: 7
+group.tracker_johanna:
+  order: 8
+
+
+switch.desktop:
+  friendly_name: Desktop Switch
+
+switch.bathroom_ceiling:
+  friendly_name: Bathroom Ceiling Switch
+
+light.hallway_ceiling:
+  friendly_name: Hallway Ceiling Light
+
 switch.nexa_remote_g:
   friendly_name: Nexa Remote Group Remote
+
+switch.toaster:
+  friendly_name: Toaster Switch
+
+input_boolean.toaster:
+  friendly_name: Toaster Timer Toggle
+  entity_picture: https://cdn3.iconfinder.com/data/icons/breakfast-icons/459/Toaster-512.png
+
+# group.all_devices:
+#   hidden: false

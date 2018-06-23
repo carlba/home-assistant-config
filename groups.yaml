@@ -1,20 +1,46 @@
 ---
 
+
+# default_view:
+#   view: true
+#   icon: mdi:home
+#   entities:
+#     - group.tracker_home
+#     - group.lights
+#     - group.other
+#     - group.yr
+
+# other_view:
+#   name: Other
+#   view: true
+#   entities:
+#     - group.tracker_carl
+#     - group.tracker_johanna
+#     - group.transmission
+#     - group.performance
+#     - group.all_devices
+
+
+tracker_home:
+  name: Who's home?
+  entities:
+    - group.tracker_carl
+    - group.tracker_johanna
+
 tracker_carl:
   name: Carl
   entities:
-    - device_tracker.cada_s8
+#    - device_tracker.cada_s8
     - device_tracker.galaxys8
     - device_tracker.30074d28103f
-    - device_tracker.camac
-    - device_tracker.gears39c4f
+
 
 tracker_johanna:
   name: Johanna
   entities:
-    - device_tracker.josj_ip
+#    - device_tracker.josj_ip
     - device_tracker.johanna_iphone
-    - device_tracker.johanna_ipad
+#    - device_tracker.johanna_ipad
 
 yr:
   name: yr.no
@@ -46,14 +72,16 @@ lights:
   name: Lights
   entities:
     - switch.desktop
-    - switch.bathroom
-    - light.hallway
+    - switch.bathroom_ceiling
+    - light.hallway_ceiling
 
-other:
-  name: Other
+media_players:
+  name: Media Players
   entities:
-    - input_boolean.toaster
-    - switch.toaster
-    - switch.motion_hallway
+    - media_player.srsx77
+    - media_player.kodi_2
+    - media_player.plexkodiconnect
+    - media_player.shield_2
+    - media_player.spotify
 
 ...

@@ -180,7 +180,6 @@ logger:
 
 input_boolean:
   toaster:
-    name: Toaster
     initial: false
 
 timer:
