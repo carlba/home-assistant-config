@@ -111,7 +111,27 @@ tts:
   - platform: google
 
 # Cloud
+# https://www.home-assistant.io/cloud/google_assistant/
 cloud:
+  google_actions:
+    filter:
+      include_domains:
+        - switch
+        - light
+        - scene
+      include_entities:
+        - input_boolean.toaster
+      exclude_entities:
+        - switch.toaster
+        - switch.nexa_remote_g
+
+    entity_config:
+      switch.desktop:
+        room: Office
+      switch.bathroom_ceiling:
+        room: Bathroom
+      light.hallway_ceiling:
+        room: Hallway
 
 # Tellstick
 tellstick:
