@@ -27,3 +27,45 @@
         entity_id: input_boolean.toaster
     - service: timer.cancel
       entity_id: timer.toaster
+
+- alias: nexa_remote_g_on
+  trigger:
+    - platform: state
+      entity_id: switch.nexa_remote_g
+      to: 'on'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.lights
+
+- alias: nexa_remote_g_off
+  trigger:
+    - platform: state
+      entity_id: switch.nexa_remote_g
+      to: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.lights
+
+# - alias: motion_hallway_on
+#   trigger:
+#     - platform: state
+#       entity_id: switch.motion_hallway
+#       from: 'off'
+#       to: 'on'
+#   action:
+#     - service: light.turn_on
+#       data:
+#         entity_id: light.hallway
+#         brightness: 255
+
+# - alias: motion_hallway_off
+#   trigger:
+#     - platform: state
+#       entity_id: switch.motion_hallway
+#       from: 'on'
+#       to: 'off'
+#   action:
+#     - service: light.turn_off
+#       data:
+#         entity_id: light.hallway
+#         brightness: 0
