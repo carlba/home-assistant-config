@@ -29,7 +29,7 @@ switch.bathroom_ceiling:
   homebridge_visible: true
 
 light.hallway_ceiling:
-  friendly_name: Hallway Ceiling Light
+  friendly_name: Hallway Ceiling Light 1
   homebridge_visible: true
 
 switch.nexa_remote_g:
