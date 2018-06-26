@@ -149,10 +149,10 @@ zone:
     radius: 100
     icon: mdi:account-multiple
 
-mqtt:
-  broker: core-mosquitto
-  username: hassio
-  password: !secret mosquitto_password
+# mqtt:
+#   broker: core-mosquitto
+#   username: hassio
+#   password: !secret mosquitto_password
 
 device_tracker:
   # https://www.home-assistant.io/components/device_tracker.asuswrt
