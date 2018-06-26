@@ -164,11 +164,11 @@ device_tracker:
   #   max_gps_accuracy: 200
   #   waypoints: true
   #   mqtt_topic: "owntracks/#"
-  #   events_only: false/
+  #   events_only: false
   #   region_mapping:
   #     carl: home
   - platform: google_maps
-    username: genzorg@gmail.com
+    username: carl.backstrom.dahl.location@gmail.com
     password: !secret location_gmail_password
 
 media_player:
