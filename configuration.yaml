@@ -160,13 +160,13 @@ device_tracker:
     host: 192.168.1.1
     username: admin
     password: !secret router_password
-  - platform: owntracks
-    max_gps_accuracy: 200
-    waypoints: true
-    mqtt_topic: "owntracks/#"
-    events_only: false
-    region_mapping:
-      carl: home
+  # - platform: owntracks
+  #   max_gps_accuracy: 200
+  #   waypoints: true
+  #   mqtt_topic: "owntracks/#"
+  #   events_only: false
+  #   region_mapping:
+  #     carl: home
   - platform: google_maps
     username: carl.backstrom.dahl.location@gmail.com
     password: !secret location_gmail_password
