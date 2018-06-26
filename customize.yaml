@@ -22,22 +22,28 @@ group.tracker_johanna:
 
 switch.desktop:
   friendly_name: Desktop Switch
+  homebridge_visible: true
 
 switch.bathroom_ceiling:
   friendly_name: Bathroom Ceiling Switch
+  homebridge_visible: true
 
 light.hallway_ceiling:
   friendly_name: Hallway Ceiling Light
+  homebridge_visible: true
 
 switch.nexa_remote_g:
   friendly_name: Nexa Remote Group Remote
+  homebridge_visible: true
 
 switch.toaster:
   friendly_name: Toaster Switch
+  homebridge_visible: true
 
 input_boolean.toaster:
   friendly_name: Toaster Timer Toggle
   entity_picture: https://cdn3.iconfinder.com/data/icons/breakfast-icons/459/Toaster-512.png
+  homebridge_visible: true
 
 # group.all_devices:
 #   hidden: false
