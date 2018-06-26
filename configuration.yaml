@@ -167,6 +167,9 @@ device_tracker:
     events_only: false
     region_mapping:
       carl: home
+  - platform: google_maps
+    username: carl.backstrom.dahl.location@gmail.com
+    password: !secret location_gmail_password
 
 media_player:
   - platform: kodi
