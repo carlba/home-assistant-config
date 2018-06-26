@@ -169,7 +169,7 @@ device_tracker:
   #     carl: home
   - platform: google_maps
     username: genzorg@gmail.com
-    password: !secret genzorg_gmail_password
+    password: !secret location_gmail_password
 
 media_player:
   - platform: kodi
