@@ -72,7 +72,7 @@
 
 # https://www.home-assistant.io/docs/automation/trigger/
 # https://www.home-assistant.io/components/notify.twilio_sms/
-- alias: notify_carl_that_carl_has_arrived_at_work
+- alias: notify_that_carl_has_arrived_at_work
   trigger:
     - platform: state
       entity_id: device_tracker.google_maps_118136931442668540655
@@ -84,8 +84,35 @@
       entity_id: input_boolean.test
       to: 'on'
   action:
-    service: notify.twilio_sms
-    data:
-      message: 'Carl has arrived at work'
-      target:
-        - '+46702720540'
+    - service: notify.twilio_sms
+      data:
+        message: 'Carl has arrived at work'
+        target:
+          - '+46702720540'
+    - service: tts.google_say
+      entity_id: media_player.srsx77
+      data:
+        message: 'Carl has arrived at work'
+        target:
+          - '+46702720540'
+
+# https://www.home-assistant.io/docs/automation/trigger/
+# https://www.home-assistant.io/components/notify.twilio_sms/
+- alias: notify_that_johanna_has_arrived_at_home
+  trigger:
+    - platform: state
+      entity_id: group.tracker_johanna
+      # Optional
+      from: 'not_home'
+      # Optional
+      to: 'home'
+  action:
+    - service: notify.twilio_sms
+      data:
+        message: 'Johanna has arrived at home'
+        target:
+          - '+46702720540'
+    - service: tts.google_say
+      entity_id: media_player.srsx77
+      data:
+        message: 'Johanna has arrived at home'
