@@ -152,7 +152,7 @@ zone:
     latitude: 59.346727
     longitude: 18.0391455
     radius: 100
-    icon: mdi: briefcase
+    icon: mdi:briefcase
 
 # mqtt:
 #   broker: core-mosquitto
