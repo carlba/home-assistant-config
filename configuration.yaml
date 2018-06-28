@@ -148,6 +148,11 @@ zone:
     longitude: 18.0752532
     radius: 100
     icon: mdi:account-multiple
+  - name: work
+    latitude: 59.346727
+    longitude: 18.0391455
+    radius: 100
+    icon: mdi: briefcase
 
 # mqtt:
 #   broker: core-mosquitto
