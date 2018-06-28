@@ -216,6 +216,11 @@ timer:
 customizer:
   custom_ui: local
 
+twilio:
+  account_sid: AC9bd4546dbb927abc6694554cbe82ba50
+  auth_token: !secret twilio_auth_token
+
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
