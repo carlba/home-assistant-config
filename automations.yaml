@@ -105,11 +105,15 @@
       from: 'not_home'
       to: 'home'
   action:
-    - service: notify.twilio_sms
+    # - service: notify.twilio_sms
+    #   data:
+    #     message: 'Johanna has arrived at home'
+    #     target:
+    #       - '+46702720540'
+    - service: notify.pushover
       data:
-        message: 'Johanna has arrived at home'
-        target:
-          - '+46702720540'
+        message: "Johanna has arrived at home"
+        title: "Johanna has arrived at home"
     - service: tts.google_say
       entity_id: media_player.srsx77
       data:
