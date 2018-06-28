@@ -21,3 +21,7 @@ docker exec -it addon_core_tellstick /bin/bash
 ```bash
 apk add py-pip && pip install tellcore-py && tellcore_events --raw
 ```
+
+## Multiple triggers
+
+[Multiple Triggers](https://www.home-assistant.io/docs/automation/trigger/#multiple-triggers)
