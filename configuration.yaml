@@ -207,6 +207,8 @@ logger:
 input_boolean:
   toaster:
     initial: false
+  test:
+    initial: false
 
 timer:
   toaster:

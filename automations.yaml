@@ -74,12 +74,15 @@
 # https://www.home-assistant.io/components/notify.twilio_sms/
 - alias: notify_carl_that_carl_has_arrived_at_work
   trigger:
-    platform: state
-    entity_id: device_tracker.google_maps_118136931442668540655
-    # Optional
-    from: 'not_home'
-    # Optional
-    to: 'work'
+    - platform: state
+      entity_id: device_tracker.google_maps_118136931442668540655
+      # Optional
+      from: 'not_home'
+      # Optional
+      to: 'work'
+    - platform: state
+      entity_id: input_boolean.test
+      to: 'on'
   action:
     service: notify.twilio_sms
     data:

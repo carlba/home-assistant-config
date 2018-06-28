@@ -45,5 +45,8 @@ input_boolean.toaster:
   entity_picture: https://cdn3.iconfinder.com/data/icons/breakfast-icons/459/Toaster-512.png
   homebridge_visible: true
 
+input_boolean.test:
+  friendly_name: Testing toggle
+
 # group.all_devices:
 #   hidden: false
