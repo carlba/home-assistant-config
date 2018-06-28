@@ -225,7 +225,7 @@ twilio:
 
 # https://www.home-assistant.io/components/notify.twilio_sms
 notify:
-  - name: 'Carl Bäckström'
+  - name: 'twilio_sms'
     platform: twilio_sms
     from_number: '+46765193997'
 
