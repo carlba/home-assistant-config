@@ -79,7 +79,7 @@
     # Optional
     from: 'not_home'
     # Optional
-    to: 'home'
+    to: 'work'
   action:
     service: notify.twilio_sms
     data:
