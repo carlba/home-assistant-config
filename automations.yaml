@@ -88,15 +88,13 @@
     #     target:
     #       - '+46702720540'
     - service: notify.pushover
-        data:
-          message: "Carl has arrived at work"
-          title: "Carl has arrived at work"
+      data:
+        message: "Carl has arrived at work"
+        title: "Carl has arrived at work"
     - service: tts.google_say
       entity_id: media_player.srsx77
       data:
         message: 'Carl has arrived at work'
-        target:
-          - '+46702720540'
 
 # https://www.home-assistant.io/docs/automation/trigger/
 # https://www.home-assistant.io/components/notify.twilio_sms/
