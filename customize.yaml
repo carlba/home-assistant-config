@@ -48,6 +48,3 @@ input_boolean.toaster:
 input_boolean.test:
   friendly_name: Testing toggle
   icon: mdi:testing-tube-empty
-
-# group.all_devices:
-#   hidden: false
