@@ -178,6 +178,7 @@ device_tracker:
   - platform: icloud
     username: johanna.sjoestrand@gmail.com
     password: !secret johanna_icloud_password
+    max_interval: 1
 
 media_player:
   - platform: kodi
