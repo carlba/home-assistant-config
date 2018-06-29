@@ -83,7 +83,7 @@
       from: 'not_home'
       to: 'home'
     - platform: state
-      entity_id: input_boolean.test4
+      entity_id: input_boolean.test
       to: 'on'
   action:
     # - service: notify.twilio_sms
