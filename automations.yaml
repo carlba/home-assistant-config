@@ -83,7 +83,7 @@
       from: 'not_home'
       to: 'home'
     - platform: state
-      entity_id: input_boolean.test
+      entity_id: input_boolean.test4
       to: 'on'
   action:
     # - service: notify.twilio_sms
@@ -93,7 +93,7 @@
     #       - '+46702720540'
     - service_template: 'notify.pushover'
       data_template:
-        title: "{{ trigger.to_state.name }} has arrived at {{ trigger.to_state.state }}"
+        title: "{{ trigger.to_state.name | splitpart(0, ' ') }} has arrived at {{ trigger.to_state.state }}"
     - service_template: 'tts.google_say'
       entity_id: media_player.srsx77
       data_template:
