@@ -79,6 +79,10 @@
       from: 'not_home'
       to: 'work'
     - platform: state
+      entity_id: device_tracker.galaxys8
+      from: 'not_home'
+      to: 'work'
+    - platform: state
       entity_id: input_boolean.test
       to: 'on'
   action:
