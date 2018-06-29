@@ -92,8 +92,8 @@
         title: "Carl has arrived at {{ trigger.from_state.state }}"
     - service_template: 'tts.google_say'
       entity_id: media_player.srsx77
-      data:
-        data_template: 'Carl has arrived at {{ trigger.from_state.state }}'
+      data_template:
+        message: 'Carl has arrived at {{ trigger.from_state.state }}'
 
 # https://www.home-assistant.io/docs/automation/trigger/
 # https://www.home-assistant.io/components/notify.twilio_sms/
