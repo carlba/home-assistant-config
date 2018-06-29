@@ -33,6 +33,7 @@ tracker_carl:
 #    - device_tracker.cada_s8
     - device_tracker.galaxys8
     - device_tracker.30074d28103f
+    - device_tracker.google_maps_118136931442668540655
 
 
 tracker_johanna:
