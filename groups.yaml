@@ -39,9 +39,8 @@ tracker_carl:
 tracker_johanna:
   name: Johanna
   entities:
-#    - device_tracker.josj_ip
     - device_tracker.johanna_iphone
-#    - device_tracker.johanna_ipad
+    - device_tracker.iphone
 
 yr:
   name: yr.no
