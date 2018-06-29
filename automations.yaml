@@ -93,11 +93,11 @@
     #       - '+46702720540'
     - service_template: 'notify.pushover'
       data_template:
-        title: "{{ trigger.to_state.name.split(' ')[0] }} has arrived at {{ trigger.to_state.state }}"
+        title: "{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}"
     - service_template: 'tts.google_say'
       entity_id: media_player.srsx77
       data_template:
-        message: "{{ trigger.to_state.name.split(' ')[0] }} has arrived at {{ trigger.to_state.state }}"
+        message: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
 
 # https://www.home-assistant.io/docs/automation/trigger/
 # https://www.home-assistant.io/components/notify.twilio_sms/
