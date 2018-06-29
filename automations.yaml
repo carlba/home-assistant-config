@@ -82,10 +82,16 @@
   trigger:
     - platform: state
       entity_id: device_tracker.google_maps_118136931442668540655
-      from: 'not_home'
+      to: work
     - platform: state
       entity_id: device_tracker.iphone
-      from: 'not_home'
+      to: work
+    - platform: state
+      entity_id: group.tracker_carl
+      to: home
+    - platform: state
+      entity_id: group.tracker_johanna
+      to: home
     - platform: state
       entity_id: input_boolean.test
       to: 'on'
@@ -102,13 +108,16 @@
   trigger:
     - platform: state
       entity_id: device_tracker.google_maps_118136931442668540655
-      from: 'home'
-    - platform: state
-      entity_id: device_tracker.google_maps_118136931442668540655
-      from: 'work'
+      from: work
     - platform: state
       entity_id: device_tracker.iphone
-      from: 'home'
+      from: work
+    - platform: state
+      entity_id: group.tracker_carl
+      from: home
+    - platform: state
+      entity_id: group.tracker_johanna
+      from: home
     - platform: state
       entity_id: input_boolean.test
       to: 'on'
