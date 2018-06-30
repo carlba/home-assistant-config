@@ -179,6 +179,7 @@ device_tracker:
     username: johanna.sjoestrand@gmail.com
     password: !secret johanna_icloud_password
     max_interval: 1
+  - platform: bluetooth_tracker
 
 media_player:
   - platform: kodi
