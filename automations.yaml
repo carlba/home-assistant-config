@@ -87,6 +87,9 @@
       entity_id: device_tracker.iphone
       to: work
     - platform: state
+      entity_id: device_tracker.iphone
+      to: 'WeMind'
+    - platform: state
       entity_id: group.tracker_carl
       to: home
     - platform: state
@@ -113,6 +116,9 @@
     - platform: state
       entity_id: device_tracker.iphone
       from: work
+    - platform: state
+      entity_id: device_tracker.iphone
+      from: 'WeMind'
     - platform: state
       entity_id: group.tracker_carl
       from: home
