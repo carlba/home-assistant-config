@@ -153,17 +153,16 @@ zone:
     longitude: 18.0391455
     radius: 100
     icon: mdi:briefcase
-
   - name: 'Vida Pole'
     latitude: 59.336491
     longitude: 18.026207
     radius: 100
     icon: mdi:run-fast
-
-# mqtt:
-#   broker: core-mosquitto
-#   username: hassio
-#   password: !secret mosquitto_password
+  - name: 'Ann-Marie'
+    latitude: 59.265861
+    longitude: 18.089933
+    radius: 100
+    icon: mdi:account
 
 device_tracker:
   # https://www.home-assistant.io/components/device_tracker.asuswrt
@@ -171,13 +170,6 @@ device_tracker:
     host: 192.168.1.1
     username: admin
     password: !secret router_password
-  # - platform: owntracks
-  #   max_gps_accuracy: 200
-  #   waypoints: true
-  #   mqtt_topic: "owntracks/#"
-  #   events_only: false
-  #   region_mapping:
-  #     carl: home
   - platform: google_maps
     username: carl.backstrom.dahl.location@gmail.com
     password: !secret location_gmail_password
