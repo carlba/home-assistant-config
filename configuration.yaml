@@ -154,6 +154,12 @@ zone:
     radius: 100
     icon: mdi:briefcase
 
+  - name: 'Vida Pole'
+    latitude: 59.336491
+    longitude: 18.026207
+    radius: 100
+    icon: mdi:run-fast
+
 # mqtt:
 #   broker: core-mosquitto
 #   username: hassio
@@ -228,15 +234,15 @@ customizer:
 #   account_sid: 'AC9bd4546dbb927abc6694554cbe82ba50'
 #   auth_token: !secret twilio_auth_token
 
+notify:
+  - name: 'pushover'
+    platform: pushover
+    api_key: !secret pushover_api_key
+    user_key: !secret pushover_user_key
 # https://www.home-assistant.io/components/notify.twilio_sms
-# notify:
-#   - name: 'twilio_sms'
-#     platform: twilio_sms
-#     from_number: '+46765193997'
-#   - name: 'pushover'
-#     platform: pushover
-#     api_key: !secret pushover_api_key
-#     user_key: !secret pushover_user_key
+# - name: 'twilio_sms'
+#   platform: twilio_sms
+#   from_number: '+46765193997'
 
 group: !include groups.yaml
 automation: !include automations.yaml
