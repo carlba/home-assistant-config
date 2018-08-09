@@ -71,6 +71,7 @@ logbook:
 # https://www.home-assistant.io/addons/mariadb
 recorder:
   db_url: mysql://hass:hass@core-mariadb/homeassistant
+  purge_keep_days: 5
 
 # Enables a map showing the location of tracked devices
 map:
