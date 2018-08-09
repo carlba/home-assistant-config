@@ -3,6 +3,6 @@
 !*.yaml
 !scenes
 !.gitignore
-secrets.yaml
+!secrets.yaml
 ._*.yaml
 known_devices.yaml
