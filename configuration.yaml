@@ -74,7 +74,7 @@ logbook:
 #  purge_keep_days: 5
 
 recorder:
-db_url: mysql://hassio:hassio@192.168.1.2/hassio
+  db_url: mysql://hassio:hassio@192.168.1.2/hassio
 
 # Enables a map showing the location of tracked devices
 map:
