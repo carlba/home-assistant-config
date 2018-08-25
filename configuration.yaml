@@ -109,6 +109,26 @@ sensor:
     username: cada
     password: !secret transmission_password
   - platform: tellstick
+  - platform: template
+    sensors:
+      harmony_hub:
+        friendly_name: "Harmony Hub"
+        value_template: '{{ states.remote.harmony_hub.attributes.current_activity }}'
+binary_sensor:
+  - platform: template
+    sensors:
+      harmony_hub_shield:
+        friendly_name: "Shield"
+        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "SHIELD") }}'
+      harmony_hub_home:
+        friendly_name: "Home"
+        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Home") }}'
+      harmony_hub_away:
+        friendly_name: "Away"
+        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Away") }}'
+      harmony_hub_clean:
+        friendly_name: "Clean"
+        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Clean") }}'
 
 # Text to speech
 tts:
@@ -141,10 +161,7 @@ cloud:
 tellstick:
   host: core-tellstick
   port: [50800, 50801]
-  signal_repetitions: 4
-
-switch:
-  - platform: tellstick
+  signal_repetitions: 1
 
 zone:
   - name: home
@@ -183,6 +200,7 @@ device_tracker:
   - platform: google_maps
     username: carl.backstrom.dahl.location@gmail.com
     password: !secret location_gmail_password
+  # https://www.home-assistant.io/components/device_tracker.icloud/
   - platform: icloud
     username: johanna.sjoestrand@gmail.com
     password: !secret johanna_icloud_password
@@ -246,6 +264,12 @@ notify:
 #   platform: twilio_sms
 #   from_number: '+46765193997'
 
+remote:
+  - platform: harmony
+    name: Harmony Hub
+    activity: Home
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+switch: !include switches.yaml

@@ -1,0 +1,51 @@
+- platform: tellstick
+- platform: template
+  switches:
+    harmony_hub_home:
+      value_template: "{{ is_state('binary_sensor.harmony_hub_home', 'on') }}"
+      turn_on:
+        service: remote.turn_on
+        data:
+          entity_id: remote.harmony_hub
+          activity: Home
+      turn_off:
+        service: remote.turn_off
+        data:
+          entity_id: remote.harmony_hub
+          activity: Home
+    harmony_hub_away:
+      value_template: "{{ is_state('binary_sensor.harmony_hub_away', 'on') }}"
+      turn_on:
+        service: remote.turn_on
+        data:
+          entity_id: remote.harmony_hub
+          activity: Away
+      turn_off:
+        service: remote.turn_off
+        data:
+          entity_id: remote.harmony_hub
+          activity: Away
+    harmony_hub_shield:
+      value_template: "{{ is_state('binary_sensor.harmony_hub_shield', 'on') }}"
+      turn_on:
+        service: remote.turn_on
+        data:
+          entity_id: remote.harmony_hub
+          activity: SHIELD
+      turn_off:
+        service: remote.turn_off
+        data:
+          entity_id: remote.harmony_hub
+          activity: SHIELD
+    harmony_hub_clean:
+      value_template: "{{ is_state('binary_sensor.harmony_hub_clean', 'on') }}"
+      turn_on:
+        service: remote.turn_on
+        data:
+          entity_id: remote.harmony_hub
+          activity: Clean
+      turn_off:
+        service: remote.turn_off
+        data:
+          entity_id: remote.harmony_hub
+          activity: Clean

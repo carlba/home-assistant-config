@@ -39,7 +39,7 @@ tracker_carl:
 tracker_johanna:
   name: Johanna
   entities:
-    - device_tracker.johanna_iphone
+    - device_tracker.johanna_iphone_router
     - device_tracker.iphone
 
 yr:
@@ -74,6 +74,14 @@ lights:
     - switch.desktop
     - switch.bathroom_ceiling
     - light.hallway_ceiling
+
+harmony_hub:
+  name: Harmony Hub
+  entities:
+    - switch.harmony_hub_home
+    - switch.harmony_hub_away
+    - switch.harmony_hub_shield
+    - switch.harmony_hub_clean
 
 media_players:
   name: Media Players

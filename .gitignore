@@ -4,5 +4,6 @@
 !scenes
 !.gitignore
 !secrets.yaml
+!README.md
 ._*.yaml
 known_devices.yaml
