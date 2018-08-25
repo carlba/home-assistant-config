@@ -145,4 +145,4 @@
       - service: remote.turn_on
         entity_id: remote.harmony_hub
         data:
-          activity: 35165108
+          activity: "35165108"
