@@ -135,14 +135,14 @@
       data_template:
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
 
-- alias: "start harmony activity with input boolean"
-    initial_state: off
-    trigger:
-      - platform: state
-        entity_id: input_boolean.test
-        to: 'on'
-    action:
-      - service: remote.turn_on
-        entity_id: remote.harmony_hub
-        data:
-          activity: "35165108"
+- alias: start harmony activity with input boolean
+  initial_state: false
+  trigger:
+    - platform: state
+      entity_id: input_boolean.test
+      to: 'on'
+  action:
+    - service: remote.turn_on
+      entity_id: remote.harmony_hub
+      data:
+        activity: "35165108"
