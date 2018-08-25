@@ -95,9 +95,6 @@
     - platform: state
       entity_id: group.tracker_johanna
       to: home
-    - platform: state
-      entity_id: input_boolean.test
-      to: 'on'
   action:
     - service_template: 'notify.pushover'
       data_template:
