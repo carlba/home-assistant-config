@@ -184,11 +184,6 @@ zone:
     longitude: 18.089933
     radius: 100
     icon: mdi:account
-  - name: 'WeMind'
-    latitude: 59.334993
-    longitude: 18.033276
-    radius: 100
-    icon: mdi:hospital
 
 device_tracker:
   # https://www.home-assistant.io/components/device_tracker.asuswrt

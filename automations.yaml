@@ -46,30 +46,6 @@
     - service: homeassistant.turn_off
       entity_id: group.lights
 
-# - alias: motion_hallway_on
-#   trigger:
-#     - platform: state
-#       entity_id: switch.motion_hallway
-#       from: 'off'
-#       to: 'on'
-#   action:
-#     - service: light.turn_on
-#       data:
-#         entity_id: light.hallway
-#         brightness: 255
-
-# - alias: motion_hallway_off
-#   trigger:
-#     - platform: state
-#       entity_id: switch.motion_hallway
-#       from: 'on'
-#       to: 'off'
-#   action:
-#     - service: light.turn_off
-#       data:
-#         entity_id: light.hallway
-#         brightness: 0
-
 # https://www.home-assistant.io/docs/automation/trigger/
 # https://www.home-assistant.io/components/notify.twilio_sms/
 # - service: notify.twilio_sms
@@ -86,9 +62,6 @@
     - platform: state
       entity_id: device_tracker.iphone
       to: work
-    - platform: state
-      entity_id: device_tracker.iphone
-      to: 'WeMind'
     - platform: state
       entity_id: group.tracker_carl
       to: home
@@ -113,9 +86,6 @@
     - platform: state
       entity_id: device_tracker.iphone
       from: work
-    - platform: state
-      entity_id: device_tracker.iphone
-      from: 'WeMind'
     - platform: state
       entity_id: group.tracker_carl
       from: home
