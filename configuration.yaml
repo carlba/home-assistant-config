@@ -216,7 +216,7 @@ media_player:
     client_id: ea8908607667466486a0f8c404e7d944
     client_secret: !secret spotify_client_secret
     # https://community.home-assistant.io/t/spotify-ignoring-source/18588/24
-    # Retrive the alias adding by setting loglevel to info and grepping for "New "
+    # Retrieve the alias adding by setting log level to info and grepping for "New "
     # tail -f /config/home-assistant.log | grep "New "
     aliases:
       41958a95210503efdf1a3271a6974e5083ed49d8: 'SRS-X77'

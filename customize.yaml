@@ -65,3 +65,6 @@ switch.harmony_hub_shield:
 switch.harmony_hub_clean:
   friendly_name: Clean
   icon: mdi:robot-vacuum
+
+remote.harmony_hub:
+  hidden: true
