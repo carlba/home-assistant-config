@@ -7,6 +7,7 @@ default_view:
   entities:
     - group.tracker_home
     - group.lights
+    - group.harmony_hub
     - group.other
     - group.yr
 
@@ -19,6 +20,8 @@ other_view:
     - group.transmission
     - group.performance
     - group.all_devices
+    - group.devices
+    - group.friends
 
 
 tracker_home:
@@ -94,6 +97,11 @@ devices:
     - device_tracker.hassio
     - device_tracker.ipad # Johanna's iPad
     - device_tracker.shield
+
+friends:
+  name: Friends
+  entities:
+    - device_tracker.android4749e9acd4fc4284 # Natalie Milz
 
 media_players:
   name: Media Players
