@@ -69,6 +69,7 @@ history:
       - automation
       - weblink
       - updater
+      - remote
     entities:
       - group.transmission
       - group.default_view
@@ -77,12 +78,15 @@ history:
       - group.harmony_hub
       - group.transmission
       - group.performance
-      - group.performance
       - group.media_players
       - group.devices
       - group.all_automations
       - group.all_devices
       - group.all_remotes
+      - group.all_switches
+      - group.all_lights
+      - group.all_devices
+
 
 # View all events in a logbook
 logbook:
