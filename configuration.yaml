@@ -70,6 +70,7 @@ history:
       - weblink
       - updater
       - remote
+      - group
     entities:
       - group.transmission
       - group.default_view
