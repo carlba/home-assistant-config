@@ -1,24 +1,24 @@
 ---
 
 
- default_view:
-   view: true
-   icon: mdi:home
-   entities:
-     - group.tracker_home
-     - group.lights
-     - group.other
-     - group.yr
+default_view:
+  view: true
+  icon: mdi:home
+  entities:
+    - group.tracker_home
+    - group.lights
+    - group.other
+    - group.yr
 
- other_view:
-   name: Other
-   view: true
-   entities:
-     - group.tracker_carl
-     - group.tracker_johanna
-     - group.transmission
-     - group.performance
-     - group.all_devices
+other_view:
+  name: Other
+  view: true
+  entities:
+    - group.tracker_carl
+    - group.tracker_johanna
+    - group.transmission
+    - group.performance
+    - group.all_devices
 
 
 tracker_home:
