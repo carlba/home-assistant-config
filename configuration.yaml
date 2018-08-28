@@ -28,7 +28,7 @@ homeassistant:
         pin: true
         off_when_min: false
         report_when_not_changed: false
-    group.devices:
+    sensor.yr_symbol:
       state_card_mode: badges
 #    'device_tracker.*':
 #      state_card_mode: badges
