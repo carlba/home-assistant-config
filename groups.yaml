@@ -88,7 +88,7 @@ devices:
     - device_tracker.10c6fc8e7fa3 # Garmin Edge 1000
     - device_tracker.6c5697d9c323 # Johanna's Kindle
     - device_tracker.b827eb1c5c4e # RPI3
-    - device_tracker,burken
+    - device_tracker.burken
     - device_tracker.camac
     - device_tracker.camac_2
     - device_tracker.hassio
