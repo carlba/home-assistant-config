@@ -72,20 +72,35 @@ history:
       - remote
     entities:
       - group.transmission
+      - group.transmission_2
       - group.default_view
+      - group.default_view_2
       - group.other_view
+      - group.other_view_2
       - group.yr
+      - group.yr_2
       - group.harmony_hub
+      - group.harmony_hub_2
       - group.transmission
+      - group.transmission_2
       - group.performance
+      - group.performance_2
       - group.media_players
+      - group.media_players_2
       - group.devices
+      - group.devices_2
       - group.all_automations
+      - group.all_automations_@
       - group.all_devices
+      - group.all_devices_2
       - group.all_remotes
+      - group.all_remotes_2
       - group.all_switches
+      - group.all_switches_2
       - group.all_lights
+      - group.all_lights_2
       - group.all_devices
+      - group.all_devices_2
 
 
 # View all events in a logbook
