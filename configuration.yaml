@@ -90,7 +90,7 @@ history:
       - group.devices
       - group.devices_2
       - group.all_automations
-      - group.all_automations_@
+      - group.all_automations_2
       - group.all_devices
       - group.all_devices_2
       - group.all_remotes
