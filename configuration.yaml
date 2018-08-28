@@ -64,19 +64,29 @@ conversation:
 # Enables support for tracking state changes over time
 # https://www.home-assistant.io/components/history
 history:
-  include:
-    entities:
-      - group.tracker_home
-      - group.tracker_carl
-      - group.tracker_johanna
-      - group.lights
   exclude:
     domains:
       - automation
       - weblink
       - updater
       - remote
-      - group
+    entities:
+      - group.transmission
+      - group.default_view
+      - group.other_view
+      - group.yr
+      - group.harmony_hub
+      - group.transmission
+      - group.performance
+      - group.media_players
+      - group.devices
+      - group.all_automations
+      - group.all_devices
+      - group.all_remotes
+      - group.all_switches
+      - group.all_lights
+      - group.all_devices
+
 
 # View all events in a logbook
 logbook:
