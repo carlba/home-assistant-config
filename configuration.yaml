@@ -30,8 +30,8 @@ homeassistant:
         report_when_not_changed: false
     'sensor.*':
       state_card_mode: badges
-    'device_tracker.*':
-      state_card_mode: badges
+#    'device_tracker.*':
+#      state_card_mode: badges
 
 # Show links to resources in log and frontend
 # introduction:
