@@ -70,14 +70,6 @@ history:
       - weblink
       - updater
       - remote
-      - group
-  include:
-    entities:
-      - group.tracker_home
-      - group.tracker_carl
-      - group.tracker_johanna
-      - group.lights
-      - group.friends
 
 # View all events in a logbook
 logbook:
