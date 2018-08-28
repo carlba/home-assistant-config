@@ -10,6 +10,7 @@ default_view:
     - group.harmony_hub
     - group.other
     - group.yr
+    - media_players
 
 other_view:
   name: Other
