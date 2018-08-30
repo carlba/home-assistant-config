@@ -12,12 +12,13 @@ title: My Awesome Home
 #excluded_entities:
 #  - weblink.router
 views:
+  - icon: mdi:home-assistant
     # View tab title.
-  - title: Example
+    title: Main
     # Optional unique id for direct access /lovelace/${id}
     id: example
     # Optional background (overwrites the global background).
-    background: radial-gradient(crimson, skyblue)
+    # background: radial-gradient(crimson, skyblue)
     # Each view can have a different theme applied. Theme should be defined in the frontend.
     theme: dark-mode
     # The cards to show on this view.
@@ -25,39 +26,97 @@ views:
         # The filter card will filter entities for their state
       - type: entity-filter
         entities:
-          - device_tracker.google_maps_118136931442668540655
-          - device_tracker.iphone
+          - group.tracker_carl
+          - group.tracker_johanna
         state_filter:
           - 'home'
         card:
           type: glance
           title: People that are home
-
-        # The picture entity card will represent an entity with a picture
-      - type: picture-entity
-        image: https://www.home-assistant.io/images/default-social.png
-        entity: switch.desktop
-
-    # Specify a tab icon if you want the view tab to be an icon.
-  - icon: mdi:home-assistant
-    # Title of the view. Will be used as the tooltip for tab icon
-    title: Second view
-    cards:
-        # Entities card will take a list of entities and show their state.
-      - type: entities
-        # Title of the entities card
-        title: Example
-        # The entities here will be shown in the same order as specified.
-        # Each entry is an entity ID or a map with extra options.
+      - type: entity-filter
         entities:
+          - device_tracker.android4749e9acd4fc4284 # Natalie Milz
+        state_filter:
+          - 'home'
+        card:
+          type: glance
+          title: Friends
+      - type: entities
+        title: Lights
+        show_header_toggle: true
+        entities:
+          - switch.desktop
           - switch.bathroom_ceiling
           - light.hallway_ceiling
-          - entity: light.hallway_ceiling
-            # Override the name to use
-            name: Hallway Ceiling
+      - type: entities
+        title: Harmony Hub
+        show_header_toggle: false
+        entities:
+          - switch.harmony_hub_home
+          - switch.harmony_hub_away
+          - switch.harmony_hub_shield
+          - switch.harmony_hub_clean
+      - type: entities
+        title: Other
+        show_header_toggle: false
+        entities:
+          - input_boolean.toaster
+          - timer.toaster
+          - timer.clean
+      - type: glance
+        title: yr.no
+        entities:
+          - entity: sensor.yr_symbol
+            name: ''
+          - entity: sensor.yr_precipitation
+            name: 'Rain'
+          - entity: sensor.yr_temperature
+            name: 'Temp'
+      - type: media-control
+        entity: media_player.spotify
+      - type: media-control
+        entity: media_player.srsx77
 
-        # The markdown card will render markdown text.
-      - type: markdown
-        title: Lovelace
-        content: >
-          Welcome to your **Lovelace UI**.
+    # Specify a tab icon if you want the view tab to be an icon.
+  - title: Other
+    id: other
+    # Title of the view. Will be used as the tooltip for tab icon
+    cards:
+      - type: entities
+        title: Performance
+        entities:
+          - sensor.load_1m
+          - sensor.memory_free
+          - sensor.memory_use
+          - sensor.disk_use_percent_
+          - sensor.disk_use_percent_home
+          - sensor.processor_use
+          - sensor.processor_use
+      - type: entities
+        title: Transmission
+        entities:
+          - sensor.transmission_active_torrents
+          - sensor.transmission_down_speed
+          - sensor.transmission_status
+          - sensor.transmission_up_speed
+
+      - type: entities
+        title: Devices
+        entities:
+          - device_tracker.10c6fc8e7fa3 # Garmin Edge 1000
+          - device_tracker.6c5697d9c323 # Johanna's Kindle
+          - device_tracker.b827eb1c5c4e # RPI3
+          - device_tracker.burken
+          - device_tracker.camac
+          - device_tracker.camac_2
+          - device_tracker.hassio
+          - device_tracker.ipad # Johanna's iPad
+          - device_tracker.shield
+      - type: map
+        aspect_ratio: 100%
+        entities:
+          - device_tracker.google_maps_118136931442668540655
+          - device_tracker.iphone
+          - zone.home
+      - type: weather-forecast
+        entity: weather.openweathermap
