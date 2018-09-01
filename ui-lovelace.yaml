@@ -52,6 +52,8 @@ views:
         title: Harmony Hub
         show_header_toggle: false
         entities:
+          - binary_sensor.harmony_hub_home
+          - binary_sensor.harmony_hub_away
           - switch.harmony_hub_home
           - switch.harmony_hub_away
           - switch.harmony_hub_shield
