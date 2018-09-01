@@ -312,6 +312,16 @@ weather:
   - platform: openweathermap
     api_key: 334db6c50929238ed1dde1457d533f03
 
+scene:
+  - name: Shield
+    entities:
+      switch.desktop:
+        state: on
+  - name: Home
+    entities:
+    switch.desktop:
+      state: off
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
