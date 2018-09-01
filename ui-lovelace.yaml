@@ -56,7 +56,6 @@ views:
             icon: mdi:home
           - entity: binary_sensor.harmony_hub_away
             icon: mdi:home-minus
-          - binary_sensor.harmony_hub_away
           - switch.harmony_hub_home
           - switch.harmony_hub_away
           - switch.harmony_hub_shield
