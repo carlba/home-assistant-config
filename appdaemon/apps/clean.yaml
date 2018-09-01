@@ -1,0 +1,3 @@
+clean:
+  module: clean
+  class: Clean

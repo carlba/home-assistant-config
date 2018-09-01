@@ -5,5 +5,8 @@
 !.gitignore
 !secrets.yaml
 !README.md
+!appdaemon
+!appdaemon/apps
+!appdaemon/apps/*.py
 ._*.yaml
 known_devices.yaml

@@ -281,6 +281,9 @@ timer:
   toaster:
     name: Toaster Timer
     duration: '00:02:00'
+  clean:
+    name: Clean Timer
+    duration: '00:30:00'
 
 customizer:
   custom_ui: local
