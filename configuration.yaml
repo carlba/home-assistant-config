@@ -315,12 +315,10 @@ weather:
 scene:
   - name: Shield
     entities:
-      switch.desktop:
-        state: on
+      switch.desktop: on
   - name: Home
     entities:
-    switch.desktop:
-      state: off
+      switch.desktop: off
 
 group: !include groups.yaml
 automation: !include automations.yaml
