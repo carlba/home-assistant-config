@@ -1,17 +1,13 @@
 import appdaemon.plugins.hass.hassapi as hass
 
 
-class Clean(hass.Hass):
-
+class ExtendedHass(hass.Hass):
     @hass.hass_check
     def timer_start(self, entity_id, duration=None, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
-        if kwargs == {}:
-            rargs = {"entity_id": entity_id}
-        else:
-            rargs = kwargs
-            rargs["entity_id"] = entity_id
-            if duration:
+        rargs = kwargs or {}
+        rargs["entity_id"] = entity_id
+        if duration:
                 rargs["duration"] = duration
         self.call_service("timer/start", **rargs)
 
@@ -40,38 +36,96 @@ class Clean(hass.Hass):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
         if state not in ['on', 'off']:
             raise(TypeError, "state must be 'on' or 'off'")
-        if kwargs == {}:
-            rargs = {"entity_id": entity_id}
-        else:
-            rargs = kwargs
-            rargs["entity_id"] = entity_id
-            rargs["state"] = state
-            rargs["activity"] = activity
+
+        rargs = kwargs or {}
+        rargs["entity_id"] = entity_id
+        rargs["activity"] = activity
 
         self.call_service("remote/turn_{}".format(state), **rargs)
+# noinspection PyAttributeOutsideInit,PyUnusedLocal
+# class Clean(ExtendedHass):
+#
+#     def initialize(self):
+#         self.timer = 'timer.clean'
+#         self.previous_state = None
+#         self.harmony_hub_away_listener = self.listen_state(self.tracker,
+#                                                            entity='binary_sensor.harmony_hub_away')
+#         self.harmony_hub_away_listener = self.listen_state(self.tracker,
+#                                                            entity='binary_sensor.harmony_hub_away')
+#         self.listen_event(self.stop_cleaning, event='timer.finished', entity_id=self.timer)
+#         self.listen_event(self.log_events)
+#
+#     def set_away_listener(self, entity, attribute, old, new, kwargs):
+#         self.log('Clean.set_away_listener(): entity {}, old {}, new {}'.format(entity, old, new))
+#         if old == 'off' and new == 'on':
+#             self.cancel_listen_state(self.harmony_hub_away_listener)
+#             self.harmony_hub_away_listener = self.listen_state(self.tracker,
+#                                                                entity='binary_sensor.harmony_hub_away')
+#
+#     def tracker(self, entity, attribute, old, new, kwargs):
+#         self.log('Clean.tracker(): entity {}, old {}, new {}'.format(entity, old, new))
+#         self.previous_entity_id = entity
+#         self.previous_state = ''
+#         if new == 'on':
+#             if entity == 'binary_sensor.harmony_hub_away':
+#                 self.run_in(self.start_cleaning, 5)
+#             elif entity is 'binary_sensor.harmony_hub_clean':
+#                 self.start_cleaning()
+#
+#     def start_cleaning(self):
+#         self.timer_start(self.timer, duration=10)
+#
+#         if self.previous_entity_id == 'binary_sensor.harmony_hub_away':
+#             self.harmony_remote('remote.harmony_hub', 'on', activity='Clean')
+#
+#     def stop_cleaning(self, event_name, data, kwargs):
+#         self.log('Clean.stop_cleaning(): event_name {}, data {}'.format(event_name, data))
+#         if self.previous_entity_id == 'binary_sensor.harmony_hub_away':
+#             self.cancel_listen_state(self.harmony_hub_away_listener)
+#             self.harmony_hub_away_listener = self.listen_state(
+#                 self.set_away_listener, entity='binary_sensor.harmony_hub_away')
+#
+#         self.harmony_remote('remote.harmony_hub', 'on', activity=self.previous_state)
+#
+#     def log_events(self, event_name, data, kwargs):
+#         self.log('Clean.log_events(): event_name {}, data {}'.format(event_name, data))
+#         self.log(kwargs)
+
+
+class Clean(ExtendedHass):
 
     def initialize(self):
         self.timer = 'timer.clean'
-        # self.listen_state(self.tracker, entity='switch.harmony_hub_home')
-        # self.listen_state(self.tracker, entity='switch.harmony_hub_clean')
-        self.listen_state(self.stop_cleaning, entity='switch.harmony_hub_clean')
+        self.previous_state = None
+        self.triggered = False
+        self.harmony_remote_listener = self.listen_state(self.tracker,
+                                                         entity='remote.harmony_hub',
+                                                         attribute='current_activity')
+        self.listen_event(self.stop_cleaning, event='timer.finished', entity_id=self.timer)
 
     def tracker(self, entity, attribute, old, new, kwargs):
-        self.log('tracker')
-        self.log('new {}'.format(new))
-
-        if new == 'on':
-            if entity == 'switch.harmony_hub_home':
-                self.log('test')
-                self.run_in(self.start_cleaning, 5)
-            elif entity is 'switch.harmony_hub_clean':
+        self.previous_state = old
+        self.log('Clean.tracker(): entity {}, old {}, new {}'.format(entity, old, new))
+        self.log(kwargs)
+        if not self.triggered:
+            if new == 'Clean':
                 self.start_cleaning()
+            elif old != 'Clean' and new == 'Away':
+                self.log('Starting cleaning in 10 seconds')
+                self.run_in(self.start_cleaning, 10)
+        else:
+            pass
+            # Handle when user manually cancels clean
 
     def start_cleaning(self, kwargs=None):
-        self.log('Start Cleaning')
-        self.timer_start(self.timer, duration=2)
-        self.switch_on('switch.harmony_hub_clean')
+        self.triggered = True
+        self.log('Clean.start_cleaning(): previous_state {}'.format(self.previous_state))
+        self.log(kwargs)
+        if self.previous_state != 'Clean':
+            self.harmony_remote('remote.harmony_hub', 'on', activity='Clean')
+        self.timer_start(self.timer, duration=10)
 
-    def stop_cleaning(self, entity, attribute, old, new, kwargs):
-        self.harmony_remote('remote.harmony_hub', 'on', activity='Home')
-
+    def stop_cleaning(self, event_name, data, kwargs):
+        self.harmony_remote('remote.harmony_hub', 'on', activity=self.previous_state)
+        self.triggered = False
+        self.log('Clean.stop_cleaning(): event_name {}, data {}'.format(event_name, data))
