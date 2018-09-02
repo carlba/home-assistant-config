@@ -123,14 +123,3 @@
       entity_id: remote.harmony_hub
       data:
         activity: Away
-
-- alias: "When Harmony Hub activity changes to Shield enable Shield Switch"
-  trigger:
-    platform: state
-    entity_id: remote.harmony_hub
-  condition:
-    condition: template
-    value_template: '{{ trigger.to_state.attributes.current_activity == "Shield" }}'
-  action:
-    service: binary_sensor.turn_on
-    entity_id: binary_sensor.harmony_hub_shield
