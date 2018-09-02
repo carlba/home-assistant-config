@@ -55,8 +55,6 @@ yr:
 harmony_hub:
   name: Harmony Hub
   entities:
-    - switch.harmony_hub_home
-    - switch.harmony_hub_away
     - switch.harmony_hub_shield
     - switch.harmony_hub_clean
 
