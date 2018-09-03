@@ -8,5 +8,8 @@
 !appdaemon
 !appdaemon/apps
 !appdaemon/apps/*.py
+!custom_components/
+!custom_components/sensor
+!custom_components/sensor/*.py
 ._*.yaml
 known_devices.yaml

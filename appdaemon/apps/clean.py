@@ -42,56 +42,9 @@ class ExtendedHass(hass.Hass):
         rargs["activity"] = activity
 
         self.call_service("remote/turn_{}".format(state), **rargs)
-# noinspection PyAttributeOutsideInit,PyUnusedLocal
-# class Clean(ExtendedHass):
-#
-#     def initialize(self):
-#         self.timer = 'timer.clean'
-#         self.previous_state = None
-#         self.harmony_hub_away_listener = self.listen_state(self.tracker,
-#                                                            entity='binary_sensor.harmony_hub_away')
-#         self.harmony_hub_away_listener = self.listen_state(self.tracker,
-#                                                            entity='binary_sensor.harmony_hub_away')
-#         self.listen_event(self.stop_cleaning, event='timer.finished', entity_id=self.timer)
-#         self.listen_event(self.log_events)
-#
-#     def set_away_listener(self, entity, attribute, old, new, kwargs):
-#         self.log('Clean.set_away_listener(): entity {}, old {}, new {}'.format(entity, old, new))
-#         if old == 'off' and new == 'on':
-#             self.cancel_listen_state(self.harmony_hub_away_listener)
-#             self.harmony_hub_away_listener = self.listen_state(self.tracker,
-#                                                                entity='binary_sensor.harmony_hub_away')
-#
-#     def tracker(self, entity, attribute, old, new, kwargs):
-#         self.log('Clean.tracker(): entity {}, old {}, new {}'.format(entity, old, new))
-#         self.previous_entity_id = entity
-#         self.previous_state = ''
-#         if new == 'on':
-#             if entity == 'binary_sensor.harmony_hub_away':
-#                 self.run_in(self.start_cleaning, 5)
-#             elif entity is 'binary_sensor.harmony_hub_clean':
-#                 self.start_cleaning()
-#
-#     def start_cleaning(self):
-#         self.timer_start(self.timer, duration=10)
-#
-#         if self.previous_entity_id == 'binary_sensor.harmony_hub_away':
-#             self.harmony_remote('remote.harmony_hub', 'on', activity='Clean')
-#
-#     def stop_cleaning(self, event_name, data, kwargs):
-#         self.log('Clean.stop_cleaning(): event_name {}, data {}'.format(event_name, data))
-#         if self.previous_entity_id == 'binary_sensor.harmony_hub_away':
-#             self.cancel_listen_state(self.harmony_hub_away_listener)
-#             self.harmony_hub_away_listener = self.listen_state(
-#                 self.set_away_listener, entity='binary_sensor.harmony_hub_away')
-#
-#         self.harmony_remote('remote.harmony_hub', 'on', activity=self.previous_state)
-#
-#     def log_events(self, event_name, data, kwargs):
-#         self.log('Clean.log_events(): event_name {}, data {}'.format(event_name, data))
-#         self.log(kwargs)
 
 
+# noinspection PyAttributeOutsideInit
 class Clean(ExtendedHass):
 
     def initialize(self):

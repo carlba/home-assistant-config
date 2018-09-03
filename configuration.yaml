@@ -101,9 +101,8 @@ history:
       - group.all_lights_2
       - group.all_devices
       - group.all_devices_2
-
       - input_boolean.test
-
+      - sensor.sl_skanstull
 
 # View all events in a logbook
 logbook:
@@ -155,6 +154,12 @@ sensor:
       harmony_hub:
         friendly_name: "Harmony Hub"
         value_template: '{{ states.remote.harmony_hub.attributes.current_activity }}'
+  - platform: sl
+    name: skanstull
+    ri4key: 297882af592a450a98a10b4493a97db4
+    siteid: 9190
+    lines: 17, 18, 19
+    direction: 1
 binary_sensor:
   - platform: template
     sensors:
@@ -319,6 +324,8 @@ scene:
   - name: Home
     entities:
       switch.desktop: off
+
+
 
 group: !include groups.yaml
 automation: !include automations.yaml

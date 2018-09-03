@@ -65,6 +65,7 @@ views:
           - input_boolean.toaster
           - timer.toaster
           - timer.clean
+          - sensor.sl_skanstull
       - type: glance
         title: yr.no
         entities:
