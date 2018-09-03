@@ -76,7 +76,7 @@ class Clean(ExtendedHass):
         self.log(kwargs)
         if self.previous_state != 'Clean':
             self.harmony_remote('remote.harmony_hub', 'on', activity='Clean')
-        self.timer_start(self.timer, duration=10)
+        self.timer_start(self.timer, duration=45*60)
 
     def stop_cleaning(self, event_name, data, kwargs):
         self.harmony_remote('remote.harmony_hub', 'on', activity=self.previous_state)
