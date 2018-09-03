@@ -27,6 +27,10 @@
         entity_id: input_boolean.toaster
     - service: timer.cancel
       entity_id: timer.toaster
+    - service: tts.google_say
+      entity_id: media_player.srsx77
+      data_template:
+        message: 'Your toast is ready!'
 
 - alias: nexa_remote_g_on
   trigger:
