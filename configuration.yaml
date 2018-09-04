@@ -207,7 +207,7 @@ cloud:
 tellstick:
   host: core-tellstick
   port: [50800, 50801]
-  signal_repetitions: 7
+  signal_repetitions: 10
 
 zone:
   - name: home
