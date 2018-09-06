@@ -12,6 +12,13 @@ class ExtendedHass(hass.Hass):
         self.call_service("timer/start", **rargs)
 
     @hass.hass_check
+    def timer_cancel(self, entity_id, **kwargs):
+        self._check_entity(self._get_namespace(**kwargs), entity_id)
+        rargs = kwargs or {}
+        rargs["entity_id"] = entity_id
+        self.call_service("timer/cancel", **rargs)
+
+    @hass.hass_check
     def switch_on(self, entity_id, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
         if kwargs == {}:
@@ -67,8 +74,9 @@ class Clean(ExtendedHass):
                 self.log('Starting cleaning in 10 seconds')
                 self.run_in(self.start_cleaning, 10)
         else:
-            pass
-            # Handle when user manually cancels clean
+            if old == 'Clean':
+                self.timer_cancel(self.timer)
+                self.triggered = False
 
     def start_cleaning(self, kwargs=None):
         self.triggered = True
