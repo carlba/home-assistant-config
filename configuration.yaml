@@ -230,6 +230,11 @@ zone:
     longitude: 18.089933
     radius: 100
     icon: mdi:account
+  - name: 'Diskussionsgrupp'
+    latitude: 59.328858
+    longitude: 18.041308
+    radius: 100
+    icon: mdi:account-multiple
 
 device_tracker:
   # https://www.home-assistant.io/components/device_tracker.asuswrt
