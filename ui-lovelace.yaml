@@ -79,6 +79,12 @@ views:
         entity: media_player.spotify
       - type: media-control
         entity: media_player.srsx77
+      - type: map
+        aspect_ratio: 100%
+        entities:
+          - device_tracker.google_maps_118136931442668540655
+          - device_tracker.iphone
+          - zone.home
 
     # Specify a tab icon if you want the view tab to be an icon.
   - title: Other
@@ -115,11 +121,5 @@ views:
           - device_tracker.hassio
           - device_tracker.ipad # Johanna's iPad
           - device_tracker.shield
-      - type: map
-        aspect_ratio: 100%
-        entities:
-          - device_tracker.google_maps_118136931442668540655
-          - device_tracker.iphone
-          - zone.home
       - type: weather-forecast
         entity: weather.openweathermap
