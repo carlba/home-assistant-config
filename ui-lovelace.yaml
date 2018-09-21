@@ -38,6 +38,7 @@ views:
           - device_tracker.android4749e9acd4fc4284 # Natalie Milz
         state_filter:
           - 'home'
+        show_empty: false
         card:
           type: glance
           title: Friends
