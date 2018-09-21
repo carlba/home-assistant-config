@@ -80,7 +80,7 @@ views:
       - type: media-control
         entity: media_player.srsx77
       - type: map
-        aspect_ratio: 100%
+        aspect_ratio: 50%
         entities:
           - device_tracker.google_maps_118136931442668540655
           - device_tracker.iphone
