@@ -17,21 +17,6 @@ homeassistant:
   customize_domain:
     automation:
       hidden: true
-  customize_glob:
-    '*.*':
-      custom_ui_state_card: state-card-custom-ui
-    'light.*':
-      state_card_mode: single-line
-      slider_theme:
-        min: 0
-        max: 255
-        pin: true
-        off_when_min: false
-        report_when_not_changed: false
-    sensor.yr_symbol:
-      state_card_mode: badges
-#    'device_tracker.*':
-#      state_card_mode: badges
 
 # Show links to resources in log and frontend
 # introduction:
@@ -294,9 +279,6 @@ timer:
   clean:
     name: Clean Timer
     duration: '00:30:00'
-
-customizer:
-  custom_ui: local
 
 # https://www.home-assistant.io/components/twilio
 # twilio:
