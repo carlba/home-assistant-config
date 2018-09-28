@@ -67,6 +67,9 @@ views:
           - timer.toaster
           - timer.clean
 #          - sensor.sl_skanstull
+          - entity: sensor.235_temperature
+            name: Temperature - Outside - Skanstull
+            icon: mdi:thermometer
       - type: glance
         title: yr.no
         entities:
