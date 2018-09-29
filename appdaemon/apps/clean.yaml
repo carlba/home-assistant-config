@@ -1,3 +1,8 @@
+common:
+  module: common
+  class: ExtendedHass
+
 clean:
   module: clean
   class: Clean
+  dependencies: common
