@@ -5,3 +5,4 @@ clean:
 scenes:
   module: apps
   class: Scenes
+  scene_booleans: ['input_boolean.movie']

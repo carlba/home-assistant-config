@@ -60,6 +60,12 @@ views:
           - switch.harmony_hub_shield
           - switch.harmony_hub_clean
       - type: entities
+        title: Scenes
+        show_header_toggle: false
+        entities:
+          - input_boolean.movie
+
+      - type: entities
         title: Other
         show_header_toggle: false
         entities:

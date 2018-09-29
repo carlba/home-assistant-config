@@ -271,6 +271,8 @@ input_boolean:
     initial: false
   test:
     initial: false
+  movie:
+    initial: false
 
 timer:
   toaster:
