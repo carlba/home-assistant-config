@@ -1,3 +1,0 @@
-clean:
-  module: apps
-  class: Clean

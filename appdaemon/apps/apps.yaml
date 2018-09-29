@@ -1,0 +1,7 @@
+clean:
+  module: apps
+  class: Clean
+
+scenes:
+  module: apps
+  class: Scenes
