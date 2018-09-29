@@ -91,3 +91,15 @@ class Clean(ExtendedHass):
         self.triggered = False
         self.log('Clean.stop_cleaning(): event_name {}, data {}'.format(event_name, data))
 
+
+# noinspection PyAttributeOutsideInit,PyUnusedLocal
+class Scenes(ExtendedHass):
+
+    def initialize(self):
+        self.harmony_remote_listener = self.listen_state(self.on_harmony_remote_activity,
+                                                         entity='remote.harmony_hub',
+                                                         attribute='current_activity')
+
+    def on_harmony_remote_activity(self, entity, attribute, old, new, kwargs):
+        self.previous_state = old
+        self.log('Scenes.on_harmony_remote_activity(): entity {}, old {}, new {}, kwargs {}'.format(entity, old, new, repr(kwargs)))
