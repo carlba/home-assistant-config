@@ -99,15 +99,18 @@ class Scenes(ExtendedHass):
 
         for item in ['movie']:
             self.harmony_remote_listener = self.listen_state(getattr(self, 'on_{}'.format(item)),
-                                                             entity='input_boolean.{}'.format(item),
-                                                             attribute='current_activity')
+                                                             entity='input_boolean.{}'.format(item))
 
         self.scene_booleans = ['input_boolean.movie']
         self.log('self.scene_booleans: {}'.format(repr(self.scene_booleans)))
 
     def on_movie(self, entity, attribute, old, new, kwargs):
-        self.harmony_remote('remote.harmony_hub', 'on', activity='Shield')
-        self.log('Scenes.on_movie(): entity {}, old {}, new {}, kwargs {}'.format(entity, old, new, repr(kwargs)))
+        if old == 'off' and new == 'on':
+            self.log('Scenes.on_movie(): Input boolean movie was turned on')
+            self.harmony_remote('remote.harmony_hub', 'on', activity='Shield')
+        elif old == 'on' and new == 'off':
+            self.log('Scenes.on_movie(): Input boolean movie was turned off')
+
 
 
 
