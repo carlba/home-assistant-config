@@ -176,6 +176,7 @@ cloud:
         - scene
       include_entities:
         - input_boolean.toaster
+        - input_boolean.movie
       exclude_entities:
         - switch.toaster
         - switch.nexa_remote_g
