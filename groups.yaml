@@ -64,6 +64,8 @@ lights:
     - switch.desktop
     - switch.bathroom_ceiling
     - light.hallway_ceiling
+    - light.kitchen_table_left
+    - light.kitchen_table_right
 
 transmission:
   name: Transmission
