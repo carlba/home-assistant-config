@@ -41,14 +41,14 @@ class ExtendedHass(hass.Hass):
     @hass.hass_check
     def harmony_remote(self, entity_id, state, activity, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
-        if state not in ['on', 'off']:
+        if state not in ['turn_on', 'turn_off']:
             raise(TypeError, "state must be 'on' or 'off'")
 
         rargs = kwargs or {}
         rargs["entity_id"] = entity_id
         rargs["activity"] = activity
 
-        self.call_service("remote/turn_{}".format(state), **rargs)
+        self.call_service("remote/{}".format(state), **rargs)
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
@@ -83,11 +83,11 @@ class Clean(ExtendedHass):
         self.log('Clean.start_cleaning(): previous_state {}'.format(self.previous_state))
         self.log(kwargs)
         if self.previous_state != 'Clean':
-            self.harmony_remote('remote.harmony_hub', 'on', activity='Clean')
+            self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Clean')
         self.timer_start(self.timer, duration=75*60)
 
     def stop_cleaning(self, event_name, data, kwargs):
-        self.harmony_remote('remote.harmony_hub', 'on', activity=self.previous_state)
+        self.harmony_remote('remote.harmony_hub', 'turn_on', activity=self.previous_state)
         self.triggered = False
         self.log('Clean.stop_cleaning(): event_name {}, data {}'.format(event_name, data))
 
@@ -107,9 +107,17 @@ class Scenes(ExtendedHass):
     def on_movie(self, entity, attribute, old, new, kwargs):
         if old == 'off' and new == 'on':
             self.log('Scenes.on_movie(): Input boolean movie was turned on')
-            self.harmony_remote('remote.harmony_hub', 'on', activity='Shield')
+            self.turn_off('group.lights')
+
+            # self.call_service('remote/send_command', entity_id='remote.harmony_hub',
+            #                   device='57605309', command='Sleep')
+            # self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Shield')
+
         elif old == 'on' and new == 'off':
             self.log('Scenes.on_movie(): Input boolean movie was turned off')
+            #self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Home')
+            pass
+
 
 
 

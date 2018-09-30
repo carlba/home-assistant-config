@@ -63,7 +63,9 @@ views:
         title: Scenes
         show_header_toggle: false
         entities:
-          - input_boolean.movie
+          - entity: input_boolean.movie
+            name: Movie
+            icon: mdi:movie
 
       - type: entities
         title: Other

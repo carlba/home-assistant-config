@@ -47,6 +47,11 @@ input_boolean.toaster:
   entity_picture: https://cdn3.iconfinder.com/data/icons/breakfast-icons/459/Toaster-512.png
   homebridge_visible: true
 
+input_boolean.movie:
+  friendly_name: Movie
+  icon: mdi:movie
+  homebridge_visible: true
+
 input_boolean.test:
   friendly_name: Testing toggle
   icon: mdi:testing-tube-empty
