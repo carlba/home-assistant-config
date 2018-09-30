@@ -49,6 +49,8 @@ views:
           - switch.desktop
           - switch.bathroom_ceiling
           - light.hallway_ceiling
+          - light.kitchen_table_left
+          - light.kitchen_table_right
       - type: entities
         title: Harmony Hub
         show_header_toggle: false

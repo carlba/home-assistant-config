@@ -187,6 +187,10 @@ cloud:
         room: Bathroom
       light.hallway_ceiling:
         room: Hallway
+      light.kitchen_table_left:
+        room: Kitchen
+      light.kitchen_table_right:
+        room: Kitchen
 
 # Tellstick
 tellstick:
