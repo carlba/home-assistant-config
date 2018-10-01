@@ -262,6 +262,8 @@ media_player:
     aliases:
       41958a95210503efdf1a3271a6974e5083ed49d8: 'SRS-X77'
       3aacd1018a63677eee17183ac10f4f7685c056ef: 'Galaxy S8+'
+  - platform: plex
+
 
 influxdb:
   host: 192.168.1.2
