@@ -16,7 +16,7 @@ views:
     # View tab title.
     title: Main
     # Optional unique id for direct access /lovelace/${id}
-    id: example
+    id: main
     # Optional background (overwrites the global background).
     # background: radial-gradient(crimson, skyblue)
     # Each view can have a different theme applied. Theme should be defined in the frontend.
