@@ -107,6 +107,19 @@ map:
 # Track the sun
 sun:
 
+light:
+  - platform: group
+    name: Kitchen Table
+    entities:
+      - light.kitchen_table_left
+      - light.kitchen_table_right
+
+  - platform: group
+    name: Kitchen Fan
+    entities:
+      - light.kitchen_fan_left
+      - light.kitchen_fan_right
+
 # Weather prediction
 sensor:
   - platform: yr
@@ -180,6 +193,10 @@ cloud:
       exclude_entities:
         - switch.toaster
         - switch.nexa_remote_g
+        - light.kitchen_table_left
+        - light.kitchen_table_right
+        - light.kitchen_fan_left
+        - light.kitchen_fan_right
 
     entity_config:
       switch.desktop:
@@ -188,9 +205,7 @@ cloud:
         room: Bathroom
       light.hallway_ceiling:
         room: Hallway
-      light.kitchen_table_left:
-        room: Kitchen
-      light.kitchen_table_right:
+      light.kitchen_table:
         room: Kitchen
 
 # Tellstick
@@ -280,6 +295,8 @@ input_boolean:
     initial: false
   movie:
     initial: false
+  camac:
+    initial: true
 
 timer:
   toaster:
