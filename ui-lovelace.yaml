@@ -76,6 +76,9 @@ views:
           - input_boolean.toaster
           - timer.toaster
           - timer.clean
+          - entity: switch.screen
+            name: Screen Switch
+            icon: mdi:monitor
 #          - sensor.sl_skanstull
           - entity: sensor.235_temperature
             name: Temperature - Outside - Skanstull
