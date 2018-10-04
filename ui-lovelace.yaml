@@ -67,9 +67,9 @@ views:
         title: Scenes
         show_header_toggle: false
         entities:
-          - entity: input_boolean.movie
-            name: Movie
-            icon: mdi:movie
+          - scene.tv_dark
+          - scene.tv_backlight
+          - scene.default
 
       - type: entities
         title: Other
