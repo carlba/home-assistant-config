@@ -337,8 +337,10 @@ scene:
   - name: Home
     entities:
       switch.desktop: off
-
-
+  - name: Computer
+    entities:
+      switch.desktop: on
+      switch.screen: on
 
 group: !include groups.yaml
 automation: !include automations.yaml
