@@ -72,6 +72,7 @@ views:
           - scene.computer
           - scene.default
           - scene.default_warm
+          - scene.sleep
 
       - type: entities
         title: Other

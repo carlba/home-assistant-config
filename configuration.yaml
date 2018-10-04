@@ -427,6 +427,24 @@ scene:
         color_temp: 500
       switch.desktop:
         state: on
+  - name: Sleep
+    entities:
+      light.kitchen_fan:
+        state: off
+      light.kitchen_table:
+        state: off
+      light.bed:
+        state: off
+        transition: 600
+      light.hallway_ceiling:
+        state: off
+      light.behind_tv:
+        state: off
+        transition: 60
+      switch.desktop:
+        state: off
+      switch.screen:
+        state: off
 
 group: !include groups.yaml
 automation: !include automations.yaml
