@@ -69,7 +69,9 @@ views:
         entities:
           - scene.tv_dark
           - scene.tv_backlight
+          - scene.computer
           - scene.default
+          - scene.default_warm
 
       - type: entities
         title: Other
