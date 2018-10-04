@@ -407,6 +407,26 @@ scene:
       switch.desktop:
         state: on
 
+  - name: Default Warm
+    entities:
+      light.kitchen_fan:
+        state: on
+        brightness: 255
+        color_temp: 500
+      light.kitchen_table:
+        state: off
+      light.bed:
+        state: on
+        brightness: 254
+        color_temp: 500
+      light.hallway_ceiling:
+        state: off
+      light.behind_tv:
+        state: on
+        brightness: 254
+        color_temp: 500
+      switch.desktop:
+        state: on
 
 group: !include groups.yaml
 automation: !include automations.yaml
