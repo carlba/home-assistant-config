@@ -391,19 +391,19 @@ scene:
       light.kitchen_fan:
         state: on
         brightness: 255
-        color_temp: 427
+        color_temp: 400
       light.kitchen_table:
         state: off
       light.bed:
         state: on
-        brightness: 254
-        color_temp: 427
+        brightness: 255
+        color_temp: 400
       light.hallway_ceiling:
         state: off
       light.behind_tv:
         state: on
-        brightness: 254
-        color_temp: 427
+        brightness: 255
+        color_temp: 400
       switch.desktop:
         state: on
 
@@ -417,13 +417,13 @@ scene:
         state: off
       light.bed:
         state: on
-        brightness: 254
+        brightness: 255
         color_temp: 500
       light.hallway_ceiling:
         state: off
       light.behind_tv:
         state: on
-        brightness: 254
+        brightness: 255
         color_temp: 500
       switch.desktop:
         state: on
