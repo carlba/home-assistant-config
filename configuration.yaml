@@ -331,9 +331,6 @@ weather:
     api_key: 334db6c50929238ed1dde1457d533f03
 
 scene:
-  - name: Shield
-    entities:
-      switch.desktop: on
   - name: Home
     entities:
       switch.desktop: off
@@ -341,6 +338,23 @@ scene:
     entities:
       switch.desktop: on
       switch.screen: on
+  - name: TV backlight
+    entities:
+      input_boolean.shield: on
+      switch.screen: off
+      switch.desktop: off
+      switch.bathroom_ceiling: off
+  - name: TV dark
+    entities:
+      input_boolean.shield: on
+      switch.screen: off
+      switch.desktop: off
+      switch.bathroom_ceiling: off
+      group.all_lights: off
+      light.behind_tv:
+        state: on
+        brightness: 10
+
 
 group: !include groups.yaml
 automation: !include automations.yaml
