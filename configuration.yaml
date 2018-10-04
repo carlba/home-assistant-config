@@ -338,22 +338,74 @@ scene:
     entities:
       switch.desktop: on
       switch.screen: on
-  - name: TV backlight
+  - name: TV Backlight
     entities:
-      input_boolean.shield: on
-      switch.screen: off
-      switch.desktop: off
-      switch.bathroom_ceiling: off
-  - name: TV dark
-    entities:
-      input_boolean.shield: on
-      switch.screen: off
-      switch.desktop: off
-      switch.bathroom_ceiling: off
-      group.all_lights: off
+      switch.harmony_hub_clean:
+        state: off
+      switch.harmony_hub_home:
+        state: off
+      switch.harmony_hub_shield:
+        state: on
+      light.kitchen_fan:
+        state: off
+      light.kitchen_table:
+        state: off
+      light.bed:
+        state: off
+      light.hallway_ceiling:
+        state: off
       light.behind_tv:
         state: on
-        brightness: 10
+        brightness: 33
+        color_temp: 454
+      switch.desktop:
+        state: off
+      switch.bathroom_ceiling:
+        state: off
+      switch.nexa_remote_g:
+        state: off
+      switch.screen:
+        state: off
+  - name: TV Dark
+    entities:
+      switch.harmony_hub_shield:
+        state: on
+      light.kitchen_fan:
+        state: off
+      light.kitchen_table:
+        state: off
+      light.bed:
+        state: off
+      light.hallway_ceiling:
+        state: off
+      light.behind_tv:
+        state: off
+      switch.desktop:
+        state: off
+      switch.bathroom_ceiling:
+        state: off
+      switch.screen:
+        state: off
+  - name: Default
+    entities:
+      light.kitchen_fan:
+        state: on
+        brightness: 255
+        color_temp: 427
+      light.kitchen_table:
+        state: off
+      light.bed:
+        state: on
+        brightness: 254
+        color_temp: 427
+      light.hallway_ceiling:
+        state: off
+      light.behind_tv:
+        state: on
+        brightness: 254
+        color_temp: 427
+      switch.desktop:
+        state: on
 
 
 group: !include groups.yaml
