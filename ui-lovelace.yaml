@@ -83,6 +83,7 @@ views:
           - entity: switch.screen
             name: Screen Switch
             icon: mdi:monitor
+          - binary_sensor.hallway_motion_sensor
 #          - sensor.sl_skanstull
           - entity: sensor.235_temperature
             name: Temperature - Outside - Skanstull
