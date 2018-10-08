@@ -22,10 +22,62 @@ docker exec -it addon_core_tellstick /bin/bash
 apk add py-pip && pip install tellcore-py && tellcore_events --raw
 ```
 
+## Tellstick config
+```json
+{
+  "devices": [
+    {
+      "id": 1,
+      "name": "desktop",
+      "protocol": "arctech",
+      "model": "selflearning-switch",
+      "house": "28622",
+      "unit": "1"
+    },
+    {
+      "id": 2,
+      "name": "bathroom_ceiling",
+      "protocol": "arctech",
+      "model": "selflearning-switch",
+      "house": "14409345",
+      "unit": "2"
+    },
+    {
+      "id": 3,
+      "name": "hallway_ceiling",
+      "protocol": "arctech",
+      "model": "selflearning-dimmer",
+      "house": "14409345",
+      "unit": "3"
+    },
+    {
+      "id": 4,
+      "name": "toaster",
+      "protocol": "arctech",
+      "model": "selflearning-switch",
+      "house": "27982",
+      "unit": "5"
+    },
+    {
+      "id": 5,
+      "name": "nexa_remote_g",
+      "protocol": "arctech",
+      "model": "selflearning-switch",
+      "house": "12039998",
+      "unit": "16"
+    }
+  ]
+}
+```
+
 ## Multiple triggers
 
 [Multiple Triggers](https://www.home-assistant.io/docs/automation/trigger/#multiple-triggers)
 
 ## AppDaemon
 https://github.com/ReneTode/My-AppDaemon/blob/master/AppDaemon_for_Beginner/Part_1(listen_state_and_get_state).md
+
+
+
+
 
