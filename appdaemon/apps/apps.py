@@ -1,7 +1,20 @@
+import inspect
 import appdaemon.plugins.hass.hassapi as hass
 
 
 class ExtendedHass(hass.Hass):
+
+    @staticmethod
+    def get_info():
+        target = inspect.stack()[1][0]
+        target_method = inspect.stack()[1][3]
+
+        if 'self' in target.f_locals:
+            cls_name = target.f_locals['self'].__class__.__name__
+            target_method = "{}.{}".format(cls_name, target_method)
+
+        return target_method
+
     @hass.hass_check
     def timer_start(self, entity_id, duration=None, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
@@ -80,7 +93,7 @@ class Clean(ExtendedHass):
 
     def start_cleaning(self, kwargs=None):
         self.triggered = True
-        self.log('Clean.start_cleaning(): previous_state {}'.format(self.previous_state))
+        self.log('{}: previous_state {}'.format(self.get_info(), self.previous_state))
         self.log(kwargs)
         if self.previous_state != 'Clean':
             self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Clean')
@@ -89,7 +102,7 @@ class Clean(ExtendedHass):
     def stop_cleaning(self, event_name, data, kwargs):
         self.harmony_remote('remote.harmony_hub', 'turn_on', activity=self.previous_state)
         self.triggered = False
-        self.log('Clean.stop_cleaning(): event_name {}, data {}'.format(event_name, data))
+        self.log('{}: event_name {}, data {}'.format(self.get_info(), event_name, data))
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
@@ -102,11 +115,10 @@ class Scenes(ExtendedHass):
                                                              entity='input_boolean.{}'.format(item))
 
         self.scene_booleans = ['input_boolean.movie']
-        self.log('self.scene_booleans: {}'.format(repr(self.scene_booleans)))
 
     def on_movie(self, entity, attribute, old, new, kwargs):
         if old == 'off' and new == 'on':
-            self.log('Scenes.on_movie(): Input boolean movie was turned on')
+            self.log('{}: Input boolean movie was turned on'.format(self.get_info()))
             self.turn_off('group.lights')
 
             # self.call_service('remote/send_command', entity_id='remote.harmony_hub',
@@ -114,11 +126,64 @@ class Scenes(ExtendedHass):
             # self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Shield')
 
         elif old == 'on' and new == 'off':
-            self.log('Scenes.on_movie(): Input boolean movie was turned off')
-            #self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Home')
+            self.log('{}: Input boolean movie was turned off'.format(self.get_info()))
+            # self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Home')
             pass
 
 
+# noinspection PyAttributeOutsideInit,PyUnusedLocal
+class HarmonyDeviceSwitch(ExtendedHass):
+
+    def initialize(self):
+
+        if not self.args['input_boolean'].startswith('input_boolean'):
+            raise ValueError('The input_boolean has to be addressed with '
+                             'full path I.E input_boolean.{}'.format(self.args['input_boolean']))
+
+        self.input_boolean = self.args['input_boolean']
+        self.on_command = self.args['on_command']
+        self.off_command = self.args['off_command']
+        self.input_boolean_listener = self.listen_state(self.on_input_boolean_change,
+                                                        entity=self.input_boolean)
+
+    def on_input_boolean_change(self, entity, attribute, old, new, kwargs):
+        if old == 'off' and new == 'on':
+            self.log('{}:Input boolean {} was turned on'.format(self.get_info(), entity))
+
+        elif old == 'on' and new == 'off':
+            self.log('{}:Input boolean {} was turned off'.format(self.get_info(), entity))
 
 
+# noinspection PyAttributeOutsideInit,PyUnusedLocal
+class LogDeconzEvents(ExtendedHass):
 
+    def initialize(self):
+        self.log("LogDeconzEvents.initialize")
+        self.listen_event(self.handle_event, "deconz_event")
+
+    def handle_event(self, event_name, data, kwargs):
+        self.log('{}: Event Name: {}, Data: {}, Kwargs: {}'.format(
+            self.get_info(), event_name, data, repr(kwargs)))
+
+
+# noinspection PyAttributeOutsideInit,PyUnusedLocal
+class TradfriMotionSensor(ExtendedHass):
+
+    def initialize(self):
+        self.log("{}.initialize".format(self.__class__.__name__))
+        self.binary_sensor = self.args['binary_sensor']
+        self.light = self.args['light']
+        self.listen_state(self.handle_motion, self.binary_sensor)
+
+    def handle_motion(self, entity, attribute, old, new, kwargs):
+        if old == 'off' and new == 'on':
+            self.turn_on(self.light)
+            self.log('{}: Turned on {}'.format(self.get_info(), entity))
+        if old == 'on' and new == 'off':
+            self.turn_off(self.light)
+            self.log('{}: Turned off {}'.format(self.get_info(), entity))
+        else:
+            self.log('{}: Unhandled event'.format(self.get_info()))
+
+        self.log('{}: entity: {}, attribute: {}, old: {}, new {}, kwargs: {}'.format(
+            self.get_info(), entity, attribute, old, new, repr(kwargs)), level='DEBUG')
