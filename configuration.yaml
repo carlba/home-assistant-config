@@ -187,6 +187,7 @@ cloud:
         - switch
         - light
         - scene
+        - script
       include_entities:
         - input_boolean.toaster
         - input_boolean.movie
