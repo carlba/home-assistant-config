@@ -407,8 +407,7 @@ scene:
         color_temp: 400
       switch.desktop:
         state: on
-
-  - name: Default Warm
+  - name: Cozy
     entities:
       light.kitchen_fan:
         state: on

@@ -71,7 +71,7 @@ views:
           - scene.tv_backlight
           - scene.computer
           - scene.default
-          - scene.default_warm
+          - scene.cozy
           - scene.sleep
 
       - type: entities
