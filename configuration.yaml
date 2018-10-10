@@ -223,11 +223,13 @@ cloud:
         - light.kitchen_table_right
         - light.kitchen_fan_left
         - light.kitchen_fan_right
+        - switch.desktop
+        - switch.bathroom_ceiling
 
     entity_config:
-      switch.desktop:
+      light.desktop:
         room: Office
-      switch.bathroom_ceiling:
+      light.bathroom_ceiling:
         room: Bathroom
       light.hallway_ceiling:
         room: Hallway
