@@ -120,6 +120,15 @@ light:
       - light.kitchen_fan_left
       - light.kitchen_fan_right
 
+  - platform: group
+    name: Living Area Lights
+    entities:
+      - light.bed
+      - light.behind_tv
+      - light.desktop
+      - light.kitchen_fan
+      - light.kitchen_table
+
   - platform: template
     lights:
       desktop:
@@ -368,17 +377,9 @@ scene:
       switch.screen: on
   - name: TV Backlight
     entities:
-      switch.harmony_hub_clean:
-        state: off
-      switch.harmony_hub_home:
-        state: off
       switch.harmony_hub_shield:
         state: on
-      light.kitchen_fan:
-        state: off
-      light.kitchen_table:
-        state: off
-      light.bed:
+      light.living_area_lights:
         state: off
       light.hallway_ceiling:
         state: off
@@ -386,74 +387,30 @@ scene:
         state: on
         brightness: 33
         color_temp: 454
-      light.desktop:
-        state: off
-      switch.bathroom_ceiling:
-        state: off
-      switch.nexa_remote_g:
-        state: off
-      switch.screen:
+      light.bathroom_ceiling:
         state: off
   - name: TV Dark
     entities:
       switch.harmony_hub_shield:
         state: on
-      light.kitchen_fan:
+      light.living_area_lights:
         state: off
-      light.kitchen_table:
-        state: off
-      light.bed:
-        state: off
-      light.hallway_ceiling:
-        state: off
-      light.behind_tv:
-        state: off
-      light.desktop:
-        state: off
-      switch.bathroom_ceiling:
+      light.bathroom_ceiling:
         state: off
       switch.screen:
         state: off
   - name: Default
     entities:
-      light.kitchen_fan:
-        state: on
-        brightness: 255
-        color_temp: 400
-      light.kitchen_table:
+      light.living_area_lights:
         state: off
-      light.bed:
-        state: on
         brightness: 255
         color_temp: 400
-      light.hallway_ceiling:
-        state: off
-      light.behind_tv:
-        state: on
-        brightness: 255
-        color_temp: 400
-      light.desktop:
-        state: on
   - name: Cozy
     entities:
-      light.kitchen_fan:
+      light.living_area_lights:
         state: on
         brightness: 255
         color_temp: 500
-      light.kitchen_table:
-        state: off
-      light.bed:
-        state: on
-        brightness: 255
-        color_temp: 500
-      light.hallway_ceiling:
-        state: off
-      light.behind_tv:
-        state: on
-        brightness: 255
-        color_temp: 500
-      light.desktop:
-        state: on
   - name: Sleep
     entities:
       light.kitchen_fan:
@@ -481,12 +438,10 @@ scene:
         brightness: 170
       light.bed:
         state: on
-        transition: 600
       light.hallway_ceiling:
         state: off
       light.behind_tv:
         state: on
-        brightness: 255
       light.desktop:
         state: on
       switch.screen:
