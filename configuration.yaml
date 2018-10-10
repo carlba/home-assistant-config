@@ -446,6 +446,25 @@ scene:
         state: off
       switch.screen:
         state: off
+  - name: Dinner
+    entities:
+      light.kitchen_fan:
+        state: on
+      light.kitchen_table:
+        state: on
+        brightness: 170
+      light.bed:
+        state: on
+        transition: 600
+      light.hallway_ceiling:
+        state: off
+      light.behind_tv:
+        state: on
+        brightness: 255
+      switch.desktop:
+        state: on
+      switch.screen:
+        state: off
 
 group: !include groups.yaml
 automation: !include automations.yaml
