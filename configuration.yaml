@@ -120,6 +120,20 @@ light:
       - light.kitchen_fan_left
       - light.kitchen_fan_right
 
+  - platform: template
+    lights:
+      desktop:
+        friendly_name: Desktop
+        entity_id:
+          - switch.desktop
+        value_template: '{{ is_state("switch.desktop", "on") }}'
+        turn_on:
+          service: switch.turn_on
+          entity_id: switch.desktop
+        turn_off:
+          service: switch.turn_off
+          entity_id: switch.desktop
+
 # Weather prediction
 sensor:
   - platform: yr
@@ -334,10 +348,10 @@ weather:
 scene:
   - name: Home
     entities:
-      switch.desktop: off
+      light.desktop: off
   - name: Computer
     entities:
-      switch.desktop: on
+      light.desktop: on
       switch.screen: on
   - name: TV Backlight
     entities:
@@ -359,7 +373,7 @@ scene:
         state: on
         brightness: 33
         color_temp: 454
-      switch.desktop:
+      light.desktop:
         state: off
       switch.bathroom_ceiling:
         state: off
@@ -381,7 +395,7 @@ scene:
         state: off
       light.behind_tv:
         state: off
-      switch.desktop:
+      light.desktop:
         state: off
       switch.bathroom_ceiling:
         state: off
@@ -405,7 +419,7 @@ scene:
         state: on
         brightness: 255
         color_temp: 400
-      switch.desktop:
+      light.desktop:
         state: on
   - name: Cozy
     entities:
@@ -425,7 +439,7 @@ scene:
         state: on
         brightness: 255
         color_temp: 500
-      switch.desktop:
+      light.desktop:
         state: on
   - name: Sleep
     entities:
@@ -441,7 +455,7 @@ scene:
       light.behind_tv:
         state: off
         transition: 60
-      switch.desktop:
+      light.desktop:
         state: off
       switch.screen:
         state: off
@@ -460,7 +474,7 @@ scene:
       light.behind_tv:
         state: on
         brightness: 255
-      switch.desktop:
+      light.desktop:
         state: on
       switch.screen:
         state: off
