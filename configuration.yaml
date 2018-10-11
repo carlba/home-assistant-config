@@ -127,7 +127,6 @@ light:
       - light.behind_tv
       - light.desktop
       - light.kitchen_fan
-      - light.kitchen_table
 
   - platform: template
     lights:
@@ -402,7 +401,7 @@ scene:
   - name: Default
     entities:
       light.living_area_lights:
-        state: off
+        state: on
         brightness: 255
         color_temp: 400
   - name: Cozy
@@ -411,6 +410,8 @@ scene:
         state: on
         brightness: 255
         color_temp: 500
+      light.kitchen_table:
+        state: off
   - name: Sleep
     entities:
       light.kitchen_fan:
@@ -431,21 +432,23 @@ scene:
         state: off
   - name: Dinner
     entities:
+      light.living_area_lights:
+        state: on
       light.kitchen_fan:
         state: on
       light.kitchen_table:
         state: on
         brightness: 170
-      light.bed:
-        state: on
       light.hallway_ceiling:
         state: off
-      light.behind_tv:
-        state: on
-      light.desktop:
-        state: on
       switch.screen:
         state: off
+  - name: Industrial
+    entities:
+      group.all_light:
+        state: on
+        brightness: 255
+        color_temp: 0
 
 group: !include groups.yaml
 automation: !include automations.yaml

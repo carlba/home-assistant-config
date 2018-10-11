@@ -46,13 +46,14 @@ views:
         title: Lights
         show_header_toggle: true
         entities:
-          - switch.desktop
-          - switch.bathroom_ceiling
+          - light.desktop
+          - light.bathroom_ceiling
           - light.hallway_ceiling
           - light.kitchen_table
           - light.kitchen_fan
           - light.bed
           - light.behind_tv
+          - light.living_area_lights
       - type: entities
         title: Harmony Hub
         show_header_toggle: false
@@ -73,6 +74,8 @@ views:
           - scene.default
           - scene.cozy
           - scene.sleep
+          - scene.dinner
+          - scene.industrial
 
       - type: entities
         title: Other
@@ -84,6 +87,7 @@ views:
           - entity: switch.screen
             name: Screen Switch
             icon: mdi:monitor
+          - sensor.daylight
           - binary_sensor.hallway_motion_sensor
 #          - sensor.sl_skanstull
           - entity: sensor.235_temperature
@@ -133,7 +137,7 @@ views:
           - sensor.transmission_up_speed
 
       - type: entities
-        title: Devices
+        title: Devices+
         entities:
           - device_tracker.10c6fc8e7fa3 # Garmin Edge 1000
           - device_tracker.6c5697d9c323 # Johanna's Kindle
