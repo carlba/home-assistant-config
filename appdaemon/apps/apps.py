@@ -141,6 +141,29 @@ class LogDeconzEvents(ExtendedHass):
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
+class ColorTemperature(ExtendedHass):
+
+    def initialize(self):
+        self.log("{}.initialize".format(self.__class__.__name__))
+        self.daylight_sensor = self.args['sensor']
+        self.listen_state(self.handle_state, self.daylight_sensor)
+        self.log('{}: Current daylight state:{}'.format(self.get_info(),
+                                                        self.get_state(self.daylight_sensor)))
+
+        # https://www.home-assistant.io/components/light/
+        all_lights = self.get_state('group.all_lights', attribute='entity_id')
+
+        self.set_state('sensor.default_light_settings', state='on',
+                       attributes={'friendly_name': 'Default Light Settings', 'color_temp': '400'})
+
+        self.log('{}: {}'.format(self.get_info(), all_lights))
+
+    def handle_state(self, entity, attribute, old, new, kwargs):
+        self.log('{}: entity: {}, attribute: {}, old: {}, new {}, kwargs: {}'.format(
+            self.get_info(), entity, attribute, old, new, repr(kwargs)), level='INFO')
+
+
+# noinspection PyAttributeOutsideInit,PyUnusedLocal
 class TradfriMotionSensor(ExtendedHass):
 
     def initialize(self):
@@ -163,24 +186,4 @@ class TradfriMotionSensor(ExtendedHass):
             self.get_info(), entity, attribute, old, new, repr(kwargs)), level='DEBUG')
 
 
-# noinspection PyAttributeOutsideInit,PyUnusedLocal
-class ColorTemperature(ExtendedHass):
 
-    def initialize(self):
-        self.log("{}.initialize".format(self.__class__.__name__))
-        self.daylight_sensor = self.args['sensor']
-        self.listen_state(self.handle_state, self.daylight_sensor)
-        self.log('{}: Current daylight state:{}'.format(self.get_info(),
-                                                        self.get_state(self.daylight_sensor)))
-
-        # https://www.home-assistant.io/components/light/
-        all_lights = self.get_state('group.all_lights', attribute='entity_id')
-
-        self.set_state('sensor.default_light_settings', state='on',
-                       attributes={'friendly_name': 'Default Light Settings', 'color_temp': '400'})
-
-        self.log('{}: {}'.format(self.get_info(), all_lights))
-
-    def handle_state(self, entity, attribute, old, new, kwargs):
-        self.log('{}: entity: {}, attribute: {}, old: {}, new {}, kwargs: {}'.format(
-            self.get_info(), entity, attribute, old, new, repr(kwargs)), level='INFO')
