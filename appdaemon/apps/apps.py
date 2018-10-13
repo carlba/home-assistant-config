@@ -106,32 +106,6 @@ class Clean(ExtendedHass):
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
-class Scenes(ExtendedHass):
-
-    def initialize(self):
-
-        for item in ['movie']:
-            self.harmony_remote_listener = self.listen_state(getattr(self, 'on_{}'.format(item)),
-                                                             entity='input_boolean.{}'.format(item))
-
-        self.scene_booleans = ['input_boolean.movie']
-
-    def on_movie(self, entity, attribute, old, new, kwargs):
-        if old == 'off' and new == 'on':
-            self.log('{}: Input boolean movie was turned on'.format(self.get_info()))
-            self.turn_off('group.lights')
-
-            # self.call_service('remote/send_command', entity_id='remote.harmony_hub',
-            #                   device='57605309', command='Sleep')
-            # self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Shield')
-
-        elif old == 'on' and new == 'off':
-            self.log('{}: Input boolean movie was turned off'.format(self.get_info()))
-            # self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Home')
-            pass
-
-
-# noinspection PyAttributeOutsideInit,PyUnusedLocal
 class HarmonyDeviceSwitch(ExtendedHass):
 
     def initialize(self):
