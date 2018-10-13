@@ -1,3 +1,12 @@
 clean:
   module: apps
   class: Clean
+
+color_temperature:
+  module: apps
+  class: ColorTemperature
+  sensor: sensor.daylight
+
+#smart_light:
+#  module: apps
+#  class: SmartLight
