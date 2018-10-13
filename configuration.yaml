@@ -283,7 +283,7 @@ device_tracker:
     host: 192.168.1.1
     username: admin
     password: !secret router_password
-    interval_seconds: 30
+    interval_seconds: 10
   - platform: google_maps
     username: carl.backstrom.dahl.location@gmail.com
     password: !secret location_gmail_password
@@ -366,89 +366,92 @@ weather:
   - platform: openweathermap
     api_key: 334db6c50929238ed1dde1457d533f03
 
-scene:
-  - name: Home
-    entities:
-      light.desktop: off
-  - name: Computer
-    entities:
-      light.desktop: on
-      switch.screen: on
-  - name: TV Backlight
-    entities:
-      switch.harmony_hub_shield:
-        state: on
-      light.living_area_lights:
-        state: off
-      light.hallway_ceiling:
-        state: off
-      light.behind_tv:
-        state: on
-        brightness: 33
-        color_temp: 454
-      light.bathroom_ceiling:
-        state: off
-  - name: TV Dark
-    entities:
-      switch.harmony_hub_shield:
-        state: on
-      light.living_area_lights:
-        state: off
-      light.bathroom_ceiling:
-        state: off
-      switch.screen:
-        state: off
-  - name: Default
-    entities:
-      light.living_area_lights:
-        state: on
-        brightness: 255
-        color_temp: 400
-  - name: Cozy
-    entities:
-      light.living_area_lights:
-        state: on
-        brightness: 255
-        color_temp: 500
-      light.kitchen_table:
-        state: off
-  - name: Sleep
-    entities:
-      light.kitchen_fan:
-        state: off
-      light.kitchen_table:
-        state: off
-      light.bed:
-        state: off
-        transition: 600
-      light.hallway_ceiling:
-        state: off
-      light.behind_tv:
-        state: off
-        transition: 60
-      light.desktop:
-        state: off
-      switch.screen:
-        state: off
-  - name: Dinner
-    entities:
-      light.living_area_lights:
-        state: on
-      light.kitchen_fan:
-        state: on
-      light.kitchen_table:
-        state: on
-        brightness: 170
-      light.hallway_ceiling:
-        state: off
-      switch.screen:
-        state: off
-  - name: Industrial
-    entities:
-      group.all_light:
-        state: on
-        brightness: 255
-        color_temp: 0
+# TODO: Remove this stuff
+#scene:
+#  - name: Computer
+#    entities:
+#      light.desktop: on
+#      switch.screen: on
+#  - name: TV Backlight
+#    entities:
+#      switch.harmony_hub_shield:
+#        state: on
+#      light.living_area_lights:
+#        state: off
+#      light.hallway_ceiling:
+#        state: off
+#      light.behind_tv:
+#        state: on
+#        brightness: 33
+#        color_temp: 454
+#      light.bathroom_ceiling:
+#        state: off
+#      switch.screen:
+#        state: off
+#  - name: TV Dark
+#    entities:
+#      switch.harmony_hub_shield:
+#        state: on
+#      light.living_area_lights:
+#        state: off
+#      light.bathroom_ceiling:
+#        state: off
+#      switch.screen:
+#        state: off
+#  - name: Default
+#    entities:
+#      light.living_area_lights:
+#        state: on
+#        brightness: 255
+#        kelvin: 5600
+#      light.bathroom_ceiling:
+#        state: off
+#  - name: Cozy
+#    entities:
+#      light.living_area_lights:
+#        state: on
+#        brightness: 255
+#        color_temp: 500
+#      light.kitchen_table:
+#        state: off
+#  - name: Sleep
+#    entities:
+#      light.kitchen_fan:
+#        state: off
+#      light.kitchen_table:
+#        state: off
+#      light.bed:
+#        state: off
+#        transition: 600
+#      light.hallway_ceiling:
+#        state: off
+#      light.behind_tv:
+#        state: off
+#        transition: 60
+#      light.desktop:
+#        state: off
+#      switch.screen:
+#        state: off
+#  - name: Dinner
+#    entities:
+#      light.living_area_lights:
+#        state: on
+#        brightness_pct: 70
+#        color_temp: 500
+#      light.kitchen_table:
+#        state: on
+#        brightness_pct: 70
+#        color_temp: 500
+#      light.hallway_ceiling:
+#        state: off
+#      switch.screen:
+#        state: off
+#  - name: Industrial
+#    entities:
+#      group.all_lights:
+#        state: on
+#        brightness: 255
+#        color_temp: 153
 
 group: !include groups.yaml
 automation: !include automations.yaml

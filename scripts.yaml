@@ -1,0 +1,152 @@
+computer:
+  alias: Computer
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.desktop
+  - service: light.turn_on
+    data:
+      entity_id: switch.screen
+
+tv_backlight:
+  alias: TV Backligt
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.screen
+    - service: switch.turn_on
+      data:
+        entity_id: switch.harmony_hub_shield
+    - service: light.turn_on
+      data:
+        entity_id: light.living_area_lights
+        brightness: 33
+        color_temp: 454
+    - service: light.turn_off
+      data:
+        entity_id: light.living_area_lights
+    - service: light.turn_off
+      data:
+        entity_id: light.kitchen_table
+    - service: light.turn_off
+      data:
+        entity_id: light.hallway_ceiling
+    - service: light.turn_off
+      data:
+        entity_id: light.bathroom_ceiling
+
+tv_dark:
+  alias: TV Dark
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.screen
+    - service: switch.turn_on
+      data:
+        entity_id: switch.harmony_hub_shield
+    - service: light.turn_off
+      data:
+        entity_id: light.living_area_lights
+    - service: light.turn_off
+      data:
+        entity_id: light.kitchen_table
+    - service: light.turn_off
+      data:
+        entity_id: light.hallway_ceiling
+    - service: light.turn_off
+      data:
+        entity_id: light.bathroom_ceiling
+
+default:
+  alias: Default
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.living_area_lights
+        brightness: 255
+        color_temp: 380
+    - service: light.turn_off
+      data:
+        entity_id: light.bathroom_ceiling
+    - service: light.turn_off
+      data:
+        entity_id: light.kitchen_table
+cozy:
+  alias: Cozy
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.living_area_lights
+        brightness: 255
+        color_temp: 500
+    - service: light.turn_off
+      data:
+        entity_id: light.bathroom_ceiling
+    - service: light.turn_off
+      data:
+        entity_id: light.kitchen_table
+sleep:
+  alias: Sleep
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.screen
+    - service: light.turn_off
+      data:
+        entity_id: light.kitchen_fan
+    - service: light.turn_off
+      data:
+        entity_id: light.kitchen_table
+    - service: light.turn_off
+      data:
+        entity_id: hallway_ceiling
+    - service: light.turn_off
+      data:
+        entity_id: light.desktop
+    - service: light.turn_off
+      data:
+        entity_id: light.behind_tv
+        transition: 120
+    - service: light.turn_off
+      data:
+        entity_id: light.bed
+        transition: 600
+wake_up:
+  alias: Wake Up
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.behind_tv
+        transition: 120
+    - service: light.turn_off
+      data:
+        entity_id: light.bed
+        transition: 600
+dinner:
+  alias: Dinner
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.screen
+    - service: light.turn_off
+      data:
+        entity_id: hallway_ceiling
+    - service: light.turn_on
+      data:
+        entity_id: light.living_area_lights
+        brightness_pct: 70
+        color_temp: 450
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_table
+        brightness_pct: 70
+        color_temp: 450
+
+industrial:
+  alias: Industrial
+  sequence:
+    - service: home_assistant.turn_on
+      data:
+        entity_id: group.all_lights
+        brightness: 255
+        color_temp: 153
