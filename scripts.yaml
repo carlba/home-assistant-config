@@ -150,3 +150,45 @@ industrial:
         entity_id: group.all_lights
         brightness: 255
         color_temp: 153
+
+z9124_toggle:
+  alias: Z9124 Toggle
+  sequence:
+    - service: remote.send_command
+      data:
+        device: 56823524
+        command: PowerToggle
+
+z9124_auto:
+  alias: Z9124 Auto
+  sequence:
+    - service: remote.send_command
+      data:
+        device: 56823524
+        command: Auto
+
+z9124_quiet:
+  alias: Z9124 Quiet
+  sequence:
+    - service: remote.send_command
+      data:
+        device: 56823524
+        command: Quiet
+
+z9124_turbo:
+  alias: Z9124 Turbo
+  sequence:
+    - service: remote.send_command
+      data:
+        device: 56823524
+        command: Turbo
+
+z9124_medium:
+  alias: Z9124 Medium
+  sequence:
+    - service: remote.send_command
+      data:
+        device: 56823524
+        command:
+          - Quiet
+          - Speed

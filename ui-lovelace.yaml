@@ -113,6 +113,16 @@ views:
           - device_tracker.iphone
           - zone.home
 
+      - type: entities
+        title: Z9124
+        show_header_toggle: false
+        entities:
+          - script.z9124_toggle
+          - script.z9124_auto
+          - script.z9124_quiet
+          - script.z9124_turbo
+          - script.z9124_medium
+
     # Specify a tab icon if you want the view tab to be an icon.
   - title: Other
     id: other
