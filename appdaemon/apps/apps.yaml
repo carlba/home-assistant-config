@@ -7,11 +7,17 @@ color_temperature:
   class: ColorTemperature
   sensor: sensor.daylight
 
-tradfri_motion_sensor:
+hallway_motion_sensor:
   module: apps
   class: TradfriMotionSensor
   binary_sensor: binary_sensor.hallway_motion_sensor
   light: light.hallway_ceiling
+
+bathroom_motion_sensor:
+  module: apps
+  class: TradfriMotionSensor
+  binary_sensor: binary_sensor.bathroom_motion_sensor
+  light: light.bathroom_ceiling
 
 #smart_light:
 #  module: apps
