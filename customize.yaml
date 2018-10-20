@@ -77,3 +77,19 @@ sensor.235_temperature:
 
 remote.harmony_hub:
   hidden: true
+
+script.tv_dark:
+  icon: mdi:television
+
+script.tv_backlight:
+  icon: mdi:television
+
+script.computer:
+  icon: mdi:desktop-classic
+
+script.sleep:
+  icon: mdi:sleep
+
+script.dinner:
+  icon: mdi:food
+
