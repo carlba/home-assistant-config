@@ -185,12 +185,10 @@ sensor:
       harmony_hub:
         friendly_name: "Harmony Hub"
         value_template: '{{ states.remote.harmony_hub.attributes.current_activity }}'
-  - platform: sl
-    name: skanstull
-    ri4key: 297882af592a450a98a10b4493a97db4
-    siteid: 9190
-    lines: 17, 18, 19
-    direction: 1
+  - platform: time_date
+    display_options:
+      - 'date_time'
+
 binary_sensor:
   - platform: template
     sensors:

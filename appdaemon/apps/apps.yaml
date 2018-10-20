@@ -12,12 +12,14 @@ hallway_motion_sensor:
   class: TradfriMotionSensor
   binary_sensor: binary_sensor.hallway_motion_sensor
   light: light.hallway_ceiling
+  duration: 30
 
 bathroom_motion_sensor:
   module: apps
   class: TradfriMotionSensor
   binary_sensor: binary_sensor.bathroom_motion_sensor
   light: light.bathroom_ceiling
+  duration: 300
 
 #smart_light:
 #  module: apps

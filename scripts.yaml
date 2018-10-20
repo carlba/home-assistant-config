@@ -70,7 +70,10 @@ default:
         entity_id: light.bathroom_ceiling
     - service: light.turn_off
       data:
+        brightness: 50,
+        color_temp: 380,
         entity_id: light.kitchen_table
+
 cozy:
   alias: Cozy
   sequence:

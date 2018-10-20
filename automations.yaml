@@ -106,7 +106,7 @@
       data_template:
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
 
-- alias: "When one user is at home start the Harmony Hub activity Home"
+- alias: "When one user is at home start the Harmony Hub activity Home and turn on the default scene"
   trigger:
     - platform: state
       entity_id: group.tracker_home
@@ -116,6 +116,8 @@
       entity_id: remote.harmony_hub
       data:
         activity: Home
+    - service: scene.turn_on
+      entity_id: scene.default
 
 - alias: "When all users are away start the Harmony Hub activity Away"
   trigger:
@@ -127,3 +129,5 @@
       entity_id: remote.harmony_hub
       data:
         activity: Away
+    - service: light.turn_off
+      entity_id: group.all_lights
