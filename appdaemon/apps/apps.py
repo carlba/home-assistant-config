@@ -198,8 +198,12 @@ class TradfriMotionSensor(ExtendedHass):
         self.listen_state(self.handle_motion, self.binary_sensor)
 
     def _turn_off(self, kwargs=None):
-        self.turn_off(self.light)
-        self.log('{}: Turned off {}'.format(self.get_info(), kwargs['entity_id']))
+        motion_sensor_state = self.get_state(self.binary_sensor)
+        self.log('{}: The state of {} is {}'.format(self.get_info(), kwargs['entity_id'],
+                                                    motion_sensor_state))
+        if motion_sensor_state == 'off':
+            self.turn_off(self.light)
+            self.log('{}: Turned off {}'.format(self.get_info(), self.light))
 
     def handle_motion(self, entity, attribute, old, new, kwargs):
         if old == 'off' and new == 'on':
