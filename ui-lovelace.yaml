@@ -23,6 +23,12 @@ views:
     theme: dark-mode
     # The cards to show on this view.
     cards:
+      - type: sensor
+        entity: sensor.235_temperature
+        name: Temperature - Outside - Skanstull
+        height: 75
+        line_color: "#3498db"
+
         # The filter card will filter entities for their state
       - type: entity-filter
         entities:
