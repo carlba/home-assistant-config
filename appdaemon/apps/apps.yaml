@@ -12,7 +12,7 @@ hallway_motion_sensor:
   class: TradfriMotionSensor
   binary_sensor: binary_sensor.hallway_motion_sensor
   light: light.hallway_ceiling
-  duration: 30
+  duration: 60
 
 bathroom_motion_sensor:
   module: apps
