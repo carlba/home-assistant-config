@@ -123,6 +123,14 @@ views:
           - device_tracker.iphone
           - zone.home
 
+      - type: history-graph
+        title: History
+        entities:
+          - group.tracker_home
+          - group.tracker_carl
+          - group.tracker_johanna
+          - switch.screen
+
       - type: glance
         title: Z9124
         show_header_toggle: false
