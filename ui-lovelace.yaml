@@ -48,26 +48,19 @@ views:
         card:
           type: glance
           title: Friends
-      - type: glance
+      - type: entities
         title: Lights
         show_header_toggle: true
         show_state: false
         entities:
-          - entity: light.desktop
-            tap_action: toggle
-          - entity: light.bathroom_ceiling
-            tap_action: toggle
-          - entity: light.hallway_ceiling
-            tap_action: toggle
-          - entity: light.kitchen_table
-            tap_action: toggle
-          - entity: light.kitchen_fan
-            tap_action: toggle
-          - entity: light.bed
-            tap_action: toggle
-          - entity: light.behind_tv
-            tap_action: toggle
-          - entity: light.living_area_lights
+          - light.desktop
+          - light.bathroom_ceiling
+          - light.hallway_ceiling
+          - light.kitchen_table
+          - light.kitchen_fan
+          - light.bed
+          - light.behind_tv
+          - light.living_area_lights
       - type: glance
         title: Harmony Hub
         show_header_toggle: false
