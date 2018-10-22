@@ -131,3 +131,5 @@
         activity: Away
     - service: light.turn_off
       entity_id: group.all_lights
+    - service: switch.turn_off
+      entity_id: switch.screen
