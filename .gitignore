@@ -3,7 +3,6 @@
 !*.yaml
 !scenes
 !.gitignore
-!secrets.yaml
 !README.md
 !appdaemon
 !appdaemon/apps
@@ -11,5 +10,7 @@
 !custom_components/
 !custom_components/sensor
 !custom_components/sensor/*.py
+!resources
+!resources/deCONZ.postman_collection.json
 ._*.yaml
 known_devices.yaml

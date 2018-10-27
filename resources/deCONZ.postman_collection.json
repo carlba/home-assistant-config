@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "82f43fb1-2c9b-4b02-a4be-309bf0c7cf4c",
+		"name": "deCONZ",
+		"description": "http://dresden-elektronik.github.io/deconz-rest-doc/getting_started/#%20rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Discover gateway",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f50f0b22-8613-4986-9fe0-1830c686be07",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"if (responseCode.code === 200) {",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    postman.setEnvironmentVariable(\"ip_address\", jsonData[0].internalipaddress);",
+							"    postman.setEnvironmentVariable(\"port\", jsonData[0].internalport);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://dresden-light.appspot.com/discover",
+					"protocol": "https",
+					"host": [
+						"dresden-light",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"discover"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aquire token for Postman",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "308cf6d9-f74f-44f6-b2ac-db9f3dc43239",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"if (responseCode.code === 200) {",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    postman.setEnvironmentVariable(\"username\", jsonData[0].success.username);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"devicetype\": \"postman\"}"
+				},
+				"url": {
+					"raw": "http://{{ip_address}}:{{port}}/api",
+					"protocol": "http",
+					"host": [
+						"{{ip_address}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api"
+					]
+				},
+				"description": "You have to unlock the gateway in order to do this."
+			},
+			"response": []
+		},
+		{
+			"name": "Get a list of all lights",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip_address}}:{{port}}/api/{{username}}/lights",
+					"protocol": "http",
+					"host": [
+						"{{ip_address}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{username}}",
+						"lights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all sensors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{ip_address}}:{{port}}/api/{{username}}/sensors",
+					"protocol": "http",
+					"host": [
+						"{{ip_address}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{username}}",
+						"sensors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put motion sensor duration",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"duration\": 10\n  \"delay\":1\n}\n"
+				},
+				"url": {
+					"raw": "http://{{ip_address}}:{{port}}/api/{{username}}/sensors/2/config",
+					"protocol": "http",
+					"host": [
+						"{{ip_address}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"{{username}}",
+						"sensors",
+						"2",
+						"config"
+					]
+				},
+				"description": "The id of the sensor can be retrieved by using the ```Get all sensors``` request from this Postman collection."
+			},
+			"response": []
+		}
+	]
+}
