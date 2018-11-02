@@ -342,6 +342,8 @@ input_boolean:
     initial: true
   fake_heater:
     initial: false
+  z9124:
+    initial: false
 
 timer:
   toaster:
