@@ -64,8 +64,8 @@ switch.harmony_hub_away:
   friendly_name: Away
   icon: mdi:home-minus
 
-switch.harmony_hub_shield:
-  friendly_name: Shield
+switch.harmony_hub_watch_tv:
+  friendly_name: Watch TV
   icon: mdi:shield
 
 switch.harmony_hub_clean:

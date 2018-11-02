@@ -4,7 +4,7 @@ computer:
   - service: light.turn_on
     data:
       entity_id: light.desktop
-  - service: light.turn_on
+  - service: switch.turn_on
     data:
       entity_id: switch.screen
 
@@ -16,7 +16,7 @@ tv_backlight:
         entity_id: switch.screen
     - service: switch.turn_on
       data:
-        entity_id: switch.harmony_hub_shield
+        entity_id: switch.harmony_hub_watch_tv
     - service: light.turn_on
       data:
         entity_id: light.living_area_lights
@@ -43,7 +43,7 @@ tv_dark:
         entity_id: switch.screen
     - service: switch.turn_on
       data:
-        entity_id: switch.harmony_hub_shield
+        entity_id: switch.harmony_hub_watch_tv
     - service: light.turn_off
       data:
         entity_id: light.living_area_lights

@@ -69,7 +69,7 @@ views:
             icon: mdi:home
           - entity: binary_sensor.harmony_hub_away
             icon: mdi:home-minus
-          - entity: switch.harmony_hub_shield
+          - entity: switch.harmony_hub_watch_tv
             tap_action: toggle
           - entity: switch.harmony_hub_clean
             tap_action: toggle

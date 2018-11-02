@@ -55,7 +55,7 @@ yr:
 harmony_hub:
   name: Harmony Hub
   entities:
-    - switch.harmony_hub_shield
+    - switch.harmony_hub_watch_tv
     - switch.harmony_hub_clean
 
 lights:
