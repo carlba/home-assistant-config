@@ -112,12 +112,8 @@
       entity_id: group.tracker_home
       to: home
   action:
-    - service: remote.turn_on
-      entity_id: remote.harmony_hub
-      data:
-        activity: Home
-    - service: scene.turn_on
-      entity_id: scene.default
+    - service: script.turn_on
+      entity_id: script.default
 
 - alias: "When all users are away start the Harmony Hub activity Away"
   trigger:
