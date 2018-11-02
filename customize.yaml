@@ -93,3 +93,5 @@ script.sleep:
 script.dinner:
   icon: mdi:food
 
+climate.temperature_outside_skanstull:
+  friendly_name: Temperature - Outside - Skanstull

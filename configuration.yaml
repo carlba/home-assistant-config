@@ -205,6 +205,14 @@ binary_sensor:
         friendly_name: "Clean"
         value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Clean") }}'
 
+climate:
+  - platform: generic_thermostat
+    name: temperature_outside_skanstull
+    heater: input_boolean.fake_heater
+    target_sensor:  sensor.235_temperature
+    initial_operation_mode: "off"
+    target_temp: 21
+
 # Text to speech
 tts:
   - platform: google
@@ -219,6 +227,7 @@ cloud:
         - light
         - scene
         - script
+        - climate
       include_entities:
         - input_boolean.toaster
         - input_boolean.movie
@@ -331,6 +340,8 @@ input_boolean:
     initial: false
   camac:
     initial: true
+  fake_heater:
+    initial: false
 
 timer:
   toaster:
