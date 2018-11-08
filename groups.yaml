@@ -57,6 +57,7 @@ harmony_hub:
   entities:
     - switch.harmony_hub_watch_tv
     - switch.harmony_hub_clean
+    - switch.harmony_hub_away
 
 lights:
   name: Lights

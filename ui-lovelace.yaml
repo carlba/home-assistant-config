@@ -95,6 +95,7 @@ views:
           - entity: script.early_morning
             tap_action: toggle
           - entity: script.industrial
+            tap_action: toggle
 
       - type: entities
         title: Other
@@ -109,7 +110,6 @@ views:
           - sensor.daylight
           - binary_sensor.hallway_motion_sensor
           - binary_sensor.bathroom_motion_sensor
-#          - sensor.sl_skanstull
           - entity: sensor.235_temperature
             name: Temperature - Outside - Skanstull
             icon: mdi:thermometer
@@ -119,13 +119,14 @@ views:
         entity: media_player.spotify
       - type: media-control
         entity: media_player.srsx77
+      - type: media-control
+        entity: media_player.home
       - type: map
         aspect_ratio: 50%
         entities:
           - device_tracker.google_maps_118136931442668540655
           - device_tracker.iphone
           - zone.home
-
       - type: history-graph
         title: History
         entities:
@@ -133,7 +134,6 @@ views:
           - group.tracker_carl
           - group.tracker_johanna
           - switch.screen
-
       - type: glance
         title: Z9124
         show_header_toggle: false
