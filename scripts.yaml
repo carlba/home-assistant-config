@@ -57,8 +57,8 @@ tv_dark:
       data:
         entity_id: light.bathroom_ceiling
 
-default:
-  alias: Default
+daytime:
+  alias: Daytime
   sequence:
     - service: light.turn_on
       data:

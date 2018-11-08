@@ -113,7 +113,7 @@
       to: home
   action:
     - service: script.turn_on
-      entity_id: script.default
+      entity_id: script.daytime
 
 - alias: "When all users are away start the Harmony Hub activity Away"
   trigger:

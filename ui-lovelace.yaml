@@ -84,7 +84,7 @@ views:
             tap_action: toggle
           - entity: script.computer
             tap_action: toggle
-          - entity: script.default
+          - entity: script.daytime
             tap_action: toggle
           - entity: script.cozy
             tap_action: toggle
