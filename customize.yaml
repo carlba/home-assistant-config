@@ -95,3 +95,11 @@ script.dinner:
 
 climate.temperature_outside_skanstull:
   friendly_name: Temperature - Outside - Skanstull
+
+script.early_morning:
+  friendly_name: Early Morning
+  icon: mdi:sleep-off
+
+script.cozy:
+  friendly_name: Cozy
+  icon: mdi:candle

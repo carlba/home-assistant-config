@@ -137,17 +137,18 @@ sleep:
       data:
         entity_id: light.bed
         transition: 600
-wake_up:
-  alias: Wake Up
+early_morning:
+  alias: Early Morning
   sequence:
     - service: light.turn_on
       data:
         entity_id: light.behind_tv
-        transition: 120
-    - service: light.turn_off
+        brightness_pct: 30
+    - service: light.turn_on
       data:
-        entity_id: light.bed
-        transition: 600
+        entity_id: light.kitchen_fan
+        brightness_pct: 30
+
 dinner:
   alias: Dinner
   sequence:

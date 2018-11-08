@@ -92,6 +92,8 @@ views:
             tap_action: toggle
           - entity: script.dinner
             tap_action: toggle
+          - entity: script.early_morning
+            tap_action: toggle
           - entity: script.industrial
 
       - type: entities
@@ -112,6 +114,7 @@ views:
             name: Temperature - Outside - Skanstull
             icon: mdi:thermometer
           - sensor.date__time
+          - script.early_morning
       - type: media-control
         entity: media_player.spotify
       - type: media-control
