@@ -36,8 +36,7 @@ tracker_carl:
   entities:
     - device_tracker.galaxys8
     - device_tracker.30074d28103f
-    # TODO: Add this back when location platform Google Maps works again
-    # - device_tracker.google_maps_118136931442668540655
+    - device_tracker.google_maps_118136931442668540655
 
 tracker_johanna:
   name: Johanna
