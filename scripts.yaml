@@ -71,7 +71,6 @@ daytime:
     - service: light.turn_off
       data:
         brightness: 50,
-        color_temp: 380,
         entity_id: light.kitchen_table
     - service: switch.turn_on
       data:
