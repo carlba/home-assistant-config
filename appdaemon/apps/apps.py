@@ -163,29 +163,6 @@ class ColorTemperature(ExtendedHass):
             self.get_info(), entity, attribute, old, new, repr(kwargs)), level='INFO')
 
 
-# # noinspection PyAttributeOutsideInit,PyUnusedLocal
-# class TradfriMotionSensor(ExtendedHass):
-#
-#     def initialize(self):
-#         self.log("{}.initialize".format(self.__class__.__name__))
-#         self.binary_sensor = self.args['binary_sensor']
-#         self.light = self.args['light']
-#         self.listen_state(self.handle_motion, self.binary_sensor)
-#
-#     def handle_motion(self, entity, attribute, old, new, kwargs):
-#         if old == 'off' and new == 'on':
-#             self.turn_on(self.light)
-#             self.log('{}: Turned on {}'.format(self.get_info(), entity))
-#         if old == 'on' and new == 'off':
-#             self.turn_off(self.light)
-#             self.log('{}: Turned off {}'.format(self.get_info(), entity))
-#         else:
-#             self.log('{}: Unhandled event'.format(self.get_info()))
-#
-#         self.log('{}: entity: {}, attribute: {}, old: {}, new {}, kwargs: {}'.format(
-#             self.get_info(), entity, attribute, old, new, repr(kwargs)), level='DEBUG')
-
-
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
 class TradfriMotionSensor(ExtendedHass):
 
@@ -205,16 +182,20 @@ class TradfriMotionSensor(ExtendedHass):
             self.turn_off(self.light)
             self.log('{}: Turned off {}'.format(self.get_info(), self.light))
 
+        self.turn_off_handle = None
+
     def handle_motion(self, entity, attribute, old, new, kwargs):
+        self.log('{}: entity: {}, attribute: {}, old: {}, new {}, kwargs: {}'.format(
+            self.get_info(), entity, attribute, old, new, repr(kwargs)), level='INFO')
+
         if old == 'off' and new == 'on':
             self.turn_on(self.light)
             self.log('{}: Turned on {}'.format(self.get_info(), entity))
             if self.turn_off_handle:
-                self.cancel_timer(self.turn_off_handle)
+                self.turn_off_handle = self.cancel_timer(self.turn_off_handle)
             self.turn_off_handle = self.run_in(self._turn_off, self.duration, entity_id=entity)
 
-        self.log('{}: entity: {}, attribute: {}, old: {}, new {}, kwargs: {}'.format(
-            self.get_info(), entity, attribute, old, new, repr(kwargs)), level='INFO')
-
-
-
+        if old == 'on' and new == 'off':
+            self.log(f'{self.get_info()}: The state of the self.turn_off_handle is {self.turn_off_handle}')
+            if not self.turn_off_handle:
+                self.turn_off(self.light)

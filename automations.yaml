@@ -62,15 +62,19 @@
   trigger:
     - platform: state
       entity_id: device_tracker.google_maps_118136931442668540655
+      from: not_home
       to: work
     - platform: state
       entity_id: device_tracker.iphone
+      from: not_home
       to: work
     - platform: state
       entity_id: group.tracker_carl
+      from: not_home
       to: home
     - platform: state
       entity_id: group.tracker_johanna
+      from: not_home
       to: home
   action:
     - service_template: 'notify.pushover'
@@ -114,6 +118,12 @@
   action:
     - service: script.turn_on
       entity_id: script.daytime
+    - service: script.turn_on
+      entity_id: script.daytime
+    - service: switch.turn_on
+      entity_id: switch.z9124
+    - service: script.turn_on
+      entity_id: script.z9124_medium
 
 - alias: "When all users are away start the Harmony Hub activity Away"
   trigger:
@@ -129,6 +139,8 @@
       entity_id: group.all_lights
     - service: switch.turn_off
       entity_id: switch.screen
+    - service: script.turn_on
+      entity_id: script.z9124_turbo
 
 - alias: "When state of input_boolean.z9124 changes toggle activate script z9124_toggle"
   trigger:
