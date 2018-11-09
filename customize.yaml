@@ -103,3 +103,6 @@ script.early_morning:
 script.cozy:
   friendly_name: Cozy
   icon: mdi:candle
+
+media_player.shield_android_tv_2:
+  friendly_name: Plex(Shield)

@@ -121,6 +121,8 @@ views:
         entity: media_player.srsx77
       - type: media-control
         entity: media_player.home
+      - type: media-control
+        entity: media_player.shield_android_tv_2
       - type: map
         aspect_ratio: 50%
         entities:
