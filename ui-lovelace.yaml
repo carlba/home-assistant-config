@@ -1,10 +1,10 @@
 title: My Awesome Home
 # Include external resources
-#resources:
-#  - url: /local/my-custom-card.js
-#    type: js
-#  - url: /local/my-webfont.css
-#    type: css
+resources:
+  - url: /local/tracker-card.js?v=0
+    type: js
+  - url: /local/mini-media-player-bundle.js?v=0.9.2
+    type: module
 
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 #background: center / cover no-repeat url("/background.png") fixed
@@ -205,3 +205,8 @@ views:
           - device_tracker.shield
       - type: weather-forecast
         entity: weather.openweathermap
+      - type: custom:tracker-card
+        title:
+        trackers:
+          - sensor.custom_card_tracker
+          - sensor.custom_component_tracker

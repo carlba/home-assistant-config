@@ -388,7 +388,15 @@ camera:
     name: DaFang
     input: -rtsp_transport tcp -i rtsp://192.168.1.208:8554/unicast
 
+# https://github.com/custom-components/custom_updater/wiki/Installation
 custom_updater:
+  track:
+    - cards
+    - components
+    - python_scripts
+  card_urls:
+    # https://community.home-assistant.io/t/lovelace-mini-media-player/68459
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
 
 group: !include groups.yaml
 automation: !include automations.yaml
