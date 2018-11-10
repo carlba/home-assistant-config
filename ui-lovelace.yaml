@@ -28,6 +28,12 @@ views:
         name: Temperature - Outside - Skanstull
         height: 75
         line_color: "#3498db"
+      - type: picture-glance
+        title: Living room
+        entities:
+          - light.schlafzimmer
+          - light.schlafzimmer_2
+        camera_image: camera.dafang
 
         # The filter card will filter entities for their state
       - type: entity-filter
@@ -72,6 +78,8 @@ views:
           - entity: switch.harmony_hub_watch_tv
             tap_action: toggle
           - entity: switch.harmony_hub_clean
+            tap_action: toggle
+          - entity: switch.harmony_hub_play_switch
             tap_action: toggle
       - type: glance
         title: Scenes

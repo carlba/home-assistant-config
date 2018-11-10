@@ -193,8 +193,8 @@ binary_sensor:
   - platform: template
     sensors:
       harmony_hub_watch_tv:
-        friendly_name: "Shield"
-        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "SHIELD") }}'
+        friendly_name: "Watch TV"
+        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Watch TV") }}'
       harmony_hub_home:
         friendly_name: "Home"
         value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Home") }}'
@@ -204,6 +204,9 @@ binary_sensor:
       harmony_hub_clean:
         friendly_name: "Clean"
         value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Clean") }}'
+      harmony_hub_play_switch:
+        friendly_name: "Play Switch"
+        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Play Switch") }}'
 
 climate:
   - platform: generic_thermostat
@@ -320,7 +323,9 @@ media_player:
     aliases:
       41958a95210503efdf1a3271a6974e5083ed49d8: 'SRS-X77'
       3aacd1018a63677eee17183ac10f4f7685c056ef: 'Galaxy S8+'
+  # https://www.home-assistant.io/components/media_player.plex
   - platform: plex
+    entity_namespace: plex
 
 
 influxdb:
@@ -376,6 +381,11 @@ remote:
 weather:
   - platform: openweathermap
     api_key: 334db6c50929238ed1dde1457d533f03
+
+camera:
+  - platform: ffmpeg
+    name: DaFang
+    input: -rtsp_transport tcp -i rtsp://192.168.1.208:8554/unicast
 
 group: !include groups.yaml
 automation: !include automations.yaml

@@ -72,6 +72,10 @@ switch.harmony_hub_clean:
   friendly_name: Clean
   icon: mdi:robot-vacuum
 
+switch.harmony_hub_play_switch:
+  friendly_name: Play Switch
+  icon: mdi:gamepad-variant
+
 sensor.235_temperature:
   friendly_name: Temperature - Outside - Skanstull
 

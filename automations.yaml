@@ -114,8 +114,11 @@
   trigger:
     - platform: state
       entity_id: group.tracker_home
+      from: not_home
       to: home
   action:
+    - service: switch.turn_off
+      entity_id: switch.harmony_hub_clean
     - service: script.turn_on
       entity_id: script.daytime
     - service: script.turn_on
@@ -129,6 +132,7 @@
   trigger:
     - platform: state
       entity_id: group.tracker_home
+      to: not_home
       from: home
   action:
     - service: remote.turn_on
