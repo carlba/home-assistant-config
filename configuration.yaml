@@ -326,6 +326,7 @@ media_player:
   # https://www.home-assistant.io/components/media_player.plex
   - platform: plex
     entity_namespace: plex
+    remove_unavailable_clients: false
 
 
 influxdb:
