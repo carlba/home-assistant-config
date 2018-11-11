@@ -379,10 +379,6 @@ remote:
     name: Harmony Hub
     activity: Home
 
-weather:
-  - platform: openweathermap
-    api_key: 334db6c50929238ed1dde1457d533f03
-
 camera:
   - platform: ffmpeg
     name: DaFang
