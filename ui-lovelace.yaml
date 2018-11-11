@@ -94,6 +94,8 @@ views:
               - 'home'
             card:
               type: glance
+              show_state: false
+              show_name: false
               title: '@home'
           - type: entity-filter
             entities:
