@@ -7,6 +7,8 @@ resources:
     type: module
   - url: /local/slider-entity-row.js?v=0.1
     type: js
+  - url: /local/light-entity-row.js?v=0.2.4
+    type: js
 
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 #background: center / cover no-repeat url("/background.png") fixed
@@ -139,6 +141,7 @@ views:
           - type: glance
             title: Harmony Hub
             show_header_toggle: false
+            show_state: false
             entities:
               - entity: switch.harmony_hub_home
                 icon: mdi:home
@@ -257,3 +260,8 @@ views:
           - switch.dafang_motion_tracking
           - camera.dafang_motion_snapshot
           - binary_sensor.dafang_motion_sensor
+      - type: entities
+        title: Lights
+        entities:
+          - type: "custom:light-entity-row"
+            entity: light.kitchen_table

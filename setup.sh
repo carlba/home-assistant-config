@@ -5,4 +5,5 @@
 (cd www && curl -O 'https://raw.githubusercontent.com/custom-cards/tracker-card/master/tracker-card.js')
 (cd www && curl -OL 'https://github.com/kalkih/mini-media-player/releases/download/v0.9.2/mini-media-player-bundle.js')
 (cd www && curl -OL 'https://raw.githubusercontent.com/thomasloven/lovelace-slider-entity-row/master/slider-entity-row.js')
-
+# https://github.com/custom-cards/light-entity-row
+(cd www && curl -OL 'https://raw.githubusercontent.com/custom-cards/light-entity-row/master/light-entity-row.js')
