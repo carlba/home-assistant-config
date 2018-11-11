@@ -5,6 +5,8 @@ resources:
     type: js
   - url: /local/mini-media-player-bundle.js?v=0.9.2
     type: module
+  - url: /local/slider-entity-row.js?v=0.1
+    type: js
 
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
 #background: center / cover no-repeat url("/background.png") fixed
@@ -23,151 +25,173 @@ views:
     theme: dark-mode
     # The cards to show on this view.
     cards:
-      - type: sensor
-        entity: sensor.235_temperature
-        name: Temperature - Outside - Skanstull
-        height: 75
-        line_color: "#3498db"
-      - type: picture-glance
-        title: Living room
-        entities:
-          - light.schlafzimmer
-          - light.schlafzimmer_2
-        camera_image: camera.dafang
-
-        # The filter card will filter entities for their state
-      - type: entity-filter
-        entities:
-          - group.tracker_carl
-          - group.tracker_johanna
-        state_filter:
-          - 'home'
-        card:
-          type: glance
-          title: People that are home
-      - type: entity-filter
-        entities:
-          - device_tracker.android4749e9acd4fc4284 # Natalie Milz
-        state_filter:
-          - 'home'
-        show_empty: false
-        card:
-          type: glance
-          title: Friends
-      - type: entities
-        title: Lights
-        show_header_toggle: true
-        show_state: false
-        entities:
-          - light.desktop
-          - light.bathroom_ceiling
-          - light.hallway_ceiling
-          - light.kitchen_table
-          - light.kitchen_fan
-          - light.bed
-          - light.behind_tv
-          - light.living_area_lights
-      - type: glance
-        title: Harmony Hub
-        show_header_toggle: false
-        entities:
-          - entity: switch.harmony_hub_home
-            icon: mdi:home
-          - entity: binary_sensor.harmony_hub_away
-            icon: mdi:home-minus
-          - entity: switch.harmony_hub_watch_tv
-            tap_action: toggle
-          - entity: switch.harmony_hub_clean
-            tap_action: toggle
-          - entity: switch.harmony_hub_play_switch
-            tap_action: toggle
-      - type: glance
-        title: Scenes
-        show_header_toggle: false
-        show_state: false
-        entities:
-          - entity:  script.tv_dark
-            tap_action: toggle
-          - entity: script.tv_backlight
-            tap_action: toggle
-          - entity: script.computer
-            tap_action: toggle
-          - entity: script.daytime
-            tap_action: toggle
-          - entity: script.cozy
-            tap_action: toggle
-          - entity: script.sleep
-            tap_action: toggle
-          - entity: script.dinner
-            tap_action: toggle
-          - entity: script.early_morning
-            tap_action: toggle
-          - entity: script.industrial
-            tap_action: toggle
-
-      - type: entities
-        title: Other
-        show_header_toggle: false
-        entities:
-          - input_boolean.toaster
-          - timer.toaster
-          - timer.clean
-          - entity: switch.screen
-            name: Screen Switch
-            icon: mdi:monitor
-          - sensor.daylight
-          - binary_sensor.hallway_motion_sensor
-          - binary_sensor.bathroom_motion_sensor
-          - entity: sensor.235_temperature
+      - type: vertical-stack
+        cards:
+          - type: sensor
+            entity: sensor.235_temperature
             name: Temperature - Outside - Skanstull
-            icon: mdi:thermometer
-          - sensor.date__time
-          - script.early_morning
-      - type: media-control
-        entity: media_player.spotify
-      - type: media-control
-        entity: media_player.srsx77
-      - type: media-control
-        entity: media_player.home
-      - type: media-control
-        entity: media_player.shield_android_tv_2
-      - type: map
-        aspect_ratio: 50%
-        entities:
-          - device_tracker.google_maps_118136931442668540655
-          - device_tracker.iphone
-          - zone.home
-      - type: history-graph
-        title: History
-        entities:
-          - group.tracker_home
-          - group.tracker_carl
-          - group.tracker_johanna
-          - switch.screen
-      - type: glance
-        title: Z9124
-        show_header_toggle: false
-        show_state: false
-        entities:
-          - entity: switch.z9124
-            name: Power
-            icon: mdi:power
-            tap_action: toggle
-          - entity: script.z9124_auto
-            name: Auto
-            icon: mdi:robot
-            tap_action: toggle
-          - entity: script.z9124_quiet
-            name: Quiet
-            icon: mdi:volume-mute
-            tap_action: toggle
-          - entity: script.z9124_turbo
-            name: Turbo
-            icon: mdi:fast-forward
-            tap_action: toggle
-          - entity: script.z9124_medium
-            name: Medium
-            tap_action: toggle
+            height: 75
+            line_color: "#3498db"
+          - type: glance
+            title: Z9124
+            show_header_toggle: false
+            show_state: false
+            entities:
+              - entity: switch.z9124
+                name: Power
+                icon: mdi:power
+                tap_action: toggle
+              - entity: script.z9124_auto
+                name: Auto
+                icon: mdi:robot
+                tap_action: toggle
+              - entity: script.z9124_quiet
+                name: Quiet
+                icon: mdi:volume-mute
+                tap_action: toggle
+              - entity: script.z9124_turbo
+                name: Turbo
+                icon: mdi:fast-forward
+                tap_action: toggle
+              - entity: script.z9124_medium
+                name: Medium
+                tap_action: toggle
+          - type: picture-glance
+            title: Living room
+            entities:
+              - binary_sensor.hallway_motion_sensor
+              - binary_sensor.bathroom_motion_sensor
+            camera_image: camera.dafang
+          - type: glance
+            title: Scenes
+            show_header_toggle: false
+            show_state: false
+            entities:
+              - entity:  script.tv_dark
+                tap_action: toggle
+              - entity: script.tv_backlight
+                tap_action: toggle
+              - entity: script.computer
+                tap_action: toggle
+              - entity: script.daytime
+                tap_action: toggle
+              - entity: script.cozy
+                tap_action: toggle
+              - entity: script.sleep
+                tap_action: toggle
+              - entity: script.dinner
+                tap_action: toggle
+              - entity: script.early_morning
+                tap_action: toggle
+              - entity: script.industrial
+                tap_action: toggle
+            # The filter card will filter entities for their state
+          - type: entity-filter
+            entities:
+              - group.tracker_carl
+              - group.tracker_johanna
+            state_filter:
+              - 'home'
+            card:
+              type: glance
+              title: '@home'
+          - type: entity-filter
+            entities:
+              - device_tracker.android4749e9acd4fc4284 # Natalie Milz
+            state_filter:
+              - 'home'
+            show_empty: false
+            card:
+              type: glance
+              title: Friends
+          - type: entities
+            title: Lights
+            show_header_toggle: false
+            show_state: false
+            entities:
+              - type: custom:slider-entity-row
+                entity: light.desktop
+                name: Desktop
+              - type: custom:slider-entity-row
+                entity: light.bathroom_ceiling
+                name: Bathroom
+              - type: custom:slider-entity-row
+                entity: light.hallway_ceiling
+                name: Hallway
+              - type: custom:slider-entity-row
+                entity: light.kitchen_table
+                name: Kitchen Table
+              - type: custom:slider-entity-row
+                entity: light.kitchen_fan
+                name: Kitchen Fan
+              - type: custom:slider-entity-row
+                entity: light.bed
+                name: Bed
+              - type: custom:slider-entity-row
+                entity: light.behind_tv
+                name: TV
+              - type: custom:slider-entity-row
+                entity: light.living_area_lights
+                name: Living Area
+
+          - type: glance
+            title: Harmony Hub
+            show_header_toggle: false
+            entities:
+              - entity: switch.harmony_hub_home
+                icon: mdi:home
+              - entity: binary_sensor.harmony_hub_away
+                icon: mdi:home-minus
+              - entity: switch.harmony_hub_watch_tv
+                tap_action: toggle
+              - entity: switch.harmony_hub_clean
+                tap_action: toggle
+              - entity: switch.harmony_hub_play_switch
+                tap_action: toggle
+
+          - type: entities
+            title: Other
+            show_header_toggle: false
+            entities:
+              - input_boolean.toaster
+              - timer.toaster
+              - timer.clean
+              - entity: switch.screen
+                name: Screen Switch
+                icon: mdi:monitor
+              - sensor.daylight
+              - binary_sensor.hallway_motion_sensor
+              - binary_sensor.bathroom_motion_sensor
+              - sensor.date__time
+          # https://community.home-assistant.io/t/lovelace-mini-media-player/68459
+          - type: entities
+            title: Media Players
+            entities:
+              - entity: media_player.spotify
+                type: custom:mini-media-player
+                group: true
+              - entity: media_player.home
+                type: custom:mini-media-player
+                hide_controls: true
+                show_tts: google
+                group: true
+              - entity: media_player.shield_android_tv_2
+                type: custom:mini-media-player
+                hide_controls: true
+                group: true
+          - type: map
+            aspect_ratio: 50%
+            entities:
+              - device_tracker.google_maps_118136931442668540655
+              - device_tracker.iphone
+              - zone.home
+          - type: history-graph
+            title: History
+            entities:
+              - group.tracker_home
+              - group.tracker_carl
+              - group.tracker_johanna
+              - switch.screen
     # Specify a tab icon if you want the view tab to be an icon.
   - title: Other
     id: other
