@@ -34,14 +34,15 @@ tracker_home:
 tracker_carl:
   name: Carl
   entities:
-    - device_tracker.galaxys8
-    - device_tracker.30074d28103f
+    # TODO: Activate these when confirmed working
+    # - device_tracker.galaxys8
     - device_tracker.google_maps_118136931442668540655
 
 tracker_johanna:
   name: Johanna
   entities:
-    - device_tracker.johanna_iphone_router
+    # TODO: Activate these when confirmed working
+    # - device_tracker.johanna_iphone_router
     - device_tracker.iphone
 
 yr:
