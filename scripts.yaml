@@ -70,12 +70,10 @@ daytime:
         entity_id: light.bathroom_ceiling
     - service: light.turn_off
       data:
-        brightness: 50,
         entity_id: light.kitchen_table
     - service: switch.turn_on
       data:
         entity_id: switch.z9124
-
 
 cozy:
   alias: Cozy
