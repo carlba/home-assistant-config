@@ -279,7 +279,7 @@ cloud:
 tellstick:
   host: core-tellstick
   port: [50800, 50801]
-  signal_repetitions: 10
+  signal_repetitions: 3
 
 zone:
   - name: home
@@ -323,7 +323,6 @@ device_tracker:
     username: johanna.sjoestrand@gmail.com
     password: !secret johanna_icloud_password
     max_interval: 1
-  - platform: bluetooth_tracker
 
 media_player:
   - platform: kodi
