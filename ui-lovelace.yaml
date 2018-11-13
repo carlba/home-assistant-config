@@ -183,6 +183,7 @@ views:
       - type: entity-filter
         entities:
           - device_tracker.android4749e9acd4fc4284 # Natalie Milz
+          - device_tracker.patriksmbp # Patrik
         state_filter:
           - 'home'
         show_empty: false
