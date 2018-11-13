@@ -309,12 +309,6 @@ zone:
     icon: mdi:account-multiple
 
 device_tracker:
-  # https://www.home-assistant.io/components/device_tracker.asuswrt
-  - platform: asuswrt
-    host: 192.168.1.1
-    username: admin
-    password: !secret router_password
-    interval_seconds: 10
   - platform: google_maps
     username: carl.backstrom.dahl.location@gmail.com
     password: !secret location_gmail_password
@@ -421,6 +415,13 @@ mqtt:
   discovery_prefix: homeassistant
   username: homeassistant
   password: !secret mqtt_password
+
+panel_iframe:
+  dafang:
+    icon: mdi:camera
+    title: 'Dafang Camera'
+    url: 'https://192.168.1.208'
+
 
 group: !include groups.yaml
 automation: !include automations.yaml
