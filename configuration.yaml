@@ -308,6 +308,12 @@ zone:
     radius: 100
     icon: mdi:account-multiple
 
+# https://www.home-assistant.io/components/asuswrt/
+asuswrt:
+  host: 192.168.1.1
+  username: admin
+  password: !secret router_password
+
 device_tracker:
   - platform: google_maps
     username: carl.backstrom.dahl.location@gmail.com
@@ -317,10 +323,8 @@ device_tracker:
     username: johanna.sjoestrand@gmail.com
     password: !secret johanna_icloud_password
     max_interval: 1
+  # https://www.home-assistant.io/components/device_tracker.asuswrt/
   - platform: asuswrt
-    host: 192.168.1.1
-    username: admin
-    password: !secret router_password
 
 media_player:
   - platform: kodi
