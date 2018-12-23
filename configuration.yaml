@@ -89,7 +89,7 @@ history:
       - input_boolean.test
       - sensor.sl_skanstull
 
-# View all events in a logbook
+# https://www.home-assistant.io/components/logbook
 logbook:
 
 # https://www.home-assistant.io/addons/mariadb
@@ -317,6 +317,10 @@ device_tracker:
     username: johanna.sjoestrand@gmail.com
     password: !secret johanna_icloud_password
     max_interval: 1
+  - platform: asuswrt
+    host: 192.168.1.1
+    username: admin
+    password: !secret router_password
 
 media_player:
   - platform: kodi
@@ -341,7 +345,6 @@ media_player:
   - platform: plex
     entity_namespace: plex
     remove_unavailable_clients: false
-
 
 influxdb:
   host: 192.168.1.2
