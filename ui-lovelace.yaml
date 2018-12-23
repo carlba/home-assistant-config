@@ -77,23 +77,33 @@ views:
             show_state: false
             entities:
               - entity:  script.tv_dark
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.tv_backlight
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.computer
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.daytime
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.cozy
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.sleep
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.dinner
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.early_morning
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.industrial
-                tap_action: toggle
+                tap_action:
+                  action: toggle
+          # https://www.home-assistant.io/lovelace/glance/
           - type: glance
             title: Harmony Hub
             show_header_toggle: false
@@ -104,11 +114,14 @@ views:
               - entity: binary_sensor.harmony_hub_away
                 icon: mdi:home-minus
               - entity: switch.harmony_hub_watch_tv
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: switch.harmony_hub_clean
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: switch.harmony_hub_play_switch
-                tap_action: toggle
+                tap_action:
+                  action: toggle
           - type: glance
             title: Z9124
             show_header_toggle: false
@@ -117,22 +130,27 @@ views:
               - entity: switch.z9124
                 name: Power
                 icon: mdi:power
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.z9124_auto
                 name: Auto
                 icon: mdi:robot
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.z9124_quiet
                 name: Quiet
                 icon: mdi:volume-mute
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.z9124_turbo
                 name: Turbo
                 icon: mdi:fast-forward
-                tap_action: toggle
+                tap_action:
+                  action: toggle
               - entity: script.z9124_medium
                 name: Medium
-                tap_action: toggle
+                tap_action:
+                  action: toggle
           - type: glance
             title: Other
             show_header_toggle: false

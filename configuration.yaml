@@ -24,6 +24,11 @@ homeassistant:
 # Enables the frontend
 frontend:
 
+# Configure Lovelace UI using yaml in ui-lovelace.yaml
+# https://www.home-assistant.io/lovelace/yaml-mode
+lovelace:
+  mode: yaml
+
 # Enables configuration UI
 config:
 
