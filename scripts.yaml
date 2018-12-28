@@ -67,9 +67,6 @@ daytime:
         color_temp: 380
     - service: light.turn_off
       data:
-        entity_id: light.bathroom_ceiling
-    - service: light.turn_off
-      data:
         entity_id: light.kitchen_table
     - service: switch.turn_on
       data:
