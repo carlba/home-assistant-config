@@ -76,10 +76,10 @@ views:
             show_header_toggle: false
             show_state: false
             entities:
-              - entity:  script.tv_dark
+              - entity:  script.media_dark
                 tap_action:
                   action: toggle
-              - entity: script.tv_backlight
+              - entity: script.media_backlight
                 tap_action:
                   action: toggle
               - entity: script.computer

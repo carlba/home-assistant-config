@@ -8,8 +8,8 @@ computer:
     data:
       entity_id: switch.screen
 
-tv_backlight:
-  alias: TV Backligt
+media_backlight:
+  alias: Media Backlight
   sequence:
     - service: switch.turn_off
       data:
@@ -35,8 +35,8 @@ tv_backlight:
       data:
         entity_id: light.bathroom_ceiling
 
-tv_dark:
-  alias: TV Dark
+media_dark:
+  alias: Media Dark
   sequence:
     - service: switch.turn_off
       data:

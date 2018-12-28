@@ -82,10 +82,10 @@ sensor.235_temperature:
 remote.harmony_hub:
   hidden: true
 
-script.tv_dark:
+script.media_dark:
   icon: mdi:television
 
-script.tv_backlight:
+script.media_backlight:
   icon: mdi:television
 
 script.computer:
