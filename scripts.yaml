@@ -17,11 +17,6 @@ media_backlight:
     - service: switch.turn_on
       data:
         entity_id: switch.harmony_hub_watch_tv
-    - service: light.turn_on
-      data:
-        entity_id: light.living_area_lights
-        brightness: 33
-        color_temp: 454
     - service: light.turn_off
       data:
         entity_id: light.living_area_lights
@@ -34,6 +29,10 @@ media_backlight:
     - service: light.turn_off
       data:
         entity_id: light.bathroom_ceiling
+    - service: light.turn_on
+      data:
+        entity_id: light.behind_tv
+        brightness_pct: 10
 
 media_dark:
   alias: Media Dark
