@@ -132,6 +132,7 @@ sleep:
       data:
         entity_id: light.bed
         transition: 600
+
 early_morning:
   alias: Early Morning
   sequence:
