@@ -34,7 +34,11 @@ config:
 
 http:
   api_password: !secret http_password
-  base_url: https://carlb-hassio.duckdns.org
+  base_url: https://hassio.dahler.se
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.0.1
+    - hassio.dahler.se
 
 # Checks for available updates
 # Note: This component will send some information about your system to
