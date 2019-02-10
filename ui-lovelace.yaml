@@ -38,11 +38,6 @@ views:
           pagination:
             type: 'bullets'
         cards:
-          - type: sensor
-            entity: sensor.235_temperature
-            name: Temperature - Outside - Skanstull
-            height: 75
-            line_color: "#3498db"
           - type: entity-filter
             entities:
               - group.tracker_carl
