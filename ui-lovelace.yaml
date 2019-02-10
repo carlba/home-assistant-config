@@ -1,5 +1,4 @@
-title: My Awesome Home
-# Include external resources
+title: Götgatan 94
 resources:
   - url: /local/tracker-card.js?v=0
     type: js
