@@ -113,7 +113,7 @@ recorder:
       - zone
       - climate
     entities:
-      - sensor.date__time
+      - sensor.date_time
       - sensor.dafang
       - device_tracker.dafang
       - switch.dafang_h264_rtsp_server
@@ -183,8 +183,8 @@ light:
           service: switch.turn_off
           entity_id: switch.bathroom_ceiling
 
-# Weather prediction
 sensor:
+  # Weather prediction
   - platform: yr
     monitored_conditions:
       - temperature
@@ -200,15 +200,6 @@ sensor:
       - type: memory_free
       - type: processor_use
       - type: load_1m
-  - platform: transmission
-    host: 192.168.1.2
-    monitored_variables:
-      - 'current_status'
-      - 'download_speed'
-      - 'upload_speed'
-      - 'active_torrents'
-    username: cada
-    password: !secret transmission_password
   - platform: tellstick
   - platform: template
     sensors:
@@ -438,6 +429,15 @@ panel_iframe:
     title: 'Dafang Camera'
     url: 'https://192.168.1.208'
 
+transmission:
+  host: 192.168.1.2
+  monitored_conditions:
+    - 'current_status'
+    - 'download_speed'
+    - 'upload_speed'
+    - 'active_torrents'
+  username: cada
+  password: !secret transmission_password
 
 group: !include groups.yaml
 automation: !include automations.yaml
