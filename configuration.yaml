@@ -439,6 +439,8 @@ transmission:
   username: cada
   password: !secret transmission_password
 
+system_health:
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
