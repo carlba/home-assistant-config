@@ -16,3 +16,4 @@
 [[ ! -d 'www/custom-lovelace/swipe-card/css' ]] && mkdir -p www/custom-lovelace/swipe-card/css
 (cd www/custom-lovelace/swipe-card/css && curl -OL 'https://raw.githubusercontent.com/bramkragten/custom-ui/master/swipe-card/css/swiper.min.css')
 cd ..
+ln -s addons ../addons

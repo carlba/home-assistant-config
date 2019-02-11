@@ -12,5 +12,6 @@
 !custom_components/sensor/*.py
 !resources
 !resources/deCONZ.postman_collection.json
+!setup.sh
 ._*.yaml
 known_devices.yaml
