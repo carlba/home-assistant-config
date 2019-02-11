@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-echo Hello world!
+gunicorn -w 4 -b 0.0.0.0:8090 flask_hello_world:app
