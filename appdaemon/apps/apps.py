@@ -200,3 +200,27 @@ class TradfriMotionSensor(ExtendedHass):
                      f'{self.turn_off_handle}')
             if not self.turn_off_handle:
                 self.turn_off(self.light)
+
+
+# noinspection PyAttributeOutsideInit
+class RemoteControl(ExtendedHass):
+
+    def initialize(self):
+        self.log(f'{self.__class__.__name__}.initialize', level='INFO')
+        self.id = self.args['id']
+        self.entities = self.args['entities']
+        if 'event' in self.args:
+            self.listen_event(self.handle_event, self.args['event'])
+
+    def handle_event(self, event_name, data, kwargs):
+        if self.id in [data['id'], '*']:
+            if data['event'] == 1002:
+                self.log(f'{data["id"]} was turned on', level='INFO')
+                for entity in self.entities:
+                    self.turn_on(entity)
+
+            elif data['event'] == 2002:
+                self.log(f'{data["id"]} was turned off', level='INFO')
+                for entity in self.entities:
+                    self.turn_off(entity)
+

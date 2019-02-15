@@ -21,6 +21,16 @@ bathroom_motion_sensor:
   light: light.bathroom_ceiling
   duration: 300
 
-#smart_light:
-#  module: apps
-#  class: SmartLight
+desktop_remote_control:
+  module: apps
+  class: RemoteControl
+  event: deconz_event
+  entities: ['light.desktop', 'switch.screen']
+  id: desktop_remote
+
+coffeemaker_remote_control:
+  module: apps
+  class: RemoteControl
+  event: deconz_event
+  entities: ['light.desktop', 'switch.screen']
+  id: coffeemaker_remote
