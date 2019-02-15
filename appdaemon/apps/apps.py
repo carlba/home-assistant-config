@@ -11,7 +11,7 @@ class ExtendedHass(hass.Hass):
 
         if 'self' in target.f_locals:
             cls_name = target.f_locals['self'].__class__.__name__
-            target_method = "{}.{}".format(cls_name, target_method)
+            target_method = f'{cls_name}.{target_method}'
 
         return target_method
 
@@ -61,13 +61,14 @@ class ExtendedHass(hass.Hass):
         rargs["entity_id"] = entity_id
         rargs["activity"] = activity
 
-        self.call_service("remote/{}".format(state), **rargs)
+        self.call_service(f"remote/{state}", **rargs)
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
 class Clean(ExtendedHass):
 
     def initialize(self):
+        self.log(f"{self.__class__.__name__}.initialize")
         self.timer = 'timer.clean'
         self.previous_state = None
         self.triggered = False
@@ -78,7 +79,7 @@ class Clean(ExtendedHass):
 
     def tracker(self, entity, attribute, old, new, kwargs):
         self.previous_state = old
-        self.log('Clean.tracker(): entity {}, old {}, new {}'.format(entity, old, new))
+        self.log(f'Clean.tracker(): entity {entity}, old {old}, new {new}')
         self.log(kwargs)
         if not self.triggered:
             if new == 'Clean':
@@ -93,7 +94,7 @@ class Clean(ExtendedHass):
 
     def start_cleaning(self, kwargs=None):
         self.triggered = True
-        self.log('{}: previous_state {}'.format(self.get_info(), self.previous_state))
+        self.log(f'{self.get_info()}: previous_state {self.previous_state}')
         self.log(kwargs)
         if self.previous_state != 'Clean':
             self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Clean')
@@ -102,17 +103,17 @@ class Clean(ExtendedHass):
     def stop_cleaning(self, event_name, data, kwargs):
         self.harmony_remote('remote.harmony_hub', 'turn_on', activity=self.previous_state)
         self.triggered = False
-        self.log('{}: event_name {}, data {}'.format(self.get_info(), event_name, data))
+        self.log(f'{self.get_info()}: event_name {event_name}, data {data}')
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
 class HarmonyDeviceSwitch(ExtendedHass):
 
     def initialize(self):
-
+        self.log(f"{self.__class__.__name__}.initialize")
         if not self.args['input_boolean'].startswith('input_boolean'):
-            raise ValueError('The input_boolean has to be addressed with '
-                             'full path I.E input_boolean.{}'.format(self.args['input_boolean']))
+            raise ValueError(f'The input_boolean has to be addressed with '
+                             f'full path I.E input_boolean.{self.args["input_boolean"]}')
 
         self.input_boolean = self.args['input_boolean']
         self.on_command = self.args['on_command']
@@ -122,17 +123,17 @@ class HarmonyDeviceSwitch(ExtendedHass):
 
     def on_input_boolean_change(self, entity, attribute, old, new, kwargs):
         if old == 'off' and new == 'on':
-            self.log('{}:Input boolean {} was turned on'.format(self.get_info(), entity))
+            self.log(f'{self.get_info()}:Input boolean {entity} was turned on')
 
         elif old == 'on' and new == 'off':
-            self.log('{}:Input boolean {} was turned off'.format(self.get_info(), entity))
+            self.log(f'{self.get_info()}:Input boolean {entity} was turned off')
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
 class LogDeconzEvents(ExtendedHass):
 
     def initialize(self):
-        self.log("LogDeconzEvents.initialize")
+        self.log(f"{self.__class__.__name__}.initialize")
         self.listen_event(self.handle_event, "deconz_event")
 
     def handle_event(self, event_name, data, kwargs):
@@ -144,7 +145,7 @@ class LogDeconzEvents(ExtendedHass):
 class ColorTemperature(ExtendedHass):
 
     def initialize(self):
-        self.log("{}.initialize".format(self.__class__.__name__))
+        self.log(f"{self.__class__.__name__}.initialize")
         self.daylight_sensor = self.args['sensor']
         self.listen_state(self.handle_state, self.daylight_sensor)
         self.log('{}: Current daylight state:{}'.format(self.get_info(),
@@ -167,7 +168,7 @@ class ColorTemperature(ExtendedHass):
 class TradfriMotionSensor(ExtendedHass):
 
     def initialize(self):
-        self.log("{}.initialize".format(self.__class__.__name__))
+        self.log(f"{self.__class__.__name__}.initialize")
         self.binary_sensor = self.args['binary_sensor']
         self.light = self.args['light']
         self.duration = self.args.get('duration') or 120
@@ -176,17 +177,16 @@ class TradfriMotionSensor(ExtendedHass):
 
     def _turn_off(self, kwargs=None):
         motion_sensor_state = self.get_state(self.binary_sensor)
-        self.log('{}: The state of {} is {}'.format(self.get_info(), kwargs['entity_id'],
-                                                    motion_sensor_state))
+        self.log(f'{self.get_info()}: The state of {kwargs["entity_id"]} is {motion_sensor_state}')
         if motion_sensor_state == 'off':
             self.turn_off(self.light)
-            self.log('{}: Turned off {}'.format(self.get_info(), self.light))
+            self.log(f'{self.get_info()}: Turned off {self.light}')
 
         self.turn_off_handle = None
 
     def handle_motion(self, entity, attribute, old, new, kwargs):
-        self.log('{}: entity: {}, attribute: {}, old: {}, new {}, kwargs: {}'.format(
-            self.get_info(), entity, attribute, old, new, repr(kwargs)), level='INFO')
+        self.log(f'{self.get_info()}: entity: {entity}, attribute: {attribute}, old: {old}, '
+                 f'new {new}, kwargs: {repr(kwargs)}', level='INFO')
 
         if old == 'off' and new == 'on':
             self.turn_on(self.light)
@@ -196,6 +196,7 @@ class TradfriMotionSensor(ExtendedHass):
             self.turn_off_handle = self.run_in(self._turn_off, self.duration, entity_id=entity)
 
         if old == 'on' and new == 'off':
-            self.log(f'{self.get_info()}: The state of the self.turn_off_handle is {self.turn_off_handle}')
+            self.log(f'{self.get_info()}: The state of the self.turn_off_handle is '
+                     f'{self.turn_off_handle}')
             if not self.turn_off_handle:
                 self.turn_off(self.light)
