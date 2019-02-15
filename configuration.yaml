@@ -380,20 +380,11 @@ timer:
     name: Clean Timer
     duration: '00:30:00'
 
-# https://www.home-assistant.io/components/twilio
-# twilio:
-#   account_sid: 'AC9bd4546dbb927abc6694554cbe82ba50'
-#   auth_token: !secret twilio_auth_token
-
 notify:
   - name: 'pushover'
     platform: pushover
     api_key: !secret pushover_api_key
     user_key: !secret pushover_user_key
-# https://www.home-assistant.io/components/notify.twilio_sms
-# - name: 'twilio_sms'
-#   platform: twilio_sms
-#   from_number: '+46765193997'
 
 remote:
   - platform: harmony
