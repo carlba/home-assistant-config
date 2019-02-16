@@ -42,6 +42,8 @@ coffee_timer:
   timer: timer.coffee
   duration: 20
   information: Your coffee is ready!
+  information_push: true
+  information_talk: true
   information_delay: 10
-  information_hours: [8, 22]
+  talk_hours: [9, 22]
 

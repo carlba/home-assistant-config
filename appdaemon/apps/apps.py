@@ -236,8 +236,10 @@ class TalkingTimer(ExtendedHass):
         self.entity = self.args['entity']
         self.duration = self.args['duration']
         self.information = self.args['information']
+        self.information_push = self.args['information_push']
+        self.information_talk = self.args['information_talk']
         self.information_delay = self.args['information_delay']
-        self.information_hours = self.args['information_hours']
+        self.talk_hours = self.args['talk_hours']
         self.listen_state(self.handle_entity_state, self.entity)
         self.listen_event(self.stop_activity, event='timer.finished', entity_id=self.timer)
 
@@ -256,7 +258,12 @@ class TalkingTimer(ExtendedHass):
         self.turn_off(self.entity)
 
     def read_information(self, _):
-        if self.information_hours[0] <= datetime.now().hour <= self.information_hours[1]:
+        if self.information_push:
+            self.log(f'{self.get_info()}: Trying to push {self.information} to Pushover')
+            self.call_service('notify/pushover',
+                              message=self.information)
+
+        if self.information_talk and (self.talk_hours[0] <= datetime.now().hour <= self.talk_hours[1]):
             self.log(f'{self.get_info()}: Trying to say {self.information}')
             self.call_service('tts/google_say',
                               entity_id='media_player.srsx77',
