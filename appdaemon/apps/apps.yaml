@@ -39,8 +39,8 @@ coffee_timer:
   module: apps
   class: TalkingTimer
   entity: switch.coffeemaker
-  timer: timer.coffee
-  duration: 3600
+  timer: timer.coffeemaker
+  duration: 1800
   information: Your coffee is ready!
   information_push: true
   information_talk: true
