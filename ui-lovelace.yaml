@@ -57,6 +57,7 @@ views:
           - type: glance
             entities:
               - timer.toaster
+              - timer.coffeemaker
               - timer.clean
       - type: custom:swipe-card
         cards:
@@ -155,6 +156,7 @@ views:
           - binary_sensor.hallway_motion_sensor
           - binary_sensor.bathroom_motion_sensor
         camera_image: camera.dafang
+
       - type: entities
         title: Lights
         show_header_toggle: false
@@ -184,6 +186,20 @@ views:
           - type: custom:slider-entity-row
             entity: light.living_area_lights
             name: Living Area
+
+      - type: entities
+        title: Switches
+        show_header_toggle: false
+        show_state: false
+        entities:
+          - entity: switch.toaster
+            name: Toaster
+            tap_action:
+              action: toggle
+          - entity: switch.coffeemaker
+            name: Coffeemaker
+            tap_action:
+              action: toggle
 
       - type: entity-filter
         entities:
