@@ -1,5 +1,6 @@
 import inspect
 import appdaemon.plugins.hass.hassapi as hass
+from datetime import datetime
 
 
 class ExtendedHass(hass.Hass):
@@ -190,7 +191,7 @@ class TradfriMotionSensor(ExtendedHass):
 
         if old == 'off' and new == 'on':
             self.turn_on(self.light)
-            self.log('{}: Turned on {}'.format(self.get_info(), entity))
+            self.log(f'{self.get_info()}: Turned on { entity}')
             if self.turn_off_handle:
                 self.turn_off_handle = self.cancel_timer(self.turn_off_handle)
             self.turn_off_handle = self.run_in(self._turn_off, self.duration, entity_id=entity)
@@ -223,4 +224,41 @@ class RemoteControl(ExtendedHass):
                 self.log(f'{data["id"]} was turned off', level='INFO')
                 for entity in self.entities:
                     self.turn_off(entity)
+
+
+# noinspection PyAttributeOutsideInit
+class TalkingTimer(ExtendedHass):
+
+    def initialize(self):
+        self.log(f'{self.__class__.__name__}.initialize', level='INFO')
+        self.log(self.args)
+        self.timer = self.args['timer']
+        self.entity = self.args['entity']
+        self.duration = self.args['duration']
+        self.information = self.args['information']
+        self.information_delay = self.args['information_delay']
+        self.information_hours = self.args['information_hours']
+        self.listen_state(self.handle_entity_state, self.entity)
+        self.listen_event(self.stop_activity, event='timer.finished', entity_id=self.timer)
+
+    def handle_entity_state(self, entity, attribute, old, new, kwargs):
+        self.log(f'{self.get_info()}: entity: {entity}, attribute: {attribute}, old: {old}, '
+                 f'new {new}, kwargs: {repr(kwargs)}', level='INFO')
+
+        if old == 'off' and new == 'on':
+            self.run_in(self.read_information, self.information_delay)
+            self.timer_start(self.timer, duration=self.duration)
+        elif old == 'on' and new == 'off':
+            self.timer_cancel(self.timer)
+
+    def stop_activity(self, event_name, data, kwargs):
+        self.log(f'{self.get_info()}: Turning off {kwargs["entity_id"]} due to {event_name}')
+        self.turn_off(self.entity)
+
+    def read_information(self, _):
+        if self.information_hours[0] <= datetime.now().hour <= self.information_hours[1]:
+            self.log(f'{self.get_info()}: Trying to say {self.information}')
+            self.call_service('tts/google_say',
+                              entity_id='media_player.srsx77',
+                              message=self.information)
 
