@@ -40,11 +40,11 @@ coffee_timer:
   class: TalkingTimer
   entity: switch.coffeemaker
   timer: timer.coffee
-  duration: 20
+  duration: 3600
   information: Your coffee is ready!
   information_push: true
   information_talk: true
-  information_delay: 10
+  information_delay: 420
   talk_hours: [9, 22]
 
 toaster_timer:
