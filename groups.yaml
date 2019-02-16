@@ -113,9 +113,4 @@ media_players:
     - media_player.shield_2
     - media_player.spotify
 
-other:
-  name: Other
-  entities:
-    - input_boolean.toaster
-
 ...

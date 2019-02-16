@@ -252,11 +252,7 @@ cloud:
         - scene
         - script
         - climate
-      include_entities:
-        - input_boolean.toaster
-        - input_boolean.movie
       exclude_entities:
-        - switch.toaster
         - switch.nexa_remote_g
         - light.kitchen_table_left
         - light.kitchen_table_right
@@ -359,8 +355,6 @@ logger:
     homeassistant.components.media_player.spotify: info
 
 input_boolean:
-  toaster:
-    initial: false
   test:
     initial: false
   movie:
@@ -373,12 +367,15 @@ input_boolean:
     initial: false
 
 timer:
-  toaster:
-    name: Toaster Timer
-    duration: '00:02:00'
   clean:
     name: Clean Timer
     duration: '00:30:00'
+  toaster:
+    name: Toaster Timer
+    duration: '00:2:00'
+  cofeemaker:
+    name: Coffeemaker Timer
+    duration: '00:60:00'
 
 notify:
   - name: 'pushover'

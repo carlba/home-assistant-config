@@ -40,10 +40,6 @@ switch.nexa_remote_g:
 
 switch.toaster:
   friendly_name: Toaster Switch
-  homebridge_visible: true
-
-input_boolean.toaster:
-  friendly_name: Toaster Timer Toggle
   entity_picture: https://cdn3.iconfinder.com/data/icons/breakfast-icons/459/Toaster-512.png
   homebridge_visible: true
 
