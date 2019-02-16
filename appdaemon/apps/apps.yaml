@@ -47,3 +47,14 @@ coffee_timer:
   information_delay: 10
   talk_hours: [9, 22]
 
+toaster_timer:
+  module: apps
+  class: TalkingTimer
+  entity: switch.toaster
+  timer: timer.toaster
+  duration: 120
+  information: Your toast is ready!
+  information_push: true
+  information_talk: true
+  information_delay: 120
+  talk_hours: [9, 22]
