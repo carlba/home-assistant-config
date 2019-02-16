@@ -32,5 +32,16 @@ coffeemaker_remote_control:
   module: apps
   class: RemoteControl
   event: deconz_event
-  entities: ['light.desktop', 'switch.screen']
+  entities: ['switch.coffeemaker']
   id: coffeemaker_remote
+
+coffee_timer:
+  module: apps
+  class: TalkingTimer
+  entity: switch.coffeemaker
+  timer: timer.coffee
+  duration: 20
+  information: Your coffee is ready!
+  information_delay: 10
+  information_hours: [8, 22]
+
