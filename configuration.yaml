@@ -421,16 +421,6 @@ panel_iframe:
     title: 'Dafang Camera'
     url: 'https://192.168.1.208'
 
-transmission:
-  host: 192.168.1.2
-  monitored_conditions:
-    - 'current_status'
-    - 'download_speed'
-    - 'upload_speed'
-    - 'active_torrents'
-  username: cada
-  password: !secret transmission_password
-
 system_health:
 
 group: !include groups.yaml
