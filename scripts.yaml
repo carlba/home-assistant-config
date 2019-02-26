@@ -144,6 +144,11 @@ early_morning:
       data:
         entity_id: light.kitchen_fan
         brightness_pct: 30
+    - service: light.turn_on
+      data:
+        entity_id: light.desktop
+        brightness: 118
+        rgb_color: [255,200,48]
 
 dinner:
   alias: Dinner
