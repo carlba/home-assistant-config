@@ -141,14 +141,6 @@ views:
                 name: Medium
                 tap_action:
                   action: toggle
-          - type: glance
-            title: Other
-            show_header_toggle: false
-            show_state: false
-            entities:
-              - entity: switch.screen
-                name: Screen Switch
-                icon: mdi:monitor
 
       - type: picture-glance
         title: Living room
@@ -187,7 +179,7 @@ views:
             entity: light.living_area_lights
             name: Living Area
 
-      - type: entities
+      - type: glance
         title: Switches
         show_header_toggle: false
         show_state: false
@@ -198,6 +190,12 @@ views:
               action: toggle
           - entity: switch.coffeemaker
             name: Coffeemaker
+            icon: mdi:coffee
+            tap_action:
+              action: toggle
+          - entity: switch.screen
+            name: Screen
+            icon: mdi:monitor
             tap_action:
               action: toggle
 
