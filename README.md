@@ -79,3 +79,10 @@ https://github.com/ReneTode/My-AppDaemon/blob/master/AppDaemon_for_Beginner/Part
 
 ## Hassio Addons
 https://github.com/home-assistant/hassio-addons
+
+## Remove derelict entities
+Sometimes old discovered devices hangs around. They can be removed from HomeAssistant by removing
+them from the file `/config/.storage/core.device_registry.yml`
+
+
+
