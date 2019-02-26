@@ -80,8 +80,7 @@ class Clean(ExtendedHass):
 
     def tracker(self, entity, attribute, old, new, kwargs):
         self.previous_state = old
-        self.log(f'Clean.tracker(): entity {entity}, old {old}, new {new}')
-        self.log(kwargs)
+        self.log(f'Clean.tracker(): entity {entity}, old {old}, new {new}, triggered {self.triggered}')
         if not self.triggered:
             if new == 'Clean':
                 self.start_cleaning()
@@ -90,44 +89,22 @@ class Clean(ExtendedHass):
                 self.run_in(self.start_cleaning, 10)
         else:
             if old == 'Clean':
+                self.log(f'{self.get_info()}: Cancelling Timer')
                 self.timer_cancel(self.timer)
                 self.triggered = False
 
     def start_cleaning(self, kwargs=None):
         self.triggered = True
         self.log(f'{self.get_info()}: previous_state {self.previous_state}')
-        self.log(kwargs)
         if self.previous_state != 'Clean':
+            self.log(f'{self.get_info()}: previous_state{self.previous_state}')
             self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Clean')
         self.timer_start(self.timer, duration=75*60)
 
     def stop_cleaning(self, event_name, data, kwargs):
+        self.log(f'{self.get_info()}: event_name {event_name}, data {data}')
         self.harmony_remote('remote.harmony_hub', 'turn_on', activity=self.previous_state)
         self.triggered = False
-        self.log(f'{self.get_info()}: event_name {event_name}, data {data}')
-
-
-# noinspection PyAttributeOutsideInit,PyUnusedLocal
-class HarmonyDeviceSwitch(ExtendedHass):
-
-    def initialize(self):
-        self.log(f"{self.__class__.__name__}.initialize")
-        if not self.args['input_boolean'].startswith('input_boolean'):
-            raise ValueError(f'The input_boolean has to be addressed with '
-                             f'full path I.E input_boolean.{self.args["input_boolean"]}')
-
-        self.input_boolean = self.args['input_boolean']
-        self.on_command = self.args['on_command']
-        self.off_command = self.args['off_command']
-        self.input_boolean_listener = self.listen_state(self.on_input_boolean_change,
-                                                        entity=self.input_boolean)
-
-    def on_input_boolean_change(self, entity, attribute, old, new, kwargs):
-        if old == 'off' and new == 'on':
-            self.log(f'{self.get_info()}:Input boolean {entity} was turned on')
-
-        elif old == 'on' and new == 'off':
-            self.log(f'{self.get_info()}:Input boolean {entity} was turned off')
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
