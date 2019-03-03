@@ -418,7 +418,7 @@ mqtt:
 panel_iframe:
   dafang:
     icon: mdi:camera
-    title: 'Dafang Camera'
+    title: Dafang Camera
     url: 'https://192.168.1.208'
 
 system_health:

@@ -37,7 +37,7 @@
       from: not_home
       to: home
   action:
-    - service_template: 'notify.pushover'
+    - service_template: notify.pushover
       data_template:
         title: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
         message: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
@@ -61,7 +61,7 @@
       entity_id: group.tracker_johanna
       from: home
   action:
-    - service_template: 'notify.pushover'
+    - service_template: notify.pushover
       data_template:
         title: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
@@ -70,7 +70,7 @@
       data_template:
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
 
-- alias: "When one user is at home start the Harmony Hub activity Home and turn on the default scene"
+- alias: When one user is at home start the Harmony Hub activity Home and turn on the default scene
   trigger:
     - platform: state
       entity_id: group.tracker_home
@@ -88,7 +88,7 @@
     - service: script.turn_on
       entity_id: script.z9124_medium
 
-- alias: "When all users are away start the Harmony Hub activity Away"
+- alias: When all users are away start the Harmony Hub activity Away
   trigger:
     - platform: state
       entity_id: group.tracker_home
@@ -106,7 +106,7 @@
     - service: script.turn_on
       entity_id: script.z9124_turbo
 
-- alias: "When state of input_boolean.z9124 changes toggle activate script z9124_toggle"
+- alias: When state of input_boolean.z9124 changes toggle activate script z9124_toggle
   trigger:
     - platform: state
       entity_id: input_boolean.z9124
