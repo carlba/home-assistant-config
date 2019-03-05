@@ -76,34 +76,30 @@ daytime:
 cozy:
   alias: Cozy
   sequence:
-    - service: switch.turn_off
-      data:
-        entity_id: switch.screen
-    - service: light.turn_off
-      data:
-        entity_id: light.desktop
     - service: light.turn_on
       data:
         entity_id: light.kitchen_fan
         brightness_pct: 60
         color_temp: 500
     - service: light.turn_on
+      entity_id: light.kitchen_table
       data:
-        entity_id: light.kitchen_table
         brightness_pct: 30
         color_temp: 500
-    - service: light.turn_off
-      data:
-        entity_id: hallway_ceiling
     - service: light.turn_on
+      entity_id: light.behind_tv
       data:
-        entity_id: light.behind_tv
+        brightness_pct: 60
+        color_temp: 500
+    - service: light.turn_on
+      entity_id: light.bed
+      data:
         brightness_pct: 60
         color_temp: 500
     - service: light.turn_on
       data:
-        entity_id: light.bed
-        brightness_pct: 60
+        entity_id: light.desktop
+        brightness_pct: 40
         color_temp: 500
 
 sleep:
