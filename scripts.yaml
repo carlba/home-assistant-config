@@ -133,6 +133,37 @@ sleep:
         entity_id: light.bed
         transition: 600
 
+sleep_in_an_hour:
+  alias: Sleep in an Hour
+  sequence:
+    - service: light.turn_off
+      entity_id:
+        - light.kitchen_fan
+        - light.kitchen_table
+      data:
+        transition: 1800
+    - service: light.turn_off
+      entity_id:
+        - light.behind_tv
+        - light.desktop
+        - light.bed
+      data:
+        transition: 3600
+    - delay:
+        seconds: 900
+    - service: tts.google_say
+      entity_id: media_player.home
+      data:
+        message: Time to sleep in 45 minutes
+    - delay:
+        seconds: 1800
+    - service: tts.google_say
+      entity_id: media_player.home
+      data:
+        message: Time to sleep in 15 minutes
+    - service: switch.turn_off
+      entity_id: switch.screen
+
 early_morning:
   alias: Early Morning
   sequence:

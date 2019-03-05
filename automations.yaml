@@ -113,3 +113,11 @@
   action:
     - service: script.turn_on
       entity_id: script.z9124_toggle
+
+- alias: Activate the sleep_in_an_hour script at 22:00:00
+  trigger:
+    platform: time
+    at: '22:00'
+  action:
+    - service: script.turn_on
+      entity_id: script.sleep_in_an_hour
