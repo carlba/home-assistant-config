@@ -105,9 +105,6 @@ cozy:
 sleep:
   alias: Sleep
   sequence:
-    - service: switch.turn_off
-      data:
-        entity_id: switch.screen
     - service: light.turn_off
       data:
         entity_id: light.kitchen_fan
@@ -165,17 +162,12 @@ early_morning:
   sequence:
     - service: light.turn_on
       data:
-        entity_id: light.behind_tv
-        brightness_pct: 30
-    - service: light.turn_on
-      data:
-        entity_id: light.kitchen_fan
-        brightness_pct: 30
-    - service: light.turn_on
-      data:
-        entity_id: light.desktop
-        brightness: 118
-        rgb_color: [255,200,48]
+        entity_id:
+          - light.behind_tv
+          - light.kitchen_fan
+          - light.desktop
+        brightness_pct: 10
+        color_temp: 450
 
 dinner:
   alias: Dinner
