@@ -108,6 +108,7 @@ media_players:
   name: Media Players
   entities:
     - media_player.srsx77
+    - media_player.home
     - media_player.kodi_2
     - media_player.plexkodiconnect
     - media_player.shield_2

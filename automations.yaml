@@ -42,7 +42,7 @@
         title: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
         message: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
     - service_template: 'tts.google_say'
-      entity_id: media_player.srsx77
+      entity_id: media_player.home
       data_template:
         message: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
 
@@ -66,7 +66,7 @@
         title: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
     - service_template: 'tts.google_say'
-      entity_id: media_player.srsx77
+      entity_id: media_player.home
       data_template:
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
 
