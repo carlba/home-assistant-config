@@ -1,34 +1,26 @@
 computer:
   alias: Computer
   sequence:
-  - service: light.turn_on
+  - service: homeassistant.turn_on
     data:
-      entity_id: light.desktop
-  - service: switch.turn_on
-    data:
-      entity_id: switch.screen
+      entity_id:
+        - light.desktop
+        - switch.screen
 
 media_backlight:
   alias: Media Backlight
   sequence:
-    - service: switch.turn_off
-      data:
-        entity_id: switch.screen
     - service: switch.turn_on
       data:
         entity_id: switch.harmony_hub_watch_tv
-    - service: light.turn_off
+    - service: homeassistant.turn_off
       data:
-        entity_id: light.living_area_lights
-    - service: light.turn_off
-      data:
-        entity_id: light.kitchen_table
-    - service: light.turn_off
-      data:
-        entity_id: light.hallway_ceiling
-    - service: light.turn_off
-      data:
-        entity_id: light.bathroom_ceiling
+        entity_id:
+          - switch.screen
+          - light.living_area_lights
+          - light.kitchen_table
+          - light.hallway_ceiling
+          - light.bathroom_ceiling
     - service: light.turn_on
       data:
         entity_id: light.behind_tv
@@ -45,16 +37,11 @@ media_dark:
         entity_id: switch.harmony_hub_watch_tv
     - service: light.turn_off
       data:
-        entity_id: light.living_area_lights
-    - service: light.turn_off
-      data:
-        entity_id: light.kitchen_table
-    - service: light.turn_off
-      data:
-        entity_id: light.hallway_ceiling
-    - service: light.turn_off
-      data:
-        entity_id: light.bathroom_ceiling
+        entity_id:
+          - light.living_area_lights
+          - light.kitchen_table
+          - light.hallway_ceiling
+          - light.bathroom_ceiling
 
 daytime:
   alias: Daytime
@@ -78,23 +65,16 @@ cozy:
   sequence:
     - service: light.turn_on
       data:
-        entity_id: light.kitchen_fan
+        entity_id:
+          - light.kitchen_fan
+          - light.behind_tv
+          - light.bed
         brightness_pct: 60
         color_temp: 500
     - service: light.turn_on
       entity_id: light.kitchen_table
       data:
         brightness_pct: 30
-        color_temp: 500
-    - service: light.turn_on
-      entity_id: light.behind_tv
-      data:
-        brightness_pct: 60
-        color_temp: 500
-    - service: light.turn_on
-      entity_id: light.bed
-      data:
-        brightness_pct: 60
         color_temp: 500
     - service: light.turn_on
       data:
@@ -107,16 +87,11 @@ sleep:
   sequence:
     - service: light.turn_off
       data:
-        entity_id: light.kitchen_fan
-    - service: light.turn_off
-      data:
-        entity_id: light.kitchen_table
-    - service: light.turn_off
-      data:
-        entity_id: hallway_ceiling
-    - service: light.turn_off
-      data:
-        entity_id: light.desktop
+        entity_id:
+          - light.kitchen_fan
+          - light.kitchen_table
+          - light.hallway_ceiling
+          - light.desktop
     - service: light.turn_off
       data:
         entity_id: light.behind_tv
@@ -172,12 +147,11 @@ early_morning:
 dinner:
   alias: Dinner
   sequence:
-    - service: switch.turn_off
+    - service: homeassistant.turn_off
       data:
-        entity_id: switch.screen
-    - service: light.turn_off
-      data:
-        entity_id: hallway_ceiling
+        entity_id:
+          - switch.screen
+          - hallway_ceiling
     - service: light.turn_on
       data:
         entity_id: light.living_area_lights
@@ -188,15 +162,6 @@ dinner:
         entity_id: light.kitchen_table
         brightness_pct: 40
         color_temp: 450
-
-industrial:
-  alias: Industrial
-  sequence:
-    - service: home_assistant.turn_on
-      data:
-        entity_id: group.all_lights
-        brightness: 255
-        color_temp: 153
 
 z9124_toggle:
   alias: Z9124 Toggle
