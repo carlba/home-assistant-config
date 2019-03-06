@@ -150,8 +150,17 @@ class TradfriMotionSensor(ExtendedHass):
         self.binary_sensor = self.args['binary_sensor']
         self.light = self.args['light']
         self.duration = self.args.get('duration') or 120
+        self.hours = self.args['hours']
         self.turn_off_handle = None
         self.listen_state(self.handle_motion, self.binary_sensor)
+
+    def get_current_hour_brightness(self):
+        for hour_range in self.hours:
+            range_match = hour_range[0] <= datetime.now().hour <= hour_range[1]
+            self.log(f'{self.get_info()}: Matching: {hour_range[0]} '
+                     f'<= {datetime.now().hour} <= {hour_range[1]} = {range_match}')
+            if range_match:
+                return hour_range[2]
 
     def _turn_off(self, kwargs=None):
         motion_sensor_state = self.get_state(self.binary_sensor)
@@ -166,9 +175,13 @@ class TradfriMotionSensor(ExtendedHass):
         self.log(f'{self.get_info()}: entity: {entity}, attribute: {attribute}, old: {old}, '
                  f'new {new}, kwargs: {repr(kwargs)}', level='INFO')
 
-        if old == 'off' and new == 'on':
-            self.turn_on(self.light)
-            self.log(f'{self.get_info()}: Turned on { entity}')
+        current_hour_brightness = self.get_current_hour_brightness()
+
+        if (old == 'off' and new == 'on') and current_hour_brightness:
+            self.log(f'{self.get_info()}: Trying to set entity {self.light} '
+                     f'to {current_hour_brightness} brightness')
+            self.turn_on(self.light,  brightness_pct=current_hour_brightness)
+            self.log(f'{self.get_info()}: Turned on { entity }')
             if self.turn_off_handle:
                 self.turn_off_handle = self.cancel_timer(self.turn_off_handle)
             self.turn_off_handle = self.run_in(self._turn_off, self.duration, entity_id=entity)
