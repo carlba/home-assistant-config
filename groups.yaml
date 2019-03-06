@@ -62,11 +62,11 @@ harmony_hub:
 lights:
   name: Lights
   entities:
-    - switch.desktop
-    - switch.bathroom_ceiling
     - light.hallway_ceiling
-    - light.kitchen_table_left
-    - light.kitchen_table_right
+    - light.kitchen_table
+    - light.kitchen_fan
+    - light.desktop
+    - light.bed
 
 transmission:
   name: Transmission
