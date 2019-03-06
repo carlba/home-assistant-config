@@ -154,13 +154,13 @@ class TradfriMotionSensor(ExtendedHass):
         self.turn_off_handle = None
         self.listen_state(self.handle_motion, self.binary_sensor)
 
-    def get_current_hour_brightness(self):
+    def get_current_hour_light_settings(self):
         for hour_range in self.hours:
-            range_match = hour_range[0] <= datetime.now().hour <= hour_range[1]
-            self.log(f'{self.get_info()}: Matching: {hour_range[0]} '
-                     f'<= {datetime.now().hour} <= {hour_range[1]} = {range_match}')
+            range_match = hour_range['start'] <= datetime.now().hour <= hour_range['stop']
+            self.log(f'{self.get_info()}: Matching: {hour_range["start"]} '
+                     f'<= {datetime.now().hour} <= {hour_range["stop"]} = {range_match}')
             if range_match:
-                return hour_range[2]
+                return hour_range['brightness_pct'], hour_range.get('duration') or self.duration
 
     def _turn_off(self, kwargs=None):
         motion_sensor_state = self.get_state(self.binary_sensor)
@@ -175,7 +175,7 @@ class TradfriMotionSensor(ExtendedHass):
         self.log(f'{self.get_info()}: entity: {entity}, attribute: {attribute}, old: {old}, '
                  f'new {new}, kwargs: {repr(kwargs)}', level='INFO')
 
-        current_hour_brightness = self.get_current_hour_brightness()
+        current_hour_brightness, current_hour_duration = self.get_current_hour_light_settings()
 
         if (old == 'off' and new == 'on') and current_hour_brightness:
             self.log(f'{self.get_info()}: Trying to set entity {self.light} '
@@ -184,7 +184,7 @@ class TradfriMotionSensor(ExtendedHass):
             self.log(f'{self.get_info()}: Turned on { entity }')
             if self.turn_off_handle:
                 self.turn_off_handle = self.cancel_timer(self.turn_off_handle)
-            self.turn_off_handle = self.run_in(self._turn_off, self.duration, entity_id=entity)
+            self.turn_off_handle = self.run_in(self._turn_off, current_hour_duration, entity_id=entity)
 
         if old == 'on' and new == 'off':
             self.log(f'{self.get_info()}: The state of the self.turn_off_handle is '

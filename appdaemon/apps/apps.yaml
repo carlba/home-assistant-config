@@ -14,9 +14,18 @@ hallway_motion_sensor:
   light: light.hallway_ceiling
   duration: 60
   hours:
-    - [9, 21, 100]
-    - [7, 8, 50]
-    - [20, 21, 50]
+    - start: 9
+      stop: 21
+      brightness_pct: 100
+      duration: 60
+    - start: 7
+      stop: 8
+      brightness_pct: 50
+      duration: 60
+    - start: 20
+      stop: 21
+      brightness_pct: 50
+      duration: 60
 
 bathroom_motion_sensor:
   module: apps
@@ -25,7 +34,14 @@ bathroom_motion_sensor:
   light: light.bathroom_ceiling
   duration: 300
   hours:
-    - [0, 23, 100]
+    - start: 8
+      stop: 21
+      brightness_pct: 100
+      duration: 300
+    - start: 21
+      stop: 7
+      brightness_pct: 100
+      duration: 50
 
 desktop_remote_control:
   module: apps
