@@ -38,7 +38,11 @@ bathroom_motion_sensor:
       stop: 21
       brightness_pct: 100
       duration: 300
-    - start: 21
+    - start: 22
+      stop: 24
+      brightness_pct: 100
+      duration: 50
+    - start: 1
       stop: 7
       brightness_pct: 100
       duration: 50
