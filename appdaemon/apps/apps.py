@@ -167,7 +167,6 @@ class TradfriMotionSensor(ExtendedHass):
 
     def _turn_off(self, kwargs=None):
         motion_sensor_state = self.get_state(self.binary_sensor)
-        self.log(f'{self.get_info()}: The state of {kwargs["entity_id"]} is {motion_sensor_state}')
         if motion_sensor_state == 'off':
             self.turn_off(self.light)
             self.log(f'{self.get_info()}: Turned off {self.light}')
@@ -190,10 +189,9 @@ class TradfriMotionSensor(ExtendedHass):
             self.turn_off_handle = self.run_in(self._turn_off, current_hour_duration, entity_id=entity)
 
         if old == 'on' and new == 'off':
-            self.log(f'{self.get_info()}: The state of the self.turn_off_handle is '
-                     f'{self.turn_off_handle}')
             if not self.turn_off_handle:
                 self.turn_off(self.light)
+                self.log(f'{self.get_info()}: Turned off {self.light}')
 
 
 # noinspection PyAttributeOutsideInit
