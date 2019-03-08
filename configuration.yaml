@@ -209,6 +209,10 @@ sensor:
   - platform: time_date
     display_options:
       - 'date_time'
+  - platform: fitbit
+    clock_format: 24H
+    monitored_resources:
+      - "body/weight"
 
 binary_sensor:
   - platform: template
