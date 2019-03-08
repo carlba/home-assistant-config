@@ -14,13 +14,13 @@ hallway_motion_sensor:
   light: light.hallway_ceiling
   duration: 60
   hours:
-    - start: 9
-      stop: 21
-      brightness_pct: 100
-      duration: 60
     - start: 7
       stop: 8
       brightness_pct: 50
+      duration: 60
+    - start: 9
+      stop: 19
+      brightness_pct: 100
       duration: 60
     - start: 20
       stop: 21
