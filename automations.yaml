@@ -29,11 +29,11 @@
       from: not_home
       to: work
     - platform: state
-      entity_id: group.tracker_carl
+      entity_id: person.carl
       from: not_home
       to: home
     - platform: state
-      entity_id: group.tracker_johanna
+      entity_id: person.carl
       from: not_home
       to: home
   action:
@@ -55,10 +55,10 @@
       entity_id: device_tracker.iphone
       from: work
     - platform: state
-      entity_id: group.tracker_carl
+      entity_id: person.carl
       from: home
     - platform: state
-      entity_id: group.tracker_johanna
+      entity_id: group.johanna
       from: home
   action:
     - service_template: notify.pushover

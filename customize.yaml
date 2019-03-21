@@ -15,12 +15,6 @@ group.performance:
   order: 5
 group.transmission:
   order: 6
-group.tracker_carl:
-  order: 7
-  entity_picture: https://lh3.googleusercontent.com/-4wz7g0T_Zu4/AAAAAAAAAAI/AAAAAAAAMaw/F3AhSYoAhac/photo.jpg
-group.tracker_johanna:
-  entity_picture: https://lh3.googleusercontent.com/-EaVeAEs3KqI/AAAAAAAAAAI/AAAAAAAABYs/0G1lmyuM9rE/s60-p-rw-no-il/photo.jpg
-  order: 8
 
 switch.desktop:
   friendly_name: Desktop Switch
@@ -106,3 +100,8 @@ script.cozy:
 
 media_player.shield_android_tv_2:
   friendly_name: Plex(Shield)
+
+person.carl:
+  entity_picture: https://lh3.googleusercontent.com/-4wz7g0T_Zu4/AAAAAAAAAAI/AAAAAAAAMaw/F3AhSYoAhac/photo.jpg
+person.johanna:
+  entity_picture: https://lh3.googleusercontent.com/-EaVeAEs3KqI/AAAAAAAAAAI/AAAAAAAABYs/0G1lmyuM9rE/s60-p-rw-no-il/photo.jpg

@@ -45,8 +45,8 @@ views:
             line_color: "#3498db"
           - type: entity-filter
             entities:
-              - group.tracker_carl
-              - group.tracker_johanna
+              - person.carl
+              - person.johanna
             state_filter:
               - 'home'
             card:
@@ -233,15 +233,15 @@ views:
       - type: map
         aspect_ratio: 50%
         entities:
-        - device_tracker.google_maps_118136931442668540655
-        - device_tracker.iphone
+        - person.carl
+        - person.johanna
         - zone.home
       - type: history-graph
         title: History
         entities:
           - group.tracker_home
-          - group.tracker_carl
-          - group.tracker_johanna
+          - person.carl
+          - person.johanna
           - switch.screen
 
   - title: Other

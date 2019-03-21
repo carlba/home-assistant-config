@@ -16,8 +16,6 @@ other_view:
   name: Other
   view: true
   entities:
-    - group.tracker_carl
-    - group.tracker_johanna
     - group.transmission
     - group.performance
     - group.all_devices
@@ -28,22 +26,8 @@ other_view:
 tracker_home:
   name: Who's home?
   entities:
-    - group.tracker_carl
-    - group.tracker_johanna
-
-tracker_carl:
-  name: Carl
-  entities:
-    # TODO: Activate these when confirmed working
-    # - device_tracker.galaxys8
-    - device_tracker.google_maps_118136931442668540655
-
-tracker_johanna:
-  name: Johanna
-  entities:
-    # TODO: Activate these when confirmed working
-    # - device_tracker.johanna_iphone_router
-    - device_tracker.iphone
+    - person.carl
+    - person.johanna
 
 yr:
   name: yr.no
