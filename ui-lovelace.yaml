@@ -199,6 +199,12 @@ views:
             tap_action:
               action: toggle
 
+      - type: entities
+        title: Devices
+        show_header_toggle: false
+        entities:
+          - vacuum.xiaomi_vacuum_cleaner
+
       - type: entity-filter
         entities:
           - device_tracker.android4749e9acd4fc4284 # Natalie Milz

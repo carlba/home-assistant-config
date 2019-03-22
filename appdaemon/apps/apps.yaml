@@ -54,6 +54,14 @@ desktop_remote_control:
   entities: ['light.desktop', 'switch.screen']
   id: desktop_remote
 
+
+clean_remote_control:
+  module: apps
+  class: RemoteControl
+  event: deconz_event
+  entities: ['light.desktop', 'switch.screen']
+  id: clean_remote
+
 coffeemaker_remote_control:
   module: apps
   class: RemoteControl

@@ -439,6 +439,11 @@ person:
       - device_tracker.iphone
       - device_tracker.johanna_iphone_router
 
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.1.11
+    token: 50366952685a5945696c416f74783341
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

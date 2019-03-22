@@ -28,43 +28,11 @@ apk add py-pip && pip install tellcore-py && tellcore_events --raw
   "devices": [
     {
       "id": 1,
-      "name": "desktop",
-      "protocol": "arctech",
-      "model": "selflearning-switch",
-      "house": "28622",
-      "unit": "1"
-    },
-    {
-      "id": 2,
       "name": "bathroom_ceiling",
       "protocol": "arctech",
       "model": "selflearning-switch",
       "house": "14409345",
       "unit": "2"
-    },
-    {
-      "id": 3,
-      "name": "hallway_ceiling",
-      "protocol": "arctech",
-      "model": "selflearning-dimmer",
-      "house": "14409345",
-      "unit": "3"
-    },
-    {
-      "id": 4,
-      "name": "toaster",
-      "protocol": "arctech",
-      "model": "selflearning-switch",
-      "house": "27982",
-      "unit": "5"
-    },
-    {
-      "id": 5,
-      "name": "nexa_remote_g",
-      "protocol": "arctech",
-      "model": "selflearning-switch",
-      "house": "12039998",
-      "unit": "16"
     }
   ]
 }
@@ -73,6 +41,26 @@ apk add py-pip && pip install tellcore-py && tellcore_events --raw
 ## Multiple triggers
 
 [Multiple Triggers](https://www.home-assistant.io/docs/automation/trigger/#multiple-triggers)
+
+## Xiaomi Roborock Mi S50
+
+A token is required to access and control the device it can be retrieved, like so:
+
+1. Install an Android Emulator.
+
+2. Install [MiHome 5.0.9](https://www.apkmirror.com/apk/xiaomi-inc/mihome/mihome-5-0-9-release)
+   It has to be this exact release which both writes the token to the sqlite DB and supports the 
+   european servers. Earlier and later versions don't fulfill both these requirements.
+
+3. Install Google Drive
+
+4. Upload `/data/data/com.xiaomi.smarthome/databases/miio2.db` to Google Drive using any Android 
+   file manager (Root is required).
+   
+5.  Download the file from Google Drive.
+
+6. In the folder where you downloaded the sqlite db, execute:
+   ```sqlite3 miio2.db 'select token from devicerecord'```
 
 ## AppDaemon
 https://github.com/ReneTode/My-AppDaemon/blob/master/AppDaemon_for_Beginner/Part_1(listen_state_and_get_state).md
