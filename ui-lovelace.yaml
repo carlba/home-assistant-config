@@ -21,28 +21,6 @@ views:
     id: main
     theme: dark-mode
     cards:
-      - type: horizontal-stack
-        cards:
-          - type: sensor
-            entity: sensor.235_temperature
-            name: Temperature - Outside - Skanstull
-            height: 60
-            width: 30
-            line_color: "#3498db"
-          - type: sensor
-            entity: sensor.air_purifier_temperature
-            name: Temperature - Inside
-            height: 60
-            width: 30
-            line_color: "#3498db"
-
-          - type: sensor
-            entity: sensor.air_purifier_humidity
-            name: Humidity - Inside
-            height: 60
-            width: 30
-            line_color: "#3498db"
-
       - type: custom:swipe-card
         card_width: '250px'
         start_card: 1
@@ -60,6 +38,33 @@ views:
           pagination:
             type: 'bullets'
         cards:
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.235_temperature
+                name: Temp - Outside
+                height: 60
+                width: 30
+                line_color: "#3498db"
+              - type: sensor
+                entity: sensor.air_purifier_temperature
+                name: Temp - Inside
+                height: 60
+                width: 30
+                line_color: "#3498db"
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                entity: sensor.air_purifier_humidity
+                name: Humidity - Inside
+                height: 60
+                width: 30
+                line_color: "#3498db"
+              - type: sensor
+                entity: sensor.xiaomi_air_quality_monitor
+                name: Air Quality - Inside
+                height: 60
+                width: 30
           - type: entity-filter
             entities:
               - person.carl
@@ -192,6 +197,7 @@ views:
         show_header_toggle: false
         entities:
           - vacuum.xiaomi_vacuum_cleaner
+          - fan.xiaomi_miio_device
 
       - type: entity-filter
         entities:
@@ -219,6 +225,8 @@ views:
             type: custom:mini-media-player
             hide_controls: true
             group: true
+      - type: entity-button
+        entity: input_boolean.test
 
   - title: Tracker
     id: tracker

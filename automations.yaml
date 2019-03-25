@@ -1,24 +1,9 @@
 ---
 
-- alias: nexa_remote_g_on
-  trigger:
-    - platform: state
-      entity_id: switch.nexa_remote_g
-      to: 'on'
-  action:
-    - service: homeassistant.turn_on
-      entity_id: group.lights
-
-- alias: nexa_remote_g_off
-  trigger:
-    - platform: state
-      entity_id: switch.nexa_remote_g
-      to: 'off'
-  action:
-    - service: homeassistant.turn_off
-      entity_id: group.lights
+# https://www.home-assistant.io/components/automation/
 
 - alias: notifications_about_device_trackers_entering
+  initial_state: true
   trigger:
     - platform: state
       entity_id: device_tracker.google_maps_118136931442668540655
@@ -47,6 +32,7 @@
         message: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
 
 - alias: notifications_about_device_trackers_leaving
+  initial_state: true
   trigger:
     - platform: state
       entity_id: device_tracker.google_maps_118136931442668540655
@@ -71,20 +57,23 @@
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
 
 - alias: When one user is at home start the Harmony Hub activity Home and turn on the default scene
+  initial_state: true
   trigger:
     - platform: state
       entity_id: group.tracker_home
       from: not_home
       to: home
+    - platform: state
+      entity_id: input_boolean.test
+      to: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.harmony_hub_clean
     - service: script.turn_on
       entity_id: script.daytime
-    - service: script.turn_on
-      entity_id: script.daytime
 
 - alias: When all users are away start the Harmony Hub activity Away
+  initial_state: true
   trigger:
     - platform: state
       entity_id: group.tracker_home
@@ -109,6 +98,7 @@
         speed: Favorite
 
 - alias: Activate the sleep_in_an_hour script at 22:00:00
+  initial_state: true
   trigger:
     platform: time
     at: '22:00'

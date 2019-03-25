@@ -1,5 +1,9 @@
 # My Home Assistant Config
 
+## Common Gotchas
+
+If a automation refuses to start validate that it's state is on.
+
 ## login to ResinOS using SSH
 
 1. Remove the SD-Card from your RPI and connect it to a computer
