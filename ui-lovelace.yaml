@@ -21,6 +21,28 @@ views:
     id: main
     theme: dark-mode
     cards:
+      - type: horizontal-stack
+        cards:
+          - type: sensor
+            entity: sensor.235_temperature
+            name: Temperature - Outside - Skanstull
+            height: 60
+            width: 30
+            line_color: "#3498db"
+          - type: sensor
+            entity: sensor.air_purifier_temperature
+            name: Temperature - Inside
+            height: 60
+            width: 30
+            line_color: "#3498db"
+
+          - type: sensor
+            entity: sensor.air_purifier_humidity
+            name: Humidity - Inside
+            height: 60
+            width: 30
+            line_color: "#3498db"
+
       - type: custom:swipe-card
         card_width: '250px'
         start_card: 1
@@ -38,11 +60,6 @@ views:
           pagination:
             type: 'bullets'
         cards:
-          - type: sensor
-            entity: sensor.235_temperature
-            name: Temperature - Outside - Skanstull
-            height: 75
-            line_color: "#3498db"
           - type: entity-filter
             entities:
               - person.carl
@@ -110,35 +127,6 @@ views:
                 tap_action:
                   action: toggle
               - entity: switch.harmony_hub_play_switch
-                tap_action:
-                  action: toggle
-          - type: glance
-            title: Z9124
-            show_header_toggle: false
-            show_state: false
-            entities:
-              - entity: switch.z9124
-                name: Power
-                icon: mdi:power
-                tap_action:
-                  action: toggle
-              - entity: script.z9124_auto
-                name: Auto
-                icon: mdi:robot
-                tap_action:
-                  action: toggle
-              - entity: script.z9124_quiet
-                name: Quiet
-                icon: mdi:volume-mute
-                tap_action:
-                  action: toggle
-              - entity: script.z9124_turbo
-                name: Turbo
-                icon: mdi:fast-forward
-                tap_action:
-                  action: toggle
-              - entity: script.z9124_medium
-                name: Medium
                 tap_action:
                   action: toggle
 

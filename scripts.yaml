@@ -56,9 +56,15 @@ daytime:
         entity_id: light.kitchen_table
         brightness_pct: 40
         color_temp: 380
-    - service: switch.turn_on
+    # https://www.home-assistant.io/components/fan.xiaomi_miio
+    - service: fan.xiaomi_miio_set_favorite_level
       data:
-        entity_id: switch.z9124
+        entity_id: fan.xiaomi_miio_device
+        level: 5
+    - service: fan.set_speed
+      data:
+        entity_id: fan.xiaomi_miio_device
+        speed: Favorite
 
 cozy:
   alias: Cozy
@@ -162,45 +168,3 @@ dinner:
         entity_id: light.kitchen_table
         brightness_pct: 40
         color_temp: 450
-
-z9124_toggle:
-  alias: Z9124 Toggle
-  sequence:
-    - service: remote.send_command
-      data:
-        device: 56823524
-        command: PowerToggle
-
-z9124_auto:
-  alias: Z9124 Auto
-  sequence:
-    - service: remote.send_command
-      data:
-        device: 56823524
-        command: Auto
-
-z9124_quiet:
-  alias: Z9124 Quiet
-  sequence:
-    - service: remote.send_command
-      data:
-        device: 56823524
-        command: Quiet
-
-z9124_turbo:
-  alias: Z9124 Turbo
-  sequence:
-    - service: remote.send_command
-      data:
-        device: 56823524
-        command: Turbo
-
-z9124_medium:
-  alias: Z9124 Medium
-  sequence:
-    - service: remote.send_command
-      data:
-        device: 56823524
-        command:
-          - Quiet
-          - Speed

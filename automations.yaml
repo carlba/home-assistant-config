@@ -83,10 +83,6 @@
       entity_id: script.daytime
     - service: script.turn_on
       entity_id: script.daytime
-    - service: switch.turn_on
-      entity_id: switch.z9124
-    - service: script.turn_on
-      entity_id: script.z9124_medium
 
 - alias: When all users are away start the Harmony Hub activity Away
   trigger:
@@ -103,16 +99,14 @@
       entity_id: group.all_lights
     - service: switch.turn_off
       entity_id: switch.screen
-    - service: script.turn_on
-      entity_id: script.z9124_turbo
-
-- alias: When state of input_boolean.z9124 changes toggle activate script z9124_toggle
-  trigger:
-    - platform: state
-      entity_id: input_boolean.z9124
-  action:
-    - service: script.turn_on
-      entity_id: script.z9124_toggle
+    - service: fan.xiaomi_miio_set_favorite_level
+      data:
+        entity_id: fan.xiaomi_miio_device
+        level: 10
+    - service: fan.set_speed
+      data:
+        entity_id: fan.xiaomi_miio_device
+        speed: Favorite
 
 - alias: Activate the sleep_in_an_hour script at 22:00:00
   trigger:
