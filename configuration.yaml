@@ -151,6 +151,13 @@ light:
       - light.kitchen_fan_right
 
   - platform: group
+    name: Living Room Ceiling
+    entities:
+      - light.living_room_ceiling_1
+      - light.living_room_ceiling_2
+      - light.living_room_ceiling_3
+
+  - platform: group
     name: Living Area Lights
     entities:
       - light.bed

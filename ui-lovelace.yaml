@@ -169,6 +169,9 @@ views:
             entity: light.behind_tv
             name: TV
           - type: custom:slider-entity-row
+            entity: light.living_room_ceiling
+            name: Living Room Ceiling
+          - type: custom:slider-entity-row
             entity: light.living_area_lights
             name: Living Area
 
