@@ -66,7 +66,7 @@ daytime:
         entity_id: fan.xiaomi_miio_device
         speed: Favorite
     - service: fan.xiaomi_miio_set_led_on
-        entity_id: fan.xiaomi_miio_device
+      entity_id: fan.xiaomi_miio_device
 
 
 cozy:
@@ -124,7 +124,7 @@ sleep:
         entity_id: fan.xiaomi_miio_device
         speed: Silent
     - service: fan.xiaomi_miio_set_led_off
-        entity_id: fan.xiaomi_miio_device
+      entity_id: fan.xiaomi_miio_device
 
 sleep_in_an_hour:
   alias: Sleep in an Hour
@@ -161,7 +161,7 @@ sleep_in_an_hour:
         entity_id: fan.xiaomi_miio_device
         speed: Silent
     - service: fan.xiaomi_miio_set_led_off
-        entity_id: fan.xiaomi_miio_device
+      entity_id: fan.xiaomi_miio_device
 
 early_morning:
   alias: Early Morning
@@ -175,7 +175,7 @@ early_morning:
         brightness_pct: 10
         color_temp: 450
     - service: fan.xiaomi_miio_set_led_off
-        entity_id: fan.xiaomi_miio_device
+      entity_id: fan.xiaomi_miio_device
 
 dinner:
   alias: Dinner
@@ -196,4 +196,4 @@ dinner:
         brightness_pct: 40
         color_temp: 450
     - service: fan.xiaomi_miio_set_led_off
-        entity_id: fan.xiaomi_miio_device
+      entity_id: fan.xiaomi_miio_device
