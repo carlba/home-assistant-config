@@ -452,12 +452,12 @@ person:
     id: ddbc7a2301d74d609308958f9f07d0b7
     device_trackers:
       - device_tracker.google_maps_118136931442668540655
-      - device_tracker.carl_s8_router
+#      - device_tracker.carl_s8_router
   - name: Johanna
     id: 82e52e7a9e574d6ba40e3f1f2c639490
     device_trackers:
       - device_tracker.iphone
-      - device_tracker.johanna_iphone_router
+#      - device_tracker.johanna_iphone_router
 
 vacuum:
   - platform: xiaomi_miio
