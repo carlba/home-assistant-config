@@ -150,9 +150,8 @@ views:
           - type: custom:slider-entity-row
             entity: light.desktop
             name: Desktop
-          - type: custom:slider-entity-row
+          - type: entity-button
             entity: light.bathroom_ceiling
-            name: Bathroom
           - type: custom:slider-entity-row
             entity: light.hallway_ceiling
             name: Hallway
@@ -228,8 +227,8 @@ views:
             type: custom:mini-media-player
             hide_controls: true
             group: true
-      - type: entity-button
-        entity: input_boolean.test
+#      - type: entity-button
+#        entity: input_boolean.test
 
   - title: Tracker
     id: tracker
