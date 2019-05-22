@@ -106,6 +106,9 @@ views:
               - entity: script.sleep
                 tap_action:
                   action: toggle
+              - entity: script.work
+                tap_action:
+                  action: toggle
               - entity: script.sleep_in_an_hour
                 tap_action:
                   action: toggle

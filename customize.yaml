@@ -84,6 +84,15 @@ script.computer:
 script.sleep:
   icon: mdi:sleep
 
+script.sleep_in_an_hour:
+  icon: mdi:sleep
+
+script.work:
+  icon: mdi:briefcase
+
+script.daytime:
+  icon: mdi:weather-sunny
+
 script.dinner:
   icon: mdi:food
 

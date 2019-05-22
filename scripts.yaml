@@ -126,6 +126,14 @@ sleep:
     - service: fan.xiaomi_miio_set_led_off
       entity_id: fan.xiaomi_miio_device
 
+work:
+  alias: Work
+  sequence:
+    - service: fan.xiaomi_miio_set_favorite_level
+      data:
+        entity_id: fan.xiaomi_miio_device
+        level: 9
+
 sleep_in_an_hour:
   alias: Sleep in an Hour
   sequence:
