@@ -103,13 +103,16 @@ views:
               - entity: script.cozy
                 tap_action:
                   action: toggle
-              - entity: script.sleep
+              - entity: script.sleep_in_ten_min
                 tap_action:
                   action: toggle
-              - entity: script.work
+              - entity: script.sleep_now
                 tap_action:
                   action: toggle
               - entity: script.sleep_in_an_hour
+                tap_action:
+                  action: toggle
+              - entity: script.work
                 tap_action:
                   action: toggle
               - entity: script.dinner

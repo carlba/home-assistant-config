@@ -81,8 +81,11 @@ script.media_backlight:
 script.computer:
   icon: mdi:desktop-classic
 
-script.sleep:
+script.sleep_now:
   icon: mdi:sleep
+
+script.sleep_in_ten_min:
+    icon: mdi:sleep
 
 script.sleep_in_an_hour:
   icon: mdi:sleep

@@ -100,9 +100,28 @@ cozy:
         entity_id: fan.xiaomi_miio_device
         level: 1
 
+sleep_now:
+  alias: Sleep now
+  sequence:
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.kitchen_fan
+          - light.kitchen_table
+          - light.hallway_ceiling
+          - light.desktop
+          - light.turn_off
+          - light.behind_tv
+          - light.bed
+    - service: fan.set_speed
+      data:
+        entity_id: fan.xiaomi_miio_device
+        speed: Silent
+    - service: fan.xiaomi_miio_set_led_off
+      entity_id: fan.xiaomi_miio_device
 
-sleep:
-  alias: Sleep
+sleep_in_ten_min:
+  alias: Sleep 10
   sequence:
     - service: light.turn_off
       data:
@@ -126,16 +145,8 @@ sleep:
     - service: fan.xiaomi_miio_set_led_off
       entity_id: fan.xiaomi_miio_device
 
-work:
-  alias: Work
-  sequence:
-    - service: fan.xiaomi_miio_set_favorite_level
-      data:
-        entity_id: fan.xiaomi_miio_device
-        level: 9
-
 sleep_in_an_hour:
-  alias: Sleep in an Hour
+  alias: Sleep 2H
   sequence:
     - service: light.turn_off
       entity_id:
@@ -170,6 +181,14 @@ sleep_in_an_hour:
         speed: Silent
     - service: fan.xiaomi_miio_set_led_off
       entity_id: fan.xiaomi_miio_device
+
+work:
+  alias: Work
+  sequence:
+    - service: fan.xiaomi_miio_set_favorite_level
+      data:
+        entity_id: fan.xiaomi_miio_device
+        level: 9
 
 early_morning:
   alias: Early Morning
