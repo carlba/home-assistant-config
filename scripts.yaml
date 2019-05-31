@@ -205,3 +205,11 @@ dinner:
         color_temp: 450
     - service: fan.xiaomi_miio_set_led_off
       entity_id: fan.xiaomi_miio_device
+
+clean_kitchen:
+  alias: Clean Kitchen
+  sequence:
+   - service: vacuum.xiaomi_clean_zone
+     data:
+       repeats: 1
+       zone: [[26974,26897,29124,29047],[27840,25734,29090,26884]]

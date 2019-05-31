@@ -118,6 +118,10 @@ views:
               - entity: script.early_morning
                 tap_action:
                   action: toggle
+              - entity: script.clean_kitchen
+                tap_action:
+                  action: toggle
+
           # https://www.home-assistant.io/lovelace/glance/
           - type: glance
             title: Harmony Hub

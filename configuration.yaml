@@ -300,6 +300,8 @@ cloud:
         room: Kitchen
       switch.toaster:
         room: Kitchen
+      script.clean_kitchen:
+        room: Kitchen
 
 # Tellstick
 tellstick:
