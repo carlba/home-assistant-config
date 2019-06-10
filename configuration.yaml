@@ -208,6 +208,7 @@ sensor:
       - type: processor_use
       - type: load_1m
   - platform: tellstick
+  # https://www.home-assistant.io/components/template
   - platform: template
     sensors:
       harmony_hub:
@@ -223,6 +224,11 @@ sensor:
         friendly_name: Air Purifier Temperature
         unit_of_measurement: "°C"
         device_class: temperature
+      s10_batterylevel:
+        value_template: "{{ states.device_tracker.google_maps_118136931442668540655.attributes.battery_level }}"
+        friendly_name: Samsung S8 Battery Level
+        unit_of_measurement: "%"
+        device_class: battery
   - platform: time_date
     display_options:
       - 'date_time'
@@ -470,7 +476,7 @@ person:
 
 vacuum:
   - platform: xiaomi_miio
-    host: 192.168.1.11
+    host: 192.168.1.12
     token: 50366952685a5945696c416f74783341
 
 fan:

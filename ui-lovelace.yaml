@@ -65,6 +65,11 @@ views:
                 name: Air Quality - Inside
                 height: 60
                 width: 30
+              - type: sensor
+                entity: sensor.s10_batterylevel
+                name: Samsung S10 Battery Level
+                height: 60
+                width: 30
           - type: entity-filter
             entities:
               - person.carl
