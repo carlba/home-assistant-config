@@ -271,7 +271,7 @@ climate:
 
 # Text to speech
 tts:
-  - platform: google
+  - platform: google_translate
 
 # Cloud
 # https://www.home-assistant.io/cloud/google_assistant/
