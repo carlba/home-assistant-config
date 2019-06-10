@@ -19,11 +19,11 @@ hallway_motion_sensor:
       brightness_pct: 50
       duration: 60
     - start: 9
-      stop: 19
+      stop: 20
       brightness_pct: 100
       duration: 60
     - start: 20
-      stop: 21
+      stop: 23
       brightness_pct: 50
       duration: 60
 
@@ -39,10 +39,10 @@ bathroom_motion_sensor:
       brightness_pct: 100
       duration: 300
     - start: 22
-      stop: 24
+      stop: 23
       brightness_pct: 100
       duration: 50
-    - start: 1
+    - start: 0
       stop: 7
       brightness_pct: 100
       duration: 50
