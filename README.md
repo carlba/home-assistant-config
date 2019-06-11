@@ -73,8 +73,12 @@ https://github.com/ReneTode/My-AppDaemon/blob/master/AppDaemon_for_Beginner/Part
 https://github.com/home-assistant/hassio-addons
 
 ## Remove derelict entities
-Sometimes old discovered devices hangs around. They can be removed from HomeAssistant by removing
-them from the file `/config/.storage/core.device_registry.yml`
+Sometimes old discovered devices hangs around. They can be removed from HomeAssistant by 
+
+  1. Removing them from the file `/config/.storage/core.device_registry.yml`. 
+  2. Changing the name of the duplicated entry in core.entity_registry i.e 
+     light.desktop_2 -> light.desktop.
+  3. Restarting HomeAssistant.
 
 
 

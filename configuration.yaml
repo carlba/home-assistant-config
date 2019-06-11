@@ -167,17 +167,6 @@ light:
 
   - platform: template
     lights:
-      desktop:
-        friendly_name: Desktop
-        entity_id:
-          - switch.desktop
-        value_template: '{{ is_state("switch.desktop", "on") }}'
-        turn_on:
-          service: switch.turn_on
-          entity_id: switch.desktop
-        turn_off:
-          service: switch.turn_off
-          entity_id: switch.desktop
       bathroom_ceiling:
         friendly_name: Bathroom Ceiling
         entity_id:

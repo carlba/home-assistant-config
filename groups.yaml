@@ -43,15 +43,6 @@ harmony_hub:
     - switch.harmony_hub_clean
     - switch.harmony_hub_away
 
-lights:
-  name: Lights
-  entities:
-    - light.hallway_ceiling
-    - light.kitchen_table
-    - light.kitchen_fan
-    - light.desktop
-    - light.bed
-
 transmission:
   name: Transmission
   entities:
