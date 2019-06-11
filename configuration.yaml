@@ -424,9 +424,14 @@ remote:
     activity: Home
 
 camera:
-  - platform: ffmpeg
+  - platform: generic
     name: DaFang
-    input: -rtsp_transport tcp -i rtsp://192.168.1.208:8554/unicast
+    username: root
+    password: !secret dafang_password
+    authentication: basic
+    still_image_url: https://dafang/cgi-bin/currentpic.cgi
+    verify_ssl: false
+    scan_interval: 5
 
 mqtt:
   broker: 192.168.1.4
@@ -464,9 +469,6 @@ fan:
   - platform: xiaomi_miio
     host: 192.168.1.27
     token: b46710d6766df2f282339423f8d2c3e6
-
-
-
 
 group: !include groups.yaml
 automation: !include automations.yaml
