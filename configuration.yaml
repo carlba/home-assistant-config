@@ -17,6 +17,9 @@ homeassistant:
   customize_domain:
     automation:
       hidden: true
+  auth_providers:
+   - type: legacy_api_password
+     api_password: !secret http_password
 
 # Show links to resources in log and frontend
 # introduction:
@@ -33,7 +36,6 @@ lovelace:
 config:
 
 http:
-  api_password: !secret http_password
   base_url: https://hassio.dahler.se
   use_x_forwarded_for: true
   trusted_proxies:
