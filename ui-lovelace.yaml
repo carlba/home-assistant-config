@@ -151,14 +151,12 @@ views:
       - type: picture-glance
         title: Living room
         entities:
-          - binary_sensor.hallway_motion_sensor
-          - binary_sensor.bathroom_motion_sensor
+          - binary_sensor.dafang_motion_sensor
         camera_image: camera.dafang
 
       - type: entities
         title: Lights
         show_header_toggle: false
-        show_state: false
         entities:
           - type: custom:slider-entity-row
             entity: light.desktop
@@ -189,7 +187,6 @@ views:
 
       - type: glance
         title: Switches
-        show_header_toggle: false
         show_state: false
         entities:
           - entity: switch.toaster
@@ -272,17 +269,10 @@ views:
           - sensor.load_1m
           - sensor.memory_free
           - sensor.memory_use
-          - sensor.disk_use_percent_
+          - sensor.disk_use_percent
           - sensor.disk_use_percent_home
           - sensor.processor_use
           - sensor.processor_use
-      - type: entities
-        title: Transmission
-        entities:
-          - sensor.transmission_active_torrents
-          - sensor.transmission_down_speed
-          - sensor.transmission_status
-          - sensor.transmission_up_speed
 
       - type: entities
         title: Devices+
@@ -295,23 +285,13 @@ views:
           - device_tracker.camac_2
           - device_tracker.hassio
           - device_tracker.ipad # Johanna's iPad
-          - device_tracker.shield
-      - type: weather-forecast
-        entity: weather.openweathermap
-      - type: custom:tracker-card
-        title:
-        trackers:
-          - sensor.custom_card_tracker
-          - sensor.custom_component_tracker
       - type: entities
         title: Dafang
         show_header_toggle: false
-        show_state: false
         entities:
           - camera.dafang
           - switch.dafang_h264_rtsp_server
           - switch.dafang_mjpeg_rtsp_server
-          - sensor.dafang
           - device_tracker.dafang
           - sensor.dafang_light_sensor
           - switch.dafang_ir_filter
