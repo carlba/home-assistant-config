@@ -154,6 +154,16 @@ views:
           - binary_sensor.dafang_motion_sensor
         camera_image: camera.dafang
 
+      - type: glance
+        show_header_toggle: false
+        show_state: false
+        title: Motion Sensors
+        entities:
+          - entity: binary_sensor.hallway_motion_sensor
+            name: Hallway
+          - entity: binary_sensor.bathroom_motion_sensor
+            name: Bathroom
+
       - type: entities
         title: Lights
         show_header_toggle: false
