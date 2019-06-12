@@ -91,7 +91,7 @@
     - service: fan.xiaomi_miio_set_favorite_level
       data:
         entity_id: fan.xiaomi_miio_device
-        level: 10
+        level: 14
     - service: fan.set_speed
       data:
         entity_id: fan.xiaomi_miio_device
@@ -107,7 +107,7 @@
       entity_id: script.sleep_in_an_hour
 
 
-- alias: Xiaomi Air Purifier - Favorite Level
+- alias: Xiaomi Air Purifier - Change Air Purifier level based on input number
   trigger:
     platform: state
     entity_id: input_number.xiaomi_fan_favorite_level
@@ -116,3 +116,13 @@
       data_template:
         entity_id: fan.xiaomi_miio_device
         level: "{{ trigger.to_state.state | int }}"
+
+- alias: Xiaomi Air Purifier - Change input number based on Air Purifier level
+  trigger:
+    platform: state
+    entity_id: sensor.air_purifier_favorite_level
+  action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.xiaomi_fan_favorite_level
+        value: "{{ trigger.to_state.state | int }}"

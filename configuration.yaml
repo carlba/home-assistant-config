@@ -216,6 +216,10 @@ sensor:
         friendly_name: Air Purifier Temperature
         unit_of_measurement: "°C"
         device_class: temperature
+      air_purifier_favorite_level:
+        value_template: "{{ states.fan.xiaomi_miio_device.attributes.favorite_level }}"
+        friendly_name: Air Purifier Favorite Level
+
       s10_batterylevel:
         value_template: "{{ states.device_tracker.google_maps_118136931442668540655.attributes.battery_level }}"
         friendly_name: Samsung S8 Battery Level (test)
@@ -429,9 +433,9 @@ camera:
     username: root
     password: !secret dafang_password
     authentication: basic
-    still_image_url: https://dafang.local/cgi-bin/currentpic.cgi
+    still_image_url: https://192.168.1.208/cgi-bin/currentpic.cgi
     verify_ssl: false
-    scan_interval: 5
+    scan_interval: 1
 
 mqtt:
   broker: 192.168.1.4
