@@ -80,5 +80,8 @@ Sometimes old discovered devices hangs around. They can be removed from HomeAssi
      light.desktop_2 -> light.desktop.
   3. Restarting HomeAssistant.
 
+## TODO
 
+  1. Use Johannas google position until the iOS one can be retrieved again. Monitor this issue
+     https://github.com/home-assistant/home-assistant/issues/24476
 
