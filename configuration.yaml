@@ -106,8 +106,8 @@ logbook:
 
 # https://www.home-assistant.io/addons/mariadb
 recorder:
-  db_url: mysql://hassio:hassio@192.168.1.2/hassio
-  purge_keep_days: 2
+  db_url: postgres://hassio:hassio@192.168.1.2/hassio
+  purge_keep_days: 10
   exclude:
     domains:
       - automation
@@ -115,6 +115,8 @@ recorder:
       - updater
       - zone
       - climate
+      - scene
+      - script
     entities:
       - sensor.date_time
       - sensor.dafang
@@ -129,10 +131,16 @@ recorder:
       - switch.dafang_yellow_led
       - switch.dafang_motion_detection
       - switch.dafang_motion_tracking
+      - switch.dafang_motion_send_mail
+      - switch.dafang_motion_send_telegram
+      - switch.dafang_motion_tracking
       - camera.dafang_motion_snapshot
       - sensor.custom_card_tracker
       - sensor.custom_component_tracker
       - sensor.custom_python_script_tracker
+      - light.living_room_ceiling_1
+      - light.living_room_ceiling_2
+      - light.living_room_ceiling_3
 
 # Enables a map showing the location of tracked devices
 map:
