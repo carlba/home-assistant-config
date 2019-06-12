@@ -50,12 +50,12 @@ daytime:
       data:
         entity_id: light.living_area_lights
         brightness: 255
-        color_temp: 380
+        color_temp: 340
     - service: light.turn_on
       data:
         entity_id: light.kitchen_table
         brightness_pct: 40
-        color_temp: 380
+        color_temp: 340
     # https://www.home-assistant.io/components/fan.xiaomi_miio
     - service: fan.xiaomi_miio_set_favorite_level
       data:
