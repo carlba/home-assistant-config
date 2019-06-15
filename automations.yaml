@@ -126,3 +126,35 @@
       data_template:
         entity_id: input_number.xiaomi_fan_favorite_level
         value: "{{ trigger.to_state.state | int }}"
+
+- alias: Turn off LG TV when Shield is turned off
+  trigger:
+    platform: state
+    entity_id: media_player.shield_3
+    to: 'off'
+  action:
+    - service: script.turn_on
+      entity_id: script.lg_tv_off
+
+- alias: Execute actions on Shield turn on
+  trigger:
+    - platform: state
+      entity_id: media_player.shield_3
+      from: 'off'
+    - platform: state
+      entity_id: media_player.shield_3
+      from: 'idle'
+  action:
+    - service: script.turn_on
+      entity_id: script.lg_amp_display_off
+    - service: script.turn_on
+      entity_id: script.lg_amp_volume_50
+
+- alias: Turn on Shield when LG TV is turned on
+  trigger:
+    platform: state
+    entity_id: media_player.lg_tv
+    from: 'off'
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.shield_3

@@ -248,8 +248,9 @@ views:
             type: custom:mini-media-player
             hide_controls: true
             group: true
-#      - type: entity-button
-#        entity: input_boolean.test
+          - entity: media_player.shield_3
+            type: custom:mini-media-player
+
 
   - title: Tracker
     id: tracker

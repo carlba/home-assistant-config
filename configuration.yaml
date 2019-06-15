@@ -288,6 +288,7 @@ cloud:
         - scene
         - script
         - climate
+        - sensor
       exclude_entities:
         - switch.nexa_remote_g
         - light.kitchen_table_left
@@ -296,6 +297,8 @@ cloud:
         - light.kitchen_fan_right
         - switch.desktop
         - switch.bathroom_ceiling
+        - script.lg_tv_on
+        - script.lg_tv_off
 
     entity_config:
       light.desktop:
@@ -387,6 +390,17 @@ media_player:
   - platform: plex
     entity_namespace: plex
     remove_unavailable_clients: false
+  - platform: androidtv
+    name: Shield
+    host: 192.168.1.7
+    adb_server_ip: 127.0.0.1
+    apps:
+      com.netflix.ninja: "Netflix"
+
+  - platform: webostv
+    name: LG TV
+    host: 192.168.1.10
+    timeout: 5
 
 influxdb:
   host: 192.168.1.2

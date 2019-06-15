@@ -10,9 +10,8 @@ computer:
 media_backlight:
   alias: Media Backlight
   sequence:
-    - service: switch.turn_on
-      data:
-        entity_id: switch.harmony_hub_watch_tv
+    - service: media_player.turn_on
+      entity_id: media_player.shield_3
     - service: homeassistant.turn_off
       data:
         entity_id:
@@ -29,15 +28,12 @@ media_backlight:
 media_dark:
   alias: Media Dark
   sequence:
-    - service: switch.turn_off
-      data:
-        entity_id: switch.screen
-    - service: switch.turn_on
-      data:
-        entity_id: switch.harmony_hub_watch_tv
-    - service: light.turn_off
+    - service: media_player.turn_on
+      entity_id: media_player.shield_3
+    - service: homeassistant.turn_off
       data:
         entity_id:
+          - switch.screen
           - light.living_area_lights
           - light.kitchen_table
           - light.hallway_ceiling
@@ -67,7 +63,6 @@ daytime:
         speed: Favorite
     - service: fan.xiaomi_miio_set_led_on
       entity_id: fan.xiaomi_miio_device
-
 
 cozy:
   alias: Cozy
@@ -232,3 +227,44 @@ clean_kitchen:
      data:
        repeats: 1
        zone: [[26974,26897,29124,29047],[27840,25734,29090,26884]]
+
+lg_tv_on:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 56823523
+        command: PowerOn
+
+lg_tv_off:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 56823523
+        command: PowerOff
+
+lg_amp_volume_50:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 56825445
+        command: VolumeDown
+        num_repeats: 100
+        delay_secs: 0.01
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 56825445
+        command: VolumeUp
+        num_repeats: 50
+        delay_secs: 0.01
+
+lg_amp_display_off:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 56825445
+        command: Sleep
