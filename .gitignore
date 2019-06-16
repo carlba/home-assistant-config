@@ -6,3 +6,4 @@ cli.py
 custom_components/custom_updater.py
 venv/
 .vscode
+.DS_Store
