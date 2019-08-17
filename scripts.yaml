@@ -24,6 +24,12 @@ media_backlight:
       data:
         entity_id: light.behind_tv
         brightness_pct: 10
+    - service: fan.xiaomi_miio_set_favorite_level
+      data:
+        entity_id: fan.xiaomi_miio_device
+        level: 1
+    - service: fan.xiaomi_miio_set_led_off
+      entity_id: fan.xiaomi_miio_device
 
 media_dark:
   alias: Media Dark
@@ -38,6 +44,12 @@ media_dark:
           - light.kitchen_table
           - light.hallway_ceiling
           - light.bathroom_ceiling
+    - service: fan.xiaomi_miio_set_favorite_level
+      data:
+        entity_id: fan.xiaomi_miio_device
+        level: 1
+    - service: fan.xiaomi_miio_set_led_off
+      entity_id: fan.xiaomi_miio_device
 
 daytime:
   alias: Daytime
@@ -94,6 +106,8 @@ cozy:
       data:
         entity_id: fan.xiaomi_miio_device
         level: 1
+    - service: fan.xiaomi_miio_set_led_off
+      entity_id: fan.xiaomi_miio_device
 
 sleep_now:
   alias: Sleep now
@@ -252,10 +266,34 @@ lg_amp_display_off:
         device: 56825445
         command: Sleep
 
-lg_amp_display_off:
+anslut_fan_turn_on:
   sequence:
+    - service: switch.turn_on
+      entity_id: switch.anslut_fan
     - service: remote.send_command
       entity_id: remote.harmony_hub
       data:
-        device: 56825445
-        command: Sleep
+        device: 63692557
+        command: PowerToggle
+
+anslut_fan_turn_off:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.anslut_fan
+
+anslut_fan_swing_on:
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.anslut_fan
+    - service: switch.turn_on
+      entity_id: switch.anslut_fan      
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 63692557
+        command: PowerToggle
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 63692557
+        command: Swing

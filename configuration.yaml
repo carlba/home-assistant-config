@@ -491,6 +491,16 @@ fan:
   - platform: xiaomi_miio
     host: 192.168.1.27
     token: b46710d6766df2f282339423f8d2c3e6
+  - platform: template
+    fans:
+      anslut_fan:
+        friendly_name: "Anslut Fan"
+        value_template: "{{ states('switch.anslut_fan') }}"
+        oscillating_template: "{{ states('input_select.anslut_fan_oscillating') }}"
+        turn_on:
+          service: script.anslut_fan_turn_on
+        turn_off:
+          service: script.anslut_fan_turn_off
 
 group: !include groups.yaml
 automation: !include automations.yaml

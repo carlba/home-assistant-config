@@ -221,6 +221,7 @@ views:
           - vacuum.xiaomi_vacuum_cleaner
           - fan.xiaomi_miio_device
           - input_number.xiaomi_fan_favorite_level
+          - fan.anslut_fan
 
       - type: entity-filter
         entities:
