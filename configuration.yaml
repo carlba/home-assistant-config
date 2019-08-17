@@ -360,11 +360,6 @@ device_tracker:
   - platform: google_maps
     username: carl.backstrom.dahl.location@gmail.com
     password: !secret location_gmail_password
-  # https://www.home-assistant.io/components/device_tracker.icloud/
-  - platform: icloud
-    username: johanna.sjoestrand@gmail.com
-    password: !secret johanna_icloud_password
-    max_interval: 1
   # https://www.home-assistant.io/components/device_tracker.asuswrt/
   - platform: asuswrt
 
@@ -484,7 +479,7 @@ person:
   - name: Johanna
     id: 82e52e7a9e574d6ba40e3f1f2c639490
     device_trackers:
-      - device_tracker.iphone
+      - device_tracker.google_maps_100485218348856839439
 #      - device_tracker.johanna_iphone_router
 
 vacuum:
