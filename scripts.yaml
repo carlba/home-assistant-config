@@ -244,22 +244,13 @@ lg_tv_off:
         device: 56823523
         command: PowerOff
 
-lg_amp_volume_50:
+lg_amp_display_off:
   sequence:
     - service: remote.send_command
       entity_id: remote.harmony_hub
       data:
         device: 56825445
-        command: VolumeDown
-        num_repeats: 100
-        delay_secs: 0.01
-    - service: remote.send_command
-      entity_id: remote.harmony_hub
-      data:
-        device: 56825445
-        command: VolumeUp
-        num_repeats: 50
-        delay_secs: 0.01
+        command: Sleep
 
 lg_amp_display_off:
   sequence:
