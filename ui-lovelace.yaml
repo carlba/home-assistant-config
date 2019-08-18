@@ -251,6 +251,13 @@ views:
             group: true
           - entity: media_player.shield_3
             type: custom:mini-media-player
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: input_text.broadcast
+            name: Announce It...
+          - entity: script.broadcast
+        title: Make an Announcement             
 
 
   - title: Tracker

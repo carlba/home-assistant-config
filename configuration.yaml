@@ -439,6 +439,10 @@ notify:
     platform: pushover
     api_key: !secret pushover_api_key
     user_key: !secret pushover_user_key
+  - name: 'gassistant'
+    platform: rest
+    method: POST_JSON
+    resource: http://localhost:5001/broadcast_message
 
 remote:
   - platform: harmony
@@ -501,6 +505,11 @@ fan:
           service: script.anslut_fan_turn_on
         turn_off:
           service: script.anslut_fan_turn_off
+
+input_text:
+  broadcast:
+    name: Broadcast
+    initial: Some text
 
 group: !include groups.yaml
 automation: !include automations.yaml

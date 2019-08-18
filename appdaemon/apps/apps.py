@@ -257,7 +257,5 @@ class TalkingTimer(ExtendedHass):
 
         if self.information_talk and (self.talk_hours[0] <= datetime.now().hour <= self.talk_hours[1]):
             self.log(f'{self.get_info()}: Trying to say {self.information}')
-            self.call_service('tts/google_say',
-                              entity_id='media_player.srsx77',
-                              message=self.information)
+            self.call_service('notify/gassistant', message=self.information)
 

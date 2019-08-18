@@ -172,7 +172,7 @@ sleep_in_an_hour:
         transition: 3600
     - delay:
         seconds: 900
-    - service: tts.google_say
+    - service: notify.gassistant
       entity_id: media_player.home
       data:
         message: Time to sleep in 45 minutes
@@ -297,3 +297,9 @@ anslut_fan_swing_on:
       data:
         device: 63692557
         command: Swing
+
+broadcast:
+  sequence:
+    - service: notify.gassistant
+      data_template:
+        message: '{{ states("input_text.broadcast") }}'

@@ -26,8 +26,7 @@
       data_template:
         title: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
         message: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
-    - service_template: 'tts.google_say'
-      entity_id: media_player.home
+    - service_template: notify.gassistant
       data_template:
         message: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
 
@@ -51,7 +50,7 @@
       data_template:
         title: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
-    - service_template: 'tts.google_say'
+    - service_template: notify.gassistant
       entity_id: media_player.home
       data_template:
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
@@ -156,11 +155,11 @@
       data:
         activity: "Shield"
 
-- alias: Turn on Shield when LG TV is turned on
-  trigger:
-    platform: state
-    entity_id: media_player.lg_tv
-    from: 'off'
-  action:
-    - service: media_player.turn_on
-      entity_id: media_player.shield_3
+#- alias: Turn on Shield when LG TV is turned on
+#  trigger:
+#    platform: state
+#    entity_id: media_player.lg_tv
+#    from: 'off'
+#  action:
+#    - service: media_player.turn_on
+#      entity_id: media_player.shield_3
