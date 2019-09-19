@@ -4,6 +4,14 @@
 
 If a automation refuses to start validate that it's state is on.
 
+### Remove derelict entities
+Sometimes old discovered devices hangs around. They can be removed from HomeAssistant by 
+
+  1. Removing them from the file `/config/.storage/core.device_registry.yml`. 
+  2. Changing the name of the duplicated entry in core.entity_registry i.e 
+     light.desktop_2 -> light.desktop.
+  3. Restarting HomeAssistant.
+
 ## login to ResinOS using SSH
 
 1. Remove the SD-Card from your RPI and connect it to a computer
@@ -65,19 +73,14 @@ A token is required to access and control the device it can be retrieved, like s
 
 6. In the folder where you downloaded the sqlite db, execute:
    ```sqlite3 miio2.db 'select token from devicerecord'```
+   
+## Lovelace UI
+Icons can be found at http://materialdesignicons.com
 
 ## AppDaemon
 https://github.com/ReneTode/My-AppDaemon/blob/master/AppDaemon_for_Beginner/Part_1(listen_state_and_get_state).md
 
 ## Hassio Addons
 https://github.com/home-assistant/hassio-addons
-
-## Remove derelict entities
-Sometimes old discovered devices hangs around. They can be removed from HomeAssistant by 
-
-  1. Removing them from the file `/config/.storage/core.device_registry.yml`. 
-  2. Changing the name of the duplicated entry in core.entity_registry i.e 
-     light.desktop_2 -> light.desktop.
-  3. Restarting HomeAssistant.
 
 ## TODO

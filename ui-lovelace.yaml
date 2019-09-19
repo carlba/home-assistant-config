@@ -262,6 +262,7 @@ views:
 
   - title: Tracker
     id: tracker
+    icon: mdi:crosshairs-gps
     # Title of the view. Will be used as the tooltip for tab icon
     cards:
       - type: map
@@ -280,6 +281,7 @@ views:
 
   - title: Remote
     id: remote
+    icon: mdi:remote
     cards:
       - type: glance
         title: Remote
