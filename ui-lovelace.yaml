@@ -277,3 +277,127 @@ views:
           - person.carl
           - person.johanna
           - switch.screen
+
+  - title: Remote
+    id: remote
+    cards:
+      - type: glance
+        title: Remote
+        show_state: false
+        columns: 3
+        entities:
+          # Row 1
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:volume-plus
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56823523
+                "command": VolumeUp
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:chevron-up-box-outline
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": DirectionUp
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:play-pause
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": Play
+          # Row 2
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:chevron-left-box-outline
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": DirectionLeft
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:checkbox-blank-circle-outline
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": Select
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:chevron-right-box-outline
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": DirectionRight
+
+          # Row 3
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:volume-minus
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56823523
+                "command": VolumeDown
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:chevron-down-box-outline
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": DirectionDown
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:keyboard-backspace
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": Back
+          # Row 3
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:home
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": Home
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:sleep
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": sleep
