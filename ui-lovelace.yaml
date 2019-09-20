@@ -382,6 +382,8 @@ views:
                 "entity_id": remote.harmony_hub
                 "device": 56825777
                 "command": Back
+
+          # Shield Intents https://gist.github.com/mcfrojd/9e6875e1db5c089b1e3ddeb7dba0f304
           # Row 3
           - entity: binary_sensor.dummy
             name: ''
@@ -403,3 +405,53 @@ views:
                 "entity_id": remote.harmony_hub
                 "device": 56825777
                 "command": sleep
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:sleep
+            tap_action:
+              action: call-service
+              service: remote.send_command
+              service_data:
+                "entity_id": remote.harmony_hub
+                "device": 56825777
+                "command": sleep
+          # Row 4
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:kodi
+            tap_action:
+              action: call-service
+              service: androidtv.adb_command
+              service_data:
+                entity_id: media_player.shield_3
+                command: "am start -a android.intent.action.VIEW -d -n org.xbmc.kodi/.Splash"
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:plex
+            tap_action:
+              action: call-service
+              service: androidtv.adb_command
+              service_data:
+                entity_id: media_player.shield_3
+                command: "am start -a android.intent.action.MAIN -c android.intent.category.LEANBACK_LAUNCHER -n com.plexapp.android/com.plexapp.plex.activities.SplashActivity"
+          - entity: binary_sensor.dummy
+            name: ''
+            icon: mdi:youtube
+            tap_action:
+              action: call-service
+              service: androidtv.adb_command
+              service_data:
+                entity_id: media_player.shield_3
+                command: "am start -a android.intent.action.VIEW -d -n com.google.android.youtube.tv/com.google.android.apps.youtube.tv.activity.ShellActivity"
+          # Row 5
+          - entity: binary_sensor.dummy
+            icon: mdi:play
+            name: 'SVT'
+            image: http://www.svtplay.se/favicon.ico
+            tap_action:
+              action: call-service
+              service: androidtv.adb_command
+              service_data:
+                entity_id: media_player.shield_3
+                command: "am start -a android.intent.action.VIEW -d -n se.svt.android.svtplay/se.svt.svtplay.tv.ui.StartupActivity"
+
