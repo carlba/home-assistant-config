@@ -1,11 +1,11 @@
 computer:
   alias: Computer
   sequence:
-  - service: homeassistant.turn_on
-    data:
-      entity_id:
-        - light.desktop
-        - switch.screen
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - light.desktop
+          - switch.screen
 
 media_backlight:
   alias: Media Backlight
