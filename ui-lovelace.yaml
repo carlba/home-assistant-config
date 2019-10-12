@@ -189,8 +189,11 @@ views:
             entity: light.behind_tv
             name: TV
           - type: custom:slider-entity-row
+            entity: light.frank
+            name: Frank
+          - type: custom:slider-entity-row
             entity: light.living_room_ceiling
-            name: Living Room Ceiling
+            name: LR Ceiling
           - type: custom:slider-entity-row
             entity: light.living_area_lights
             name: Living Area

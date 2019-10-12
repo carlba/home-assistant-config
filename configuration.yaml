@@ -176,6 +176,7 @@ light:
       - light.behind_tv
       - light.desktop
       - light.kitchen_fan
+      - light.frank
 
   - platform: template
     lights:
