@@ -92,4 +92,10 @@ https://github.com/ReneTode/My-AppDaemon/blob/master/AppDaemon_for_Beginner/Part
 
 https://github.com/home-assistant/hassio-addons
 
+## home-assitant-cli
+
+```bash
+brew install homeassistant-cli
+```
+
 ## TODO
