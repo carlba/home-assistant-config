@@ -82,9 +82,7 @@ cozy:
     - service: light.turn_on
       data:
         entity_id:
-          - light.kitchen_fan
-          - light.behind_tv
-          - light.bed
+          - light.living_area_lights
         brightness_pct: 60
         color_temp: 500
     - service: light.turn_on
@@ -122,6 +120,7 @@ sleep_now:
           - light.turn_off
           - light.behind_tv
           - light.bed
+          - light.frank
     - service: fan.set_speed
       data:
         entity_id: fan.xiaomi_miio_device
@@ -139,6 +138,7 @@ sleep_in_ten_min:
           - light.kitchen_table
           - light.hallway_ceiling
           - light.desktop
+          - light.frank
     - service: light.turn_off
       data:
         entity_id: light.behind_tv
@@ -168,6 +168,7 @@ sleep_in_an_hour:
         - light.behind_tv
         - light.desktop
         - light.bed
+        - light.frank
       data:
         transition: 3600
     - delay:
@@ -210,6 +211,10 @@ early_morning:
           - light.desktop
         brightness_pct: 10
         color_temp: 450
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.frank
     - service: fan.xiaomi_miio_set_led_off
       entity_id: fan.xiaomi_miio_device
 
