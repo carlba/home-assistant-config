@@ -134,3 +134,20 @@
   action:
     - service: script.turn_on
       entity_id: script.lg_tv_off
+
+- alias: Wakeup in half an hour at 06:30 every day
+  trigger:
+    platform: time
+    at: "06:30:00"
+  condition:
+    condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    - service: script.turn_on
+      entity_id: script.wakeup_in_half_an_hour
+

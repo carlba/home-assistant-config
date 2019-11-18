@@ -192,6 +192,58 @@ sleep_in_an_hour:
     - service: fan.xiaomi_miio_set_led_off
       entity_id: fan.xiaomi_miio_device
 
+wakeup_in_half_an_hour:
+  alias: Wakeup in 30 minutes
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.kitchen_fan
+          - light.kitchen_table
+          - light.behind_tv
+          - light.desktop
+          - light.frank
+        brightness_pct: 10
+        color_temp: 450
+    - service: light.turn_on
+      entity_id:
+        - light.kitchen_fan
+        - light.behind_tv
+        - light.desktop
+        - light.frank
+      data:
+        transition: 1800
+        brightness_pct: 100
+        color_temp: 340
+    - delay:
+        seconds: 900
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.bed
+          - light.kitchen_table
+        brightness_pct: 10
+        color_temp: 450
+    - service: light.turn_on
+      entity_id:
+        - light.bed
+      data:
+        transition: 900
+        brightness_pct: 40
+        color_temp: 340
+    - service: light.turn_on
+      data:
+        transition: 900
+        entity_id: light.kitchen_table
+        brightness_pct: 40
+        color_temp: 340
+    - delay:
+        seconds: 900
+    - service: tts.google_say
+      entity_id: media_player.home
+      data:
+        message: Good morning!
+
 work:
   alias: Work
   sequence:
