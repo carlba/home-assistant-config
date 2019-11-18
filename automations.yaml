@@ -18,7 +18,7 @@
       from: not_home
       to: home
     - platform: state
-      entity_id: person.carl
+      entity_id: person.johanna
       from: not_home
       to: home
   action:
@@ -43,7 +43,7 @@
       entity_id: person.carl
       from: home
     - platform: state
-      entity_id: group.johanna
+      entity_id: person.johanna
       from: home
   action:
     - service_template: notify.pushover
