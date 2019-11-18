@@ -76,7 +76,7 @@ coffee_timer:
   timer: timer.coffeemaker
   duration: 1800
   information: Your coffee is ready!
-  information_push: true
+  information_push: false
   information_talk: true
   information_delay: 420
   talk_hours: [9, 22]
@@ -88,7 +88,7 @@ toaster_timer:
   timer: timer.toaster
   duration: 120
   information: Your toast is ready!
-  information_push: true
+  information_push: false
   information_talk: true
   information_delay: 120
   talk_hours: [9, 22]
