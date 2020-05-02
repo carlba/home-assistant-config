@@ -270,13 +270,15 @@ binary_sensor:
         friendly_name: "Dummy"
         value_template: '{{ false }}'
 
-climate:
-  - platform: generic_thermostat
-    name: temperature_outside_skanstull
-    heater: input_boolean.fake_heater
-    target_sensor:  sensor.235_temperature
-    initial_operation_mode: "off"
-    target_temp: 21
+
+# TODO: Get this climate thingie working
+#climate:
+#  - platform: generic_thermostat
+#    name: temperature_outside_skanstull
+#    heater: input_boolean.fake_heater
+#    target_sensor:  sensor.235_temperature
+#    initial_operation_mode: "off"
+#    target_temp: 21
 
 # Text to speech
 tts:
@@ -360,12 +362,13 @@ asuswrt:
   username: admin
   password: !secret router_password
 
-device_tracker:
-  - platform: google_maps
-    username: carl.backstrom.dahl.location@gmail.com
-    password: !secret location_gmail_password
-  # https://www.home-assistant.io/components/device_tracker.asuswrt/
-  - platform: asuswrt
+# TODO: https://www.home-assistant.io/integrations/google_maps/
+#device_tracker:
+#  - platform: google_maps
+#    username: carl.backstrom.dahl.location@gmail.com
+#    password: !secret location_gmail_password
+#  # https://www.home-assistant.io/components/device_tracker.asuswrt/
+#  - platform: asuswrt
 
 media_player:
   - platform: kodi
@@ -448,10 +451,11 @@ notify:
     method: POST_JSON
     resource: http://localhost:5001/broadcast_message
 
-remote:
-  - platform: harmony
-    name: Harmony Hub
-    activity: Home
+# TODO: Get this harmony remote working
+#remote:
+#  - platform: harmony
+#    name: Harmony Hub
+#    activity: Home
 
 #camera:
 #  - platform: generic
