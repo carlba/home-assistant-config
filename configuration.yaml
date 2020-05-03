@@ -152,12 +152,6 @@ sensor:
       air_purifier_favorite_level:
         value_template: "{{ states.fan.xiaomi_miio_device.attributes.favorite_level }}"
         friendly_name: Air Purifier Favorite Level
-
-      s10_batterylevel:
-        value_template: "{{ states.device_tracker.google_maps_118136931442668540655.attributes.battery_level }}"
-        friendly_name: Samsung S8 Battery Level (test)
-        unit_of_measurement: "%"
-        device_class: battery
   - platform: time_date
     display_options:
       - 'date_time'

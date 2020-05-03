@@ -45,8 +45,13 @@ views:
             height: 60
             width: 30
           - type: sensor
-            entity: sensor.s10_batterylevel
-            name: Samsung S10 Battery Level
+            entity: sensor.sm_g975f_battery_level
+            name: S10 Battery
+            height: 60
+            width: 30
+          - type: sensor
+            entity: sensor.sm_g955f_battery_level
+            name: S8 Battery
             height: 60
             width: 30
       - type: entity-filter
