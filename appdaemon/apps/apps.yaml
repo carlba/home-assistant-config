@@ -54,7 +54,6 @@ desktop_remote_control:
   entities: ['light.desktop', 'switch.screen']
   id: desktop_remote
 
-
 clean_remote_control:
   module: apps
   class: RemoteControl
