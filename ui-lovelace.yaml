@@ -148,12 +148,6 @@ views:
                 tap_action:
                   action: toggle
 
-      - type: picture-glance
-        title: Living room
-        entities:
-          - binary_sensor.dafang_motion_sensor
-        camera_image: camera.dafang
-
       - type: glance
         show_header_toggle: false
         show_state: false
