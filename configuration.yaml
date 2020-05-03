@@ -47,8 +47,9 @@ http:
 
 # This integration is a meta-component and configures a default set of integrations for
 #  Home Assistant to load. https://www.home-assistant.io/integrations/default_config
-default_config:
-
+hassio:
+mobile_app:
+zeroconf:
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -64,74 +65,6 @@ discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
-
-# Enables support for tracking state changes over time
-# https://www.home-assistant.io/components/history
-history:
-  exclude:
-    domains:
-      - automation
-      - weblink
-      - updater
-      - remote
-    entities:
-      - group.transmission
-      - group.transmission_2
-      - group.default_view
-      - group.default_view_2
-      - group.other_view
-      - group.other_view_2
-      - group.yr
-      - group.yr_2
-      - group.harmony_hub
-      - group.harmony_hub_2
-      - group.transmission
-      - group.transmission_2
-      - group.performance
-      - group.performance_2
-      - group.media_players
-      - group.media_players_2
-      - group.devices
-      - group.devices_2
-      - group.all_automations
-      - group.all_automations_2
-      - group.all_devices
-      - group.all_devices_2
-      - group.all_remotes
-      - group.all_remotes_2
-      - group.all_switches
-      - group.all_switches_2
-      - group.all_lights
-      - group.all_lights_2
-      - group.all_devices
-      - group.all_devices_2
-      - input_boolean.test
-      - sensor.sl_skanstull
-
-# https://www.home-assistant.io/components/logbook
-logbook:
-
-# https://www.home-assistant.io/addons/mariadb
-recorder:
-  db_url: postgres://hassio:hassio@192.168.1.2/hassio
-  purge_keep_days: 10
-  exclude:
-    domains:
-      - automation
-      - weblink
-      - updater
-      - zone
-      - climate
-      - scene
-      - script
-    entities:
-      - sensor.date_time
-      - sensor.custom_card_tracker
-      - sensor.custom_component_tracker
-      - sensor.custom_python_script_tracker
-      - light.living_room_ceiling_1
-      - light.living_room_ceiling_2
-      - light.living_room_ceiling_3
 
 # Enables a map showing the location of tracked devices
 map:
