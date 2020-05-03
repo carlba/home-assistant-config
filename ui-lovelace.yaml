@@ -8,8 +8,6 @@ resources:
     type: js
   - url: /local/circle-sensor-card.js?v=0
     type: module
-  - url: https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/swipe-card/swipe-card.js
-    type: module
 
 views:
   - icon: mdi:home-assistant
@@ -19,114 +17,95 @@ views:
     id: main
     theme: dark-mode
     cards:
-      - type: custom:swipe-card
-        card_width: '250px'
-        start_card: 1
-        parameters:
-          effect: 'coverflow'
-          grabCursor: true
-          centeredSlides: true
-          slidesPerView: 'auto'
-          coverflowEffect:
-            rotate: 50
-            stretch: 0
-            depth: 100
-            modifier: 1
-            slideShadows: true
-          pagination:
-            type: 'bullets'
+      - type: horizontal-stack
         cards:
-          - type: horizontal-stack
-            cards:
-              - type: sensor
-                entity: sensor.235_temperature
-                name: Temp - Outside
-                height: 60
-                width: 30
-                line_color: "#3498db"
-              - type: sensor
-                entity: sensor.air_purifier_temperature
-                name: Temp - Inside
-                height: 60
-                width: 30
-                line_color: "#3498db"
-          - type: horizontal-stack
-            cards:
-              - type: sensor
-                entity: sensor.air_purifier_humidity
-                name: Humidity - Inside
-                height: 60
-                width: 30
-                line_color: "#3498db"
-              - type: sensor
-                entity: sensor.xiaomi_air_quality_monitor
-                name: Air Quality - Inside
-                height: 60
-                width: 30
-              - type: sensor
-                entity: sensor.s10_batterylevel
-                name: Samsung S10 Battery Level
-                height: 60
-                width: 30
-          - type: entity-filter
-            entities:
-              - person.carl
-              - person.johanna
-            state_filter:
-              - 'home'
-            card:
-              type: glance
-              show_state: false
-              show_name: false
-              title: '@home'
-          - type: glance
-            entities:
-              - timer.toaster
-              - timer.coffeemaker
-              - timer.clean
-      - type: custom:swipe-card
+          - type: sensor
+            entity: sensor.235_temperature
+            name: Temp - Outside
+            height: 60
+            width: 30
+            line_color: "#3498db"
+          - type: sensor
+            entity: sensor.air_purifier_temperature
+            name: Temp - Inside
+            height: 60
+            width: 30
+            line_color: "#3498db"
+      - type: horizontal-stack
         cards:
-          - type: glance
-            title: Scenes
-            show_header_toggle: false
-            show_state: false
-            entities:
-              - entity:  script.media_dark
-                tap_action:
-                  action: toggle
-              - entity: script.media_backlight
-                tap_action:
-                  action: toggle
-              - entity: script.computer
-                tap_action:
-                  action: toggle
-              - entity: script.daytime
-                tap_action:
-                  action: toggle
-              - entity: script.cozy
-                tap_action:
-                  action: toggle
-              - entity: script.sleep_in_ten_min
-                tap_action:
-                  action: toggle
-              - entity: script.sleep_now
-                tap_action:
-                  action: toggle
-              - entity: script.sleep_in_an_hour
-                tap_action:
-                  action: toggle
-              - entity: script.work
-                tap_action:
-                  action: toggle
-              - entity: script.dinner
-                tap_action:
-                  action: toggle
-              - entity: script.early_morning
-                tap_action:
-                  action: toggle
-              - entity: script.clean_kitchen
-                tap_action:
-                  action: toggle
+          - type: sensor
+            entity: sensor.air_purifier_humidity
+            name: Humidity - Inside
+            height: 60
+            width: 30
+            line_color: "#3498db"
+          - type: sensor
+            entity: sensor.xiaomi_air_quality_monitor
+            name: Air Quality - Inside
+            height: 60
+            width: 30
+          - type: sensor
+            entity: sensor.s10_batterylevel
+            name: Samsung S10 Battery Level
+            height: 60
+            width: 30
+      - type: entity-filter
+        entities:
+          - person.carl
+          - person.johanna
+        state_filter:
+          - 'home'
+        card:
+          type: glance
+          show_state: false
+          show_name: false
+          title: '@home'
+      - type: glance
+        entities:
+          - timer.toaster
+          - timer.coffeemaker
+          - timer.clean
+      - type: glance
+        title: Scenes
+        show_header_toggle: false
+        show_state: false
+        entities:
+          - entity:  script.media_dark
+            tap_action:
+              action: toggle
+          - entity: script.media_backlight
+            tap_action:
+              action: toggle
+          - entity: script.computer
+            tap_action:
+              action: toggle
+          - entity: script.daytime
+            tap_action:
+              action: toggle
+          - entity: script.cozy
+            tap_action:
+              action: toggle
+          - entity: script.sleep_in_ten_min
+            tap_action:
+              action: toggle
+          - entity: script.sleep_now
+            tap_action:
+              action: toggle
+          - entity: script.sleep_in_an_hour
+            tap_action:
+              action: toggle
+          - entity: script.work
+            tap_action:
+              action: toggle
+          - entity: script.dinner
+            tap_action:
+              action: toggle
+          - entity: script.early_morning
+            tap_action:
+              action: toggle
+          - entity: script.clean_kitchen
+            tap_action:
+              action: toggle
 
           # https://www.home-assistant.io/lovelace/glance/
           - type: glance
