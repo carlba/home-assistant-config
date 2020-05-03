@@ -380,13 +380,6 @@ notify:
 #    name: Harmony Hub
 #    activity: Home
 
-mqtt:
-  broker: 192.168.1.4
-  discovery: true
-  discovery_prefix: homeassistant
-  username: homeassistant
-  password: !secret mqtt_password
-
 system_health:
 
 person:
