@@ -279,13 +279,8 @@ asuswrt:
   username: admin
   password: !secret router_password
 
-# TODO: https://www.home-assistant.io/integrations/google_maps/
-#device_tracker:
-#  - platform: google_maps
-#    username: carl.backstrom.dahl.location@gmail.com
-#    password: !secret location_gmail_password
-#  # https://www.home-assistant.io/components/device_tracker.asuswrt/
-#  - platform: asuswrt
+device_tracker:
+  - platform: asuswrt
 
 media_player:
   - platform: kodi
