@@ -111,7 +111,7 @@
     platform: state
     entity_id: input_number.xiaomi_fan_favorite_level
   action:
-    - service: fan.xiaomi_miio_set_favorite_level
+    - service: xiaomi_miio.fan_set_favorite_level
       data_template:
         entity_id: fan.xiaomi_miio_device
         level: "{{ trigger.to_state.state | int }}"

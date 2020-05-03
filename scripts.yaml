@@ -24,11 +24,11 @@ media_backlight:
       data:
         entity_id: light.behind_tv
         brightness_pct: 10
-    - service: fan.xiaomi_miio_set_favorite_level
+    - service: xiaomi_miio.fan_set_favorite_level
       data:
         entity_id: fan.xiaomi_miio_device
         level: 1
-    - service: fan.xiaomi_miio_set_led_off
+    - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
 media_dark:
@@ -44,11 +44,11 @@ media_dark:
           - light.kitchen_table
           - light.hallway_ceiling
           - light.bathroom_ceiling
-    - service: fan.xiaomi_miio_set_favorite_level
+    - service: xiaomi_miio.fan_set_favorite_level
       data:
         entity_id: fan.xiaomi_miio_device
         level: 1
-    - service: fan.xiaomi_miio_set_led_off
+    - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
 daytime:
@@ -65,7 +65,7 @@ daytime:
         brightness_pct: 40
         color_temp: 340
     # https://www.home-assistant.io/components/fan.xiaomi_miio
-    - service: fan.xiaomi_miio_set_favorite_level
+    - service: xiaomi_miio.fan_set_favorite_level
       data:
         entity_id: fan.xiaomi_miio_device
         level: 3
@@ -73,7 +73,7 @@ daytime:
       data:
         entity_id: fan.xiaomi_miio_device
         speed: Favorite
-    - service: fan.xiaomi_miio_set_led_on
+    - service: xiaomi_miio.fan_set_led_on
       entity_id: fan.xiaomi_miio_device
 
 cozy:
@@ -100,11 +100,11 @@ cozy:
       data:
         entity_id: fan.xiaomi_miio_device
         speed: Favorite
-    - service: fan.xiaomi_miio_set_favorite_level
+    - service: xiaomi_miio.fan_set_favorite_level
       data:
         entity_id: fan.xiaomi_miio_device
         level: 1
-    - service: fan.xiaomi_miio_set_led_off
+    - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
 sleep_now:
@@ -125,7 +125,7 @@ sleep_now:
       data:
         entity_id: fan.xiaomi_miio_device
         speed: Silent
-    - service: fan.xiaomi_miio_set_led_off
+    - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
 sleep_in_ten_min:
@@ -151,7 +151,7 @@ sleep_in_ten_min:
       data:
         entity_id: fan.xiaomi_miio_device
         speed: Silent
-    - service: fan.xiaomi_miio_set_led_off
+    - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
 sleep_in_an_hour:
@@ -189,7 +189,7 @@ sleep_in_an_hour:
       data:
         entity_id: fan.xiaomi_miio_device
         speed: Silent
-    - service: fan.xiaomi_miio_set_led_off
+    - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
 wakeup_in_half_an_hour:
@@ -247,7 +247,7 @@ wakeup_in_half_an_hour:
 work:
   alias: Work
   sequence:
-    - service: fan.xiaomi_miio_set_favorite_level
+    - service: xiaomi_miio.fan_set_favorite_level
       data:
         entity_id: fan.xiaomi_miio_device
         level: 9
@@ -267,7 +267,7 @@ early_morning:
       data:
         entity_id:
           - light.frank
-    - service: fan.xiaomi_miio_set_led_off
+    - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
 dinner:
@@ -288,7 +288,7 @@ dinner:
         entity_id: light.kitchen_table
         brightness_pct: 40
         color_temp: 450
-    - service: fan.xiaomi_miio_set_led_off
+    - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
 clean_kitchen:

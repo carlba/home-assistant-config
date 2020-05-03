@@ -163,7 +163,7 @@ sensor:
   - platform: xiaomi_miio
     name: Xiaomi Air Quality Monitor
     host: 192.168.1.27
-    token: b46710d6766df2f282339423f8d2c3e6
+    token: 0b3126cb76494480a1e2095e2a354bba
 
 binary_sensor:
   - platform: template
@@ -388,7 +388,7 @@ vacuum:
 fan:
   - platform: xiaomi_miio
     host: 192.168.1.27
-    token: b46710d6766df2f282339423f8d2c3e6
+    token: 0b3126cb76494480a1e2095e2a354bba
   - platform: template
     fans:
       anslut_fan:
