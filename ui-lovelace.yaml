@@ -226,12 +226,11 @@ views:
             hide_controls: true
             show_tts: google
             group: true
-          - entity: media_player.shield_android_tv_2
+          - entity: media_player.shield
             type: custom:mini-media-player
-            hide_controls: true
-            group: true
-          - entity: media_player.shield_3
+          - entity: media_player.lg_tv
             type: custom:mini-media-player
+
       - type: entities
         show_header_toggle: false
         entities:

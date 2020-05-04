@@ -213,6 +213,8 @@ cloud:
         - script
         - climate
         - sensor
+      include_entities:
+        - media_player.shield
       exclude_entities:
         - switch.nexa_remote_g
         - light.kitchen_table_left
@@ -312,10 +314,9 @@ media_player:
     apps:
       com.netflix.ninja: "Netflix"
 
-  - platform: webostv
-    name: LG TV
-    host: 192.168.1.10
-    timeout: 5
+webostv:
+  name: LG TV
+  host: 192.168.1.10
 
 logger:
   default: info
