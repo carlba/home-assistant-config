@@ -139,3 +139,18 @@
     - service: script.turn_on
       entity_id: script.wakeup_in_half_an_hour
 
+- id: '1588512171311'
+  alias: Notify Johanna when the battery of phone is below certain level
+  description: ''
+  trigger:
+  - below: 30
+    device_id: 8f07c81adbef4b12beaad8dbd09625b4
+    domain: sensor
+    entity_id: sensor.sm_g955f_battery_level
+    platform: device
+    type: battery_level
+  action:
+  - data:
+      message: Battery
+      title: Battery level below 30%
+    service: notify.mobile_app_sm_g955f
