@@ -29,7 +29,7 @@ class ExtendedHass(hass.Hass):
         rargs = kwargs or {}
         rargs["entity_id"] = entity_id
         if duration:
-                rargs["duration"] = duration
+            rargs["duration"] = duration
         self.call_service("timer/start", **rargs)
 
     @hass.hass_check
@@ -122,8 +122,7 @@ class LogDeconzEvents(ExtendedHass):
         self.listen_event(self.handle_event, "deconz_event")
 
     def handle_event(self, event_name, data, kwargs):
-        self.log('{}: Event Name: {}, Data: {}, Kwargs: {}'.format(
-            self.get_info(), event_name, data, repr(kwargs)))
+        self.log(f'Event Name: {event_name}, Data: {data}, Kwargs: {repr(kwargs)}')
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
@@ -133,8 +132,7 @@ class ColorTemperature(ExtendedHass):
         self.log(f"{self.__class__.__name__}.initialize")
         self.daylight_sensor = self.args['sensor']
         self.listen_state(self.handle_state, self.daylight_sensor)
-        self.log('{}: Current daylight state:{}'.format(self.get_info(),
-                                                        self.get_state(self.daylight_sensor)))
+        self.log(f'Current daylight state: {self.get_state(self.daylight_sensor)}')
 
         # https://www.home-assistant.io/components/light/
         all_lights = self.get_state('group.all_lights', attribute='entity_id')
@@ -142,11 +140,9 @@ class ColorTemperature(ExtendedHass):
         self.set_state('sensor.default_light_settings', state='on',
                        attributes={'friendly_name': 'Default Light Settings', 'color_temp': '400'})
 
-        self.log('{}: {}'.format(self.get_info(), all_lights))
-
     def handle_state(self, entity, attribute, old, new, kwargs):
-        self.log('{}: entity: {}, attribute: {}, old: {}, new {}, kwargs: {}'.format(
-            self.get_info(), entity, attribute, old, new, repr(kwargs)), level='INFO')
+        self.log(f'entity: {entity}, attribute: {attribute}, old: {old}, new {new}, '
+                 f'kwargs: {repr(kwargs)}', level='INFO')
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
@@ -182,16 +178,15 @@ class TradfriMotionSensor(ExtendedHass):
         self.turn_off_handle = None
 
     def handle_motion(self, entity, attribute, old, new, kwargs):
-        self.log(f'{self.get_info()}: entity: {entity}, attribute: {attribute}, old: {old}, '
-                 f'new {new}, kwargs: {repr(kwargs)}', level='INFO')
+        self.log(f'entity: {entity}, attribute: {attribute}, old: {old}, new {new}, '
+                 f'kwargs: {repr(kwargs)}', level='INFO')
 
         current_hour_brightness, current_hour_duration = self.get_current_hour_light_settings()
 
         if (old == 'off' and new == 'on') and current_hour_brightness:
-            self.log(f'{self.get_info()}: Trying to set entity {self.light} '
-                     f'to {current_hour_brightness} brightness')
+            self.log(f'Trying to set entity {self.light} to {current_hour_brightness} brightness')
             self.turn_on(self.light,  brightness_pct=current_hour_brightness)
-            self.log(f'{self.get_info()}: Turned on { self.light }')
+            self.log(f'Turned on { self.light }')
             if self.turn_off_handle:
                 self.turn_off_handle = self.cancel_timer(self.turn_off_handle)
             self.turn_off_handle = self.run_in(self._turn_off, current_hour_duration, entity_id=entity)
@@ -199,7 +194,7 @@ class TradfriMotionSensor(ExtendedHass):
         if old == 'on' and new == 'off':
             if not self.turn_off_handle:
                 self.turn_off(self.light)
-                self.log(f'{self.get_info()}: Turned off {self.light}')
+                self.log(f'Turned off {self.light}')
 
 
 # noinspection PyAttributeOutsideInit
@@ -311,8 +306,8 @@ class TalkingTimer(ExtendedHass):
         self.listen_event(self.stop_activity, event='timer.finished', entity_id=self.timer)
 
     def handle_entity_state(self, entity, attribute, old, new, kwargs):
-        self.log(f'{self.get_info()}: entity: {entity}, attribute: {attribute}, old: {old}, '
-                 f'new {new}, kwargs: {repr(kwargs)}', level='INFO')
+        self.log(f'entity: {entity}, attribute: {attribute}, old: {old}, new {new}, '
+                 f'kwargs: {repr(kwargs)}', level='INFO')
 
         if old == 'off' and new == 'on':
             self.run_in(self.read_information, self.information_delay)
@@ -321,16 +316,16 @@ class TalkingTimer(ExtendedHass):
             self.timer_cancel(self.timer)
 
     def stop_activity(self, event_name, data, kwargs):
-        self.log(f'{self.get_info()}: Turning off {kwargs["entity_id"]} due to {event_name}')
+        self.log(f'Turning off {kwargs["entity_id"]} due to {event_name}')
         self.turn_off(self.entity)
 
     def read_information(self, _):
         if self.information_push:
-            self.log(f'{self.get_info()}: Trying to push {self.information} to Pushover')
+            self.log(f'Trying to push {self.information} to Pushover')
             self.call_service('notify/pushover',
                               message=self.information)
 
         if self.information_talk and (self.talk_hours[0] <= datetime.now().hour <= self.talk_hours[1]):
-            self.log(f'{self.get_info()}: Trying to say {self.information}')
+            self.log(f'Trying to say {self.information}')
             self.call_service('notify/gassistant', message=self.information)
 
