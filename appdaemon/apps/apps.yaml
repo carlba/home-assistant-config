@@ -49,24 +49,26 @@ bathroom_motion_sensor:
 
 desktop_remote_control:
   module: apps
-  class: RemoteControl
+  class: RemoteControlAction
   event: deconz_event
   entities: ['light.desktop', 'switch.screen']
   id: desktop_remote
 
-clean_remote_control:
-  module: apps
-  class: RemoteControl
-  event: deconz_event
-  entities: ['light.desktop', 'switch.screen']
-  id: clean_remote
-
 coffeemaker_remote_control:
   module: apps
-  class: RemoteControl
+  class: RemoteControlAction
   event: deconz_event
   entities: ['switch.coffeemaker']
   id: coffeemaker_remote
+
+media_player_control:
+  id: music_remote
+  event: deconz_event
+  module: apps
+  class: MediaController
+  entities: ['test']
+  tv: media_player.shield
+  speaker: media_player.home_group
 
 coffee_timer:
   module: apps

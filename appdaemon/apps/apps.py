@@ -1,4 +1,7 @@
 import inspect
+import json
+from typing import Union
+
 import appdaemon.plugins.hass.hassapi as hass
 from datetime import datetime
 
@@ -6,15 +9,19 @@ from datetime import datetime
 class ExtendedHass(hass.Hass):
 
     @staticmethod
-    def get_info():
-        target = inspect.stack()[1][0]
-        target_method = inspect.stack()[1][3]
+    def get_info(level_in_stack: int = 1):
+        target = inspect.stack()[level_in_stack][0]
+        target_method = inspect.stack()[level_in_stack][3]
 
         if 'self' in target.f_locals:
             cls_name = target.f_locals['self'].__class__.__name__
             target_method = f'{cls_name}.{target_method}'
 
         return target_method
+
+    def log(self, message: Union[str, dict], level: str = 'INFO'):
+        message = json.dumps(message) if isinstance(message, dict) else message
+        super().log(f'{ExtendedHass.get_info(2)}: {message}', level)
 
     @hass.hass_check
     def timer_start(self, entity_id, duration=None, **kwargs):
@@ -201,21 +208,90 @@ class RemoteControl(ExtendedHass):
     def initialize(self):
         self.log(f'{self.__class__.__name__}.initialize', level='INFO')
         self.id = self.args['id']
-        self.entities = self.args['entities']
-        if 'event' in self.args:
-            self.listen_event(self.handle_event, self.args['event'])
+        self.listen_event(self.handle_event, self.args['event'])
 
     def handle_event(self, event_name, data, kwargs):
         if self.id in [data['id'], '*']:
             if data['event'] == 1002:
-                self.log(f'{data["id"]} was turned on', level='INFO')
+                self.set_state(f'sensor.{data["id"]}', state='on')
+                self.handle_turn_on(event_name, data, kwargs)
                 for entity in self.entities:
                     self.turn_on(entity)
 
             elif data['event'] == 2002:
-                self.log(f'{data["id"]} was turned off', level='INFO')
-                for entity in self.entities:
-                    self.turn_off(entity)
+                self.set_state(f'sensor.{data["id"]}', state='off')
+                self.handle_turn_off(event_name, data, kwargs)
+
+    def handle_turn_on(self, event_name, data, kwargs):
+        self.log(f'{data["id"]} was turned on', level='INFO')
+
+    def handle_turn_off(self, event_name, data, kwargs):
+        self.log(f'{data["id"]} was turned off', level='INFO')
+
+
+# noinspection PyAttributeOutsideInit
+class RemoteControlAction(RemoteControl):
+
+    def initialize(self):
+        super().initialize()
+        self.entities = self.args['entities']
+
+    def handle_turn_on(self, event_name, data, kwargs):
+        super().handle_turn_on(event_name, data, kwargs)
+        for entity in self.entities:
+            self.turn_on(entity)
+        self.log(f'{self.entities} was turned off', level='INFO')
+
+    def handle_turn_off(self, event_name, data, kwargs):
+        super().handle_turn_off(event_name, data, kwargs)
+        for entity in self.entities:
+            self.turn_off(entity)
+        self.log(f'{self.entities} was turned on', level='INFO')
+
+
+# noinspection PyAttributeOutsideInit
+class MediaController(RemoteControl):
+
+    def initialize(self):
+        super().initialize()
+        self.log(f'{self.__class__.__name__}.initialize', level='INFO')
+        self.tv = self.args['tv']
+        self.speaker = self.args['speaker']
+        self.listen_state(self.handle_tv_state, self.tv)
+        self.listen_state(self.handle_speaker_state, self.speaker)
+
+        self.current_state = {
+            'tv': {self.tv: self.get_state(self.tv) or 'unknown'},
+            'speaker': {self.speaker: self.get_state(self.speaker) or 'unknown'}
+        }
+
+    def handle_turn_on(self, event_name, data, kwargs):
+        super().handle_turn_on(event_name, data, kwargs)
+        self.log(f'turn on', level='INFO')
+        if self.current_state['tv'][self.tv] == 'paused':
+            self.call_service('media_player/media_play', entity_id=self.tv)
+        elif self.current_state['speaker'][self.speaker] == 'paused':
+            self.call_service('media_player/media_play', entity_id=self.speaker)
+
+    def handle_turn_off(self, event_name, data, kwargs):
+        super().handle_turn_off(event_name, data, kwargs)
+        self.log(f'turn off', level='INFO')
+        if self.current_state['tv'][self.tv] == 'playing':
+            self.call_service('media_player/media_pause', entity_id=self.tv)
+        elif self.current_state['speaker'][self.speaker] == 'playing':
+            self.call_service('media_player/media_pause', entity_id=self.speaker)
+
+    def handle_tv_state(self, entity, attribute, old, new, kwargs):
+        self.log(f'entity: {entity}, attribute: {attribute}, old: {old}, '
+                 f'new {new}, kwargs: {repr(kwargs)}', level='INFO')
+        self.current_state['tv'][entity] = new
+        self.log(json.dumps(self.current_state))
+
+    def handle_speaker_state(self, entity, attribute, old, new, kwargs):
+        self.log(f'entity: {entity}, attribute: {attribute}, old: {old}, '
+                 f'new {new}, kwargs: {repr(kwargs)}', level='INFO')
+        self.current_state['speaker'][entity] = new
+        self.log(self.current_state)
 
 
 # noinspection PyAttributeOutsideInit
@@ -223,7 +299,6 @@ class TalkingTimer(ExtendedHass):
 
     def initialize(self):
         self.log(f'{self.__class__.__name__}.initialize', level='INFO')
-        self.log(self.args)
         self.timer = self.args['timer']
         self.entity = self.args['entity']
         self.duration = self.args['duration']

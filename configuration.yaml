@@ -313,6 +313,13 @@ media_player:
     adb_server_ip: 127.0.0.1
     apps:
       com.netflix.ninja: "Netflix"
+    state_detection_rules:
+      'com.plexapp.android':
+        - 'playing':
+            'media_session_state': 3
+        - 'paused':
+            'media_session_state': 2
+        - 'standby'
 
 webostv:
   name: LG TV

@@ -91,7 +91,6 @@
     - service: script.turn_on
       entity_id: script.sleep_in_an_hour
 
-
 - alias: Xiaomi Air Purifier - Change Air Purifier level based on input number
   trigger:
     platform: state
@@ -154,3 +153,56 @@
       message: Battery
       title: Battery level below 30%
     service: notify.mobile_app_sm_g955f
+
+#- alias: Stop all playback
+#  trigger:
+#    - platform: state
+#      entity_id: sensor.music_remote
+#      to: 'off'
+#  action:
+#    - service: media_player.media_pause
+#      entity_id:
+#        - media_player.home_group
+#        - media_player.shield
+#
+#- alias: Continue all playback
+#  trigger:
+#    - platform: state
+#      entity_id: sensor.music_remote
+#      to: 'on'
+#  condition:
+#    condition: state
+#    entity_id: media_player.home_group
+#    state: 'paused'
+#  action:
+#    - service: media_player.media_play
+#      entity_id:
+#        - media_player.home_group
+#
+#- alias: Continue all playback
+#  trigger:
+#    - platform: state
+#      entity_id: sensor.music_remote
+#      to: 'on'
+#  condition:
+#    condition: state
+#    entity_id: media_player.shield
+#    state: 'paused'
+#  action:
+#    - service: media_player.media_play
+#      entity_id:
+#        - media_player.shield
+#
+#- alias: Continue all playback
+#  trigger:
+#    - platform: state
+#      entity_id: sensor.music_remote
+#      to: 'on'
+#  condition:
+#    condition: state
+#    entity_id: media_player.shield
+#    state: 'standby'
+#  action:
+#    - service: media_player.media_play
+#      entity_id:
+#        - media_player.shield

@@ -220,16 +220,22 @@ views:
         entities:
           - entity: media_player.spotify
             type: custom:mini-media-player
-            group: true
-          - entity: media_player.home
-            type: custom:mini-media-player
-            hide_controls: true
-            show_tts: google
-            group: true
           - entity: media_player.shield
             type: custom:mini-media-player
           - entity: media_player.lg_tv
             type: custom:mini-media-player
+          - entity: media_player.home_group
+            type: custom:mini-media-player
+            hide_controls: true
+            show_tts: google
+          - entity: media_player.kitchen_speaker
+            type: custom:mini-media-player
+            hide_controls: true
+            show_tts: google
+          - entity: media_player.office_speaker
+            type: custom:mini-media-player
+            hide_controls: true
+            show_tts: google
 
       - type: entities
         show_header_toggle: false
