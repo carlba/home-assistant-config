@@ -79,6 +79,21 @@ A token is required to access and control the device it can be retrieved, like s
 
 6. In the folder where you downloaded the sqlite db, execute:
    ```sqlite3 miio2.db 'select token from devicerecord'```
+   
+
+### Getting the room mappings
+
+1. Install the miio CLI
+    ```bash
+   npm install -g miio   
+   ```
+
+2. Add token of vacuum to the settings of the CLI
+
+   ```bash
+   miio tokens update 192.168.1.11 --token <TOKEN>    
+   ```
+     
 
 ## Lovelace UI
 
@@ -97,5 +112,13 @@ https://github.com/home-assistant/hassio-addons
 ```bash
 brew install homeassistant-cli
 ```
+
+## Testing automations
+
+There are a few caveats when doing automations
+
+1. When an automation is triggered from entities the condition is not applied.
+2. The best way to test them is to just manually change the state of the sensor that is
+   just to trigger the automation.
 
 ## TODO

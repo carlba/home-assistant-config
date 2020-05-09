@@ -294,10 +294,29 @@ dinner:
 clean_kitchen:
   alias: Clean Kitchen
   sequence:
-   - service: vacuum.xiaomi_clean_zone
+   - service: vacuum.send_command
      data:
-       repeats: 1
-       zone: [[26974,26897,29124,29047],[27840,25734,29090,26884]]
+       entity_id: vacuum.xiaomi_vacuum_cleaner
+       command: app_segment_clean
+       params: [17]
+
+clean_hallway:
+  alias: Clean Hallway
+  sequence:
+   - service: vacuum.send_command
+     data:
+       entity_id: vacuum.xiaomi_vacuum_cleaner
+       command: app_segment_clean
+       params: [18]
+
+clean_living_room:
+  alias: Clean Living Room
+  sequence:
+   - service: vacuum.send_command
+     data:
+       entity_id: vacuum.xiaomi_vacuum_cleaner
+       command: app_segment_clean
+       params: [16]
 
 lg_tv_on:
   sequence:

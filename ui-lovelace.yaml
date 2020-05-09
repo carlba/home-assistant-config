@@ -54,6 +54,13 @@ views:
             name: S8 Battery
             height: 60
             width: 30
+      - type: glance
+        entities:
+          - sensor.weight
+          - sensor.ionic_battery
+          - sensor.sleep_time_in_bed
+          - sensor.tracker_steps
+
       - type: entity-filter
         entities:
           - person.carl
@@ -111,6 +118,13 @@ views:
           - entity: script.clean_kitchen
             tap_action:
               action: toggle
+          - entity: script.clean_hallway
+            tap_action:
+              action: toggle
+          - entity: script.clean_living_room
+            tap_action:
+              action: toggle
+
 
           # https://www.home-assistant.io/lovelace/glance/
           - type: glance

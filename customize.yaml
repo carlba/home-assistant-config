@@ -110,6 +110,16 @@ script.cozy:
   friendly_name: Cozy
   icon: mdi:candle
 
+script.clean_kitchen:
+  icon: mdi:food-fork-drink
+
+script.clean_hallway:
+  icon: mdi:shoe-formal
+
+script.clean_living_room:
+  icon: mdi:sofa
+
+
 media_player.shield_android_tv_2:
   friendly_name: Plex(Shield)
 

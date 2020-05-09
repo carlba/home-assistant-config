@@ -173,7 +173,7 @@ class TradfriMotionSensor(ExtendedHass):
         motion_sensor_state = self.get_state(self.binary_sensor)
         if motion_sensor_state == 'off':
             self.turn_off(self.light)
-            self.log(f'{self.get_info()}: Turned off {self.light}')
+            self.log(f'Turned off {self.light}')
 
         self.turn_off_handle = None
 
@@ -186,7 +186,7 @@ class TradfriMotionSensor(ExtendedHass):
         if (old == 'off' and new == 'on') and current_hour_brightness:
             self.log(f'Trying to set entity {self.light} to {current_hour_brightness} brightness')
             self.turn_on(self.light,  brightness_pct=current_hour_brightness)
-            self.log(f'Turned on { self.light }')
+            self.log(f'Turned on {self.light}')
             if self.turn_off_handle:
                 self.turn_off_handle = self.cancel_timer(self.turn_off_handle)
             self.turn_off_handle = self.run_in(self._turn_off, current_hour_duration, entity_id=entity)

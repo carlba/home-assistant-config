@@ -155,10 +155,14 @@ sensor:
   - platform: time_date
     display_options:
       - 'date_time'
+
   - platform: fitbit
     clock_format: 24H
     monitored_resources:
       - "body/weight"
+      - "devices/battery"
+      - "sleep/timeInBed"
+      - "activities/tracker/steps"
 
   - platform: xiaomi_miio
     name: Xiaomi Air Quality Monitor
@@ -189,13 +193,13 @@ binary_sensor:
 
 
 # TODO: Get this climate thingie working
-#climate:
-#  - platform: generic_thermostat
-#    name: temperature_outside_skanstull
-#    heater: input_boolean.fake_heater
-#    target_sensor:  sensor.235_temperature
-#    initial_operation_mode: "off"
-#    target_temp: 21
+climate:
+  - platform: generic_thermostat
+    name: temperature_outside_skanstull
+    heater: input_boolean.fake_heater
+    target_sensor:  sensor.235_temperature
+    initial_hvac_mode: "off"
+    target_temp: 21
 
 # Text to speech
 tts:
@@ -255,25 +259,15 @@ zone:
     radius: 100
     icon: mdi:account-multiple
   - name: work
-    latitude: 59.346727
-    longitude: 18.0391455
+    latitude: 59.311335
+    longitude: 18.030075
     radius: 100
     icon: mdi:briefcase
-  - name: 'Vida Pole'
-    latitude: 59.336491
-    longitude: 18.026207
-    radius: 100
-    icon: mdi:run-fast
   - name: 'Ann-Marie'
     latitude: 59.265861
     longitude: 18.089933
     radius: 100
     icon: mdi:account
-  - name: 'Diskussionsgrupp'
-    latitude: 59.328858
-    longitude: 18.041308
-    radius: 100
-    icon: mdi:account-multiple
 
 # https://www.home-assistant.io/components/asuswrt/
 asuswrt:
@@ -415,5 +409,6 @@ input_text:
 
 group: !include groups.yaml
 automation: !include automations.yaml
+automation old: !include automations_manual.yaml
 script: !include scripts.yaml
 switch: !include switches.yaml

@@ -138,71 +138,41 @@
     - service: script.turn_on
       entity_id: script.wakeup_in_half_an_hour
 
-- id: '1588512171311'
-  alias: Notify Johanna when the battery of phone is below certain level
-  description: ''
+- alias: Notify Johanna when the battery of phone is below certain level
+  trigger:
+    - below: 30
+      device_id: 8f07c81adbef4b12beaad8dbd09625b4
+      domain: sensor
+      entity_id: sensor.sm_g955f_battery_level
+      platform: device
+      type: battery_level
+  condition:
+    condition: state
+    entity_id: sensor.sm_g955f_battery_state
+    state: discharging
+  action:
+    - service: notify.mobile_app_sm_g955f
+      data:
+        message: Battery
+        title: Battery level below 30%
+    - service: notify.gassistant
+      data:
+        message: Johanna it is time to charge your phone.
+
+- alias: Notify Carl about low battery level
   trigger:
   - below: 30
-    device_id: 8f07c81adbef4b12beaad8dbd09625b4
+    device_id: a6c2febc07ce437cbe8ee51fcfd860c9
     domain: sensor
-    entity_id: sensor.sm_g955f_battery_level
+    entity_id: sensor.sm_g975f_battery_level
     platform: device
     type: battery_level
+  condition:
+    condition: state
+    entity_id: sensor.sm_g975f_battery_state
+    state: discharging
   action:
-  - data:
-      message: Battery
-      title: Battery level below 30%
-    service: notify.mobile_app_sm_g955f
+    - service: notify.gassistant
+      data:
+        message: Carl it is time to charge your phone.
 
-#- alias: Stop all playback
-#  trigger:
-#    - platform: state
-#      entity_id: sensor.music_remote
-#      to: 'off'
-#  action:
-#    - service: media_player.media_pause
-#      entity_id:
-#        - media_player.home_group
-#        - media_player.shield
-#
-#- alias: Continue all playback
-#  trigger:
-#    - platform: state
-#      entity_id: sensor.music_remote
-#      to: 'on'
-#  condition:
-#    condition: state
-#    entity_id: media_player.home_group
-#    state: 'paused'
-#  action:
-#    - service: media_player.media_play
-#      entity_id:
-#        - media_player.home_group
-#
-#- alias: Continue all playback
-#  trigger:
-#    - platform: state
-#      entity_id: sensor.music_remote
-#      to: 'on'
-#  condition:
-#    condition: state
-#    entity_id: media_player.shield
-#    state: 'paused'
-#  action:
-#    - service: media_player.media_play
-#      entity_id:
-#        - media_player.shield
-#
-#- alias: Continue all playback
-#  trigger:
-#    - platform: state
-#      entity_id: sensor.music_remote
-#      to: 'on'
-#  condition:
-#    condition: state
-#    entity_id: media_player.shield
-#    state: 'standby'
-#  action:
-#    - service: media_player.media_play
-#      entity_id:
-#        - media_player.shield
