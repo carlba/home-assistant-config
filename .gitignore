@@ -1,5 +1,6 @@
 .idea
 known_devices.yaml
+automations.yaml
 google_maps_location_sharing.conf
 
 cli.py
