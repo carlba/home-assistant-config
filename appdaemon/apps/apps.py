@@ -207,7 +207,7 @@ class RemoteControl(ExtendedHass):
         self.type = self.args['type']
         self.event_map = {
             'ikea': {'on': 1002, 'off': 2002},
-            'hue': {'on': 1002, 'off': 4002, 'up': 2002, 'down': 3002}
+            'hue': {'on': 1001, 'off': 4001, 'up': 2002, 'down': 3002, 'play': 1002, 'pause': 4002}
         }
 
     def handle_event(self, event_name, data, kwargs):
@@ -226,6 +226,12 @@ class RemoteControl(ExtendedHass):
             elif self.event_map[self.type].get('down') and data['event'] == self.event_map[self.type]['down']:
                 self.handle_down(event_name, data, kwargs)
 
+            elif self.event_map[self.type].get('play') and data['event'] == self.event_map[self.type]['play']:
+                self.handle_play(event_name, data, kwargs)
+
+            elif self.event_map[self.type].get('pause') and data['event'] == self.event_map[self.type]['pause']:
+                self.handle_pause(event_name, data, kwargs)
+
     def handle_turn_on(self, event_name, data, kwargs):
         self.log(f'{data["id"]} was turned on', level='INFO')
 
@@ -237,6 +243,12 @@ class RemoteControl(ExtendedHass):
 
     def handle_down(self, event_name, data, kwargs):
         self.log(f'{data["id"]} decreased state by one', level='INFO')
+
+    def handle_play(self, event_name, data, kwargs):
+        self.log(f'{data["id"]} started playing', level='INFO')
+
+    def handle_pause(self, event_name, data, kwargs):
+        self.log(f'{data["id"]} paused playback', level='INFO')
 
 
 # noinspection PyAttributeOutsideInit
@@ -306,11 +318,17 @@ class MediaController(RemoteControl):
 
 # noinspection PyAttributeOutsideInit
 class MediaControllerVolume(MediaController):
+    # https://www.home-assistant.io/integrations/androidtv/
 
     def initialize(self):
         super().initialize()
         self.log(f'{self.__class__.__name__}.initialize', level='INFO')
 
+    def launch_android_tv_app(self, entity_id, app_id: str):
+        self.call_service('media_player/select_source', entity_id=entity_id, source=app_id)
+
+    def send_android_tv_key(self, entity_id, key: str):
+        self.call_service('androidtv/adb_command', entity_id=entity_id, command=key)
 
     def handle_up(self, event_name, data, kwargs):
         super().handle_up(event_name, data, kwargs)
@@ -341,6 +359,17 @@ class MediaControllerVolume(MediaController):
             new_volume_level = volume_level-0.01 if volume_level > 0.01 else 0
             self.call_service('media_player/volume_set', volume_level=new_volume_level,
                               entity_id=self.speaker)
+
+    def handle_turn_on(self, event_name, data, kwargs):
+        super().handle_turn_on(event_name, data, kwargs)
+        if self.get_state(self.tv) == 'off':
+            self.turn_on(self.tv)
+
+    def handle_turn_off(self, event_name, data, kwargs):
+        super().handle_turn_off(event_name, data, kwargs)
+        self.log(f'state: {self.get_state(self.tv)}')
+        if self.get_state(self.tv) != 'off':
+            self.turn_off(self.tv)
 
 
 # noinspection PyAttributeOutsideInit
