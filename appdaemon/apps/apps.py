@@ -311,16 +311,18 @@ class MediaControllerVolume(MediaController):
         super().initialize()
         self.log(f'{self.__class__.__name__}.initialize', level='INFO')
 
+
     def handle_up(self, event_name, data, kwargs):
         super().handle_up(event_name, data, kwargs)
         self.log(f'{data["id"]} increased volume', level='INFO')
         self.log(f'{self.get_state(self.speaker, attribute="volume_level")}')
 
-        volume_level = self.get_state(self.speaker, attribute="volume_level")
-
         if self.current_state['tv'][self.tv] == 'playing':
-            self.call_service('media_player/volume_up', entity_id=self.tv)
+            volume_level = self.get_state(self.tv, attribute="volume_level")
+            self.call_service('media_player/volume_set', volume_level=volume_level+0.1,
+                              entity_id=self.tv)
         elif self.current_state['speaker'][self.speaker] == 'playing':
+            volume_level = self.get_state(self.speaker, attribute="volume_level")
             self.call_service('media_player/volume_set', volume_level=volume_level+0.01,
                               entity_id=self.speaker)
 
@@ -329,13 +331,14 @@ class MediaControllerVolume(MediaController):
         self.log(f'{data["id"]} decreased volume', level='INFO')
         self.log(f'{self.get_state(self.speaker, attribute="volume_level")}')
 
-        volume_level = self.get_state(self.speaker, attribute="volume_level")
-
         if self.current_state['tv'][self.tv] == 'playing':
-            self.call_service('media_player/volume_up', entity_id=self.tv)
+            volume_level = self.get_state(self.tv, attribute="volume_level")
+            new_volume_level = volume_level-0.1 if volume_level > 0.1 else 0
+            self.call_service('media_player/volume_set', volume_level=new_volume_level,
+                              entity_id=self.tv)
         elif self.current_state['speaker'][self.speaker] == 'playing':
+            volume_level = self.get_state(self.speaker, attribute="volume_level")
             new_volume_level = volume_level-0.01 if volume_level > 0.01 else 0
-
             self.call_service('media_player/volume_set', volume_level=new_volume_level,
                               entity_id=self.speaker)
 
