@@ -120,5 +120,22 @@ There are a few caveats when doing automations
 1. When an automation is triggered from entities the condition is not applied.
 2. The best way to test them is to just manually change the state of the sensor that is
    just to trigger the automation.
+   
+## Deconz
+
+### Finding your Events
+
+dash://homeassistant:deconz
+
+Navigate to Developer tools->Events. In the section Listen to events add deconz_event and press 
+START LISTENING. All events from deCONZ will now be shown and by pushing your remote button while 
+monitoring the log it should be fairly easy to find the events you are looking for.
+
+### Debuging
+    
+    ```yaml
+    pydeconz: debug
+    homeassistant.components.deconz: debug
+    ```
 
 ## TODO

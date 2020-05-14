@@ -204,24 +204,39 @@ class RemoteControl(ExtendedHass):
         self.log(f'{self.__class__.__name__}.initialize', level='INFO')
         self.id = self.args['id']
         self.listen_event(self.handle_event, self.args['event'])
+        self.type = self.args['type']
+        self.event_map = {
+            'ikea': {'on': 1002, 'off': 2002},
+            'hue': {'on': 1002, 'off': 4002, 'up': 2002, 'down': 3002}
+        }
 
     def handle_event(self, event_name, data, kwargs):
         if self.id in [data['id'], '*']:
-            if data['event'] == 1002:
+            if data['event'] == self.event_map[self.type]['on']:
                 self.set_state(f'sensor.{data["id"]}', state='on')
                 self.handle_turn_on(event_name, data, kwargs)
-                for entity in self.entities:
-                    self.turn_on(entity)
 
-            elif data['event'] == 2002:
+            elif data['event'] == self.event_map[self.type]['off']:
                 self.set_state(f'sensor.{data["id"]}', state='off')
                 self.handle_turn_off(event_name, data, kwargs)
+
+            elif self.event_map[self.type].get('up') and data['event'] == self.event_map[self.type]['up']:
+                self.handle_up(event_name, data, kwargs)
+
+            elif self.event_map[self.type].get('down') and data['event'] == self.event_map[self.type]['down']:
+                self.handle_down(event_name, data, kwargs)
 
     def handle_turn_on(self, event_name, data, kwargs):
         self.log(f'{data["id"]} was turned on', level='INFO')
 
     def handle_turn_off(self, event_name, data, kwargs):
         self.log(f'{data["id"]} was turned off', level='INFO')
+
+    def handle_up(self, event_name, data, kwargs):
+        self.log(f'{data["id"]} increased state by one', level='INFO')
+
+    def handle_down(self, event_name, data, kwargs):
+        self.log(f'{data["id"]} decreased state by one', level='INFO')
 
 
 # noinspection PyAttributeOutsideInit
@@ -287,6 +302,42 @@ class MediaController(RemoteControl):
                  f'new {new}, kwargs: {repr(kwargs)}', level='INFO')
         self.current_state['speaker'][entity] = new
         self.log(self.current_state)
+
+
+# noinspection PyAttributeOutsideInit
+class MediaControllerVolume(MediaController):
+
+    def initialize(self):
+        super().initialize()
+        self.log(f'{self.__class__.__name__}.initialize', level='INFO')
+
+    def handle_up(self, event_name, data, kwargs):
+        super().handle_up(event_name, data, kwargs)
+        self.log(f'{data["id"]} increased volume', level='INFO')
+        self.log(f'{self.get_state(self.speaker, attribute="volume_level")}')
+
+        volume_level = self.get_state(self.speaker, attribute="volume_level")
+
+        if self.current_state['tv'][self.tv] == 'playing':
+            self.call_service('media_player/volume_up', entity_id=self.tv)
+        elif self.current_state['speaker'][self.speaker] == 'playing':
+            self.call_service('media_player/volume_set', volume_level=volume_level+0.01,
+                              entity_id=self.speaker)
+
+    def handle_down(self, event_name, data, kwargs):
+        super().handle_down(event_name, data, kwargs)
+        self.log(f'{data["id"]} decreased volume', level='INFO')
+        self.log(f'{self.get_state(self.speaker, attribute="volume_level")}')
+
+        volume_level = self.get_state(self.speaker, attribute="volume_level")
+
+        if self.current_state['tv'][self.tv] == 'playing':
+            self.call_service('media_player/volume_up', entity_id=self.tv)
+        elif self.current_state['speaker'][self.speaker] == 'playing':
+            new_volume_level = volume_level-0.01 if volume_level > 0.01 else 0
+
+            self.call_service('media_player/volume_set', volume_level=new_volume_level,
+                              entity_id=self.speaker)
 
 
 # noinspection PyAttributeOutsideInit

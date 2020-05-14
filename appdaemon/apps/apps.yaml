@@ -50,25 +50,40 @@ bathroom_motion_sensor:
 desktop_remote_control:
   module: apps
   class: RemoteControlAction
+  id: desktop_remote
+  type: ikea
   event: deconz_event
   entities: ['light.desktop', 'switch.screen']
-  id: desktop_remote
+
 
 coffeemaker_remote_control:
   module: apps
   class: RemoteControlAction
+  id: coffeemaker_remote
+  type: ikea
   event: deconz_event
   entities: ['switch.coffeemaker']
-  id: coffeemaker_remote
 
+# TODO: Remove this
 media_player_control:
   id: music_remote
+  type: ikea
   event: deconz_event
   module: apps
   class: MediaController
   entities: ['test']
   tv: media_player.shield
   speaker: media_player.home_group
+
+dimmer_switch:
+  module: apps
+  class: MediaControllerVolume
+  event: deconz_event
+  type: hue
+  entities: []
+  tv: media_player.shield
+  speaker: media_player.home_group
+  id: dimmer_switch
 
 coffee_timer:
   module: apps
