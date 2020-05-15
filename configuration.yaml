@@ -375,11 +375,11 @@ notify:
     method: POST_JSON
     resource: http://localhost:5001/broadcast_message
 
-# TODO: Get this harmony remote working
-#remote:
-#  - platform: harmony
-#    name: Harmony Hub
-#    activity: Home
+remote:
+  - platform: harmony
+    host: 192.168.1.41
+    name: Harmony Hub
+    activity: Home
 
 system_health:
 
