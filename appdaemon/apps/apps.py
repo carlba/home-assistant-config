@@ -1,6 +1,6 @@
 import inspect
 import json
-from typing import Union
+from typing import Union, List, Dict
 
 import appdaemon.plugins.hass.hassapi as hass
 from datetime import datetime
@@ -19,7 +19,7 @@ class ExtendedHass(hass.Hass):
 
         return target_method
 
-    def log(self, message: Union[str, dict], level: str = 'INFO'):
+    def log(self, message: Union[str, dict, list], level: str = 'INFO'):
         message = json.dumps(message) if isinstance(message, dict) else message
         super().log(f'{ExtendedHass.get_info(2)}: {message}', level)
 
@@ -269,6 +269,52 @@ class RemoteControlAction(RemoteControl):
         for entity in self.entities:
             self.turn_off(entity)
         self.log(f'{self.entities} was turned on', level='INFO')
+
+
+# noinspection PyAttributeOutsideInit
+class RemoteControlService(RemoteControl):
+
+    def initialize(self):
+        super().initialize()
+        self.entities: List[str] = self.args.get('entities')
+        self.service_calls: Dict[List[Dict[str, Union[str, Dict[str, Union[str, int]]]]]] = self.args['service_calls']
+
+    def get_service_calls_for_event(self, service_calls, event: str):
+        new_service_calls: List[dict] = []
+
+        for call in service_calls[event]:
+            entity_id = call['data'].get('entity_id')
+            if not entity_id:
+                if not self.entities:
+                    raise TypeError('Entities needs to be provided in YAML')
+                for entity in self.entities:
+                    call['data']['entity_id'] = entity
+                    service_call = {
+                        'args': [call['service'].replace('.', '/')],
+                        'kwargs': call['data']
+                    }
+                    new_service_calls.append(service_call)
+            else:
+                service_call = {
+                    'args': [call['service'].replace('.', '/')],
+                    'kwargs': call['data']
+                }
+                new_service_calls.append(service_call)
+        return new_service_calls
+
+    def handle_turn_on(self, event_name, data, kwargs):
+        super().handle_turn_on(event_name, data, kwargs)
+        self.log(self.service_calls, level='INFO')
+        new_service_calls = self.get_service_calls_for_event(self.service_calls, 'on')
+        for service_call in new_service_calls:
+            self.call_service(*service_call['args'], **service_call['kwargs'])
+
+    def handle_turn_off(self, event_name, data, kwargs):
+        super().handle_turn_off(event_name, data, kwargs)
+        new_service_calls = self.get_service_calls_for_event(self.service_calls, 'off')
+        for service_call in new_service_calls:
+            self.log(f'Trying to call service with args:{service_call["args"]} kwargs:{service_call["kwargs"]}')
+            self.call_service(*service_call['args'], **service_call['kwargs'])
 
 
 # noinspection PyAttributeOutsideInit

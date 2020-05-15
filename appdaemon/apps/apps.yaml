@@ -64,16 +64,22 @@ coffeemaker_remote_control:
   event: deconz_event
   entities: ['switch.coffeemaker']
 
-# TODO: Replace this with a remote that cleans stuff
-#media_player_control:
-#  id: cleaning_remote
-#  type: ikea
-#  event: deconz_event
-#  module: apps
-#  class: RemoteControlAction
-#  entities: ['vacuum.xiaomi_vacuum_cleaner']
-#  tv: media_player.shield
-#  speaker: media_player.home_group
+cleaning_remote_control:
+  id: cleaning_remote
+  type: ikea
+  event: deconz_event
+  module: apps
+  class: RemoteControlService
+  service_calls:
+    'on':
+      - service: vacuum.start
+        data:
+          entity_id: vacuum.xiaomi_vacuum_cleaner
+    'off':
+      - service: script.turn_on
+        data:
+          entity_id: script.xiaomi_vacuum_cleaner_return_to_base
+
 
 dimmer_switch:
   module: apps

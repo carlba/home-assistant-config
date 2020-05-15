@@ -379,3 +379,14 @@ broadcast:
     - service: notify.gassistant
       data_template:
         message: '{{ states("input_text.broadcast") }}'
+
+# The return_to_base command does not work if executed without first pausing and waiting 1 sec
+xiaomi_vacuum_cleaner_return_to_base:
+  sequence:
+    - service: vacuum.pause
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+    - delay: 1
+    - service: vacuum.return_to_base
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
