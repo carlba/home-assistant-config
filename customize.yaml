@@ -34,7 +34,7 @@ switch.nexa_remote_g:
 
 switch.toaster:
   friendly_name: Toaster Switch
-  entity_picture: https://cdn3.iconfinder.com/data/icons/breakfast-icons/459/Toaster-512.png
+  icon: mdi:bread-slice
   homebridge_visible: true
 
 input_boolean.movie:

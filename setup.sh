@@ -16,5 +16,8 @@
 
 (cd www/custom-lovelace/swipe-card && curl -OL 'https://raw.githubusercontent.com/bramkragten/custom-ui/master/swipe-card/swipe-card.js')
 
-cd ..
-ln -s addons ../addons
+# https://www.home-assistant.io/integrations/frontend
+[[ ! -d 'themes' ]] && mkdir -p themes
+
+# https://github.com/seangreen2/slate_theme
+(cd themes && curl -OL 'https://raw.githubusercontent.com/seangreen2/slate_theme/master/themes/slate.yaml')

@@ -5,7 +5,6 @@ views:
     title: Main
     # Optional unique id for direct access /lovelace/${id}
     id: main
-    theme: dark-mode
     cards:
       - type: horizontal-stack
         cards:
