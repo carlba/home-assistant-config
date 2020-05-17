@@ -52,7 +52,7 @@ mobile_app:
 zeroconf:
 
 recorder:
-  db_url: 'sqlite:///:memory:'
+  db_url: 'mysql://homeassistant:homeassistant@192.168.1.2/homeassistant?charset=utf8'
 
 history:
   include:
@@ -61,6 +61,10 @@ history:
       - person
 
 logbook:
+
+influxdb:
+  host: 192.168.1.2
+  database: homeassistant
 
 # Checks for available updates
 # Note: This component will send some information about your system to
