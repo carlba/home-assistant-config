@@ -222,7 +222,7 @@ views:
       - type: entities
         title: Media Players
         entities:
-          - entity: media_player.spotify
+          - entity: media_player.spotify_carl_backstrom
             type: custom:mini-media-player
           - entity: media_player.shield
             type: custom:mini-media-player

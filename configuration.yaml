@@ -313,17 +313,6 @@ media_player:
       - service: media_player.media_stop
         data:
           entity_id: media_player.kodi
-  # https://home-assistant.io/components/media_player.spotify/
-  - platform: spotify
-    client_id: ea8908607667466486a0f8c404e7d944
-    client_secret: !secret spotify_client_secret
-    # https://community.home-assistant.io/t/spotify-ignoring-source/18588/24
-    # Retrieve the alias adding by setting log level to info and grepping for "New "
-    # tail -f /config/home-assistant.log | grep "New "
-    aliases:
-      41958a95210503efdf1a3271a6974e5083ed49d8: 'SRS-X77'
-      3aacd1018a63677eee17183ac10f4f7685c056ef: 'Galaxy S8+'
-
   - platform: androidtv
     name: Shield
     host: 192.168.1.7
@@ -337,6 +326,11 @@ media_player:
         - 'paused':
             'media_session_state': 2
         - 'standby'
+
+# https://home-assistant.io/components/media_player.spotify/
+spotify:
+  client_id: 7bfa4dc5b8fa4af69ca572b2cb615540
+  client_secret: !secret spotify_client_secret
 
 webostv:
   name: LG TV
