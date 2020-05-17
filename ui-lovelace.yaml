@@ -1,4 +1,6 @@
 title: Götgatan 94
+custom_header:
+  compact_mode: true
 views:
   - icon: mdi:home-assistant
     # View tab title.
@@ -246,7 +248,9 @@ views:
           - entity: input_text.broadcast
             name: Announce It...
           - entity: script.broadcast
-        title: Make an Announcement             
+        title: Make an Announcement
+      - type: custom:xiaomi-vacuum-card
+        entity: vacuum.xiaomi_vacuum_cleaner
 
 
   - title: Tracker
