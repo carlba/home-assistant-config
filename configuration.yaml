@@ -32,6 +32,15 @@ frontend:
 # https://www.home-assistant.io/lovelace/yaml-mode
 lovelace:
   mode: yaml
+  resources:
+    - url: /local/mini-media-player-bundle.js?v=1.1.3
+      type: module
+    - url: /local/slider-entity-row.js?v=0.1
+      type: js
+    - url: /local/light-entity-row.js?v=0.2.4
+      type: js
+    - url: /local/circle-sensor-card.js?v=0
+      type: module
 
 # Enables configuration UI
 config:
@@ -314,10 +323,7 @@ media_player:
     aliases:
       41958a95210503efdf1a3271a6974e5083ed49d8: 'SRS-X77'
       3aacd1018a63677eee17183ac10f4f7685c056ef: 'Galaxy S8+'
-  # https://www.home-assistant.io/components/media_player.plex
-  - platform: plex
-    entity_namespace: plex
-    remove_unavailable_clients: false
+
   - platform: androidtv
     name: Shield
     host: 192.168.1.7
