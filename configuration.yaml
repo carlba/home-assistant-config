@@ -222,8 +222,6 @@ cloud:
         - script
         - climate
         - sensor
-      include_entities:
-        - media_player.shield
       exclude_entities:
         - switch.nexa_remote_g
         - light.kitchen_table_left
