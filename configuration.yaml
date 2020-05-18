@@ -305,6 +305,13 @@ media_player:
         - 'paused':
             'media_session_state': 2
         - 'standby'
+      'se.svt.android.svtplay':
+        - 'playing':
+            'wake_lock_size': 4
+        - 'paused':
+            'wake_lock_size': 3
+        - 'standby'
+
 
 # https://home-assistant.io/components/media_player.spotify/
 spotify:
