@@ -197,29 +197,6 @@ sensor:
     host: 192.168.1.27
     token: 0b3126cb76494480a1e2095e2a354bba
 
-binary_sensor:
-  - platform: template
-    sensors:
-      harmony_hub_watch_tv:
-        friendly_name: "Watch TV"
-        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Watch TV") }}'
-      harmony_hub_home:
-        friendly_name: "Home"
-        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Home") }}'
-      harmony_hub_away:
-        friendly_name: "Away"
-        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Away") }}'
-      harmony_hub_clean:
-        friendly_name: "Clean"
-        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Clean") }}'
-      harmony_hub_play_switch:
-        friendly_name: "Play Switch"
-        value_template: '{{ is_state_attr("remote.harmony_hub", "current_activity", "Play Switch") }}'
-      dummy:
-        friendly_name: "Dummy"
-        value_template: '{{ false }}'
-
-
 # TODO: Get this climate thingie working
 climate:
   - platform: generic_thermostat

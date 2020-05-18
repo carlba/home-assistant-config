@@ -52,8 +52,6 @@
       entity_id: input_boolean.test
       to: 'on'
   action:
-    - service: switch.turn_off
-      entity_id: switch.harmony_hub_clean
     - service: script.turn_on
       entity_id: script.daytime
 
@@ -65,10 +63,6 @@
       to: not_home
       from: home
   action:
-    - service: remote.turn_on
-      entity_id: remote.harmony_hub
-      data:
-        activity: Away
     - service: light.turn_off
       entity_id: group.all_lights
     - service: switch.turn_off
