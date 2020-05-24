@@ -34,7 +34,7 @@ frontend:
 lovelace:
   mode: yaml
   resources:
-    - url: /local/mini-media-player-bundle.js?v=1.7.0
+    - url: /local/mini-media-player-bundle.js?v=1.8.0
       type: module
     - url: /local/slider-entity-row.js
       type: module

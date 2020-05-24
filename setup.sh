@@ -2,7 +2,7 @@
 [[ ! -d 'custom_components' ]] && mkdir custom_components
 [[ ! -d 'www' ]] && mkdir www
 
-(cd www && curl -OL 'https://github.com/kalkih/mini-media-player/releases/download/v1.7.0/mini-media-player-bundle.js')
+(cd www && curl -OL 'https://github.com/kalkih/mini-media-player/releases/download/v1.8.0/mini-media-player-bundle.js')
 
 (cd www && curl -OL 'https://raw.githubusercontent.com/thomasloven/lovelace-slider-entity-row/master/slider-entity-row.js')
 
