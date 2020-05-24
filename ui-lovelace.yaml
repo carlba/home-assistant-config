@@ -119,26 +119,6 @@ views:
               action: toggle
 
 
-          # https://www.home-assistant.io/lovelace/glance/
-          - type: glance
-            title: Harmony Hub
-            show_header_toggle: false
-            show_state: false
-            entities:
-              - entity: switch.harmony_hub_home
-                icon: mdi:home
-              - entity: binary_sensor.harmony_hub_away
-                icon: mdi:home-minus
-              - entity: switch.harmony_hub_watch_tv
-                tap_action:
-                  action: toggle
-              - entity: switch.harmony_hub_clean
-                tap_action:
-                  action: toggle
-              - entity: switch.harmony_hub_play_switch
-                tap_action:
-                  action: toggle
-
       - type: glance
         show_header_toggle: false
         show_state: false
@@ -146,8 +126,8 @@ views:
         entities:
           - entity: binary_sensor.hallway_motion_sensor
             name: Hallway
-          - entity: binary_sensor.bathroom_motion_sensor
-            name: Bathroom
+#          - entity: binary_sensor.bathroom_motion_sensor
+#            name: Bathroom
 
       - type: entities
         title: Lights
