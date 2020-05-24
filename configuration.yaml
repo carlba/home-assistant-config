@@ -144,12 +144,6 @@ light:
           entity_id: switch.bathroom_ceiling
 
 sensor:
-  # Weather prediction
-  - platform: yr
-    monitored_conditions:
-      - temperature
-      - symbol
-      - precipitation
   - platform: systemmonitor
     resources:
       - type: disk_use_percent
@@ -203,7 +197,13 @@ sensor:
     host: 192.168.1.27
     token: 0b3126cb76494480a1e2095e2a354bba
 
-# TODO: Get this climate thingie working
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    # If errors occur, make sure configuration file is encoded as UTF-8
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) | round(1) }}'
+
 climate:
   - platform: generic_thermostat
     name: temperature_outside_skanstull
