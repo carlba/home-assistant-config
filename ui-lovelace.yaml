@@ -8,6 +8,8 @@ views:
     # Optional unique id for direct access /lovelace/${id}
     id: main
     cards:
+      - type: weather-forecast
+        entity: weather.smhi_home
       - type: horizontal-stack
         cards:
           - type: sensor
