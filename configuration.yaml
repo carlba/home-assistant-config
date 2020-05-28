@@ -180,6 +180,10 @@ sensor:
       air_purifier_favorite_level:
         value_template: "{{ states.fan.xiaomi_miio_device.attributes.favorite_level }}"
         friendly_name: Air Purifier Favorite Level
+      air_purifier_air_quality:
+        value_template: "{{ states.fan.xiaomi_miio_device.attributes.aqi }}"
+        friendly_name: Air Purifier Air Quality
+        unit_of_measurement: "AQI"
   - platform: fitbit
     clock_format: 24H
     monitored_resources:
@@ -187,11 +191,6 @@ sensor:
       - "devices/battery"
       - "sleep/timeInBed"
       - "activities/tracker/steps"
-
-  - platform: xiaomi_miio
-    name: Xiaomi Air Quality Monitor
-    host: 192.168.1.27
-    token: 0b3126cb76494480a1e2095e2a354bba
 
   - platform: command_line
     name: CPU Temperature

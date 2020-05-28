@@ -33,7 +33,7 @@ views:
             width: 30
             line_color: "#3498db"
           - type: sensor
-            entity: sensor.xiaomi_air_quality_monitor
+            entity: sensor.air_purifier_air_quality
             name: Air Quality - Inside
             height: 60
             width: 30
