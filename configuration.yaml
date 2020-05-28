@@ -390,12 +390,12 @@ person:
 vacuum:
   - platform: xiaomi_miio
     host: 192.168.1.11
-    token: 50366952685a5945696c416f74783341
+    token: 5a52714147397869796a754e434c5674
 
 fan:
   - platform: xiaomi_miio
     host: 192.168.1.27
-    token: 0b3126cb76494480a1e2095e2a354bba
+    token: b8d8625068ac729c36e677462fecca53
   - platform: template
     fans:
       anslut_fan:
