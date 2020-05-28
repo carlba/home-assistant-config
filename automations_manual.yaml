@@ -111,10 +111,8 @@
       entity_id: media_player.shield
       to: 'off'
   action:
-    - wait_template:  "{{ is_state('media_player.lg_tv', 'on') }}"
-      timeout: '00:10:00'
-    - service: media_player.turn_off
-      entity_id: media_player.lg_tv
+    - service: script.turn_on
+      entity_id: script.lg_tv_off
 
 - alias: Wakeup in half an hour at 06:30 every day
   trigger:

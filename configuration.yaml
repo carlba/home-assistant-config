@@ -369,7 +369,7 @@ notify:
 
 remote:
   - platform: harmony
-    host: 192.168.1.41
+    host: 192.168.1.42
     name: Harmony Hub
     activity: Home
 
