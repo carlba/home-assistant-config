@@ -390,3 +390,12 @@ xiaomi_vacuum_cleaner_return_to_base:
     - service: vacuum.return_to_base
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
+
+xiaomi_vacuum_cleaner_go_to_emptying_spot:
+  alias: Vacuum Empty
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: 'vacuum.xiaomi_vacuum_cleaner'
+        command: app_goto_target
+        params: [28000,27800]

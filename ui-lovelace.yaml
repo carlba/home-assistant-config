@@ -117,6 +117,9 @@ views:
           - entity: script.clean_living_room
             tap_action:
               action: toggle
+          - entity: script.xiaomi_vacuum_cleaner_go_to_emptying_spot
+            tap_action:
+              action: toggle
 
 
       - type: glance

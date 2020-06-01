@@ -119,6 +119,8 @@ script.clean_hallway:
 script.clean_living_room:
   icon: mdi:sofa
 
+script.xiaomi_vacuum_cleaner_go_to_emptying_spot:
+  icon: mdi:delete
 
 media_player.shield_android_tv_2:
   friendly_name: Plex(Shield)
