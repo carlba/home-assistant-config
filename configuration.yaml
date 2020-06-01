@@ -278,7 +278,7 @@ zone:
 # https://www.home-assistant.io/components/asuswrt/
 asuswrt:
   host: 192.168.1.1
-  username: admin
+  username: cbackstrom
   password: !secret router_password
 
 device_tracker:
@@ -327,6 +327,7 @@ logger:
   default: info
   logs:
     homeassistant.components.media_player.spotify: info
+    homeassistant.components.media_player.androidtv.adb_shell: debug
 
 input_boolean:
   test:
