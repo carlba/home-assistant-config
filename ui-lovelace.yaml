@@ -24,6 +24,29 @@ views:
             height: 60
             width: 30
             line_color: "#3498db"
+
+      - type: horizontal-stack
+        cards:
+          - type: sensor
+            entity: sensor.aqara_humidity_1
+            name: Humidity - Inside
+            height: 60
+            width: 30
+            line_color: "#3498db"
+          - type: sensor
+            entity: sensor.aqara_pressure_1
+            name: Pressure - Inside
+            height: 60
+            width: 30
+            line_color: "#3498db"
+          - type: sensor
+            entity: sensor.aqara_temperature_1
+            name: Temperature - Inside
+            height: 60
+            width: 30
+            line_color: "#3498db"
+
+
       - type: horizontal-stack
         cards:
           - type: sensor
