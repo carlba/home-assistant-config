@@ -110,6 +110,19 @@
   action:
     - service: script.turn_on
       entity_id: script.lg_tv_off
+    - service: script.turn_on
+      entity_id: script.rotel_amp_power_off
+
+- alias: Set Rotel Amp to media mode when Shield is turned on
+  trigger:
+    - platform: state
+      entity_id: media_player.shield
+      from: 'off'
+      to: 'standby'
+  action:
+    - service: script.turn_on
+      entity_id: script.rotel_media_mode
+
 
 - alias: Wakeup in half an hour at 06:30 every day
   trigger:

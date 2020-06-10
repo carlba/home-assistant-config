@@ -399,3 +399,192 @@ xiaomi_vacuum_cleaner_go_to_emptying_spot:
         entity_id: 'vacuum.xiaomi_vacuum_cleaner'
         command: app_goto_target
         params: [28000,27800]
+
+
+rotel_amp_power_off:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 69966843
+        command: PowerOff
+    - delay:
+        seconds: 1
+    - service: switch.turn_off
+      entity_id: switch.rotel
+
+rotel_amp_power_on:
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.rotel
+    - delay:
+        seconds: 1
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 69966843
+        command: PowerOn
+
+rotel_amp_volume_down:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 69966843
+        command: VolumeDown
+
+rotel_amp_volume_up:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 69966843
+        command: VolumeUp
+
+rotel_amp_setup:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 69966843
+        command: Setup
+
+rotel_amp_source_input_optical_1:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 69966843
+        command: InputOptical1
+
+rotel_amp_source_input_phono:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 69966843
+        command: InputPhono
+
+rotel_amp_dim_min:
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 69966843
+        command:
+          - Setup
+          - Setup
+          - Setup
+          - Setup
+          - Setup
+          - Setup
+          - DirectionLeft
+          - DirectionLeft
+          - DirectionLeft
+          - DirectionLeft
+          - Exit
+
+rotel_amp_dim_max:
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 69966843
+        command:
+          - Setup
+          - Setup
+          - Setup
+          - Setup
+          - Setup
+          - Setup
+          - DirectionRight
+          - DirectionRight
+          - DirectionRight
+          - DirectionRight
+          - DirectionRight
+          - Exit
+
+rotel_media_mode:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.rotel_amp_power_on
+    - delay:
+        seconds: 4
+    - service: script.turn_on
+      entity_id: script.rotel_amp_source_input_optical_1
+    - service: script.turn_on
+      entity_id: script.rotel_amp_dim_min
+
+rotel_phono_mode:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.rotel_amp_power_on
+    - delay:
+        seconds: 4
+    - service: script.turn_on
+      entity_id: script.rotel_amp_source_input_phono
+    - service: script.turn_on
+      entity_id: script.rotel_amp_dim_min
+
+
+#
+#
+#        "Rotel Amp": {
+#            "commands": [
+#                "PowerOff",
+#                "PowerOn",
+#                "Greater10",
+#                "0",
+#                "1",
+#                "2",
+#                "3",
+#                "4",
+#                "5",
+#                "6",
+#                "7",
+#                "8",
+#                "9",
+#                "Mute",
+#                "VolumeDown",
+#                "VolumeUp",
+#                "DirectionDown",
+#                "DirectionLeft",
+#                "DirectionRight",
+#                "DirectionUp",
+#                "Select",
+#                "Stop",
+#                "Play",
+#                "Rewind",
+#                "Pause",
+#                "FastForward",
+#                "SkipBack",
+#                "SkipForward",
+#                "Shuffle",
+#                "PresetPrev",
+#                "TuneDown",
+#                "TuneUp",
+#                "PresetNext",
+#                "Setup",
+#                "Exit",
+#                "Balance",
+#                "Bass",
+#                "Bypass",
+#                "Dim",
+#                "InputAux1",
+#                "InputAux2",
+#                "InputCd",
+#                "InputCoaxial1",
+#                "InputCoaxial2",
+#                "InputD1",
+#                "InputD2",
+#                "InputOptical1",
+#                "InputOptical2",
+#                "InputPhono",
+#                "InputTuner",
+#                "InputUsb",
+#                "Treble"
+#            ],
+#            "id": "69966843"
+#        },
+#
+#
