@@ -114,3 +114,19 @@ toaster_timer:
   information_talk: true
   information_delay: 120
   talk_hours: [9, 22]
+
+time_based_person_tracker:
+  module: apps
+  class: TimeBasedPersonTracker
+  group: group.test
+  time_ranges:
+    - start: '22:14:00'
+      stop: '23:00:00'
+      entities:
+        - script.day_time
+    - start: '08:45:00'
+      stop: '10:00:00'
+      name: morning
+      entities:
+        - script.early_morning
+

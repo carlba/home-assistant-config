@@ -4,6 +4,7 @@ from typing import Union, List, Dict
 
 import appdaemon.plugins.hass.hassapi as hass
 from datetime import datetime
+import dateutil.parser
 
 
 class ExtendedHass(hass.Hass):
@@ -457,4 +458,58 @@ class TalkingTimer(ExtendedHass):
         if self.information_talk and (self.talk_hours[0] <= datetime.now().hour <= self.talk_hours[1]):
             self.log(f'Trying to say {self.information}')
             self.call_service('notify/gassistant', message=self.information)
+
+
+class TimeRange:
+
+    def __init__(self, data, time_format='%H:%M:%S', ):
+        self.time_format = time_format
+        self.time_range = {
+            "start": self.time_to_timestring(data['start']),
+            "stop": self.time_to_timestring(data['stop'])
+        }
+        self.entities = data['entities']
+        self.name = data.get('name')
+
+    def __repr__(self):
+        return f'{self.format_name()} {self.time_range["start"]} - {self.time_range["stop"]}'
+
+    def format_name(self):
+        return f'{self.name if self.name else "NoName" + ":"}'
+
+    def time_to_timestring(self, time_string):
+        return datetime.strptime(time_string, self.time_format ).time()
+
+    def match(self, time: datetime.time):
+        return self.time_range['start'] < time < self.time_range['stop']
+
+    def match_now(self):
+        self.match(datetime.now().time())
+
+# noinspection PyAttributeOutsideInit
+class TimeBasedPersonTracker(ExtendedHass):
+
+    def initialize(self):
+        self.log(f'{self.__class__.__name__}.initialize', level='INFO')
+        self.group = self.args['group']
+
+        self.time_ranges = [TimeRange(time_range) for time_range in self.args['time_ranges']]
+        self.log(self.time_ranges)
+        self.listen_state(self.handle_group_state, self.group)
+
+    @property
+    def all_lights(self):
+        return self.get_state('light').keys()
+
+    def handle_group_state(self, entity, attribute, old, new, kwargs):
+        self.log(f'entity: {entity}, attribute: {attribute}, old: {old}, new {new}, '
+                 f'kwargs: {repr(kwargs)}', level='INFO')
+
+        for time_range in self.time_ranges:
+            if time_range.match_now():
+                for entity in time_range.entities:
+                    self.turn_on(entity_id=entity)
+
+
+
 

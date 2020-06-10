@@ -160,7 +160,9 @@ sensor:
         arg: eth0
       - type: network_out
         arg: eth0
+
   - platform: tellstick
+
   # https://www.home-assistant.io/components/template
   - platform: template
     sensors:
@@ -184,6 +186,7 @@ sensor:
         value_template: "{{ states.fan.xiaomi_miio_device.attributes.aqi }}"
         friendly_name: Air Purifier Air Quality
         unit_of_measurement: "AQI"
+
   - platform: fitbit
     clock_format: 24H
     monitored_resources:
@@ -198,6 +201,11 @@ sensor:
     # If errors occur, make sure configuration file is encoded as UTF-8
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+  - platform: rest
+    resource: http://wtfismyip.com/json
+    name: External IP
+    value_template: '{{ value_json.YourFuckingIPAddress }}'
 
 climate:
   - platform: generic_thermostat
@@ -381,11 +389,13 @@ person:
     user_id: ddbc7a2301d74d609308958f9f07d0b7
     device_trackers:
       - device_tracker.sm_g975f
+      - device_tracker.galaxy_s10
   - name: Johanna
     id: 82e52e7a9e574d6ba40e3f1f2c639490
     user_id: 82e52e7a9e574d6ba40e3f1f2c639490
     device_trackers:
       - device_tracker.sm_g955f
+      - device_tracker.galaxy_s8
 
 vacuum:
   - platform: xiaomi_miio
