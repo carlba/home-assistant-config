@@ -20,9 +20,9 @@ class ExtendedHass(hass.Hass):
 
         return target_method
 
-    def log(self, message: Union[str, dict, list], level: str = 'INFO'):
-        message = json.dumps(message) if isinstance(message, dict) else message
-        super().log(f'{ExtendedHass.get_info(2)}: {message}', level)
+    def log(self, msg: Union[str, dict, list], *args, **kwargs):
+        message = json.dumps(msg) if isinstance(msg, dict) else msg
+        super().log(f'{ExtendedHass.get_info(2)}: {message}', *args, **kwargs)
 
     @hass.hass_check
     def timer_start(self, entity_id, duration=None, **kwargs):

@@ -346,6 +346,10 @@ input_boolean:
     initial: true
   fake_heater:
     initial: false
+  anslut_fan_oscillating:
+    initial: false
+  anslut_fan:
+    initial: false
 
 input_number:
   xiaomi_fan_favorite_level:
@@ -406,16 +410,20 @@ fan:
   - platform: xiaomi_miio
     host: 192.168.1.27
     token: b8d8625068ac729c36e677462fecca53
-  - platform: template
-    fans:
-      anslut_fan:
-        friendly_name: "Anslut Fan"
-        value_template: "{{ states('switch.anslut_fan') }}"
-        oscillating_template: "{{ states('input_select.anslut_fan_oscillating') }}"
-        turn_on:
-          service: script.anslut_fan_turn_on
-        turn_off:
-          service: script.anslut_fan_turn_off
+#  - platform: template
+#    fans:
+#      anslut_fan:
+#        friendly_name: "Anslut Fan"
+#        value_template: "{{ states('switch.anslut_fan') }}"
+#        oscillating_template: "{{ true if states('input_boolean.anslut_fan_oscillating') == 'on' else false }}"
+#        set_oscillating:
+#          service: script.turn_on
+#          entity_id: script.anslut_fan_swing
+#        turn_on:
+#          service: script.anslut_fan_turn_on
+#        turn_off:
+#          service: script.anslut_fan_turn_off
+
 
 input_text:
   broadcast:

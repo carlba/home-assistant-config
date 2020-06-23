@@ -1,6 +1,6 @@
 aiohttp==2.3.10
 aiohttp-jinja2==0.15.0
-appdaemon==3.0.5
+appdaemon==4.0.3
 astral==1.10.1
 async-timeout==3.0.1
 attrs==19.3.0
