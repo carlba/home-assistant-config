@@ -357,6 +357,12 @@ input_number:
     min: 0
     max: 14
     step: 1
+input_select:
+  anslut_fan_speed:
+    options:
+      - low
+      - medium
+      - high
 
 timer:
   clean:

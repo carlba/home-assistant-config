@@ -130,3 +130,12 @@ time_based_person_tracker:
       entities:
         - script.early_morning
 
+anslut_fan:
+  module: apps
+  class: AnslutFan
+  power: input_boolean.anslut_fan
+  oscillating: input_boolean.anslut_fan_oscillating
+  speed: input_select.anslut_fan_speed
+
+
+

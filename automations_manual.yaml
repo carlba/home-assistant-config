@@ -177,4 +177,3 @@
     - service: notify.gassistant
       data:
         message: Carl it is time to charge your phone.
-
