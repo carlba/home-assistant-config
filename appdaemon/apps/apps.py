@@ -488,6 +488,7 @@ class TimeRange:
     def match_now(self):
         self.match(datetime.now().time())
 
+
 # noinspection PyAttributeOutsideInit
 class TimeBasedPersonTracker(ExtendedHass):
 
@@ -511,98 +512,3 @@ class TimeBasedPersonTracker(ExtendedHass):
             if time_range.match_now():
                 for entity in time_range.entities:
                     self.turn_on(entity_id=entity)
-
-
-# noinspection PyAttributeOutsideInit
-class AnslutFan(ExtendedHass):
-
-    async def initialize(self):
-        self.log(f'{self.__class__.__name__}.initialize', level='INFO')
-        self.power = self.args['power']
-        self.oscillating = self.args['oscillating']
-        self.speed = self.args['speed']
-        await self.listen_state(self.handle_power_state, self.power)
-        await self.listen_state(self.handle_oscillating_state, self.oscillating)
-        await self.listen_state(self.handle_speed_state, self.speed)
-
-    async def turn_on(self, entity_id, **kwargs):
-        domain, eid = entity_id.split('.')
-        self.log(f'{domain, eid}')
-        return await self.call_service(f'{domain}/turn_on', entity_id=entity_id)
-
-    async def turn_off(self, entity_id, **kwargs):
-        domain, eid = entity_id.split('.')
-        self.log(f'{domain, eid}')
-        return await self.call_service(f'{domain}/turn_off', entity_id=entity_id)
-
-    async def reset(self):
-        await self.call_service('switch/turn_off', entity_id='switch.anslut_fan')
-        await asyncio.sleep(0.2)
-        await self.call_service('switch/turn_on', entity_id='switch.anslut_fan')
-        await asyncio.sleep(0.2)
-        await self.call_service('remote/send_command',
-                                entity_id='remote.harmony_hub',
-                                device=63692557,
-                                command='PowerToggle')
-
-    async def set_speed(self, level: str):
-        if level == 'low':
-            pass
-        elif level == 'medium':
-            await self.call_service('remote/send_command',
-                                    entity_id='remote.harmony_hub',
-                                    device=63692557,
-                                    command='Speed')
-        elif level == 'high':
-            for _ in range(0, 1):
-                await self.call_service('remote/send_command',
-                                        entity_id='remote.harmony_hub',
-                                        device=63692557,
-                                        command=['Speed', 'Speed'])
-
-    async def set_oscillation(self, state: str):
-        if state == 'on':
-            await self.call_service('remote/send_command',
-                                    entity_id='remote.harmony_hub',
-                                    device=63692557,
-                                    command='Swing')
-
-    async def handle_power_state(self, entity, attribute, old, new, kwargs):
-        self.log(f'entity: {entity}, attribute: {attribute}, old: {old}, new {new}, '
-                 f'kwargs: {repr(kwargs)}', level='INFO')
-
-        if old == 'off' and new == 'on':
-            await self.reset()
-            oscillating_state = await self.get_state(self.oscillating)
-            speed_state = await self.get_state(self.speed)
-            await self.set_oscillation(oscillating_state)
-            await self.set_speed(speed_state)
-
-        if old == 'on' and new == 'off':
-            await self.turn_off('switch.anslut_fan')
-
-    async def handle_oscillating_state(self, entity, attribute, old, new, kwargs):
-        self.log(f'entity: {entity}, attribute: {attribute}, old: {old}, new {new}, '
-                 f'kwargs: {repr(kwargs)}', level='INFO')
-        await self.reset()
-        speed_state = await self.get_state(self.speed)
-        await self.set_speed(speed_state)
-
-        if old == 'off' and new == 'on':
-            await self.set_oscillation('on')
-
-    async def handle_speed_state(self, entity, attribute, old, new, kwargs):
-        self.log(f'entity: {entity}, attribute: {attribute}, old: {old}, new {new}, '
-                 f'kwargs: {repr(kwargs)}', level='INFO')
-        await self.reset()
-        oscillating_state = await self.get_state(self.oscillating)
-        await self.set_oscillation(oscillating_state)
-        await self.set_speed(new)
-
-
-
-
-
-
-
-
