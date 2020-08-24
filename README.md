@@ -62,24 +62,22 @@ apk add py-pip && pip install tellcore-py && tellcore_events --raw
 
 ## Xiaomi Roborock Mi S50
 
+[Info about Xiaomi -> HA integration](https://www.home-assistant.io/integrations/xiaomi_miio)
+
 A token is required to access and control the device it can be retrieved, like so:
 
-1. Install an Android Emulator.
+1. Install an BlueStacks emulator
 
-2. Install [MiHome 5.0.9](https://www.apkmirror.com/apk/xiaomi-inc/mihome/mihome-5-0-9-release)
+    ```bash
+    brew cask install bluestacks      
+    ```
+
+2. Install [MiHome v5.4.49](https://www.apkmirror.com/apk/xiaomi-inc/mihome/mihome-5-4-49-release/)
    It has to be this exact release which both writes the token to the sqlite DB and supports the
    european servers. Earlier and later versions don't fulfill both these requirements.
 
-3. Install Google Drive
-
-4. Upload `/data/data/com.xiaomi.smarthome/databases/miio2.db` to Google Drive using any Android
-   file manager (Root is required).
-
-5. Download the file from Google Drive.
-
-6. In the folder where you downloaded the sqlite db, execute:
-   ```sqlite3 miio2.db 'select token from devicerecord'```
-   
+3. Using v5.4.49 of Mi Home locate a text file under the Smarthome/logs folder where the 
+   32 character token is stored.
 
 ### Getting the room mappings
 
@@ -93,7 +91,10 @@ A token is required to access and control the device it can be retrieved, like s
    ```bash
    miio tokens update 192.168.1.11 --token <TOKEN>    
    ```
-     
+    
+## Xiaomi Speedfan C1
+
+[HA Xiaomi Speedfan C1 Custom Component](https://github.com/syssi/xiaomi_fan)
 
 ## Lovelace UI
 

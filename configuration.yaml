@@ -406,6 +406,11 @@ fan:
   - platform: xiaomi_miio
     host: 192.168.1.27
     token: b8d8625068ac729c36e677462fecca53
+  - platform: xiaomi_miio_fan
+    name: Xiaomi Smart Fan
+    host: 192.168.1.22
+    token: 78515254e630a84d6e38e82141bd6da4
+
 
 input_text:
   broadcast:
