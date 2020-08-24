@@ -119,6 +119,14 @@
       entity_id: media_player.shield
       from: 'off'
       to: 'standby'
+    - platform: state
+      entity_id: media_player.shield
+      from: 'off'
+      to: 'playing'
+    - platform: state
+      entity_id: media_player.shield
+      from: 'off'
+      to: 'idle'
   action:
     - service: script.turn_on
       entity_id: script.rotel_media_mode
