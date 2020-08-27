@@ -3,13 +3,13 @@ custom_header:
   compact_mode: true
 views:
   - icon: mdi:home-assistant
+    path: overview
     # View tab title.
     title: Main
-    # Optional unique id for direct access /lovelace/${id}
-    id: main
     cards:
       - type: weather-forecast
         entity: weather.smhi_home
+        show_forecast: false
       - type: horizontal-stack
         cards:
           - type: sensor
@@ -146,6 +146,9 @@ views:
           - entity: script.rotel_phono_mode
             tap_action:
               action: toggle
+          - entity: script.cast_in_kitchen
+            tap_action:
+              action: toggle
 
 
       - type: glance
@@ -218,6 +221,17 @@ views:
           - vacuum.xiaomi_vacuum_cleaner
           - fan.xiaomi_miio_device
           - input_number.xiaomi_fan_favorite_level
+          - type: custom:fold-entity-row
+            head: fan.xiaomi_smart_fan
+            open: true
+            entities:
+              - type: custom:slider-entity-row
+                entity: fan.xiaomi_smart_fan
+                name: Speed
+                group: true
+              - entity: switch.xiaomi_smart_fan_oscillate
+                name: Oscillate
+                group: true
 
       - type: entity-filter
         entities:
@@ -235,22 +249,48 @@ views:
         entities:
           - entity: media_player.spotify_carl_backstrom
             type: custom:mini-media-player
-          - entity: media_player.shield
-            type: custom:mini-media-player
-          - entity: media_player.lg_tv
-            type: custom:mini-media-player
-          - entity: media_player.home_group
-            type: custom:mini-media-player
-            hide_controls: true
-            show_tts: google
-          - entity: media_player.kitchen_speaker
-            type: custom:mini-media-player
-            hide_controls: true
-            show_tts: google
-          - entity: media_player.office_speaker
-            type: custom:mini-media-player
-            hide_controls: true
-            show_tts: google
+            group: true
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Video
+            entities:
+              - entity: media_player.kitchen_display
+                type: custom:mini-media-player
+                group: true
+              - entity: media_player.shield
+                type: custom:mini-media-player
+                group: true
+              - entity: media_player.lg_tv
+                type: custom:mini-media-player
+                group: true
+          - type: custom:fold-entity-row
+            head: media_player.home_group
+            entities:
+              - entity: media_player.home_group
+                type: custom:mini-media-player
+                show_tts: google
+                group: true
+              - entity: media_player.office_speaker_1
+                type: custom:mini-media-player
+                hide_controls: true
+                show_tts: google
+                group: true
+              - entity: media_player.office_speaker_2
+                type: custom:mini-media-player
+                hide_controls: true
+                show_tts: google
+                group: true
+              - entity: media_player.kitchen_speaker
+                type: custom:mini-media-player
+                hide_controls: true
+                show_tts: google
+                group: true
+              - entity: media_player.kitchen_display
+                type: custom:mini-media-player
+                hide_controls: true
+                show_tts: google
+                group: true
 
       - type: entities
         show_header_toggle: false
@@ -457,4 +497,11 @@ views:
               service_data:
                 entity_id: media_player.shield_3
                 command: "am start -a android.intent.action.VIEW -d -n se.svt.android.svtplay/se.svt.svtplay.tv.ui.StartupActivity"
-
+  - icon: mdi:star
+    path: favorites
+    # View tab title.
+    title: Favorites
+    cards:
+      - type: weather-forecast
+        entity: weather.smhi_home
+        show_forecast: false

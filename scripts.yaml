@@ -494,65 +494,11 @@ rotel_phono_mode:
     - service: script.turn_on
       entity_id: script.rotel_amp_dim_min
 
-
-#
-#
-#        "Rotel Amp": {
-#            "commands": [
-#                "PowerOff",
-#                "PowerOn",
-#                "Greater10",
-#                "0",
-#                "1",
-#                "2",
-#                "3",
-#                "4",
-#                "5",
-#                "6",
-#                "7",
-#                "8",
-#                "9",
-#                "Mute",
-#                "VolumeDown",
-#                "VolumeUp",
-#                "DirectionDown",
-#                "DirectionLeft",
-#                "DirectionRight",
-#                "DirectionUp",
-#                "Select",
-#                "Stop",
-#                "Play",
-#                "Rewind",
-#                "Pause",
-#                "FastForward",
-#                "SkipBack",
-#                "SkipForward",
-#                "Shuffle",
-#                "PresetPrev",
-#                "TuneDown",
-#                "TuneUp",
-#                "PresetNext",
-#                "Setup",
-#                "Exit",
-#                "Balance",
-#                "Bass",
-#                "Bypass",
-#                "Dim",
-#                "InputAux1",
-#                "InputAux2",
-#                "InputCd",
-#                "InputCoaxial1",
-#                "InputCoaxial2",
-#                "InputD1",
-#                "InputD2",
-#                "InputOptical1",
-#                "InputOptical2",
-#                "InputPhono",
-#                "InputTuner",
-#                "InputUsb",
-#                "Treble"
-#            ],
-#            "id": "69966843"
-#        },
-#
-#
+cast_in_kitchen:
+  alias: Cast in Kitchen
+  sequence:
+  - data:
+      dashboard_path: lovelace
+      entity_id: media_player.kitchen_display
+      view_path: main
+    service: cast.show_lovelace_view

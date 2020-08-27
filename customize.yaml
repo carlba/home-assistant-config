@@ -46,26 +46,6 @@ input_boolean.test:
   friendly_name: Testing toggle
   icon: mdi:testing-tube-empty
 
-switch.harmony_hub_home:
-  friendly_name: Home
-  icon: mdi:home
-
-switch.harmony_hub_away:
-  friendly_name: Away
-  icon: mdi:home-minus
-
-switch.harmony_hub_watch_tv:
-  friendly_name: Watch TV
-  icon: mdi:shield
-
-switch.harmony_hub_clean:
-  friendly_name: Clean
-  icon: mdi:robot-vacuum
-
-switch.harmony_hub_play_switch:
-  friendly_name: Play Switch
-  icon: mdi:gamepad-variant
-
 sensor.235_temperature:
   friendly_name: Temperature - Outside - Skanstull
 
