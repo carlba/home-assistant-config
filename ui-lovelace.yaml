@@ -540,8 +540,13 @@ views:
             name: Announce It...
           - entity: script.broadcast
         title: Make an Announcement
+      - type: entities
+        entities:
+          - entity: input_boolean.test
+            type: button
+            name: Test
+            tap_action:
+              action: toggle
+          - entity: binary_sensor.daytime
 
 
-
-sensor:
-  235_temperature:

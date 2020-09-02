@@ -157,14 +157,13 @@
       platform: device
       type: battery_level
   condition:
-    condition: state
-    entity_id: sensor.sm_g955f_battery_state
-    state: discharging
+    - condition: state
+      entity_id: sensor.sm_g955f_battery_state
+      state: discharging
+    - condition: state
+      entity_id: binary_sensor.daytime
+      state: 'on'
   action:
-    - service: notify.mobile_app_sm_g955f
-      data:
-        message: Battery
-        title: Battery level below 30%
     - service: notify.gassistant
       data:
         message: Johanna it is time to charge your phone.
@@ -178,10 +177,30 @@
     platform: device
     type: battery_level
   condition:
-    condition: state
-    entity_id: sensor.sm_g975f_battery_state
-    state: discharging
+    - condition: state
+      entity_id: sensor.sm_g975f_battery_state
+      state: discharging
+    - condition: state
+      entity_id: binary_sensor.daytime
+      state: 'on'
   action:
     - service: notify.gassistant
       data:
         message: Carl it is time to charge your phone.
+
+
+- alias: Test
+  trigger:
+    - platform: state
+      entity_id: input_boolean.test
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.daytime
+      state: 'on'
+  action:
+    - service: system_log.write
+      data:
+        level: info
+        logger: homeassistant.components.automation.test
+        message: "The action was triggered"

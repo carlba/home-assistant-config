@@ -162,6 +162,13 @@ light:
           service: switch.turn_off
           entity_id: switch.bathroom_ceiling
 
+binary_sensor:
+  - platform: template
+    sensors:
+      daytime:
+        value_template: "{{ 'on' if ('08:00' < now().strftime('%H:%M') < '22:00') else 'off' }}"
+        friendly_name: Is Daytime
+
 sensor:
   - platform: systemmonitor
     resources:
