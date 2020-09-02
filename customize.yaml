@@ -102,6 +102,9 @@ script.clean_living_room:
 script.xiaomi_vacuum_cleaner_go_to_emptying_spot:
   icon: mdi:delete
 
+sensor.sleep_time_in_bed_friendly:
+  icon: mdi:bed
+
 media_player.shield_android_tv_2:
   friendly_name: Plex(Shield)
 

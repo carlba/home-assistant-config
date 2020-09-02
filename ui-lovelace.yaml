@@ -3,304 +3,328 @@ custom_header:
   compact_mode: true
 views:
   - icon: mdi:home-assistant
-    path: overview
+    path: default
     # View tab title.
     title: Main
     cards:
-      - type: weather-forecast
-        entity: weather.smhi_home
-        show_forecast: false
-      - type: horizontal-stack
+      - type: vertical-stack
         cards:
-          - type: sensor
-            entity: sensor.235_temperature
-            name: Temp - Outside
-            height: 60
-            width: 30
-            line_color: "#3498db"
-          - type: sensor
-            entity: sensor.air_purifier_temperature
-            name: Temp - Inside
-            height: 60
-            width: 30
-            line_color: "#3498db"
-
-      - type: horizontal-stack
-        cards:
-          - type: sensor
-            entity: sensor.aqara_humidity_1
-            name: Humidity - Inside
-            height: 60
-            width: 30
-            line_color: "#3498db"
-          - type: sensor
-            entity: sensor.aqara_pressure_1
-            name: Pressure - Inside
-            height: 60
-            width: 30
-            line_color: "#3498db"
-          - type: sensor
-            entity: sensor.aqara_temperature_1
-            name: Temperature - Inside
-            height: 60
-            width: 30
-            line_color: "#3498db"
-
-
-      - type: horizontal-stack
-        cards:
-          - type: sensor
-            entity: sensor.air_purifier_humidity
-            name: Humidity - Inside
-            height: 60
-            width: 30
-            line_color: "#3498db"
-          - type: sensor
-            entity: sensor.air_purifier_air_quality
-            name: Air Quality - Inside
-            height: 60
-            width: 30
-          - type: sensor
-            entity: sensor.sm_g975f_battery_level
-            name: S10 Battery
-            height: 60
-            width: 30
-          - type: sensor
-            entity: sensor.sm_g955f_battery_level
-            name: S8 Battery
-            height: 60
-            width: 30
-      - type: glance
-        entities:
-          - sensor.weight
-          - sensor.ionic_battery
-          - sensor.sleep_time_in_bed
-          - sensor.tracker_steps
-
-      - type: entity-filter
-        entities:
-          - person.carl
-          - person.johanna
-        state_filter:
-          - 'home'
-        card:
-          type: glance
+        - type: entities
           show_state: false
-          show_name: false
-          title: '@home'
-      - type: glance
-        entities:
-          - timer.toaster
-          - timer.coffeemaker
-          - timer.clean
-      - type: glance
-        title: Scenes
-        show_header_toggle: false
-        show_state: false
-        entities:
-          - entity:  script.media_dark
-            tap_action:
-              action: toggle
-          - entity: script.media_backlight
-            tap_action:
-              action: toggle
-          - entity: script.computer
-            tap_action:
-              action: toggle
-          - entity: script.daytime
-            tap_action:
-              action: toggle
-          - entity: script.cozy
-            tap_action:
-              action: toggle
-          - entity: script.sleep_in_ten_min
-            tap_action:
-              action: toggle
-          - entity: script.sleep_now
-            tap_action:
-              action: toggle
-          - entity: script.sleep_in_an_hour
-            tap_action:
-              action: toggle
-          - entity: script.work
-            tap_action:
-              action: toggle
-          - entity: script.dinner
-            tap_action:
-              action: toggle
-          - entity: script.early_morning
-            tap_action:
-              action: toggle
-          - entity: script.clean_kitchen
-            tap_action:
-              action: toggle
-          - entity: script.clean_hallway
-            tap_action:
-              action: toggle
-          - entity: script.clean_living_room
-            tap_action:
-              action: toggle
-          - entity: script.xiaomi_vacuum_cleaner_go_to_emptying_spot
-            tap_action:
-              action: toggle
-          - entity: script.rotel_phono_mode
-            tap_action:
-              action: toggle
-          - entity: script.cast_in_kitchen
-            tap_action:
-              action: toggle
-
-
-      - type: glance
-        show_header_toggle: false
-        show_state: false
-        title: Motion Sensors
-        entities:
-          - entity: binary_sensor.hallway_motion_sensor
-            name: Hallway
-#          - entity: binary_sensor.bathroom_motion_sensor
-#            name: Bathroom
-
-      - type: entities
-        title: Lights
-        show_header_toggle: false
-        entities:
-          - type: custom:slider-entity-row
-            entity: light.desktop
-            name: Desktop
-#          - type: entity-button
-#            entity: light.bathroom_ceiling
-          - type: custom:slider-entity-row
-            entity: light.hallway_ceiling
-            name: Hallway
-          - type: custom:slider-entity-row
-            entity: light.kitchen_table
-            name: Kitchen Table
-          - type: custom:slider-entity-row
-            entity: light.kitchen_fan
-            name: Kitchen Fan
-          - type: custom:slider-entity-row
-            entity: light.bed
-            name: Bed
-          - type: custom:slider-entity-row
-            entity: light.behind_tv
-            name: TV
-          - type: custom:slider-entity-row
-            entity: light.frank
-            name: Frank
-          - type: custom:slider-entity-row
-            entity: light.living_room_ceiling
-            name: LR Ceiling
-          - type: custom:slider-entity-row
-            entity: light.living_area_lights
-            name: Living Area
-
-      - type: glance
-        title: Switches
-        show_state: false
-        entities:
-          - entity: switch.toaster
-            name: Toaster
-            tap_action:
-              action: toggle
-          - entity: switch.coffeemaker
-            name: Coffeemaker
-            icon: mdi:coffee
-            tap_action:
-              action: toggle
-          - entity: switch.screen
-            name: Screen
-            icon: mdi:monitor
-            tap_action:
-              action: toggle
-
-      - type: entities
-        title: Devices
-        show_header_toggle: false
-        entities:
-          - vacuum.xiaomi_vacuum_cleaner
-          - fan.xiaomi_miio_device
-          - input_number.xiaomi_fan_favorite_level
-          - type: custom:fold-entity-row
-            head: fan.xiaomi_smart_fan
-            open: true
-            entities:
-              - type: custom:slider-entity-row
-                entity: fan.xiaomi_smart_fan
-                name: Speed
-                group: true
-              - entity: switch.xiaomi_smart_fan_oscillate
-                name: Oscillate
-                group: true
-
-      - type: entity-filter
-        entities:
-          - device_tracker.android4749e9acd4fc4284 # Natalie Milz
-          - device_tracker.patriksmbp # Patrik
-        state_filter:
-          - 'home'
-        show_empty: false
-        card:
-          type: glance
-          title: Friends
-      # https://community.home-assistant.io/t/lovelace-mini-media-player/68459
-      - type: entities
-        title: Media Players
-        entities:
-          - entity: media_player.spotify_carl_backstrom
-            type: custom:mini-media-player
-            group: true
-          - type: custom:fold-entity-row
-            head:
-              type: section
-              label: Video
-            entities:
-              - entity: media_player.kitchen_display
-                type: custom:mini-media-player
-                group: true
-              - entity: media_player.shield
-                type: custom:mini-media-player
-                group: true
-              - entity: media_player.lg_tv
-                type: custom:mini-media-player
-                group: true
-          - type: custom:fold-entity-row
-            head: media_player.home_group
-            entities:
-              - entity: media_player.home_group
-                type: custom:mini-media-player
-                show_tts: google
-                group: true
-              - entity: media_player.office_speaker_1
-                type: custom:mini-media-player
-                hide_controls: true
-                show_tts: google
-                group: true
-              - entity: media_player.office_speaker_2
-                type: custom:mini-media-player
-                hide_controls: true
-                show_tts: google
-                group: true
-              - entity: media_player.kitchen_speaker
-                type: custom:mini-media-player
-                hide_controls: true
-                show_tts: google
-                group: true
-              - entity: media_player.kitchen_display
-                type: custom:mini-media-player
-                hide_controls: true
-                show_tts: google
-                group: true
-
-      - type: entities
-        show_header_toggle: false
-        entities:
-          - entity: input_text.broadcast
-            name: Announce It...
-          - entity: script.broadcast
-        title: Make an Announcement
-      - type: custom:xiaomi-vacuum-card
-        entity: vacuum.xiaomi_vacuum_cleaner
+          open: true
+          entities:
+            - entity: timer.toaster
+              icon: mdi:toggle-switch
+              type: custom:multiple-entity-row
+              show_state: false
+              name: Switches
+              entities:
+                - entity: switch.toaster
+                  name: Toaster
+                  icon: mdi:toaster
+                  state_color: true
+                  tap_action:
+                    action: toggle
+                - entity: switch.coffeemaker
+                  name: Coffeemaker
+                  icon: mdi:coffee
+                  state_color: true
+                  tap_action:
+                    action: toggle
+                - entity: switch.screen
+                  name: Screen
+                  icon: mdi:monitor
+                  state_color: true
+                  tap_action:
+                    action: toggle
+            - entity: binary_sensor.hallway_motion_sensor
+              icon: mdi:toggle-switch
+              type: custom:multiple-entity-row
+              show_state: false
+              name: 'Motion Sensors'
+              entities:
+                - entity: binary_sensor.hallway_motion_sensor
+                  name: Hallway
+  #             - entity: binary_sensor.bathroom_motion_sensor
+  #               name: Bathroom
+            - entity: sensor.versa_2_battery
+              icon: mdi:watch
+              type: custom:multiple-entity-row
+              show_state: false
+              name: 'Versa'
+              entities:
+                - sensor.weight
+                - entity: sensor.versa_2_battery
+                  name: Batt
+                - entity: sensor.sleep_time_in_bed_friendly
+                  name: Sleep
+                - entity: sensor.tracker_steps
+                  name: Steps
+            - entity: sensor.sm_g975f_battery_level
+              icon: mdi:phone
+              type: custom:multiple-entity-row
+              show_state: false
+              name: 'Phone'
+              entities:
+                - entity: sensor.sm_g975f_battery_level
+                  name: S10 Battery
+                - entity: sensor.sm_g955f_battery_level
+                  name: S8 Battery
+            - entity: timer.toaster
+              icon: mdi:clock
+              type: custom:multiple-entity-row
+              show_state: false
+              name: Timers
+              entities:
+                - entity: timer.toaster
+                  name: Toaster
+                - entity: timer.coffeemaker
+                  name: Coffeemaker
+                - entity: timer.clean
+                  name: Clean
+            - entity: sensor.235_temperature
+              type: custom:multiple-entity-row
+              show_state: false
+              name: Weather
+              entities:
+                - entity: sensor.air_purifier_temperature
+                  name: AP
+                - entity: sensor.aqara_temperature_1
+                  name: Wall
+                - entity: sensor.235_temperature
+                  name: Outside
+                - entity: sensor.air_purifier_air_quality
+                  name: AQI
+        - type: entity-filter
+          entities:
+            - person.carl
+            - person.johanna
+          state_filter:
+            - 'home'
+          card:
+            type: glance
+            show_state: false
+            show_name: false
+            title: '@home'
+        - type: glance
+          title: Scenes
+          show_header_toggle: false
+          show_state: false
+          entities:
+            - entity:  script.media_dark
+              tap_action:
+                action: toggle
+            - entity: script.media_backlight
+              tap_action:
+                action: toggle
+            - entity: script.computer
+              tap_action:
+                action: toggle
+            - entity: script.daytime
+              tap_action:
+                action: toggle
+            - entity: script.cozy
+              tap_action:
+                action: toggle
+            - entity: script.sleep_in_ten_min
+              tap_action:
+                action: toggle
+            - entity: script.sleep_now
+              tap_action:
+                action: toggle
+  #          - entity: script.sleep_in_an_hour
+  #            tap_action:
+  #              action: toggle
+            - entity: script.work
+              tap_action:
+                action: toggle
+            - entity: script.dinner
+              tap_action:
+                action: toggle
+            - entity: script.early_morning
+              tap_action:
+                action: toggle
+  #          - entity: script.rotel_phono_mode
+  #            tap_action:
+  #              action: toggle
+            - entity: script.cast_in_kitchen
+              tap_action:
+                action: toggle
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Devices
+          show_header_toggle: false
+          entities:
+            - type: custom:fold-entity-row
+              head: vacuum.xiaomi_vacuum_cleaner
+              open: true
+              entities:
+                - type: section
+                - entity: vacuum.xiaomi_vacuum_cleaner
+                  type: custom:multiple-entity-row
+                  show_state: false
+                  name: ''
+                  entities:
+                    - attribute: battery_level
+                      name: Battery
+                      unit: '%'
+                - entity: vacuum.xiaomi_vacuum_cleaner
+                  name: ''
+                  show_state: false
+                  type: custom:multiple-entity-row
+                  entities:
+                    - icon: mdi:food-fork-drink
+                      tap_action:
+                        action: call-service
+                        service: vacuum.start
+                        service_data:
+                          entity_id: vacuum.xiaomi_vacuum_cleaner
+                    - icon: mdi:shoe-formal
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.clean_hallway
+                    - icon: mdi:sofa
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.clean_living_room
+                    - icon: mdi:home
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.xiaomi_vacuum_cleaner_return_to_base
+                    - icon: mdi:delete
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.xiaomi_vacuum_cleaner_go_to_emptying_spot
+                        secondary_info: Empty Vacuum
+            - type: custom:fold-entity-row
+              head: fan.xiaomi_miio_device
+              open: true
+              entities:
+                - entity: input_number.xiaomi_fan_favorite_level
+                  name: Level
+            - type: custom:fold-entity-row
+              head: fan.xiaomi_smart_fan
+              open: true
+              entities:
+                - type: custom:slider-entity-row
+                  entity: fan.xiaomi_smart_fan
+                  name: Speed
+                  group: true
+                - entity: switch.xiaomi_smart_fan_oscillate
+                  name: Oscillate
+                  group: true
+        # https://community.home-assistant.io/t/lovelace-mini-media-player/68459
+        - type: entities
+          title: Media Players
+          entities:
+            - entity: media_player.spotify_carl_backstrom
+              type: custom:mini-media-player
+              group: true
+            - type: custom:fold-entity-row
+              head:
+                type: section
+                label: Video
+              entities:
+                - entity: media_player.kitchen_display
+                  type: custom:mini-media-player
+                  group: true
+                - entity: media_player.shield
+                  type: custom:mini-media-player
+                  group: true
+                - entity: media_player.lg_tv
+                  type: custom:mini-media-player
+                  group: true
+            - type: custom:fold-entity-row
+              head: media_player.home_group
+              entities:
+                - entity: media_player.home_group
+                  type: custom:mini-media-player
+                  show_tts: google
+                  group: true
+                - entity: media_player.office_speaker_1
+                  type: custom:mini-media-player
+                  hide_controls: true
+                  show_tts: google
+                  group: true
+                - entity: media_player.office_speaker_2
+                  type: custom:mini-media-player
+                  hide_controls: true
+                  show_tts: google
+                  group: true
+                - entity: media_player.kitchen_speaker
+                  type: custom:mini-media-player
+                  hide_controls: true
+                  show_tts: google
+                  group: true
+                - entity: media_player.kitchen_display
+                  type: custom:mini-media-player
+                  hide_controls: true
+                  show_tts: google
+                  group: true
+        - type: entities
+          title: Lights
+          show_header_toggle: false
+          entities:
+            - type: custom:fold-entity-row
+              head:
+                type: section
+                label: Kitchen
+              padding: 0
+              open: false
+              entities:
+                - type: custom:slider-entity-row
+                  entity: light.kitchen_table
+                  name: Kitchen Table
+                - type: custom:slider-entity-row
+                  entity: light.kitchen_fan
+                  name: Kitchen Fan
+            - type: custom:fold-entity-row
+              head:
+                type: section
+                label: Other
+                padding: 0
+              open: false
+              entities:
+                - type: custom:slider-entity-row
+                  entity: light.desktop
+                  name: Desktop
+                - type: custom:slider-entity-row
+                  entity: light.hallway_ceiling
+                  name: Hallway
+            - type: custom:fold-entity-row
+              head:
+                type: section
+                label: Living Room
+              padding: 0
+              open: false
+              entities:
+                - type: custom:slider-entity-row
+                  entity: light.desktop
+                  name: Desktop
+                - type: custom:slider-entity-row
+                  entity: light.hallway_ceiling
+                  name: Hallway
+                - type: custom:slider-entity-row
+                  entity: light.behind_tv
+                  name: TV
+                - type: custom:slider-entity-row
+                  entity: light.frank
+                  name: Frank
+                - type: custom:slider-entity-row
+                  entity: light.living_room_ceiling
+                  name: LR Ceiling
+                - type: custom:slider-entity-row
+                  entity: light.living_area_lights
+                  name: Living Area
 
 
   - title: Tracker
@@ -505,3 +529,19 @@ views:
       - type: weather-forecast
         entity: weather.smhi_home
         show_forecast: false
+  - path: other
+    # View tab title.
+    title: Other
+    cards:
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: input_text.broadcast
+            name: Announce It...
+          - entity: script.broadcast
+        title: Make an Announcement
+
+
+
+sensor:
+  235_temperature:

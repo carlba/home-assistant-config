@@ -18,9 +18,14 @@ homeassistant:
     automation:
       hidden: true
   auth_providers:
-     - type: legacy_api_password
-       api_password: !secret http_password
-     - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.0/24
+      trusted_users:
+        192.168.1.0/24:
+          - ddbc7a2301d74d609308958f9f07d0b7
+      allow_bypass_login: true
+    - type: homeassistant
 
 # Show links to resources in log and frontend
 # introduction:
@@ -34,13 +39,23 @@ frontend:
 lovelace:
   mode: yaml
   resources:
-    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+    - url: /local/mini-media-player/mini-media-player-bundle.js
       type: module
-    - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+    - url: /local/lovelace-slider-entity-row/slider-entity-row.js
       type: module
-    - url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
+    - url: /local/lovelace-fold-entity-row/fold-entity-row.js
       type: module
-    - url: /hacsfiles/lovelace-fan-xiaomi/fan-xiaomi.js
+    - url: /local/lovelace-fan-xiaomi/fan-xiaomi.js
+      type: module
+    - url: /local/lovelace-more-info-card/more-info-card.js
+      type: module
+    - url: /local/lovelace-card-mod/card-mod.js
+      type: module
+    - url: /local/lovelace-auto-entities/auto-entities.js
+      type: module
+    - url: /local/lovelace-multiple-entity-row/multiple-entity-row.js
+      type: module
+    - url: /local/button-entity-row/button-entity-row.js
       type: module
     # https://github.com/benct/lovelace-xiaomi-vacuum-card
     - url: /local/xiaomi-vacuum-card.js?v=3.0.1
@@ -54,9 +69,9 @@ lovelace:
 config:
 
 http:
-  base_url: https://hassio.dahler.se
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  server_port: 8123
+#  ssl_certificate: /ssl/fullchain.pem
+#  ssl_key: /ssl/privkey.pem
   use_x_forwarded_for: true
   trusted_proxies:
     - 192.168.1.1
@@ -190,6 +205,11 @@ sensor:
         value_template: "{{ states.fan.xiaomi_miio_device.attributes.aqi }}"
         friendly_name: Air Purifier Air Quality
         unit_of_measurement: "AQI"
+      sleep_time_in_bed_friendly:
+        value_template: >-
+          {% set sleep = states('sensor.sleep_minutes_asleep') | int %}
+          {{ "{:01d}h {:02d}m".format((sleep % 3600) // 60, (sleep % 3600) % 60) }}
+        friendly_name: Sleep Time in Bed Friendly
 
   - platform: fitbit
     clock_format: 24H
@@ -197,6 +217,7 @@ sensor:
       - "body/weight"
       - "devices/battery"
       - "sleep/timeInBed"
+      - "sleep/minutesAsleep"
       - "activities/tracker/steps"
 
   - platform: command_line
@@ -395,8 +416,8 @@ person:
       - device_tracker.sm_g975f
       - device_tracker.galaxy_s10
   - name: Johanna
-    id: 82e52e7a9e574d6ba40e3f1f2c639490
-    user_id: 82e52e7a9e574d6ba40e3f1f2c639490
+    id: ff088ba35b4a4730a5eb3832edb46922
+    user_id: ff088ba35b4a4730a5eb3832edb46922
     device_trackers:
       - device_tracker.sm_g955f
       - device_tracker.galaxy_s8
@@ -415,6 +436,13 @@ fan:
     host: 192.168.1.22
     token: 78515254e630a84d6e38e82141bd6da4
 
+rest_command:
+  cast_site:
+    url: "http://localhost:9898/cast_site"
+    payload: '{"device": "{{ device }}", "url": "{{ url }}"}'
+    method: post
+    content_type: 'application/json'
+    verify_ssl: false
 
 input_text:
   broadcast:
