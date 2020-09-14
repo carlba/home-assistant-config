@@ -27,13 +27,6 @@ tracker_home:
     - person.carl
     - person.johanna
 
-yr:
-  name: yr.no
-  entities:
-    - sensor.yr_symbol
-    - sensor.yr_precipitation
-    - sensor.yr_temperature
-
 harmony_hub:
   name: Harmony Hub
   entities:
