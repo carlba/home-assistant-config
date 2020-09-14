@@ -166,7 +166,7 @@ binary_sensor:
   - platform: template
     sensors:
       daytime:
-        value_template: "{{ 'on' if ('08:00' < now().strftime('%H:%M') < '22:00') else 'off' }}"
+        value_template: "{{ '08:00' < states('sensor.time') < '22:40' }}"
         friendly_name: Is Daytime
 
 sensor:
@@ -188,6 +188,14 @@ sensor:
         arg: eth0
 
   - platform: tellstick
+    only_named:
+      - id: 135
+        name: Outside
+
+  - platform: time_date
+    display_options:
+      - 'time'
+
 
   # https://www.home-assistant.io/components/template
   - platform: template
@@ -241,9 +249,9 @@ sensor:
 
 climate:
   - platform: generic_thermostat
-    name: temperature_outside_skanstull
+    name: temperature_outside
     heater: input_boolean.fake_heater
-    target_sensor:  sensor.235_temperature
+    target_sensor:  sensor.outside_temperature
     initial_hvac_mode: "off"
     target_temp: 21
 

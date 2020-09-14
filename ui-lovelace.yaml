@@ -82,7 +82,7 @@ views:
                   name: Coffeemaker
                 - entity: timer.clean
                   name: Clean
-            - entity: sensor.235_temperature
+            - entity: sensor.outside_temperature
               type: custom:multiple-entity-row
               show_state: false
               name: Weather
@@ -91,7 +91,7 @@ views:
                   name: AP
                 - entity: sensor.aqara_temperature_1
                   name: Wall
-                - entity: sensor.235_temperature
+                - entity: sensor.outside_temperature
                   name: Outside
                 - entity: sensor.air_purifier_air_quality
                   name: AQI
@@ -126,6 +126,9 @@ views:
             - entity: script.cozy
               tap_action:
                 action: toggle
+            - entity: script.afternoon
+              tap_action:
+                action: toggle
             - entity: script.sleep_in_ten_min
               tap_action:
                 action: toggle
@@ -142,6 +145,9 @@ views:
               tap_action:
                 action: toggle
             - entity: script.early_morning
+              tap_action:
+                action: toggle
+            - entity: script.late_night
               tap_action:
                 action: toggle
   #          - entity: script.rotel_phono_mode
@@ -174,12 +180,18 @@ views:
                   show_state: false
                   type: custom:multiple-entity-row
                   entities:
-                    - icon: mdi:food-fork-drink
+                    - icon: mdi:play
                       tap_action:
                         action: call-service
                         service: vacuum.start
                         service_data:
                           entity_id: vacuum.xiaomi_vacuum_cleaner
+                    - icon: mdi:food-fork-drink
+                      tap_action:
+                        action: call-service
+                        service: script.turn_on
+                        service_data:
+                          entity_id: script.clean_kitchen
                     - icon: mdi:shoe-formal
                       tap_action:
                         action: call-service
@@ -291,7 +303,7 @@ views:
               head:
                 type: section
                 label: Other
-                padding: 0
+              padding: 0
               open: false
               entities:
                 - type: custom:slider-entity-row
@@ -300,6 +312,9 @@ views:
                 - type: custom:slider-entity-row
                   entity: light.hallway_ceiling
                   name: Hallway
+                - type: custom:slider-entity-row
+                  entity: light.bed
+                  name: Bed
             - type: custom:fold-entity-row
               head:
                 type: section

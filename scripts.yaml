@@ -107,6 +107,37 @@ cozy:
     - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
+afternoon:
+  alias: Afternoon
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.living_area_lights
+        brightness_pct: 75
+        color_temp: 400
+    - service: light.turn_on
+      entity_id: light.kitchen_table
+      data:
+        brightness_pct: 50
+        color_temp: 400
+    - service: light.turn_on
+      data:
+        entity_id: light.desktop
+        brightness_pct: 75
+        color_temp: 400
+    # https://www.home-assistant.io/components/fan.xiaomi_miio
+    - service: fan.set_speed
+      data:
+        entity_id: fan.xiaomi_miio_device
+        speed: Favorite
+    - service: xiaomi_miio.fan_set_favorite_level
+      data:
+        entity_id: fan.xiaomi_miio_device
+        level: 2
+    - service: xiaomi_miio.fan_set_led_off
+      entity_id: fan.xiaomi_miio_device
+
 sleep_now:
   alias: Sleep now
   sequence:
@@ -267,6 +298,26 @@ early_morning:
       data:
         entity_id:
           - light.frank
+    - service: xiaomi_miio.fan_set_led_off
+      entity_id: fan.xiaomi_miio_device
+
+late_night:
+  alias: Late Night
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id:
+          - light.behind_tv
+          - light.kitchen_fan
+          - light.desktop
+          - light.frank
+          - light.bed
+        brightness_pct: 15
+        color_temp: 450
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.kitchen_table
     - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
