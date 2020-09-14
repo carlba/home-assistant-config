@@ -108,7 +108,7 @@ toaster_timer:
   class: TalkingTimer
   entity: switch.toaster
   timer: timer.toaster
-  duration: 120
+  duration: 150
   information: Your toast is ready!
   information_push: false
   information_talk: true
