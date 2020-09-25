@@ -188,7 +188,6 @@
       data:
         message: Carl it is time to charge your phone.
 
-
 - alias: Test
   trigger:
     - platform: state
@@ -204,3 +203,54 @@
         level: info
         logger: homeassistant.components.automation.test
         message: "The action was triggered"
+
+- alias: Webhook Scene Early Morning
+  trigger:
+  - platform: webhook
+    webhook_id: !secret webhook_early_morning
+  action:
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.early_morning
+
+- alias: Webhook Scene Cozy
+  trigger:
+  - platform: webhook
+    webhook_id: !secret webhook_cozy
+  action:
+    - service: script.cozy
+      data:
+        entity_id:
+          - script.cozy
+
+- alias: Webhook Scene Sleep Now
+  trigger:
+  - platform: webhook
+    webhook_id: !secret webhook_sleep_now
+  action:
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.sleep_now
+
+- alias: Webhook Scene Media Dark
+  trigger:
+  - platform: webhook
+    webhook_id: !secret webhook_media_dark
+  action:
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.media_dark
+
+- alias: Webhook Scene Daytime
+  trigger:
+  - platform: webhook
+    webhook_id: !secret webhook_daytime
+  action:
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.daytime
+

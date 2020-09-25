@@ -9,3 +9,4 @@ venv/
 .DS_Store
 # IDE:s
 .idea
+secrets.yaml
