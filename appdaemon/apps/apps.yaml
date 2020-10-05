@@ -55,7 +55,6 @@ desktop_remote_control:
   event: deconz_event
   entities: ['light.desktop', 'switch.screen']
 
-
 coffeemaker_remote_control:
   module: apps
   class: RemoteControlAction
@@ -79,7 +78,6 @@ cleaning_remote_control:
       - service: script.turn_on
         data:
           entity_id: script.xiaomi_vacuum_cleaner_return_to_base
-
 
 dimmer_switch:
   module: apps

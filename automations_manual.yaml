@@ -1,5 +1,4 @@
 ---
-
 # https://www.home-assistant.io/components/automation/
 
 - alias: notifications_about_device_trackers_entering
@@ -90,7 +89,7 @@
     - service: xiaomi_miio.fan_set_favorite_level
       data_template:
         entity_id: fan.xiaomi_miio_device
-        level: "{{ trigger.to_state.state | int }}"
+        level: '{{ trigger.to_state.state | int }}'
 
 - alias: Xiaomi Air Purifier - Change input number based on Air Purifier level
   trigger:
@@ -100,7 +99,7 @@
     - service: input_number.set_value
       data_template:
         entity_id: input_number.xiaomi_fan_favorite_level
-        value: "{{ trigger.to_state.state | int }}"
+        value: '{{ trigger.to_state.state | int }}'
 
 - alias: Turn off LG TV when Shield is turned off
   trigger:
@@ -131,11 +130,10 @@
     - service: script.turn_on
       entity_id: script.rotel_media_mode
 
-
 - alias: Wakeup in half an hour at 06:30 every day
   trigger:
     platform: time
-    at: "06:30:00"
+    at: '06:30:00'
   condition:
     condition: time
     weekday:
@@ -170,12 +168,12 @@
 
 - alias: Notify Carl about low battery level
   trigger:
-  - below: 30
-    device_id: a6c2febc07ce437cbe8ee51fcfd860c9
-    domain: sensor
-    entity_id: sensor.sm_g975f_battery_level
-    platform: device
-    type: battery_level
+    - below: 30
+      device_id: a6c2febc07ce437cbe8ee51fcfd860c9
+      domain: sensor
+      entity_id: sensor.sm_g975f_battery_level
+      platform: device
+      type: battery_level
   condition:
     - condition: state
       entity_id: sensor.sm_g975f_battery_state
@@ -202,12 +200,12 @@
       data:
         level: info
         logger: homeassistant.components.automation.test
-        message: "The action was triggered"
+        message: 'The action was triggered'
 
 - alias: Webhook Scene Early Morning
   trigger:
-  - platform: webhook
-    webhook_id: !secret webhook_early_morning
+    - platform: webhook
+      webhook_id: !secret webhook_early_morning
   action:
     - service: script.turn_on
       data:
@@ -216,8 +214,8 @@
 
 - alias: Webhook Scene Cozy
   trigger:
-  - platform: webhook
-    webhook_id: !secret webhook_cozy
+    - platform: webhook
+      webhook_id: !secret webhook_cozy
   action:
     - service: script.cozy
       data:
@@ -226,8 +224,8 @@
 
 - alias: Webhook Scene Sleep Now
   trigger:
-  - platform: webhook
-    webhook_id: !secret webhook_sleep_now
+    - platform: webhook
+      webhook_id: !secret webhook_sleep_now
   action:
     - service: script.turn_on
       data:
@@ -236,8 +234,8 @@
 
 - alias: Webhook Scene Media Dark
   trigger:
-  - platform: webhook
-    webhook_id: !secret webhook_media_dark
+    - platform: webhook
+      webhook_id: !secret webhook_media_dark
   action:
     - service: script.turn_on
       data:
@@ -246,11 +244,10 @@
 
 - alias: Webhook Scene Daytime
   trigger:
-  - platform: webhook
-    webhook_id: !secret webhook_daytime
+    - platform: webhook
+      webhook_id: !secret webhook_daytime
   action:
     - service: script.turn_on
       data:
         entity_id:
           - script.daytime
-

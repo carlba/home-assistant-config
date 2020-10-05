@@ -2,7 +2,7 @@
 - platform: template
   switches:
     xiaomi_smart_fan_oscillate:
-      value_template: "{{ states.fan.xiaomi_smart_fan.attributes.oscillate }}"
+      value_template: '{{ states.fan.xiaomi_smart_fan.attributes.oscillate }}'
       turn_on:
         service: fan.oscillate
         data:

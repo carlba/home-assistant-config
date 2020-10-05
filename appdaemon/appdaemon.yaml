@@ -1,9 +1,9 @@
 secrets: /config/secrets.yaml
 logs:
-  main_log: 
+  main_log:
     filename: /config/appdaemon.log
-  error_log: 
-    filename: /config/appdaemon.log  
+  error_log:
+    filename: /config/appdaemon.log
 appdaemon:
   threads: 10
   time_zone: Europe/Stockholm

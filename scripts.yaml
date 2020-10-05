@@ -345,29 +345,29 @@ dinner:
 clean_kitchen:
   alias: Clean Kitchen
   sequence:
-   - service: vacuum.send_command
-     data:
-       entity_id: vacuum.xiaomi_vacuum_cleaner
-       command: app_segment_clean
-       params: [17]
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        command: app_segment_clean
+        params: [17]
 
 clean_hallway:
   alias: Clean Hallway
   sequence:
-   - service: vacuum.send_command
-     data:
-       entity_id: vacuum.xiaomi_vacuum_cleaner
-       command: app_segment_clean
-       params: [18]
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        command: app_segment_clean
+        params: [18]
 
 clean_living_room:
   alias: Clean Living Room
   sequence:
-   - service: vacuum.send_command
-     data:
-       entity_id: vacuum.xiaomi_vacuum_cleaner
-       command: app_segment_clean
-       params: [16]
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        command: app_segment_clean
+        params: [16]
 
 lg_tv_on:
   sequence:
@@ -417,8 +417,7 @@ xiaomi_vacuum_cleaner_go_to_emptying_spot:
       data:
         entity_id: 'vacuum.xiaomi_vacuum_cleaner'
         command: app_goto_target
-        params: [28000,27800]
-
+        params: [28000, 27800]
 
 rotel_amp_power_off:
   sequence:
@@ -550,6 +549,5 @@ cast_in_kitchen:
   sequence:
     service: rest_command.cast_site
     data:
-      url: "http://192.168.1.4:8123"
-      device: "Kitchen display"
-
+      url: 'http://192.168.1.4:8123'
+      device: 'Kitchen display'

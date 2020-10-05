@@ -1,5 +1,4 @@
 ---
-
 # https://www.home-assistant.io/docs/configuration/customizing-devices/
 # https://materialdesignicons.com/
 
@@ -65,7 +64,7 @@ script.sleep_now:
   icon: mdi:sleep
 
 script.sleep_in_ten_min:
-    icon: mdi:sleep
+  icon: mdi:sleep
 
 script.sleep_in_an_hour:
   icon: mdi:sleep
