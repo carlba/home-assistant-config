@@ -217,7 +217,7 @@
     - platform: webhook
       webhook_id: !secret webhook_cozy
   action:
-    - service: script.cozy
+    - service: script.turn_on
       data:
         entity_id:
           - script.cozy
