@@ -221,7 +221,15 @@ views:
                 head: fan.xiaomi_miio_device
                 open: true
                 entities:
+                  - entity: vacuum.xiaomi_vacuum_cleaner
+                    type: custom:multiple-entity-row
+                    show_state: false
+                    name: ''
+                    entities:
+                      - entity: sensor.air_purifier_air_quality
+                        name: AQI
                   - entity: input_number.xiaomi_fan_favorite_level
+                    type: custom:slider-entity-row
                     name: Level
               - type: custom:fold-entity-row
                 head: fan.xiaomi_smart_fan
