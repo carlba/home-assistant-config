@@ -146,20 +146,6 @@ light:
       - light.kitchen_fan
       - light.frank
 
-  - platform: template
-    lights:
-      bathroom_ceiling:
-        friendly_name: Bathroom Ceiling
-        entity_id:
-          - switch.bathroom_ceiling
-        value_template: '{{ is_state("switch.bathroom_ceiling", "on") }}'
-        turn_on:
-          service: switch.turn_on
-          entity_id: switch.bathroom_ceiling
-        turn_off:
-          service: switch.turn_off
-          entity_id: switch.bathroom_ceiling
-
 binary_sensor:
   - platform: template
     sensors:

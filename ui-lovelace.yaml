@@ -536,7 +536,6 @@ views:
           - entity: binary_sensor.dummy
             icon: mdi:play
             name: 'SVT'
-            image: http://www.svtplay.se/favicon.ico
             tap_action:
               action: call-service
               service: androidtv.adb_command
@@ -550,7 +549,6 @@ views:
     cards:
       - type: weather-forecast
         entity: weather.smhi_home
-        show_forecast: false
   - path: other
     # View tab title.
     title: Other
