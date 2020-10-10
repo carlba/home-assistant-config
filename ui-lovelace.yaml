@@ -89,8 +89,10 @@ views:
                 entities:
                   - entity: sensor.air_purifier_temperature
                     name: AP
-                  - entity: sensor.aqara_temperature_1
+                  - entity: sensor.aqara_temperature_sovrum
                     name: Wall
+                  - entity: sensor.aqara_temperature_kyl
+                    name: Kyl                    
                   - entity: sensor.outside_temperature
                     name: Outside
                   - entity: sensor.air_purifier_air_quality
