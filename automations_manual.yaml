@@ -251,3 +251,23 @@
       data:
         entity_id:
           - script.daytime
+
+- alias: Webhook Scene Afternoon
+  trigger:
+    - platform: webhook
+      webhook_id: !secret webhook_afternoon
+  action:
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.afternoon
+
+- alias: Webhook Scene Rotel
+  trigger:
+    - platform: webhook
+      webhook_id: !secret webhook_rotel
+  action:
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.rotel_amp_power_on
