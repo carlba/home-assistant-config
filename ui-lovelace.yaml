@@ -45,8 +45,6 @@ views:
                 entities:
                   - entity: binary_sensor.hallway_motion_sensor
                     name: Hallway
-              #             - entity: binary_sensor.bathroom_motion_sensor
-              #               name: Bathroom
               - entity: sensor.versa_2_battery
                 icon: mdi:watch
                 type: custom:multiple-entity-row
@@ -92,7 +90,7 @@ views:
                   - entity: sensor.aqara_temperature_sovrum
                     name: Wall
                   - entity: sensor.aqara_temperature_kyl
-                    name: Kyl                    
+                    name: Kyl
                   - entity: sensor.outside_temperature
                     name: Outside
                   - entity: sensor.air_purifier_air_quality
@@ -137,9 +135,6 @@ views:
               - entity: script.sleep_now
                 tap_action:
                   action: toggle
-              #          - entity: script.sleep_in_an_hour
-              #            tap_action:
-              #              action: toggle
               - entity: script.work
                 tap_action:
                   action: toggle
@@ -152,9 +147,6 @@ views:
               - entity: script.late_night
                 tap_action:
                   action: toggle
-              #          - entity: script.rotel_phono_mode
-              #            tap_action:
-              #              action: toggle
               - entity: script.cast_in_kitchen
                 tap_action:
                   action: toggle
