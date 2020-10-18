@@ -147,6 +147,9 @@ views:
               - entity: script.late_night
                 tap_action:
                   action: toggle
+              - entity: script.gaming
+                tap_action:
+                  action: toggle
               - entity: script.cast_in_kitchen
                 tap_action:
                   action: toggle
