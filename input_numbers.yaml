@@ -1,0 +1,5 @@
+xiaomi_fan_favorite_level:
+  name: Xiaomi Fan Favourite Level
+  min: 0
+  max: 14
+  step: 1

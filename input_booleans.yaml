@@ -1,0 +1,8 @@
+test:
+  initial: false
+movie:
+  initial: false
+camac:
+  initial: true
+fake_heater:
+  initial: false

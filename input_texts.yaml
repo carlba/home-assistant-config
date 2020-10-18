@@ -1,0 +1,3 @@
+broadcast:
+  name: Broadcast
+  initial: Some text

@@ -1,0 +1,14 @@
+- name: 'pushover'
+  platform: pushover
+  api_key: !secret pushover_api_key
+  user_key: !secret pushover_user_key
+# https://www.home-assistant.io/integrations/notify.rest
+# https://github.com/Apipa169/Assistant-Relay-for-Hassio
+- name: 'gassistant'
+  platform: rest
+  method: POST_JSON
+  resource: http://localhost:3000/assistant
+  message_param_name: command
+  data:
+    user: cbackstrom
+    broadcast: true

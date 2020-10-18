@@ -359,23 +359,6 @@ logger:
     homeassistant.components.media_player.spotify: info
     homeassistant.components.media_player.androidtv.adb_shell: debug
 
-input_boolean:
-  test:
-    initial: false
-  movie:
-    initial: false
-  camac:
-    initial: true
-  fake_heater:
-    initial: false
-
-input_number:
-  xiaomi_fan_favorite_level:
-    name: Xiaomi Fan Favourite Level
-    min: 0
-    max: 14
-    step: 1
-
 timer:
   clean:
     name: Clean Timer
@@ -386,22 +369,6 @@ timer:
   coffeemaker:
     name: Coffeemaker Timer
     duration: '00:60:00'
-
-notify:
-  - name: 'pushover'
-    platform: pushover
-    api_key: !secret pushover_api_key
-    user_key: !secret pushover_user_key
-  # https://www.home-assistant.io/integrations/notify.rest
-  # https://github.com/Apipa169/Assistant-Relay-for-Hassio
-  - name: 'gassistant'
-    platform: rest
-    method: POST_JSON
-    resource: http://localhost:3000/assistant
-    message_param_name: command
-    data:
-      user: cbackstrom
-      broadcast: true
 
 remote:
   - platform: harmony
@@ -447,13 +414,12 @@ rest_command:
     content_type: 'application/json'
     verify_ssl: false
 
-input_text:
-  broadcast:
-    name: Broadcast
-    initial: Some text
-
 group: !include groups.yaml
 automation: !include automations.yaml
 automation old: !include automations_manual.yaml
 script: !include scripts.yaml
 switch: !include switches.yaml
+notify: !include notifiers.yaml
+input_number: !include input_numbers.yaml
+input_boolean: !include input_booleans.yaml
+input_text: !include input_texts.yaml
