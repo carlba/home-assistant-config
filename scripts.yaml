@@ -20,6 +20,7 @@ media_backlight:
           - light.kitchen_table
           - light.hallway_ceiling
           - light.bathroom_ceiling
+          - light.living_room_ceiling
     - service: light.turn_on
       data:
         entity_id: light.behind_tv
@@ -44,6 +45,7 @@ media_dark:
           - light.kitchen_table
           - light.hallway_ceiling
           - light.bathroom_ceiling
+          - light.living_room_ceiling
     - service: xiaomi_miio.fan_set_favorite_level
       data:
         entity_id: fan.xiaomi_miio_device
@@ -97,6 +99,11 @@ cozy:
         color_temp: 500
     - service: light.turn_on
       data:
+        entity_id: light.living_room_ceiling
+        brightness_pct: 20
+        color_temp: 500
+    - service: light.turn_on
+      data:
         entity_id: light.desktop
         brightness_pct: 40
         color_temp: 500
@@ -120,6 +127,11 @@ afternoon:
         entity_id:
           - light.living_area_lights
         brightness_pct: 75
+        color_temp: 400
+    - service: light.turn_on
+      data:
+        entity_id: light.living_room_ceiling
+        brightness_pct: 20
         color_temp: 400
     - service: light.turn_on
       entity_id: light.kitchen_table
@@ -175,6 +187,7 @@ sleep_in_ten_min:
           - light.hallway_ceiling
           - light.desktop
           - light.frank
+          - light.living_room_ceiling
     - service: light.turn_off
       data:
         entity_id: light.behind_tv
@@ -205,6 +218,7 @@ sleep_in_an_hour:
         - light.desktop
         - light.bed
         - light.frank
+        - light.living_room_ceiling
       data:
         transition: 3600
     - delay:
@@ -213,7 +227,6 @@ sleep_in_an_hour:
       entity_id: media_player.home
       data:
         message: Time to sleep in 45 minutes
-
     - delay:
         seconds: 1800
     - service: tts.google_say
@@ -292,6 +305,12 @@ work:
 early_morning:
   alias: Early Morning
   sequence:
+    - service: light.turn_off
+      data:
+        entity_id:
+          - light.frank
+          - light.living_area_lights
+          - light.living_room_ceiling
     - service: light.turn_on
       data:
         entity_id:
@@ -300,10 +319,6 @@ early_morning:
           - light.desktop
         brightness_pct: 10
         color_temp: 450
-    - service: light.turn_off
-      data:
-        entity_id:
-          - light.frank
     - service: xiaomi_miio.fan_set_led_off
       entity_id: fan.xiaomi_miio_device
 
@@ -556,4 +571,4 @@ cast_in_kitchen:
     service: rest_command.cast_site
     data:
       url: 'http://192.168.1.4:8123'
-      device: 'Kitchen display'
+      device: Kitchen display
