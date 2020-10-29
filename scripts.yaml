@@ -59,7 +59,7 @@ daytime:
     - service: light.turn_on
       data:
         entity_id: light.living_area_lights
-        brightness: 255
+        brightness_pct: 70
         color_temp: 340
     - service: light.turn_on
       data:
