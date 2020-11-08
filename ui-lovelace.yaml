@@ -159,7 +159,7 @@ views:
             entities:
               - type: custom:fold-entity-row
                 head: vacuum.xiaomi_vacuum_cleaner
-                open: true
+                open: false
                 entities:
                   - type: section
                   - entity: vacuum.xiaomi_vacuum_cleaner
@@ -214,7 +214,7 @@ views:
                           secondary_info: Empty Vacuum
               - type: custom:fold-entity-row
                 head: fan.xiaomi_miio_device
-                open: true
+                open: false
                 entities:
                   - entity: vacuum.xiaomi_vacuum_cleaner
                     type: custom:multiple-entity-row
@@ -228,7 +228,7 @@ views:
                     name: Level
               - type: custom:fold-entity-row
                 head: fan.xiaomi_smart_fan
-                open: true
+                open: false
                 entities:
                   - type: custom:slider-entity-row
                     entity: fan.xiaomi_smart_fan
@@ -237,6 +237,35 @@ views:
                   - entity: switch.xiaomi_smart_fan_oscillate
                     name: Oscillate
                     group: true
+              - type: custom:multiple-entity-row
+                entity: switch.rotel
+                show_state: false
+                name: ''
+                entities:
+                  - icon: mdi:power-on
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.rotel_amp_power_on
+                  - icon: mdi:power-off
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.rotel_amp_power_off
+                  - icon: mdi:volume-plus
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.rotel_amp_volume_up
+                  - icon: mdi:volume-minus
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.rotel_amp_volume_down
           # https://community.home-assistant.io/t/lovelace-mini-media-player/68459
           - type: entities
             title: Media Players

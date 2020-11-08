@@ -201,73 +201,81 @@
         level: info
         logger: homeassistant.components.automation.test
         message: 'The action was triggered'
+# - alias: Webhook Scene Early Morning
+#   trigger:
+#     - platform: webhook
+#       webhook_id: !secret webhook_early_morning
+#   action:
+#     - service: script.turn_on
+#       data:
+#         entity_id:
+#           - script.early_morning
 
-- alias: Webhook Scene Early Morning
-  trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_early_morning
-  action:
-    - service: script.turn_on
-      data:
-        entity_id:
-          - script.early_morning
+# - alias: Webhook Scene Cozy
+#   trigger:
+#     - platform: webhook
+#       webhook_id: !secret webhook_cozy
+#   action:
+#     - service: script.turn_on
+#       data:
+#         entity_id:
+#           - script.cozy
 
-- alias: Webhook Scene Cozy
-  trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_cozy
-  action:
-    - service: script.turn_on
-      data:
-        entity_id:
-          - script.cozy
+# - alias: Webhook Scene Sleep Now
+#   trigger:
+#     - platform: webhook
+#       webhook_id: !secret webhook_sleep_now
+#   action:
+#     - service: script.turn_on
+#       data:
+#         entity_id:
+#           - script.sleep_now
 
-- alias: Webhook Scene Sleep Now
-  trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_sleep_now
-  action:
-    - service: script.turn_on
-      data:
-        entity_id:
-          - script.sleep_now
+# - alias: Webhook Scene Media Dark
+#   trigger:
+#     - platform: webhook
+#       webhook_id: !secret webhook_media_dark
+#   action:
+#     - service: script.turn_on
+#       data:
+#         entity_id:
+#           - script.media_dark
 
-- alias: Webhook Scene Media Dark
-  trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_media_dark
-  action:
-    - service: script.turn_on
-      data:
-        entity_id:
-          - script.media_dark
+# - alias: Webhook Scene Daytime
+#   trigger:
+#     - platform: webhook
+#       webhook_id: !secret webhook_daytime
+#   action:
+#     - service: script.turn_on
+#       data:
+#         entity_id:
+#           - script.daytime
+# - alias: Webhook Scene Afternoon
+#   trigger:
+#     - platform: webhook
+#       webhook_id: !secret webhook_afternoon
+#   action:
+#     - service: script.turn_on
+#       data:
+#         entity_id:
+#           - script.afternoon
 
-- alias: Webhook Scene Daytime
-  trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_daytime
-  action:
-    - service: script.turn_on
-      data:
-        entity_id:
-          - script.daytime
+# - alias: Webhook Scene Rotel
+#   trigger:
+#     - platform: webhook
+#       webhook_id: !secret webhook_rotel
+#   action:
+#     - service: script.turn_on
+#       data:
+#         entity_id:
+#           - script.rotel_amp_power_on
 
-- alias: Webhook Scene Afternoon
-  trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_afternoon
-  action:
-    - service: script.turn_on
-      data:
-        entity_id:
-          - script.afternoon
-
-- alias: Webhook Scene Rotel
-  trigger:
-    - platform: webhook
-      webhook_id: !secret webhook_rotel
-  action:
-    - service: script.turn_on
-      data:
-        entity_id:
-          - script.rotel_amp_power_on
+# - alias: Webhook Screen
+#   trigger:
+#     - platform: webhook
+#       webhook_id: !secret webhook_screen
+#   action:
+#     - service: switch.toggle
+#       data:
+#         entity_id:
+#           - switch.screen
