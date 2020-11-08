@@ -1,6 +1,4 @@
 title: Götgatan 94
-custom_header:
-  compact_mode: true
 views:
   - icon: mdi:home-assistant
     path: default
