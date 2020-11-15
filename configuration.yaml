@@ -44,20 +44,13 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
       type: module
-    - url: /hacsfiles/lovelace-fan-xiaomi/fan-xiaomi.js
-      type: module
     - url: /hacsfiles/lovelace-more-info-card/more-info-card.js
-      type: module
-    - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
       type: module
     - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
       type: module
     - url: /hacsfiles/button-entity-row/button-entity-row.js
-      type: module
-    # https://github.com/benct/lovelace-xiaomi-vacuum-card
-    - url: /hacsfiles/xiaomi-vacuum-card.js?v=3.0.1
       type: module
 
 # Enables configuration UI
