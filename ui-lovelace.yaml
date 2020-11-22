@@ -35,6 +35,12 @@ views:
                     state_color: true
                     tap_action:
                       action: toggle
+                  - entity: input_boolean.motion_detection
+                    name: Motion Detection
+                    icon: mdi:motion
+                    state_color: true
+                    tap_action:
+                      action: toggle
               - entity: binary_sensor.hallway_motion_sensor
                 icon: mdi:toggle-switch
                 type: custom:multiple-entity-row

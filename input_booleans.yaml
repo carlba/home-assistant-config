@@ -6,3 +6,5 @@ camac:
   initial: true
 fake_heater:
   initial: false
+motion_detection:
+  initial: true

@@ -26,6 +26,7 @@ hallway_motion_sensor:
       stop: 23
       brightness_pct: 50
       duration: 60
+  constrain_input_boolean: input_boolean.motion_detection
 
 bathroom_motion_sensor:
   module: apps
