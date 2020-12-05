@@ -279,6 +279,9 @@ tellstick:
   port: [50800, 50801]
   signal_repetitions: 3
 
+zwave:
+  usb_path: /dev/ttyACM0
+
 zone:
   - name: home
     latitude: 59.3097048
