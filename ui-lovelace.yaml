@@ -49,14 +49,14 @@ views:
                 entities:
                   - entity: binary_sensor.hallway_motion_sensor
                     name: Hallway
-              - entity: sensor.versa_2_battery
+              - entity: sensor.versa_3_battery
                 icon: mdi:watch
                 type: custom:multiple-entity-row
                 show_state: false
                 name: 'Versa'
                 entities:
                   - sensor.weight
-                  - entity: sensor.versa_2_battery
+                  - entity: sensor.versa_3_battery
                     name: Batt
                   - entity: sensor.sleep_time_in_bed_friendly
                     name: Sleep
