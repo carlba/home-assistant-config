@@ -76,3 +76,15 @@ media_players:
     - media_player.plexkodiconnect
     - media_player.shield_2
     - media_player.spotify
+
+watch:
+  name: Watch
+  entities:
+    - sensor.outside_temperature
+    - sensor.aqara_temperature_sovrum
+    - script.cozy
+    - script.daytime
+    - script.late_night
+    - script.sleep_now
+    - script.media_dark
+    - script.media_backlight
