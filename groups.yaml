@@ -82,6 +82,7 @@ watch:
   entities:
     - sensor.outside_temperature
     - sensor.aqara_temperature_sovrum
+    - script.early_morning
     - script.cozy
     - script.daytime
     - script.late_night
