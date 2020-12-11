@@ -386,6 +386,9 @@ views:
                   - type: custom:slider-entity-row
                     entity: light.living_area_lights
                     name: Living Area
+                  - type: custom:slider-entity-row
+                    entity: light.star
+                    name: Living Area
 
   - title: Tracker
     id: tracker

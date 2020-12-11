@@ -169,6 +169,8 @@ sleep_now:
           - light.behind_tv
           - light.bed
           - light.frank
+          - light.living_room_ceiling
+          - light.star
     - service: fan.set_speed
       data:
         entity_id: fan.xiaomi_miio_device
@@ -188,6 +190,7 @@ sleep_in_ten_min:
           - light.desktop
           - light.frank
           - light.living_room_ceiling
+          - light.star
     - service: light.turn_off
       data:
         entity_id: light.behind_tv
@@ -219,6 +222,7 @@ sleep_in_an_hour:
         - light.bed
         - light.frank
         - light.living_room_ceiling
+        - light.star
       data:
         transition: 3600
     - delay:
