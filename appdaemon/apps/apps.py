@@ -1,12 +1,15 @@
 import inspect
 import json
-from typing import Union, List, Dict
+from typing import Any, Union, List, Dict
 
 import appdaemon.plugins.hass.hassapi as hass
 from datetime import datetime, time
 
 
 class ExtendedHass(hass.Hass):
+    def get_state(self, *args, **kwargs) -> Any:
+        super().get_state(*args, **kwargs)
+
     @staticmethod
     def get_info(level_in_stack: int = 1):
         target = inspect.stack()[level_in_stack][0]
@@ -69,48 +72,6 @@ class ExtendedHass(hass.Hass):
         rargs["activity"] = activity
 
         self.call_service(f"remote/{state}", **rargs)
-
-
-# noinspection PyAttributeOutsideInit,PyUnusedLocal
-class Clean(ExtendedHass):
-    def initialize(self):
-        self.log(f"{self.__class__.__name__}.initialize")
-        self.timer = 'timer.clean'
-        self.previous_state = None
-        self.triggered = False
-        self.harmony_remote_listener = self.listen_state(self.tracker,
-                                                         entity='remote.harmony_hub',
-                                                         attribute='current_activity')
-        self.listen_event(self.stop_cleaning, event='timer.finished', entity_id=self.timer)
-
-    def tracker(self, entity, attribute, old, new, kwargs):
-        self.previous_state = old
-        self.log(
-            f'Clean.tracker(): entity {entity}, old {old}, new {new}, triggered {self.triggered}')
-        if not self.triggered:
-            if new == 'Clean':
-                self.start_cleaning()
-            elif old != 'Clean' and new == 'Away':
-                self.log('Starting cleaning in 10 seconds')
-                self.run_in(self.start_cleaning, 10)
-        else:
-            if old == 'Clean':
-                self.log(f'{self.get_info()}: Cancelling Timer')
-                self.timer_cancel(self.timer)
-                self.triggered = False
-
-    def start_cleaning(self, kwargs=None):
-        self.triggered = True
-        self.log(f'{self.get_info()}: previous_state {self.previous_state}')
-        if self.previous_state != 'Clean':
-            self.log(f'{self.get_info()}: previous_state{self.previous_state}')
-            self.harmony_remote('remote.harmony_hub', 'turn_on', activity='Clean')
-        self.timer_start(self.timer, duration=75 * 60)
-
-    def stop_cleaning(self, event_name, data, kwargs):
-        self.log(f'{self.get_info()}: event_name {event_name}, data {data}')
-        self.harmony_remote('remote.harmony_hub', 'turn_on', activity=self.previous_state)
-        self.triggered = False
 
 
 # noinspection PyAttributeOutsideInit,PyUnusedLocal
