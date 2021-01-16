@@ -3,8 +3,7 @@ import json
 from typing import Union, List, Dict
 
 import appdaemon.plugins.hass.hassapi as hass
-from datetime import datetime
-import asyncio
+from datetime import datetime, time
 
 
 class ExtendedHass(hass.Hass):
@@ -64,7 +63,7 @@ class ExtendedHass(hass.Hass):
     def harmony_remote(self, entity_id, state, activity, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
         if state not in ['turn_on', 'turn_off']:
-            raise(TypeError, "state must be 'on' or 'off'")
+            raise TypeError("state must be 'on' or 'off'")
 
         rargs = kwargs or {}
         rargs["entity_id"] = entity_id
@@ -482,7 +481,7 @@ class TimeRange:
     def time_to_timestring(self, time_string):
         return datetime.strptime(time_string, self.time_format).time()
 
-    def match(self, time: datetime.time):
+    def match(self, time: time):
         return self.time_range['start'] < time < self.time_range['stop']
 
     def match_now(self):
