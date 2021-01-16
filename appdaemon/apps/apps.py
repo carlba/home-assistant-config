@@ -308,49 +308,22 @@ class MediaController(RemoteControl):
         self.log(f'{self.__class__.__name__}.initialize', level='INFO')
         self.tv = self.args['tv']
         self.speaker = self.args['speaker']
-        self.listen_state(self.handle_tv_state, self.tv)
-        self.listen_state(self.handle_speaker_state, self.speaker)
-
-        self.current_state = {
-            'tv': {
-                self.tv: self.get_state(self.tv) or 'unknown'
-            },
-            'speaker': {
-                self.speaker: self.get_state(self.speaker) or 'unknown'
-            }
-        }
 
     def handle_play(self, event_name, data, kwargs):
         super().handle_turn_on(event_name, data, kwargs)
         self.log(f'turn on', level='INFO')
-        if self.current_state['tv'][self.tv] == 'paused':
+        if self.get_state(self.tv) == 'paused':
             self.call_service('media_player/media_play', entity_id=self.tv)
-        elif self.current_state['speaker'][self.speaker] == 'paused':
+        elif self.get_state(self.speaker) == 'paused':
             self.call_service('media_player/media_play', entity_id=self.speaker)
 
     def handle_pause(self, event_name, data, kwargs):
         super().handle_turn_off(event_name, data, kwargs)
         self.log(f'turn off', level='INFO')
-        if self.current_state['tv'][self.tv] == 'playing':
+        if self.get_state(self.tv) == 'playing':
             self.call_service('media_player/media_pause', entity_id=self.tv)
-        elif self.current_state['speaker'][self.speaker] == 'playing':
+        elif self.get_state(self.speaker) == 'playing':
             self.call_service('media_player/media_pause', entity_id=self.speaker)
-
-    def handle_tv_state(self, entity, attribute, old, new, kwargs):
-        self.log(
-            f'entity: {entity}, attribute: {attribute}, old: {old}, '
-            f'new {new}, kwargs: {repr(kwargs)}',
-            level='INFO')
-        self.current_state['tv'][entity] = new
-        self.log(json.dumps(self.current_state))
-
-    def handle_speaker_state(self, entity, attribute, old, new, kwargs):
-        self.log(
-            f'entity: {entity}, attribute: {attribute}, old: {old}, '
-            f'new {new}, kwargs: {repr(kwargs)}',
-            level='INFO')
-        self.current_state['speaker'][entity] = new
-        self.log(self.current_state)
 
 
 # noinspection PyAttributeOutsideInit
@@ -372,12 +345,12 @@ class MediaControllerVolume(MediaController):
         self.log(f'{data["id"]} increased volume', level='INFO')
         self.log(f'{self.get_state(self.speaker, attribute="volume_level")}')
 
-        if self.current_state['tv'][self.tv] == 'playing':
+        if self.get_state(self.tv) == 'playing':
             volume_level = self.get_state(self.tv, attribute="volume_level")
             self.call_service('media_player/volume_set',
                               volume_level=volume_level + 0.1,
                               entity_id=self.tv)
-        elif self.current_state['speaker'][self.speaker] == 'playing':
+        elif self.get_state(self.speaker) == 'playing':
             volume_level = self.get_state(self.speaker, attribute="volume_level")
             self.call_service('media_player/volume_set',
                               volume_level=volume_level + 0.01,
@@ -388,13 +361,13 @@ class MediaControllerVolume(MediaController):
         self.log(f'{data["id"]} decreased volume', level='INFO')
         self.log(f'{self.get_state(self.speaker, attribute="volume_level")}')
 
-        if self.current_state['tv'][self.tv] == 'playing':
+        if self.get_state(self.tv) == 'playing':
             volume_level = self.get_state(self.tv, attribute="volume_level")
             new_volume_level = volume_level - 0.1 if volume_level > 0.1 else 0
             self.call_service('media_player/volume_set',
                               volume_level=new_volume_level,
                               entity_id=self.tv)
-        elif self.current_state['speaker'][self.speaker] == 'playing':
+        elif self.get_state(self.speaker) == 'playing':
             volume_level = self.get_state(self.speaker, attribute="volume_level")
             new_volume_level = volume_level - 0.01 if volume_level > 0.01 else 0
             self.call_service('media_player/volume_set',
