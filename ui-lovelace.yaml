@@ -8,8 +8,6 @@ views:
       - type: vertical-stack
         cards:
           - type: entities
-            show_state: false
-            open: true
             entities:
               - entity: timer.toaster
                 icon: mdi:toggle-switch
@@ -112,7 +110,6 @@ views:
               title: '@home'
           - type: glance
             title: Scenes
-            show_header_toggle: false
             show_state: false
             entities:
               - entity: script.media_dark

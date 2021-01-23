@@ -109,13 +109,13 @@ https://github.com/ReneTode/My-AppDaemon/blob/master/AppDaemon_for_Beginner/Part
 
 https://github.com/home-assistant/hassio-addons
 
-## home-assitant-cli
+## home-assistant-cli
 
 ```bash
 brew install homeassistant-cli
 ```
 
-## Testing automations
+## Testing automation's
 
 There are a few caveats when doing automations
 
@@ -133,7 +133,7 @@ Navigate to Developer tools->Events. In the section Listen to events add deconz_
 START LISTENING. All events from deCONZ will now be shown and by pushing your remote button while
 monitoring the log it should be fairly easy to find the events you are looking for.
 
-### Debuging
+### Debugging
 
     ```yaml
     pydeconz: debug
