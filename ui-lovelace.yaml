@@ -146,12 +146,11 @@ views:
                 tap_action:
                   action: toggle
               - entity: script.late_night
+                icon: mdi:weather-night
                 tap_action:
                   action: toggle
               - entity: script.gaming
-                tap_action:
-                  action: toggle
-              - entity: script.cast_in_kitchen
+                icon: 'mdi:gamepad-variant'
                 tap_action:
                   action: toggle
       - type: vertical-stack
