@@ -250,6 +250,9 @@ cloud:
         - light.kitchen_table_right
         - light.kitchen_fan_left
         - light.kitchen_fan_right
+        - light.living_room_ceiling_1
+        - light.living_room_ceiling_2
+        - light.living_room_ceiling_3
         - switch.desktop
         - switch.bathroom_ceiling
         - script.lg_tv_on
@@ -362,7 +365,6 @@ timer:
   coffeemaker:
     name: Coffeemaker Timer
     duration: '00:60:00'
-
 remote:
   - platform: harmony
     host: 192.168.1.42
