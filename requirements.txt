@@ -111,7 +111,7 @@ paho-mqtt==1.5.0
 pid==2.2.5
 pipupgrade==1.7.4
 pycparser==2.20
-Pygments==2.6.1
+Pygments==2.7.4
 PyJWT==2.0.0
 python-dateutil==2.8.1
 python-engineio==3.12.1
