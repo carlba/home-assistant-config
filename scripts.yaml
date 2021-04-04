@@ -427,13 +427,36 @@ lg_tv_off:
         device: 56823523
         command: PowerOff
 
+lg_tv_picture_mode_standard:
+  sequence:
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 56823523
+        command: PowerOff
+
 lg_amp_display_off:
   sequence:
     - service: remote.send_command
       entity_id: remote.harmony_hub
       data:
-        device: 56825445
-        command: Sleep
+        device: 56823523
+        command: PictureMode
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 56823523
+        command: DirectionUp
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 56823523
+        command: DirectionUp
+    - service: remote.send_command
+      entity_id: remote.harmony_hub
+      data:
+        device: 56823523
+        command: DirectionUp
 
 broadcast:
   sequence:
