@@ -25,7 +25,6 @@ class ExtendedHass(hass.Hass):
         message = json.dumps(msg) if isinstance(msg, dict) else msg
         super().log(f'{ExtendedHass.get_info(2)}: {message}', *args, **kwargs)
 
-    @hass.hass_check
     def timer_start(self, entity_id, duration=None, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
         rargs = kwargs or {}
@@ -34,14 +33,12 @@ class ExtendedHass(hass.Hass):
             rargs["duration"] = duration
         self.call_service("timer/start", **rargs)
 
-    @hass.hass_check
     def timer_cancel(self, entity_id, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
         rargs = kwargs or {}
         rargs["entity_id"] = entity_id
         self.call_service("timer/cancel", **rargs)
 
-    @hass.hass_check
     def switch_on(self, entity_id, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
         if kwargs == {}:
@@ -51,7 +48,6 @@ class ExtendedHass(hass.Hass):
             rargs["entity_id"] = entity_id
         self.call_service("switch/turn_on", **rargs)
 
-    @hass.hass_check
     def switch_off(self, entity_id, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
         if kwargs == {}:
@@ -61,7 +57,6 @@ class ExtendedHass(hass.Hass):
             rargs["entity_id"] = entity_id
         self.call_service("switch/turn_off", **rargs)
 
-    @hass.hass_check
     def harmony_remote(self, entity_id, state, activity, **kwargs):
         self._check_entity(self._get_namespace(**kwargs), entity_id)
         if state not in ['turn_on', 'turn_off']:
