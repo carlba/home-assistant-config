@@ -218,7 +218,7 @@ views:
                 head: fan.xiaomi_miio_device
                 open: false
                 entities:
-                  - entity: vacuum.xiaomi_vacuum_cleaner
+                  - entity: fan.xiaomi_miio_device
                     type: custom:multiple-entity-row
                     show_state: false
                     name: ''
