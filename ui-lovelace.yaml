@@ -60,14 +60,16 @@ views:
                     name: Sleep
                   - entity: sensor.tracker_steps
                     name: Steps
-              - entity: sensor.sm_g975f_battery_level
+              - entity: sensor.sm_g781b_battery_level
                 icon: mdi:phone
                 type: custom:multiple-entity-row
                 show_state: false
                 name: 'Phone'
                 entities:
-                  - entity: sensor.sm_g975f_battery_level
-                    name: S10 Battery
+                  - entity: sensor.sm_g781b_battery_level
+                    name: S20FE Battery
+                  # - entity: sensor.sm_g975f_battery_level
+                  #   name: S10 Battery
                   - entity: sensor.sm_g955f_battery_level
                     name: S8 Battery
               - entity: timer.toaster

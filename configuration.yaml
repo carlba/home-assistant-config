@@ -378,8 +378,7 @@ person:
     id: ddbc7a2301d74d609308958f9f07d0b7
     user_id: ddbc7a2301d74d609308958f9f07d0b7
     device_trackers:
-      - device_tracker.sm_g975f
-      - device_tracker.galaxy_s10
+      - device_tracker.sm_g781b
   - name: Johanna
     id: ff088ba35b4a4730a5eb3832edb46922
     user_id: ff088ba35b4a4730a5eb3832edb46922

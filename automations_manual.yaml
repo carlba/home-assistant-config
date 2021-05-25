@@ -171,12 +171,12 @@
     - below: 30
       device_id: a6c2febc07ce437cbe8ee51fcfd860c9
       domain: sensor
-      entity_id: sensor.sm_g975f_battery_level
+      entity_id: sensor.sm_g781b_battery_level
       platform: device
       type: battery_level
   condition:
     - condition: state
-      entity_id: sensor.sm_g975f_battery_state
+      entity_id: sensor.sm_g781b_battery_level
       state: discharging
     - condition: state
       entity_id: binary_sensor.daytime
