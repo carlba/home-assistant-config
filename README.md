@@ -69,15 +69,19 @@ A token is required to access and control the device it can be retrieved, like s
 1. Install an BlueStacks emulator
 
    ```bash
-   brew cask install bluestacks
+    brew install --cask bluestacks
    ```
 
-2. Install [MiHome v5.4.49](https://www.apkmirror.com/apk/xiaomi-inc/mihome/mihome-5-4-49-release/)
+2. Install [MiHome v5.4.49](https://www.apkmirror.com/apk/xiaomi-inc/mihome/mihome-5-4-49-release)
    It has to be this exact release which both writes the token to the sqlite DB and supports the
    european servers. Earlier and later versions don't fulfill both these requirements.
 
 3. Using v5.4.49 of Mi Home locate a text file under the Smarthome/logs folder where the
    32 character token is stored.
+
+   ```bash
+   adb pull /storage/self/primary/SmartHome/logs/plug_DeviceManager/2021-05-25.txt
+   ```
 
 ### Getting the room mappings
 
