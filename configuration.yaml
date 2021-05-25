@@ -389,7 +389,7 @@ person:
 vacuum:
   - platform: xiaomi_miio
     host: 192.168.1.11
-    token: 5a52714147397869796a754e434c5674
+    token: 586854367345797931635945364a6a72
 
 fan:
   - platform: xiaomi_miio
