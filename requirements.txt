@@ -138,7 +138,7 @@ sseclient==0.0.26
 tabulate==0.8.9
 typing-extensions==3.7.4.3
 tzlocal==2.1
-urllib3==1.25.9
+urllib3==1.26.5
 voluptuous==0.11.7
 websocket-client==0.57.0
 yapf==0.30.0
