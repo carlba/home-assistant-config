@@ -310,9 +310,6 @@ asuswrt:
   username: cbackstrom
   password: !secret router_password
 
-device_tracker:
-  - platform: asuswrt
-
 media_player:
   - platform: kodi
     host: 192.168.1.7
