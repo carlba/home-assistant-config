@@ -64,6 +64,8 @@ http:
   trusted_proxies:
     - 192.168.1.1
     - 127.0.0.1
+    - 172.30.33.0/24
+    - ::1
 
 # This integration is a meta-component and configures a default set of integrations for
 #  Home Assistant to load. https://www.home-assistant.io/integrations/default_config
