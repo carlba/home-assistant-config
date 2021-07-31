@@ -56,13 +56,13 @@ desktop_remote_control:
   event: deconz_event
   entities: ['light.desktop', 'switch.screen']
 
-coffeemaker_remote_control:
+toaster_remote_control:
   module: apps
   class: RemoteControlAction
-  id: coffeemaker_remote
+  id: toaster_remote
   type: ikea
   event: deconz_event
-  entities: ['switch.coffeemaker']
+  entities: ['switch.toaster']
 
 cleaning_remote_control:
   id: cleaning_remote
