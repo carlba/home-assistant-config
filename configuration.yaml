@@ -179,20 +179,20 @@ sensor:
         friendly_name: 'Harmony Hub'
         value_template: '{{ states.remote.harmony_hub.attributes.current_activity }}'
       air_purifier_humidity:
-        value_template: '{{ states.fan.xiaomi_miio_device.attributes.humidity }}'
+        value_template: '{{ states.fan.zhimi_airpurifier_mc1.attributes.humidity }}'
         friendly_name: Air Purifier Humidity
         unit_of_measurement: '%'
         device_class: humidity
       air_purifier_temperature:
-        value_template: '{{ states.fan.xiaomi_miio_device.attributes.temperature }}'
+        value_template: '{{ states.fan.zhimi_airpurifier_mc1.attributes.temperature }}'
         friendly_name: Air Purifier Temperature
         unit_of_measurement: '°C'
         device_class: temperature
       air_purifier_favorite_level:
-        value_template: '{{ states.fan.xiaomi_miio_device.attributes.favorite_level }}'
+        value_template: '{{ states.fan.zhimi_airpurifier_mc1.attributes.favorite_level }}'
         friendly_name: Air Purifier Favorite Level
       air_purifier_air_quality:
-        value_template: '{{ states.fan.xiaomi_miio_device.attributes.aqi }}'
+        value_template: '{{ states.fan.zhimi_airpurifier_mc1.attributes.aqi }}'
         friendly_name: Air Purifier Air Quality
         unit_of_measurement: 'AQI'
       sleep_time_in_bed_friendly:
@@ -304,12 +304,6 @@ zone:
     radius: 100
     icon: mdi:account
 
-# https://www.home-assistant.io/components/asuswrt/
-asuswrt:
-  host: 192.168.1.1
-  username: cbackstrom
-  password: !secret router_password
-
 media_player:
   - platform: kodi
     host: 192.168.1.7
@@ -385,15 +379,7 @@ person:
       - device_tracker.sm_g955f
       - device_tracker.galaxy_s8
 
-vacuum:
-  - platform: xiaomi_miio
-    host: 192.168.1.11
-    token: 586854367345797931635945364a6a72
-
 fan:
-  - platform: xiaomi_miio
-    host: 192.168.1.27
-    token: b8d8625068ac729c36e677462fecca53
   - platform: xiaomi_miio_fan
     name: Xiaomi Smart Fan
     host: 192.168.1.21

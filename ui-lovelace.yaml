@@ -217,10 +217,10 @@ views:
                             entity_id: script.xiaomi_vacuum_cleaner_go_to_emptying_spot
                           secondary_info: Empty Vacuum
               - type: custom:fold-entity-row
-                head: fan.xiaomi_miio_device
+                head: fan.zhimi_airpurifier_mc1
                 open: false
                 entities:
-                  - entity: fan.xiaomi_miio_device
+                  - entity: fan.zhimi_airpurifier_mc1
                     type: custom:multiple-entity-row
                     show_state: false
                     name: ''

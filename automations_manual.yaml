@@ -65,11 +65,11 @@
       entity_id: switch.screen
     - service: xiaomi_miio.fan_set_favorite_level
       data:
-        entity_id: fan.xiaomi_miio_device
+        entity_id: fan.zhimi_airpurifier_mc1
         level: 14
     - service: xiaomi_miio.fan_set_speed
       data:
-        entity_id: fan.xiaomi_miio_device
+        entity_id: fan.zhimi_airpurifier_mc1
         speed: Favorite
 
 - alias: Activate the sleep_in_an_hour script at 22:00:00
@@ -88,7 +88,7 @@
   action:
     - service: xiaomi_miio.fan_set_favorite_level
       data_template:
-        entity_id: fan.xiaomi_miio_device
+        entity_id: fan.zhimi_airpurifier_mc1
         level: '{{ trigger.to_state.state | int }}'
 
 - alias: Xiaomi Air Purifier - Change input number based on Air Purifier level
