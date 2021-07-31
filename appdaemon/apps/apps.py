@@ -1,3 +1,4 @@
+# pyright: reportUnusedCoroutine = false
 import inspect
 import json
 from typing import Any, Union, List, Dict
@@ -253,11 +254,7 @@ class RemoteControlService(RemoteControl):
     def initialize(self):
         super().initialize()
         self.entities: List[str] = self.args.get('entities')
-        self.service_calls: Dict[List[Dict[str,
-                                           Union[str,
-                                                 Dict[str,
-                                                      Union[str,
-                                                            int]]]]]] = self.args['service_calls']
+        self.service_calls: dict[str, list[dict[str, Any]]] = self.args['service_calls']
 
     def get_service_calls_for_event(self, service_calls, event: str):
         new_service_calls: List[dict] = []
