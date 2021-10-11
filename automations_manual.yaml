@@ -63,14 +63,14 @@
       entity_id: all
     - service: switch.turn_off
       entity_id: switch.screen
+    - service: fan.set_preset_mode
+      data:
+        entity_id: fan.zhimi_airpurifier_mc1
+        preset_mode: Favorite
     - service: xiaomi_miio.fan_set_favorite_level
       data:
         entity_id: fan.zhimi_airpurifier_mc1
         level: 14
-    - service: xiaomi_miio.fan_set_speed
-      data:
-        entity_id: fan.zhimi_airpurifier_mc1
-        speed: Favorite
 
 - alias: Activate the sleep_in_an_hour script at 22:00:00
   initial_state: true
