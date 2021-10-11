@@ -347,6 +347,7 @@ logger:
   logs:
     homeassistant.components.media_player.spotify: info
     homeassistant.components.media_player.androidtv.adb_shell: debug
+    homeassistant.components.kodi.media_player: fatal
 
 timer:
   clean:
