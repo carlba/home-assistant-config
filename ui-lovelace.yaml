@@ -95,6 +95,8 @@ views:
                     name: Wall
                   - entity: sensor.aqara_temperature_kyl
                     name: Kyl
+                  - entity: sensor.aqara_temperature_frys
+                    name: Frys
                   - entity: sensor.outside_temperature
                     name: Outside
                   - entity: sensor.air_purifier_air_quality
