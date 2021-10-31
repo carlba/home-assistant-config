@@ -380,12 +380,6 @@ person:
       - device_tracker.sm_g955f
       - device_tracker.galaxy_s8
 
-fan:
-  - platform: xiaomi_miio_fan
-    name: Xiaomi Smart Fan
-    host: 192.168.1.21
-    token: 78515254e630a84d6e38e82141bd6da4
-
 rest_command:
   cast_site:
     url: 'http://localhost:9898/cast_site'
