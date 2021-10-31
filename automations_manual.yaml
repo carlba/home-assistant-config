@@ -2,6 +2,7 @@
 # https://www.home-assistant.io/components/automation/
 
 - alias: notifications_about_device_trackers_entering
+  id: 6a2437ba-6f0d-47da-ba76-99fa343eefce
   initial_state: true
   trigger:
     - platform: state
@@ -22,6 +23,7 @@
         message: '{{ trigger.to_state.name.split(" ")[0] }} has arrived at {{ trigger.to_state.state }}'
 
 - alias: notifications_about_device_trackers_leaving
+  id: 27d9e431-a560-4a57-99a0-bc862981c1a4
   initial_state: true
   trigger:
     - platform: state
@@ -41,6 +43,7 @@
         message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
 
 - alias: When one user is at activate the default scene
+  id: 11cf51f6-e1c4-41da-b0fb-7a3b04387829
   initial_state: true
   trigger:
     - platform: state
@@ -52,6 +55,7 @@
       entity_id: script.daytime
 
 - alias: When all users are away turn off all things
+  id: f59282b1-c8ba-41c4-9337-f907bfaf858f
   initial_state: true
   trigger:
     - platform: state
@@ -73,6 +77,7 @@
         level: 14
 
 - alias: Activate the sleep_in_an_hour script at 22:00:00
+  id: edb33fad-78de-4ebf-9f10-93e10e735bb6
   initial_state: true
   trigger:
     platform: time
@@ -82,6 +87,7 @@
       entity_id: script.sleep_in_an_hour
 
 - alias: Xiaomi Air Purifier - Change Air Purifier level based on input number
+  id: 421b2832-a817-422f-a349-a9e1f2ec59d3
   trigger:
     platform: state
     entity_id: input_number.xiaomi_fan_favorite_level
@@ -92,6 +98,7 @@
         level: '{{ trigger.to_state.state | int }}'
 
 - alias: Xiaomi Air Purifier - Change input number based on Air Purifier level
+  id: 7afc419b-b2cd-4673-9e6b-97ecf375ba90
   trigger:
     platform: state
     entity_id: sensor.air_purifier_favorite_level
@@ -102,6 +109,7 @@
         value: '{{ trigger.to_state.state | int }}'
 
 - alias: Turn off LG TV when Shield is turned off
+  id: a891c365-bb65-42b7-aa86-fad91f0cf16d
   trigger:
     - platform: state
       entity_id: media_player.shield
@@ -113,6 +121,7 @@
       entity_id: script.rotel_amp_power_off
 
 - alias: Set Rotel Amp to media mode when Shield is turned on
+  id: e7cce58b-0780-4046-bc10-7f70eff656fa
   trigger:
     - platform: state
       entity_id: media_player.shield
@@ -131,6 +140,7 @@
       entity_id: script.rotel_media_mode
 
 - alias: Wakeup in half an hour at 06:30 every day
+  id: 8c00c075-f201-4083-b8eb-e01998828220
   trigger:
     platform: time
     at: '06:30:00'
@@ -147,6 +157,7 @@
       entity_id: script.wakeup_in_half_an_hour
 
 - alias: Notify Johanna when the battery of phone is below certain level
+  id: b693415a-a8e0-4bd2-b17e-f4684e912c84
   trigger:
     - below: 30
       device_id: 8f07c81adbef4b12beaad8dbd09625b4
@@ -167,6 +178,7 @@
         message: Johanna it is time to charge your phone.
 
 - alias: Notify Carl about low battery level
+  id: 06a9112c-f761-421f-a015-e313bfd18407
   trigger:
     - below: 30
       device_id: a6c2febc07ce437cbe8ee51fcfd860c9
@@ -185,19 +197,3 @@
     - service: notify.gassistant
       data:
         message: Carl it is time to charge your phone.
-
-- alias: Test
-  trigger:
-    - platform: state
-      entity_id: input_boolean.test
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: binary_sensor.daytime
-      state: 'on'
-  action:
-    - service: system_log.write
-      data:
-        level: info
-        logger: homeassistant.components.automation.test
-        message: 'The action was triggered'
