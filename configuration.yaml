@@ -137,6 +137,7 @@ light:
       - light.desktop
       - light.kitchen_fan
       - light.frank
+      - light.star
 
 binary_sensor:
   - platform: template
