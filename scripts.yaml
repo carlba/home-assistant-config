@@ -77,14 +77,14 @@ daytime:
         brightness_pct: 20
         color_temp: 340
     # https://www.home-assistant.io/components/fan.xiaomi_miio
-    - service: xiaomi_miio.fan_set_favorite_level
-      data:
-        entity_id: fan.zhimi_airpurifier_mc1
-        level: 3
     - service: fan.set_preset_mode
       data:
         entity_id: fan.zhimi_airpurifier_mc1
         preset_mode: Favorite
+    - service: xiaomi_miio.fan_set_favorite_level
+      data:
+        entity_id: fan.zhimi_airpurifier_mc1
+        level: 2
     - service: xiaomi_miio.fan_set_led_on
       entity_id: fan.zhimi_airpurifier_mc1
 
