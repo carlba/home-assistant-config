@@ -272,6 +272,23 @@ views:
                       service: script.turn_on
                       service_data:
                         entity_id: script.rotel_amp_volume_down
+              - type: custom:multiple-entity-row
+                entity: media_player.lg_tv
+                show_state: true
+                name: ''
+                entities:
+                  - icon: mdi:weather-sunny
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.lg_tv_picture_mode_standard
+                  - icon: mdi:candle
+                    tap_action:
+                      action: call-service
+                      service: script.turn_on
+                      service_data:
+                        entity_id: script.lg_tv_picture_mode_dark
               - type: custom:slider-entity-row
                 entity: climate.danfoss_z_thermostat_014g0013_heating_bedroom
                 name: Therm Bedroom
