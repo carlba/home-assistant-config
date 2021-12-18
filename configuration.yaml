@@ -144,6 +144,9 @@ binary_sensor:
       daytime:
         value_template: "{{ '08:00' < states('sensor.time') < '22:40' }}"
         friendly_name: Is Daytime
+      screentime:
+        value_template: "{{ '06:30' < states('sensor.time') < '22:30' }}"
+        friendly_name: Is it allowed to use screens at home
 
 sensor:
   - platform: systemmonitor
