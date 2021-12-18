@@ -12,3 +12,6 @@ __pycache__
 # IDEs
 .idea
 .vscode
+
+# Project Specific
+.env
