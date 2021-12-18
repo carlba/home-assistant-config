@@ -19,7 +19,7 @@ switch.desktop:
   friendly_name: Desktop Switch
   homebridge_visible: true
 
-switch.bathroom_ceiling:
+switch.bathroom:
   friendly_name: Bathroom Ceiling Switch
   homebridge_visible: true
 

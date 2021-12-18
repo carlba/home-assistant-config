@@ -378,6 +378,8 @@ views:
                   - type: custom:slider-entity-row
                     entity: light.bed
                     name: Bed
+                  - entity: switch.bathroom
+                    name: Bathroom
               - type: custom:fold-entity-row
                 head:
                   type: section

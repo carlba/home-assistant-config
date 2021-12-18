@@ -67,6 +67,8 @@
       entity_id: all
     - service: switch.turn_off
       entity_id: switch.screen
+    - service: switch.turn_off
+      entity_id: switch.bathroom
     - service: fan.set_preset_mode
       data:
         entity_id: fan.zhimi_airpurifier_mc1
