@@ -88,19 +88,36 @@ views:
                 type: custom:multiple-entity-row
                 show_state: false
                 name: Weather
+                tap_action:
+                  action: none
                 entities:
                   - entity: sensor.zhimi_airpurifier_mc1_temperature
                     name: AP
+                    tap_action:
+                      action: more-info
+                      entity: sensor.zhimi_airpurifier_mc1_temperature
                   - entity: sensor.aqara_temperature_sovrum
                     name: Wall
+                    tap_action:
+                      action: more-info
+                      entity: sensor.aqara_temperature_sovrum
                   - entity: sensor.aqara_temperature_kyl
                     name: Kyl
+                    tap_action:
+                      action: more-info
+                      entity: sensor.aqara_temperature_kyl
                   - entity: sensor.aqara_temperature_frys
                     name: Frys
+                    tap_action:
+                      action: more-info
+                      entity: sensor.aqara_temperature_frys
                   - entity: sensor.outside_temperature
                     name: Outside
                   - entity: sensor.zhimi_airpurifier_mc1_pm2_5
                     name: AQI
+                    tap_action:
+                      action: more-info
+                      entity: sensor.zhimi_airpurifier_mc1_pm2_5
           - type: entity-filter
             entities:
               - person.carl
