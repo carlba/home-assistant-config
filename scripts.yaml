@@ -25,12 +25,13 @@ media_backlight:
       data:
         entity_id: light.behind_tv
         brightness_pct: 10
-    - service: xiaomi_miio.fan_set_favorite_level
+    - service: number.set_value
+      target:
+        entity_id: number.zhimi_airpurifier_mc1_favorite_level
       data:
-        entity_id: fan.zhimi_airpurifier_mc1
-        level: 1
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+        value: '1'
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 media_dark:
   alias: Media Dark
@@ -46,12 +47,13 @@ media_dark:
           - light.hallway_ceiling
           - light.bathroom_ceiling
           - light.living_room_ceiling
-    - service: xiaomi_miio.fan_set_favorite_level
+    - service: number.set_value
+      target:
+        entity_id: number.zhimi_airpurifier_mc1_favorite_level
       data:
-        entity_id: fan.zhimi_airpurifier_mc1
-        level: 1
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+        value: '1'
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 daytime:
   alias: Daytime
@@ -81,12 +83,13 @@ daytime:
       data:
         entity_id: fan.zhimi_airpurifier_mc1
         preset_mode: Favorite
-    - service: xiaomi_miio.fan_set_favorite_level
+    - service: number.set_value
+      target:
+        entity_id: number.zhimi_airpurifier_mc1_favorite_level
       data:
-        entity_id: fan.zhimi_airpurifier_mc1
-        level: 2
-    - service: xiaomi_miio.fan_set_led_on
-      entity_id: fan.zhimi_airpurifier_mc1
+        value: '3'
+    - service: switch.turn_on
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 cozy:
   alias: Cozy
@@ -117,12 +120,13 @@ cozy:
       data:
         entity_id: fan.zhimi_airpurifier_mc1
         preset_mode: Favorite
-    - service: xiaomi_miio.fan_set_favorite_level
+    - service: number.set_value
+      target:
+        entity_id: number.zhimi_airpurifier_mc1_favorite_level
       data:
-        entity_id: fan.zhimi_airpurifier_mc1
-        level: 1
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+        value: '1'
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 afternoon:
   alias: Afternoon
@@ -153,12 +157,13 @@ afternoon:
       data:
         entity_id: fan.zhimi_airpurifier_mc1
         preset_mode: Favorite
-    - service: xiaomi_miio.fan_set_favorite_level
+    - service: number.set_value
+      target:
+        entity_id: number.zhimi_airpurifier_mc1_favorite_level
       data:
-        entity_id: fan.zhimi_airpurifier_mc1
-        level: 2
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+        value: '3'
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 sleep_now:
   alias: Sleep now
@@ -180,8 +185,8 @@ sleep_now:
       data:
         entity_id: fan.zhimi_airpurifier_mc1
         preset_mode: Silent
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 sleep_in_ten_min:
   alias: Sleep 10
@@ -208,8 +213,8 @@ sleep_in_ten_min:
       data:
         entity_id: fan.zhimi_airpurifier_mc1
         preset_mode: Silent
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 sleep_in_an_hour:
   alias: Sleep 2H
@@ -248,8 +253,8 @@ sleep_in_an_hour:
       data:
         entity_id: fan.zhimi_airpurifier_mc1
         preset_mode: Silent
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 wakeup_in_half_an_hour:
   alias: Wakeup in 30 minutes
@@ -306,10 +311,11 @@ wakeup_in_half_an_hour:
 work:
   alias: Work
   sequence:
-    - service: xiaomi_miio.fan_set_favorite_level
+    - service: number.set_value
+      target:
+        entity_id: number.zhimi_airpurifier_mc1_favorite_level
       data:
-        entity_id: fan.zhimi_airpurifier_mc1
-        level: 9
+        value: '5'
 
 early_morning:
   alias: Early Morning
@@ -328,8 +334,8 @@ early_morning:
           - light.desktop
         brightness_pct: 10
         color_temp: 450
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 late_night:
   alias: Late Night
@@ -348,8 +354,8 @@ late_night:
       data:
         entity_id:
           - light.kitchen_table
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 dinner:
   alias: Dinner
@@ -369,8 +375,8 @@ dinner:
         entity_id: light.kitchen_table
         brightness_pct: 40
         color_temp: 450
-    - service: xiaomi_miio.fan_set_led_off
-      entity_id: fan.zhimi_airpurifier_mc1
+    - service: switch.turn_off
+      entity_id: switch.zhimi_airpurifier_mc1_led
 
 gaming:
   alias: Gaming

@@ -89,7 +89,7 @@ views:
                 show_state: false
                 name: Weather
                 entities:
-                  - entity: sensor.air_purifier_temperature
+                  - entity: sensor.zhimi_airpurifier_mc1_temperature
                     name: AP
                   - entity: sensor.aqara_temperature_sovrum
                     name: Wall
@@ -99,7 +99,7 @@ views:
                     name: Frys
                   - entity: sensor.outside_temperature
                     name: Outside
-                  - entity: sensor.air_purifier_air_quality
+                  - entity: sensor.zhimi_airpurifier_mc1_pm2_5
                     name: AQI
           - type: entity-filter
             entities:
@@ -219,19 +219,22 @@ views:
                             entity_id: script.xiaomi_vacuum_cleaner_go_to_emptying_spot
                           secondary_info: Empty Vacuum
               - type: custom:fold-entity-row
-                head: fan.zhimi_airpurifier_mc1
+                head:
+                  entity: fan.zhimi_airpurifier_mc1
+                  name: 'Air Purifier'
                 open: false
                 entities:
                   - entity: fan.zhimi_airpurifier_mc1
                     type: custom:multiple-entity-row
                     show_state: false
-                    name: ''
+                    name: 'Air Purifier'
                     entities:
-                      - entity: sensor.air_purifier_air_quality
+                      - entity: sensor.zhimi_airpurifier_mc1_pm2_5
                         name: AQI
-                  - entity: input_number.xiaomi_fan_favorite_level
-                    type: custom:slider-entity-row
+                  - entity: number.zhimi_airpurifier_mc1_favorite_level
                     name: Level
+                  - entity: switch.zhimi_airpurifier_mc1_led
+                    name: LED
               - type: custom:fold-entity-row
                 head: fan.xiaomi_smart_fan
                 open: false

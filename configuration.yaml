@@ -182,23 +182,6 @@ sensor:
       harmony_hub:
         friendly_name: 'Harmony Hub'
         value_template: '{{ states.remote.harmony_hub.attributes.current_activity }}'
-      air_purifier_humidity:
-        value_template: '{{ states.fan.zhimi_airpurifier_mc1.attributes.humidity }}'
-        friendly_name: Air Purifier Humidity
-        unit_of_measurement: '%'
-        device_class: humidity
-      air_purifier_temperature:
-        value_template: '{{ states.fan.zhimi_airpurifier_mc1.attributes.temperature }}'
-        friendly_name: Air Purifier Temperature
-        unit_of_measurement: '°C'
-        device_class: temperature
-      air_purifier_favorite_level:
-        value_template: '{{ states.fan.zhimi_airpurifier_mc1.attributes.favorite_level }}'
-        friendly_name: Air Purifier Favorite Level
-      air_purifier_air_quality:
-        value_template: '{{ states.fan.zhimi_airpurifier_mc1.attributes.aqi }}'
-        friendly_name: Air Purifier Air Quality
-        unit_of_measurement: 'AQI'
       sleep_time_in_bed_friendly:
         value_template: >-
           {% set sleep = states('sensor.sleep_minutes_asleep') | int %}
@@ -260,7 +243,7 @@ cloud:
         - light.living_room_ceiling_2
         - light.living_room_ceiling_3
         - switch.desktop
-        - switch.bathroom_ceiling
+        - switch.bathroom
         - script.lg_tv_on
         - script.lg_tv_off
 

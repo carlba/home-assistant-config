@@ -73,10 +73,11 @@
       data:
         entity_id: fan.zhimi_airpurifier_mc1
         preset_mode: Favorite
-    - service: xiaomi_miio.fan_set_favorite_level
+    - service: number.set_value
+      target:
+        entity_id: number.zhimi_airpurifier_mc1_favorite_level
       data:
-        entity_id: fan.zhimi_airpurifier_mc1
-        level: 14
+        value: '17'
 
 - alias: Activate the sleep_in_an_hour script at 22:00:00
   id: edb33fad-78de-4ebf-9f10-93e10e735bb6
@@ -87,28 +88,6 @@
   action:
     - service: script.turn_on
       entity_id: script.sleep_in_an_hour
-
-- alias: Xiaomi Air Purifier - Change Air Purifier level based on input number
-  id: 421b2832-a817-422f-a349-a9e1f2ec59d3
-  trigger:
-    platform: state
-    entity_id: input_number.xiaomi_fan_favorite_level
-  action:
-    - service: xiaomi_miio.fan_set_favorite_level
-      data_template:
-        entity_id: fan.zhimi_airpurifier_mc1
-        level: '{{ trigger.to_state.state | int }}'
-
-- alias: Xiaomi Air Purifier - Change input number based on Air Purifier level
-  id: 7afc419b-b2cd-4673-9e6b-97ecf375ba90
-  trigger:
-    platform: state
-    entity_id: sensor.air_purifier_favorite_level
-  action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.xiaomi_fan_favorite_level
-        value: '{{ trigger.to_state.state | int }}'
 
 - alias: Turn off LG TV when Shield is turned off
   id: a891c365-bb65-42b7-aa86-fad91f0cf16d
