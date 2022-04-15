@@ -240,13 +240,13 @@ class RemoteControlAction(RemoteControl):
         super().handle_turn_on(event_name, data, kwargs)
         for entity in self.entities:
             self.turn_on(entity)
-        self.log(f'{self.entities} was turned off', level='INFO')
+        self.log(f'{self.entities} was turned on', level='INFO')
 
     def handle_turn_off(self, event_name, data, kwargs):
         super().handle_turn_off(event_name, data, kwargs)
         for entity in self.entities:
             self.turn_off(entity)
-        self.log(f'{self.entities} was turned on', level='INFO')
+        self.log(f'{self.entities} was turned off', level='INFO')
 
 
 # noinspection PyAttributeOutsideInit

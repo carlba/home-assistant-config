@@ -80,6 +80,14 @@ cleaning_remote_control:
         data:
           entity_id: script.xiaomi_vacuum_cleaner_return_to_base
 
+bathroom_remote_control:
+  module: apps
+  class: RemoteControlAction
+  id: bathroom_remote
+  type: ikea
+  event: deconz_event
+  entities: ['switch.bathroom']
+
 dimmer_switch:
   module: apps
   class: MediaControllerVolume
