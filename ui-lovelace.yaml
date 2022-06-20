@@ -652,3 +652,31 @@ views:
             tap_action:
               action: toggle
           - entity: binary_sensor.daytime
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: Battery warning
+        filter:
+          include:
+            - entity_id: 'sensor.*battery*'
+          exclude:
+            - entity_id: sensor.battery_17_temperature
+            - entity_id: sensor.battery_17_battery
+            - entity_id: sensor.sm_g955f_battery_health
+            - entity_id: sensor.sm_g955f_battery_state
+            - entity_id: sensor.sm_g955f_battery_temperature
+            - entity_id: sensor.sm_g781b_battery_health
+            - entity_id: sensor.sm_g781b_battery_state
+            - entity_id: sensor.sm_g781b_battery_temperature
+            - entity_id: sensor.body_battery_highest
+            - entity_id: sensor.body_battery_drained
+            - entity_id: sensor.body_battery_charged
+            - entity_id: sensor.carls_ipad_battery_level
+            - entity_id: sensor.camac4_internal_battery_state
+            - entity_id: sensor.camac4_internal_battery_level
+            - entity_id: sensor.carls_ipad_battery_state
+            - entity_id: sensor.carls_ipad_battery_level
+            - entity_id: sensor.body_battery_most_recent
+            - entity_id: sensor.body_battery_most_recent
+            - entity_id: sensor.body_battery_most_recent
+            - entity_id: sensor.body_battery_most_recent
