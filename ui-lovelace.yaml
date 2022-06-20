@@ -312,11 +312,11 @@ views:
                       service_data:
                         entity_id: script.lg_tv_picture_mode_dark
               - type: custom:slider-entity-row
-                entity: climate.danfoss_z_thermostat_014g0013_heating_bedroom
+                entity: climate.living_connect_z_thermostat_bedroom
                 name: Therm Bedroom
                 step: 0.5
               - type: custom:slider-entity-row
-                entity: climate.danfoss_z_thermostat_014g0013_heating_kitchen
+                entity: climate.living_connect_z_thermostat_kitchen
                 name: Therm Kitchen
                 step: 0.5
           # https://community.home-assistant.io/t/lovelace-mini-media-player/68459
