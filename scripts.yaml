@@ -271,18 +271,16 @@ sleep_in_an_hour:
     - delay:
         seconds: 900
     - service: notify.gassistant
-      entity_id: media_player.home
       data:
-        message: Time to sleep in 45 minutes
+        message: to living room Time to sleep in 45 minutes
     - service: switch.turn_off
       entity_id:
         - switch.screen
     - delay:
         seconds: 1800
-    - service: tts.google_say
-      entity_id: media_player.home
+    - service: notify.gassistant
       data:
-        message: Time to sleep in 15 minutes
+        message: to living room Time to sleep in 15 minutes
     - service: switch.turn_off
       entity_id: switch.screen
     - service: fan.set_preset_mode
@@ -528,7 +526,7 @@ broadcast:
   sequence:
     - service: notify.gassistant
       data_template:
-        message: '{{ states("input_text.broadcast") }}'
+        message: 'to living room {{ states("input_text.broadcast") }}'
 
 # The return_to_base command does not work if executed without first pausing and waiting 1 sec
 xiaomi_vacuum_cleaner_return_to_base:

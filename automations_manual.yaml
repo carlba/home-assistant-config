@@ -40,7 +40,7 @@
     - service_template: notify.gassistant
       entity_id: media_player.home
       data_template:
-        message: '{{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
+        message: 'to living room {{ trigger.from_state.name.split(" ")[0] }} has left {{ trigger.from_state.state }}'
 
 - alias: When one user is at activate the default scene
   id: 11cf51f6-e1c4-41da-b0fb-7a3b04387829
@@ -156,7 +156,7 @@
   action:
     - service: notify.gassistant
       data:
-        message: Johanna it is time to charge your phone.
+        message: to living room Johanna it is time to charge your phone.
 
 - alias: Notify Carl about low battery level
   id: 06a9112c-f761-421f-a015-e313bfd18407
@@ -177,4 +177,4 @@
   action:
     - service: notify.gassistant
       data:
-        message: Carl it is time to charge your phone.
+        message: to living room Carl it is time to charge your phone.
