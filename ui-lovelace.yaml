@@ -55,7 +55,7 @@ views:
                 name: 'Garmin Fenix'
                 entities:
                   - sensor.weight
-                  - entity: sensor.sleeping_time
+                  - entity: sensor.sleep_time_friendly
                     name: Sleep
                   - entity: sensor.total_steps
                     name: Steps

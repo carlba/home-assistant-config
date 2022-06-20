@@ -182,11 +182,11 @@ sensor:
       harmony_hub:
         friendly_name: 'Harmony Hub'
         value_template: '{{ states.remote.harmony_hub.attributes.current_activity }}'
-      sleep_time_in_bed_friendly:
+      sleep_time_friendly:
         value_template: >-
-          {% set sleep = states('sensor.sleep_minutes_asleep') | int %}
+          {% set sleep = states('sensor.sleeping_time') | int %}
           {{ "{:01d}h {:02d}m".format((sleep % 3600) // 60, (sleep % 3600) % 60) }}
-        friendly_name: Sleep Time in Bed Friendly
+        friendly_name: Sleep Time (Friendly)
 
   - platform: fitbit
     clock_format: 24H
