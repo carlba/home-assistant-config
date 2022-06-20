@@ -82,6 +82,7 @@ watch:
   entities:
     - sensor.outside_temperature
     - sensor.aqara_temperature_sovrum
+    - sensor.zhimi_airpurifier_mc1_temperature
     - script.early_morning
     - script.cozy
     - script.daytime

@@ -185,6 +185,7 @@ sleep_now:
           - light.frank
           - light.living_room_ceiling
           - light.star
+          - light.kallax
     - service: fan.set_preset_mode
       data:
         entity_id: fan.zhimi_airpurifier_mc1
@@ -202,9 +203,12 @@ sleep_in_ten_min:
           - light.kitchen_table
           - light.hallway_ceiling
           - light.desktop
+          - light.behind_tv
+          - light.bed
           - light.frank
           - light.living_room_ceiling
           - light.star
+          - light.kallax
     - service: light.turn_off
       data:
         entity_id: light.behind_tv
@@ -231,12 +235,17 @@ sleep_in_an_hour:
         transition: 1800
     - service: light.turn_off
       entity_id:
+        - light.kitchen_fan
+        - light.kitchen_table
+        - light.hallway_ceiling
+        - light.desktop
         - light.behind_tv
         - light.desktop
         - light.bed
         - light.frank
         - light.living_room_ceiling
         - light.star
+        - light.kallax
       data:
         transition: 3600
     - delay:
@@ -245,6 +254,9 @@ sleep_in_an_hour:
       entity_id: media_player.home
       data:
         message: Time to sleep in 45 minutes
+    - service: switch.turn_off
+      entity_id:
+        - switch.screen
     - delay:
         seconds: 1800
     - service: tts.google_say
@@ -258,7 +270,9 @@ sleep_in_an_hour:
         entity_id: fan.zhimi_airpurifier_mc1
         preset_mode: Silent
     - service: switch.turn_off
-      entity_id: switch.zhimi_airpurifier_mc1_led
+      entity_id:
+        - switch.zhimi_airpurifier_mc1_led
+        - switch.screen
 
 wakeup_in_half_an_hour:
   alias: Wakeup in 30 minutes
