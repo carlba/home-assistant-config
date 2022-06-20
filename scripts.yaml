@@ -194,7 +194,6 @@ sleep_now:
           - light.kitchen_table
           - light.hallway_ceiling
           - light.desktop
-          - light.turn_off
           - light.behind_tv
           - light.bed
           - light.frank
@@ -243,6 +242,8 @@ sleep_in_ten_min:
         preset_mode: Silent
     - service: switch.turn_off
       entity_id: switch.zhimi_airpurifier_mc1_led
+    - service: script.turn_on
+      entity_id: script.camac4_sleep
 
 sleep_in_an_hour:
   alias: Sleep 2H
@@ -260,7 +261,6 @@ sleep_in_an_hour:
         - light.hallway_ceiling
         - light.desktop
         - light.behind_tv
-        - light.desktop
         - light.bed
         - light.frank
         - light.living_room_ceiling
@@ -694,8 +694,68 @@ burken_sleep:
           - Win+X
           - U
           - S
+
+lg_tv_picture_preset_cinema_to_standard:
   sequence:
-    service: rest_command.cast_site
-    data:
-      url: 'http://192.168.1.4:8123'
-      device: Kitchen display
+    - delay: 1.5
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: MENU
+    - delay: 1
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: DOWN
+    - delay: 1
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: ENTER
+    - delay: 0.5
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: LEFT
+    - delay: 0.5
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: LEFT
+    - delay: 0.5
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: EXIT
+
+lg_tv_picture_preset_standard_to_cinema:
+  sequence:
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: MENU
+    - delay: 1
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: DOWN
+    - delay: 1
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: ENTER
+    - delay: 0.5
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: RIGHT
+    - delay: 0.5
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: RIGHT
+    - delay: 0.5
+    - service: webostv.button
+      data:
+        entity_id: media_player.lg_webos_smart_tv
+        button: EXIT

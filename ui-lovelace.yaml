@@ -175,6 +175,16 @@ views:
                 icon: 'mdi:gamepad-variant'
                 tap_action:
                   action: toggle
+          - type: glance
+            title: Test
+            show_state: false
+            entities:
+              - entity: script.camac4_sleep
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.camac4_sleep
       - type: vertical-stack
         cards:
           - type: entities
@@ -303,13 +313,13 @@ views:
                       action: call-service
                       service: script.turn_on
                       service_data:
-                        entity_id: script.lg_tv_picture_mode_standard
+                        entity_id: script.lg_tv_picture_preset_cinema_to_standard
                   - icon: mdi:candle
                     tap_action:
                       action: call-service
                       service: script.turn_on
                       service_data:
-                        entity_id: script.lg_tv_picture_mode_dark
+                        entity_id: script.lg_tv_picture_preset_standard_to_cinema
               - type: custom:slider-entity-row
                 entity: climate.living_connect_z_thermostat_bedroom
                 name: Therm Bedroom
@@ -321,6 +331,7 @@ views:
               - type: custom:slider-entity-row
                 entity: cover.aquara_bedroom
                 name: Bedroom Cover
+
           # https://community.home-assistant.io/t/lovelace-mini-media-player/68459
           - type: entities
             title: Media Players
@@ -434,7 +445,6 @@ views:
                     name: Star
 
   - title: Tracker
-    id: tracker
     icon: mdi:crosshairs-gps
     # Title of the view. Will be used as the tooltip for tab icon
     cards:
@@ -453,7 +463,6 @@ views:
           - switch.screen
 
   - title: Remote
-    id: remote
     icon: mdi:remote
     cards:
       - type: glance
