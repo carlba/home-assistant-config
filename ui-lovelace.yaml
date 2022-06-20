@@ -113,6 +113,8 @@ views:
                       entity: sensor.aqara_temperature_frys
                   - entity: sensor.outside_temperature
                     name: Outside
+                  - entity: sensor.temp_nu_rosenlund2
+                    name: Rosenlund
                   - entity: sensor.zhimi_airpurifier_mc1_pm2_5
                     name: AQI
                     tap_action:
