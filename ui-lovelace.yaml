@@ -47,18 +47,16 @@ views:
                 entities:
                   - entity: binary_sensor.hallway_motion_sensor
                     name: Hallway
-              - entity: sensor.versa_3_battery
+              - entity: sensor.total_steps
                 icon: mdi:watch
                 type: custom:multiple-entity-row
                 show_state: false
-                name: 'Versa'
+                name: 'Garmin Fenix'
                 entities:
                   - sensor.weight
-                  - entity: sensor.versa_3_battery
-                    name: Batt
-                  - entity: sensor.sleep_time_in_bed_friendly
+                  - entity: sensor.sleeping_time
                     name: Sleep
-                  - entity: sensor.tracker_steps
+                  - entity: sensor.total_steps
                     name: Steps
               - entity: sensor.sm_g781b_battery_level
                 icon: mdi:phone
