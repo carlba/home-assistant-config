@@ -21,6 +21,8 @@ media_backlight:
           - light.hallway_ceiling
           - light.bathroom_ceiling
           - light.living_room_ceiling
+    - service: script.turn_on
+      entity_id: script.camac4_sleep
     - service: light.turn_on
       data:
         entity_id: light.behind_tv
@@ -47,6 +49,8 @@ media_dark:
           - light.hallway_ceiling
           - light.bathroom_ceiling
           - light.living_room_ceiling
+    - service: script.turn_on
+      entity_id: script.camac4_sleep
     - service: number.set_value
       target:
         entity_id: number.zhimi_airpurifier_mc1_favorite_level
@@ -377,6 +381,8 @@ dinner:
         color_temp: 450
     - service: switch.turn_off
       entity_id: switch.zhimi_airpurifier_mc1_led
+    - service: script.turn_on
+      entity_id: script.camac4_sleep
 
 gaming:
   alias: Gaming
@@ -635,8 +641,27 @@ rotel_phono_mode:
     - service: script.turn_on
       entity_id: script.rotel_amp_dim_min
 
-cast_in_kitchen:
-  alias: Cast in Kitchen
+camac4_sleep:
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 76855722
+        num_repeats: 1
+        command:
+          - Sleep
+
+burken_sleep:
+  sequence:
+    - service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        device: 76867026
+        delay_secs: 1
+        command:
+          - Win+X
+          - U
+          - S
   sequence:
     service: rest_command.cast_site
     data:
