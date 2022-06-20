@@ -27,6 +27,11 @@ media_backlight:
       data:
         entity_id: light.behind_tv
         brightness_pct: 10
+    - service: cover.set_cover_position
+      target:
+        entity_id: cover.aquara_bedroom
+      data:
+        position: 0
     - service: number.set_value
       target:
         entity_id: number.zhimi_airpurifier_mc1_favorite_level
@@ -51,6 +56,11 @@ media_dark:
           - light.living_room_ceiling
     - service: script.turn_on
       entity_id: script.camac4_sleep
+    - service: cover.set_cover_position
+      target:
+        entity_id: cover.aquara_bedroom
+      data:
+        position: 0
     - service: number.set_value
       target:
         entity_id: number.zhimi_airpurifier_mc1_favorite_level
@@ -94,6 +104,11 @@ daytime:
         value: '3'
     - service: switch.turn_on
       entity_id: switch.zhimi_airpurifier_mc1_led
+    - service: cover.set_cover_position
+      target:
+        entity_id: cover.aquara_bedroom
+      data:
+        position: 100
 
 cozy:
   alias: Cozy
@@ -192,6 +207,11 @@ sleep_now:
         preset_mode: Silent
     - service: switch.turn_off
       entity_id: switch.zhimi_airpurifier_mc1_led
+    - service: cover.set_cover_position
+      target:
+        entity_id: cover.aquara_bedroom
+      data:
+        position: 0
 
 sleep_in_ten_min:
   alias: Sleep 10

@@ -13,6 +13,7 @@ views:
                 icon: mdi:toggle-switch
                 type: custom:multiple-entity-row
                 show_state: false
+                tap_action: none
                 name: Switches
                 entities:
                   - entity: switch.toaster
@@ -20,7 +21,7 @@ views:
                     icon: mdi:toaster
                     state_color: true
                     tap_action:
-                      action: toggle
+                      action:
                   - entity: switch.coffeemaker
                     name: Coffeemaker
                     icon: mdi:coffee
@@ -317,6 +318,9 @@ views:
                 entity: climate.living_connect_z_thermostat_kitchen
                 name: Therm Kitchen
                 step: 0.5
+              - type: custom:slider-entity-row
+                entity: cover.aquara_bedroom
+                name: Bedroom Cover
           # https://community.home-assistant.io/t/lovelace-mini-media-player/68459
           - type: entities
             title: Media Players

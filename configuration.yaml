@@ -52,6 +52,8 @@ lovelace:
       type: module
     - url: /hacsfiles/button-entity-row/button-entity-row.js
       type: module
+    - url: /hacsfiles/hass-shutter-card/hass-shutter-card.js
+      type: module
 
 # Enables configuration UI
 config:
